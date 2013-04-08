@@ -11,7 +11,7 @@
  *
  *  -   great looks - out of the box
  *  -   5 types of dialog boxes available: confirmation, information, warning, error and question
- *  -   content can also be added through AJAX calls, iFrames, or from inline elements (together with applied events)
+ *  -   content can also be added through AJAX calls, iFrames, or from inline elements (together with attached events)
  *  -   easily customizable appearance by changing the CSS file
  *  -   create modal or non-modal dialog boxes
  *  -   easily add custom buttons

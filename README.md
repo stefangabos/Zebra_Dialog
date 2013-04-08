@@ -8,9 +8,9 @@ Can also be used as a notification widget - when configured to show no buttons a
 
  - great looks - out of the box
  - 5 types of dialog boxes available: confirmation, information, warning, error and question
- - content can also be added through AJAX calls, iFrames or from inline elements
- - easily customizable appearance by changing the CSS file - can be configured so that tabs expand on mouse over;
- - create modal or non-modal dialog boxes - callback functions can be used for further customizations;
+ - content can also be added through AJAX calls, iFrames, or from inline elements (together with attached events)
+ - easily customizable appearance by changing the CSS file - can be configured so that tabs expand on mouse over
+ - create modal or non-modal dialog boxes - callback functions can be used for further customizations
  - easily add custom buttons
  - position the dialog box wherever you want - not just in the middle of the screen
  - use callback functions to handle user's choice
