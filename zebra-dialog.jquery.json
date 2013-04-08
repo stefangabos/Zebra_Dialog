@@ -1,0 +1,37 @@
+{
+    "name": "zebra-dialog",
+    "title": "Zebra_Dialog",
+    "description": "A small, compact (one JS file, no dependencies other than jQuery 1.5.2+) and highly configurable dialog box plugin for jQuery meant to replace JavaScript's native "alert" and "confirmation" windows.",
+    "keywords": [
+        "alert",
+        "dialog",
+        "modal",
+        "popup",
+        "ui",
+        "confirmation"
+    ],
+    "version": "1.3",
+    "author": {
+        "name": "Stefan Gabos",
+        "url": "http://stefangabos.ro/"
+    },
+    "maintainers": [
+        {
+            "name": "Stefan Gabos",
+            "url": "http://stefangabos.ro/"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "LGPL",
+            "url": "https://github.com/stefangabos/Zebra_Dialog/blob/master/license.txt"
+        }
+    ],
+    "bugs": "http://stefangabos.ro/jquery/zebra-dialog/#how-to-use",
+    "homepage": "http://stefangabos.ro/jquery/zebra-dialog/",
+    "docs": "http://stefangabos.ro/jquery/zebra-dialog/#how-to-use",
+    "download": "http://stefangabos.ro/jquery/zebra-dialog/#download",
+    "dependencies": {
+        "jquery": ">=1.5.2"
+    }
+}

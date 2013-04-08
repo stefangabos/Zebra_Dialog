@@ -1,0 +1,178 @@
+.ZebraDialog {
+    width: 350px;
+}
+
+.ZebraDialog,
+.ZebraDialog .ZebraDialog_Title,
+.ZebraDialog .ZebraDialog_Body,
+.ZebraDialog .ZebraDialog_Buttons a {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+}
+
+.ZebraDialog .ZebraDialog_Title,
+.ZebraDialog .ZebraDialog_BodyOuter,
+.ZebraDialog .ZebraDialog_Buttons {
+    border-color: #13252F;
+    border-width: 7px;
+}
+
+.ZebraDialog .ZebraDialog_Title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #F6F5F5;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background: #444444;
+    padding: 12px 15px;
+}
+
+/*  set background color here and not on ZebraDialog_Body, or you'll eventually run into problems with rounded corners
+    when using smaller widths for border! */
+.ZebraDialog .ZebraDialog_BodyOuter {
+    background: #E7EDEF;
+}
+
+.ZebraDialog .ZebraDialog_Body {
+    color: #44484A;
+    padding: 20px;
+    border-top-color: #000;
+    border-bottom-color: #FFF;
+}
+
+.ZebraDialog .ZebraDialog_Buttons {
+    background: #E7EDEF;
+    padding: 10px 5px 10px 10px;
+}
+
+.ZebraDialog .ZebraDialog_Buttons a {
+    font-weight: bold;
+    color: #FFF;
+    text-shadow: 1px 0px 2px #222;
+    padding: 10px 15px;
+}
+
+.ZebraDialog .ZebraDialog_Buttons a:hover {
+    background: #224467;
+    color: #FFF
+}
+
+.ZebraDialogOverlay {
+    background: #666;
+}
+
+/* = YOU SHOULD NOT CHANGE ANYTHING FROM THIS POINT ON
+---------------------------------------------------------------------------------------------------------------------*/
+.ZebraDialog {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.ZebraDialog .ZebraDialog_Title {
+    border-left-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    -webkit-border-radius: 10px 10px 0 0;
+    -moz-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.ZebraDialog .ZebraDialog_BodyOuter {
+    border-left-style: solid;
+    border-right-style: solid;
+}
+
+.ZebraDialog .ZebraDialog_NoTitle {
+    border-top-style: solid;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.ZebraDialog .ZebraDialog_NoButtons {
+    border-bottom-style: solid;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.ZebraDialog .ZebraDialog_Body {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-style: groove;
+    overflow: auto;
+}
+
+.ZebraDialog .ZebraDialog_NoTitle .ZebraDialog_Body {
+    border-top: none;
+}
+
+.ZebraDialog .ZebraDialog_NoButtons .ZebraDialog_Body {
+    border-bottom: none;
+}
+
+.ZebraDialog .ZebraDialog_Icon {
+    background-repeat: no-repeat;
+    background-position: 20px 20px;
+    padding-left: 88px;
+    min-height: 48px;
+    _height: 85px;
+}
+
+.ZebraDialog .ZebraDialog_Confirmation  { background-image: url('confirmation.png') }
+.ZebraDialog .ZebraDialog_Error         { background-image: url('error.png') }
+.ZebraDialog .ZebraDialog_Information   { background-image: url('information.png') }
+.ZebraDialog .ZebraDialog_Question      { background-image: url('question.png') }
+.ZebraDialog .ZebraDialog_Warning       { background-image: url('warning.png') }
+
+.ZebraDialog .ZebraDialog_Buttons {
+    border-left-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.ZebraDialog .ZebraDialog_Buttons a {
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    float: right;
+    margin-right: 5px;
+    min-width: 60px;
+    _width: 60px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+    /* taken from Twitter Bootstrap */
+    background-color: #006DCC;
+    *background-color: #0044CC;
+    background-image: -moz-linear-gradient(top, #0088CC, #0044CC);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088CC), to(#0044CC));
+    background-image: -webkit-linear-gradient(top, #0088CC, #0044CC);
+    background-image: -o-linear-gradient(top, #0088CC, #0044CC);
+    background-image: linear-gradient(to bottom, #0088CC, #0044CC);
+    background-repeat: repeat-x;
+    border-color: #0044CC #0044CC #002A80;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF0088CC', endColorstr='#FF0044CC', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.ZebraDialog .ZebraDialog_Preloader {
+    height: 32px;
+    background: url('preloader.gif') no-repeat center center;
+}
