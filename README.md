@@ -28,27 +28,35 @@ Can also be used as a notification widget - when configured to show no buttons a
 
 First, load the latest version of jQuery from a CDN and provide a fallback to a local source, like:
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="public/javascript/jquery-1.9.1.js"><\/script>')</script>
+```html
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="public/javascript/jquery-1.9.1.js"><\/script>')</script>
+```
 
 Load the Zebra_Dialog plugin
 
-    <script type="text/javascript" src="path/to/zebra_dialog.js"></script>
+```html
+<script type="text/javascript" src="path/to/zebra_dialog.js"></script>
+```
 
 Load the plugin’s stylesheet file
 
-    <link rel="stylesheet" href="path/to/zebra_dialog.css" type="text/css">
+```html
+<link rel="stylesheet" href="path/to/zebra_dialog.css" type="text/css">
+```
 
 Now, within the DOM-ready event do
 
-    $(document).ready(function() {
+```javascript
+$(document).ready(function() {
 
-        // show a dialog box when clicking on a link
-        $(anchor).bind('click', function(e) {
-            e.preventDefault();
-            $.Zebra_Dialog('The link was clicked!');
-        });
+    // show a dialog box when clicking on a link
+    $(anchor).bind('click', function(e) {
+        e.preventDefault();
+        $.Zebra_Dialog('The link was clicked!');
+    });
 
-     });
+});
+```
 
 Configuration options and demos on the **[project's homepage](http://stefangabos.ro/jquery/zebra_dialog/)**
