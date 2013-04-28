@@ -59,4 +59,4 @@ $(document).ready(function() {
 });
 ```
 
-Configuration options and demos on the **[project's homepage](http://stefangabos.ro/jquery/zebra_dialog/)**
+Configuration options and demos on the **[project's homepage](http://stefangabos.ro/jquery/zebra-dialog/)**
