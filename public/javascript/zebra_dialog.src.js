@@ -24,7 +24,7 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.3 (last revision: April 08, 2013)
+ *  @version    1.3.2 (last revision: May 26, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -36,10 +36,15 @@
         // default options
         var defaults = {
 
-            animation_speed:            250,            //  The speed, in milliseconds, by which the overlay and the
+            animation_speed_hide:       250,            //  The speed, in milliseconds, by which the overlay and the
                                                         //  dialog box will be animated when closing.
                                                         //
                                                         //  Default is 250
+
+            animation_speed_show:       0,              //  The speed, in milliseconds, by which the dialog box will
+                                                        //  fade in when appearing.
+                                                        //
+                                                        //  Default is 0
 
             auto_close:                 false,          //  The number of milliseconds after which to automatically
                                                         //  close the dialog box or FALSE to not automatically close the
@@ -619,7 +624,7 @@
                 },
 
                 // animation speed
-                plugin.settings.animation_speed,
+                plugin.settings.animation_speed_hide,
 
                 // when the animation is complete
                 function() {
@@ -638,7 +643,7 @@
             },
 
             // animation speed
-            plugin.settings.animation_speed,
+            plugin.settings.animation_speed_hide,
 
             // when the animation is complete
             function() {
@@ -787,24 +792,31 @@
             }
 
             // if dialog box is to be placed without animation
-            if ((typeof arguments[0] == 'boolean' && arguments[0] === false) || plugin.settings.reposition_speed == 0)
+            if ((typeof arguments[0] == 'boolean' && arguments[0] === false) || plugin.settings.reposition_speed == 0) {
 
                 // position the dialog box and make it visible
                 plugin.dialog.css({
 
                     'left':         plugin.dialog_left,
                     'top':          plugin.dialog_top,
-                    'visibility':   'visible'
+                    'visibility':   'visible',
+                    'opacity':      0
 
-                });
+                }).animate({'opacity': 1}, plugin.settings.animation_speed_show);
 
             // if dialog box is to be animated into position
-            else
+            } else {
+
+                // stop any ongoing animation
+                // (or animations will queue up when manually resizing the window)
+                plugin.dialog.stop(true);
 
                 plugin.dialog.css('visibility', 'visible').animate({
                     'left': plugin.dialog_left,
                     'top':  plugin.dialog_top
                 }, plugin.settings.reposition_speed);
+
+            }
 
             // move the focus to the first of the dialog box's buttons
             plugin.dialog.find('a[class^=ZebraDialog_Button]:first').focus();
