@@ -4,6 +4,7 @@
 
 .ZebraDialog {
     width: 350px;
+    z-index: 1001;
 }
 
 .ZebraDialog,
@@ -66,6 +67,7 @@
 
 .ZebraDialogOverlay {
     background: #666;
+    z-index: 1000;
 }
 
 /* = YOU SHOULD NOT CHANGE ANYTHING FROM THIS POINT ON

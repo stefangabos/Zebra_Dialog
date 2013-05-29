@@ -314,8 +314,7 @@
                     'position': (plugin.isIE6 ? 'absolute' : 'fixed'),  //  for IE6 we emulate the "position:fixed" behaviour
                     'left':     0,                                      //  the overlay starts at the top-left corner of the
                     'top':      0,                                      //  browser window (later on we'll stretch it)
-                    'opacity':  plugin.settings.overlay_opacity,        //  set the overlay's opacity
-                    'z-index':  1000                                    //  set a high value for z-index
+                    'opacity':  plugin.settings.overlay_opacity         //  set the overlay's opacity
 
                 });
 
@@ -342,7 +341,6 @@
                 'position':     (plugin.isIE6 ? 'absolute' : 'fixed'),  //  for IE6 we emulate the "position:fixed" behaviour
                 'left':         0,                                      //  by default, place it in the top-left corner of the
                 'top':          0,                                      //  browser window (we'll position it later)
-                'z-index':      1001,                                   //  the z-index must be higher than the overlay's z-index
                 'visibility':   'hidden'                                //  the dialog box is hidden for now
 
             });
