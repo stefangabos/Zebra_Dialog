@@ -127,7 +127,7 @@
                                                         //
                                                         //  Default is TRUE
 
-            overlay_opacity:            .9,             //  The opacity of the overlay (between 0 and 1)
+            overlay_opacity:            '.9',           //  The opacity of the overlay (between 0 and 1)
                                                         //
                                                         //  Default is .9
 
@@ -265,7 +265,7 @@
                                                         //  box is closed by pressing the ESC key or by clicking on the
                                                         //  overlay.
 
-        }
+        };
 
         // to avoid confusions, we use "plugin" to reference the current instance of the object
         var plugin = this;
@@ -274,7 +274,7 @@
         plugin.settings = {};
 
         // by default, we assume there are no custom options provided
-        options = {};
+        var options = {};
 
         // if plugin is initialized so that first argument is a string
         // that string is the message to be shown in the dialog box
@@ -323,7 +323,7 @@
 
                     // when the overlay is clicked
                     // remove the overlay and the dialog box from the DOM
-                    plugin.overlay.bind('click', function() {plugin.close()});
+                    plugin.overlay.bind('click', function() {plugin.close();});
 
                 // append the overlay to the DOM
                 plugin.overlay.appendTo('body');
@@ -353,7 +353,7 @@
 
             // check to see if the "width" property is given as an integer
             // try to convert to a integer
-            var tmp = parseInt(plugin.settings.width);
+            var tmp = parseInt(plugin.settings.width, 10);
 
             // if converted value is a valid number
             if (!isNaN(tmp) && tmp == plugin.settings.width && tmp.toString() == plugin.settings.width.toString() && tmp > 0)
@@ -386,7 +386,7 @@
             plugin.message = jQuery('<div>', {
 
                 // if a known dialog box type is specified, also show the appropriate icon
-                'class':    'ZebraDialog_Body' + (get_type() != '' ? ' ZebraDialog_Icon ZebraDialog_' + get_type() : '')
+                'class':    'ZebraDialog_Body' + (get_type() !== '' ? ' ZebraDialog_Icon ZebraDialog_' + get_type() : '')
 
             });
 
@@ -447,7 +447,7 @@
 
                                 // reposition the dialog box
                                 draw(false);
-                            }
+                            };
 
                             // make the AJAX call
                             $.ajax(ajax_options);
@@ -464,7 +464,7 @@
                                     'marginheight': '0',
                                     'marginwidth':  '0',
                                     'frameborder':  '0'
-                                }
+                                },
 
                                 // extend the default options with the ones provided by the user, if any
                                 iframe_options = $.extend(default_options, typeof plugin.settings.source[type] == 'string' ? {'src': plugin.settings.source[type]} : plugin.settings.source[type]);
@@ -527,11 +527,11 @@
                     button.bind('click', function() {
 
                         // execute the callback function when button is clicked
-                        if (undefined != value.callback) value.callback(plugin.dialog);
+                        if (undefined !== value.callback) value.callback(plugin.dialog);
 
                         // remove the overlay and the dialog box from the DOM
                         // also pass the button's label as argument
-                        plugin.close(undefined != value.caption ? value.caption : value)
+                        plugin.close(undefined !== value.caption ? value.caption : value);
 
                     });
 
@@ -573,7 +573,7 @@
             if (plugin.settings.auto_close !== false) {
 
                 // if, in the meantime, the box is clicked
-                plugin.dialog.bind('click', function(e) {
+                plugin.dialog.bind('click', function() {
 
                     // stop the timeout
                     clearTimeout(plugin.timeout);
@@ -595,7 +595,7 @@
             // return a reference to the object itself
             return plugin;
 
-        }
+        };
 
         /**
          *  Close the dialog box
@@ -653,11 +653,11 @@
                 if (plugin.settings.onClose && typeof plugin.settings.onClose == 'function')
 
                     // execute the callback function
-                    plugin.settings.onClose(undefined != caption ? caption : '');
+                    plugin.settings.onClose(undefined !== caption ? caption : '');
 
             });
 
-        }
+        };
 
         /**
          *  Draw the overlay and the dialog box
@@ -746,7 +746,7 @@
                         if (tmp != plugin.settings.position[i])
 
                             // evaluate string as a mathematical expression and set the appropriate value
-                            if (i == 0) plugin.dialog_left = eval(tmp); else plugin.dialog_top = eval(tmp);
+                            if (i === 0) plugin.dialog_left = eval(tmp); else plugin.dialog_top = eval(tmp);
 
                     }
 
@@ -755,7 +755,7 @@
             }
 
             // if "dialog_left" and/or "dialog_top" values are still not set
-            if (undefined == plugin.dialog_left || undefined == plugin.dialog_top) {
+            if (undefined === plugin.dialog_left || undefined === plugin.dialog_top) {
 
                 // the dialog box will be in its default position, centered
                 plugin.dialog_left = values['center'];
@@ -790,7 +790,7 @@
             }
 
             // if dialog box is to be placed without animation
-            if ((typeof arguments[0] == 'boolean' && arguments[0] === false) || plugin.settings.reposition_speed == 0) {
+            if ((typeof arguments[0] == 'boolean' && arguments[0] === false) || plugin.settings.reposition_speed === 0) {
 
                 // position the dialog box and make it visible
                 plugin.dialog.css({
@@ -823,7 +823,7 @@
             // (if we do not apply a short delay, it sometimes does not work as expected)
             if (plugin.isIE6) setTimeout(emulate_fixed_position, 500);
 
-        }
+        };
 
         /**
          *  Emulates "position:fixed" for Internet Explorer 6.
@@ -859,7 +859,7 @@
 
             });
 
-        }
+        };
 
         /**
          *  Returns an array containing the buttons that are to be added to the dialog box.
@@ -901,7 +901,7 @@
             // (buttons need to be added in reverse order because they are floated to the right)
             return plugin.settings.buttons.reverse();
 
-        }
+        };
 
         /**
          *  Returns the type of the dialog box, or FALSE if type is not one of the five known types.
@@ -932,8 +932,6 @@
                     // return the dialog box's type, first letter capital
                     return plugin.settings.type.charAt(0).toUpperCase() + plugin.settings.type.slice(1).toLowerCase();
 
-                    break;
-
                 // if unknown type
                 default:
 
@@ -942,7 +940,7 @@
 
             }
 
-        }
+        };
 
         /**
          *  Function to be called when the "onKeyUp" event occurs
@@ -963,7 +961,7 @@
             // let the event bubble up
             return true;
 
-        }
+        };
 
         /**
          *  Function to be called when the "onScroll" event occurs in Internet Explorer 6.
@@ -980,16 +978,14 @@
             // make sure the overlay and the dialog box always stay in the correct position
             emulate_fixed_position();
 
-        }
+        };
 
         // since with jQuery 1.9.0 the $.browser object was removed, we rely on this piece of code from
         // http://www.quirksmode.org/js/detect.html to detect the browser
         var browser = {
             init: function () {
                 this.name = this.searchString(this.dataBrowser) || '';
-                this.version = this.searchVersion(navigator.userAgent)
-                    || this.searchVersion(navigator.appVersion)
-                    || '';
+                this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || '';
             },
             searchString: function (data) {
                 for (var i=0;i<data.length;i++)    {
@@ -1017,13 +1013,14 @@
                     versionSearch: 'MSIE'
                 }
             ]
-        }
+        };
+
         browser.init();
 
         // fire up the plugin!
         // call the "constructor" method
         return plugin.init();
 
-    }
+    };
 
 })(jQuery);
