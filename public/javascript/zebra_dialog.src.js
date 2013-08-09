@@ -985,38 +985,38 @@
         // since with jQuery 1.9.0 the $.browser object was removed, we rely on this piece of code from
         // http://www.quirksmode.org/js/detect.html to detect the browser
         var browser = {
-        	init: function () {
-        		this.name = this.searchString(this.dataBrowser) || '';
-        		this.version = this.searchVersion(navigator.userAgent)
-        			|| this.searchVersion(navigator.appVersion)
-        			|| '';
-        	},
-        	searchString: function (data) {
-        		for (var i=0;i<data.length;i++)	{
-        			var dataString = data[i].string;
-        			var dataProp = data[i].prop;
-        			this.versionSearchString = data[i].versionSearch || data[i].identity;
-        			if (dataString) {
-        				if (dataString.indexOf(data[i].subString) != -1)
-        					return data[i].identity;
-        			}
-        			else if (dataProp)
-        				return data[i].identity;
-        		}
-        	},
-        	searchVersion: function (dataString) {
-        		var index = dataString.indexOf(this.versionSearchString);
-        		if (index == -1) return;
-        		return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
-        	},
-        	dataBrowser: [
-        		{
-        			string: navigator.userAgent,
-        			subString: 'MSIE',
-        			identity: 'explorer',
-        			versionSearch: 'MSIE'
-        		}
-        	]
+            init: function () {
+                this.name = this.searchString(this.dataBrowser) || '';
+                this.version = this.searchVersion(navigator.userAgent)
+                    || this.searchVersion(navigator.appVersion)
+                    || '';
+            },
+            searchString: function (data) {
+                for (var i=0;i<data.length;i++)    {
+                    var dataString = data[i].string;
+                    var dataProp = data[i].prop;
+                    this.versionSearchString = data[i].versionSearch || data[i].identity;
+                    if (dataString) {
+                        if (dataString.indexOf(data[i].subString) != -1)
+                            return data[i].identity;
+                    }
+                    else if (dataProp)
+                        return data[i].identity;
+                }
+            },
+            searchVersion: function (dataString) {
+                var index = dataString.indexOf(this.versionSearchString);
+                if (index == -1) return;
+                return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+            },
+            dataBrowser: [
+                {
+                    string: navigator.userAgent,
+                    subString: 'MSIE',
+                    identity: 'explorer',
+                    versionSearch: 'MSIE'
+                }
+            ]
         }
         browser.init();
 
