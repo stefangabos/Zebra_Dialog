@@ -68,6 +68,8 @@
 .ZebraDialogOverlay {
     background: #666;
     z-index: 1000;
+    width: 100%;
+    height: 100%;
 }
 
 /* = YOU SHOULD NOT CHANGE ANYTHING FROM THIS POINT ON

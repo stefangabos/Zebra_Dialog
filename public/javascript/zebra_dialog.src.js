@@ -267,14 +267,16 @@
 
         };
 
-        // to avoid confusions, we use "plugin" to reference the current instance of the object
-        var plugin = this;
+        var
+
+            // to avoid confusions, we use "plugin" to reference the current instance of the object
+            plugin = this,
+
+            // by default, we assume there are no custom options provided
+            options = {};
 
         // this will hold the merged default, and user-provided options
         plugin.settings = {};
-
-        // by default, we assume there are no custom options provided
-        var options = {};
 
         // if plugin is initialized so that first argument is a string
         // that string is the message to be shown in the dialog box
@@ -693,18 +695,6 @@
             // reset these values
             plugin.dialog_left = undefined;
             plugin.dialog_top = undefined;
-
-            // if there is an overlay
-            // (the dialog box is modal)
-            if (plugin.settings.modal)
-
-                // stretch the overlay to cover the entire viewport
-                plugin.overlay.css({
-
-                    'width':    viewport_width,
-                    'height':   viewport_height
-
-                });
 
             // if
             if (
