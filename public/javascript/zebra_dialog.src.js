@@ -158,7 +158,7 @@
                                                         //
                                                         //  Default is "center".
 
-            reposition_speed:           100,            //  The duration (in milliseconds) of the animation used to
+            reposition_speed:           500,            //  The duration (in milliseconds) of the animation used to
                                                         //  reposition the dialog box when the browser window is resized.
                                                         //
                                                         //  Default is 100.
@@ -273,7 +273,10 @@
             plugin = this,
 
             // by default, we assume there are no custom options provided
-            options = {};
+            options = {},
+
+            // we'll use this when resizing
+            timeout;
 
         // this will hold the merged default, and user-provided options
         plugin.settings = {};
@@ -556,7 +559,7 @@
             plugin.dialog.appendTo('body');
 
             // if the browser window is resized
-            $(window).bind('resize', draw);
+            $(window).bind('resize', _resize);
 
             // if dialog box can be closed by pressing the ESC key
             if (plugin.settings.keyboard)
@@ -611,7 +614,7 @@
 
             if (plugin.isIE6) $(window).unbind('scroll', _scroll);
 
-            $(window).unbind('resize', draw);
+            $(window).unbind('resize', _resize);
 
             // if an overlay exists
             if (plugin.overlay)
@@ -952,6 +955,33 @@
             return true;
 
         };
+
+        /**
+         *  Function to be called when the "onResize" event occurs.
+         *
+         *  Why as a separate function and not inline when binding the event? Because only this way we can "unbind" it
+         *  when we close the dialog box
+         *
+         *  @return void
+         *
+         *  @access private
+         */
+        var _resize = function() {
+
+            // we use timeouts so that we do not call the "draw" method on *every* set of the resize event
+
+            // clear a previously set timeout
+            clearTimeout(timeout);
+
+            // set timeout againg
+            timeout = setTimeout(function() {
+
+                // reposition the dialog box
+                draw();
+
+            }, 100);
+
+        }
 
         /**
          *  Function to be called when the "onScroll" event occurs in Internet Explorer 6.
