@@ -973,7 +973,7 @@
             // clear a previously set timeout
             clearTimeout(timeout);
 
-            // set timeout againg
+            // set timeout again
             timeout = setTimeout(function() {
 
                 // reposition the dialog box
