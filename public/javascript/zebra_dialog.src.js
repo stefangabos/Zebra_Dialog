@@ -517,7 +517,7 @@
                     var button = jQuery('<a>', {
 
                         'href':     'javascript:void(0)',
-                        'class':    'ZebraDialog_Button' + index
+                        'class':    'ZebraDialog_Button_' + index
 
                     });
 
@@ -544,14 +544,6 @@
                     button.appendTo(button_bar);
 
                 });
-
-                // since buttons are floated,
-                // we need to clear floats
-                jQuery('<div>', {
-
-                    'style':    'clear:both'
-
-                }).appendTo(button_bar);
 
             }
 
