@@ -53,6 +53,12 @@
     padding: 10px 5px 10px 10px;
 }
 
+.ZebraDialog .ZebraDialog_Buttons:before,
+.ZebraDialog .ZebraDialog_Buttons:after     { content: "\0020"; display: block; height: 0; visibility: hidden; font-size: 0 }
+.ZebraDialog .ZebraDialog_Buttons:after     { clear: both }
+.ZebraDialog .ZebraDialog_Buttons           { *zoom: 1 } /* for IE only */
+
+
 .ZebraDialog .ZebraDialog_Buttons a {
     font-weight: bold;
     color: #FFF;
@@ -151,6 +157,9 @@
     -webkit-border-radius: 0 0 10px 10px;
     -moz-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
+    display: table;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .ZebraDialog .ZebraDialog_Buttons a {
@@ -158,13 +167,15 @@
     text-align: center;
     text-decoration: none;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    float: right;
+    display: inline-block;
     margin-right: 5px;
     min-width: 60px;
     _width: 60px;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
+    zoom: 1;
+    *display: inline;
 
     /* taken from Twitter Bootstrap */
     background-color: #006DCC;

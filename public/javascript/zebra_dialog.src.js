@@ -579,7 +579,7 @@
             if (plugin.settings.keyboard)
 
                 // if a key is pressed
-                $(window).bind('keyup.Zebra_Dialog', function(e) {
+                $(document).bind('keyup.Zebra_Dialog', function(e) {
 
                     // if pressed key is ESC
                     // remove the overlay and the dialog box from the DOM
@@ -638,6 +638,7 @@
         plugin.close = function(caption) {
 
             // remove all event handlers set by the plugin
+            $(document).unbind('.Zebra_Dialog');
             $(window).unbind('.Zebra_Dialog');
 
             // if an overlay exists
