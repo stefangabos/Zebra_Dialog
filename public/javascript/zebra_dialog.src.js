@@ -24,7 +24,7 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.3.2 (last revision: August 11, 2013)
+ *  @version    1.3.4 (last revision: August 17, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -559,20 +559,48 @@
             plugin.dialog.appendTo('body');
 
             // if the browser window is resized
-            $(window).bind('resize', _resize);
+            $(window).bind('resize.Zebra_Dialog', function() {
+
+                // clear a previously set timeout
+                // this will ensure that the next piece of code will not be executed on every step of the resize event
+                clearTimeout(timeout);
+
+                // set a small timeout before doing anything
+                timeout = setTimeout(function() {
+
+                    // reposition the dialog box
+                    draw();
+
+                }, 100);
+
+            });
 
             // if dialog box can be closed by pressing the ESC key
             if (plugin.settings.keyboard)
 
                 // if a key is pressed
-                $(document).bind('keyup', _keyup);
+                $(window).bind('keyup.Zebra_Dialog', function(e) {
+
+                    // if pressed key is ESC
+                    // remove the overlay and the dialog box from the DOM
+                    if (e.which == 27) plugin.close();
+
+                    // let the event bubble up
+                    return true;
+
+                });
 
             // if browser is Internet Explorer 6 we attach an event to be fired whenever the window is scrolled
             // that is because in IE6 we have to simulate "position:fixed"
             if (plugin.isIE6)
 
                 // if window is scrolled
-                $(window).bind('scroll', _scroll);
+                $(window).bind('scroll.Zebra_Dialog', function() {
+
+                    // make sure the overlay and the dialog box always stay in the correct position
+                    emulate_fixed_position();
+
+                });
 
             // if plugin is to be closed automatically after a given number of milliseconds
             if (plugin.settings.auto_close !== false) {
@@ -609,12 +637,8 @@
          */
         plugin.close = function(caption) {
 
-            // remove all the event listeners
-            if (plugin.settings.keyboard) $(document).unbind('keyup', _keyup);
-
-            if (plugin.isIE6) $(window).unbind('scroll', _scroll);
-
-            $(window).unbind('resize', _resize);
+            // remove all event handlers set by the plugin
+            $(window).unbind('.Zebra_Dialog');
 
             // if an overlay exists
             if (plugin.overlay)
@@ -932,71 +956,6 @@
                     return false;
 
             }
-
-        };
-
-        /**
-         *  Function to be called when the "onKeyUp" event occurs
-         *
-         *  Why as a separate function and not inline when binding the event? Because only this way we can "unbind" it
-         *  when we close the dialog box
-         *
-         *  @return boolean     Returns TRUE
-         *
-         *  @access private
-         */
-        var _keyup = function(e) {
-
-            // if pressed key is ESC
-            // remove the overlay and the dialog box from the DOM
-            if (e.which == 27) plugin.close();
-
-            // let the event bubble up
-            return true;
-
-        };
-
-        /**
-         *  Function to be called when the "onResize" event occurs.
-         *
-         *  Why as a separate function and not inline when binding the event? Because only this way we can "unbind" it
-         *  when we close the dialog box
-         *
-         *  @return void
-         *
-         *  @access private
-         */
-        var _resize = function() {
-
-            // we use timeouts so that we do not call the "draw" method on *every* step of the resize event
-
-            // clear a previously set timeout
-            clearTimeout(timeout);
-
-            // set timeout again
-            timeout = setTimeout(function() {
-
-                // reposition the dialog box
-                draw();
-
-            }, 100);
-
-        }
-
-        /**
-         *  Function to be called when the "onScroll" event occurs in Internet Explorer 6.
-         *
-         *  Why as a separate function and not inline when binding the event? Because only this way we can "unbind" it
-         *  when we close the dialog box
-         *
-         *  @return void
-         *
-         *  @access private
-         */
-        var _scroll = function() {
-
-            // make sure the overlay and the dialog box always stay in the correct position
-            emulate_fixed_position();
 
         };
 
