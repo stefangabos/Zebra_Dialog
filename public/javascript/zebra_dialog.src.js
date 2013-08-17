@@ -87,6 +87,11 @@
                                                         //  Callback functions attached to buttons get as argument the
                                                         //  entire dialog box jQuery object.
 
+            center_buttons:              false,         //  When set to TRUE, the buttons will be centered instead of
+                                                        //  right-aligned.
+                                                        //
+                                                        //  Default is FALSE
+
             custom_class:                false,         //  An extra class to add to the dialog box's container. Useful
                                                         //  for customizing a dialog box elements' styles at runtime.
                                                         //
@@ -544,6 +549,10 @@
                     button.appendTo(button_bar);
 
                 });
+
+                // wrap everything in another wrapper
+                // and center buttons if needed
+                button_bar.wrap($('<div>').addClass('ZebraDialog_ButtonsOuter' + (plugin.settings.center_buttons ? ' ZebraDialog_Buttons_Centered' : '')));
 
             }
 

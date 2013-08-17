@@ -20,7 +20,7 @@
 
 .ZebraDialog .ZebraDialog_Title,
 .ZebraDialog .ZebraDialog_BodyOuter,
-.ZebraDialog .ZebraDialog_Buttons {
+.ZebraDialog .ZebraDialog_ButtonsOuter {
     border-color: #13252F;
     border-width: 7px;
 }
@@ -48,7 +48,7 @@
     border-bottom-color: #FFF;
 }
 
-.ZebraDialog .ZebraDialog_Buttons {
+.ZebraDialog .ZebraDialog_ButtonsOuter {
     background: #E7EDEF;
     padding: 10px 5px 10px 10px;
 }
@@ -150,16 +150,13 @@
 .ZebraDialog .ZebraDialog_Question      { background-image: url('question.png') }
 .ZebraDialog .ZebraDialog_Warning       { background-image: url('warning.png') }
 
-.ZebraDialog .ZebraDialog_Buttons {
+.ZebraDialog .ZebraDialog_ButtonsOuter {
     border-left-style: solid;
     border-right-style: solid;
     border-bottom-style: solid;
     -webkit-border-radius: 0 0 10px 10px;
     -moz-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
-    display: table;
-    margin: 0 auto;
-    text-align: center;
 }
 
 .ZebraDialog .ZebraDialog_Buttons a {
@@ -170,12 +167,11 @@
     display: inline-block;
     margin-right: 5px;
     min-width: 60px;
+    float: right;
     _width: 60px;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
-    zoom: 1;
-    *display: inline;
 
     /* taken from Twitter Bootstrap */
     background-color: #006DCC;
@@ -190,6 +186,17 @@
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF0088CC', endColorstr='#FF0044CC', GradientType=0);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.ZebraDialog .ZebraDialog_Buttons_Centered .ZebraDialog_Buttons {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ZebraDialog .ZebraDialog_Buttons_Centered a {
+    zoom: 1;
+    *display: inline;
 }
 
 .ZebraDialog .ZebraDialog_Preloader {
