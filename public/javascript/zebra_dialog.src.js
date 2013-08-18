@@ -317,6 +317,8 @@
          */
         plugin.init = function() {
 
+            var $title;
+
             // the plugin's final properties are the merged default and user-provided options (if any)
             plugin.settings = $.extend({}, defaults, options);
 
@@ -389,7 +391,7 @@
             if (plugin.settings.title)
 
                 // create the title
-                var $title = jQuery('<h3>', {
+                $title = jQuery('<h3>', {
 
                     'class':    'ZebraDialog_Title'
 
@@ -583,10 +585,10 @@
                     plugin.close();
 
 
-                }).appendTo(undefined !== $title ? $title : plugin.message);
+                }).appendTo($title ? $title : plugin.message);
 
                 // if the close button was added to the title bar
-                if (undefined !== $title)
+                if ($title)
 
                     // center it vertically
                     $close.css({
