@@ -33,6 +33,7 @@
     background: #444444;
     padding: 12px 15px;
     line-height: 1;
+    vertical-align: middle;
 }
 
 /*  set background color here and not on ZebraDialog_Body, or you'll eventually run into problems with rounded corners
@@ -58,7 +59,6 @@
 .ZebraDialog .ZebraDialog_Buttons:after     { clear: both }
 .ZebraDialog .ZebraDialog_Buttons           { *zoom: 1 } /* for IE only */
 
-
 .ZebraDialog .ZebraDialog_Buttons a {
     font-weight: bold;
     color: #FFF;
@@ -69,6 +69,27 @@
 .ZebraDialog .ZebraDialog_Buttons a:hover {
     background: #224467;
     color: #FFF
+}
+
+.ZebraDialog a.ZebraDialog_Close {
+    position: absolute;
+    right: 6px;
+    top: 0px;
+    text-decoration: none;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    font-size: 21px;
+    color: #666
+}
+
+.ZebraDialog a.ZebraDialog_Close:hover {
+}
+
+.ZebraDialog .ZebraDialog_Title a.ZebraDialog_Close {
+    color: #E7EDEF;
+}
+
+.ZebraDialog .ZebraDialog_Title a.ZebraDialog_Close:hover {
 }
 
 .ZebraDialogOverlay {

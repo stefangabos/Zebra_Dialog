@@ -24,7 +24,7 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.3.4 (last revision: August 17, 2013)
+ *  @version    1.3.4 (last revision: August 18, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -167,6 +167,20 @@
                                                         //  reposition the dialog box when the browser window is resized.
                                                         //
                                                         //  Default is 100.
+
+            show_close_button:          true,           //  When set to TRUE, a "close" button (the little "x") will be
+                                                        //  shown in the upper right corner of the dialog box.
+                                                        //
+                                                        //  If the dialog box has a title bar then the "close" button
+                                                        //  will be shown in the title bar, vertically centered and
+                                                        //  respecting the right padding.
+                                                        //
+                                                        //  If the dialog box does not have a title bar then the "close"
+                                                        //  button will be shown in the upper right corner of the body
+                                                        //  of the dialog box, respecting the position related properties
+                                                        //  set in the stylesheet.
+                                                        //
+                                                        //  Default is TRUE.
 
             source:                     false,          //  Add content via AJAX, iFrames or from inline elements (together
                                                         //  with the already applied events).
@@ -375,7 +389,7 @@
             if (plugin.settings.title)
 
                 // create the title
-                jQuery('<h3>', {
+                var $title = jQuery('<h3>', {
 
                     'class':    'ZebraDialog_Title'
 
@@ -558,6 +572,29 @@
 
             // insert the dialog box in the DOM
             plugin.dialog.appendTo('body');
+
+            // if we need to show the little "x" for closing the dialog box, in the top-right corner
+            if (plugin.settings.show_close_button) {
+
+                // create the button now and append it to the dialog box's title, or to the dialog box's body if there's no title
+                var $close = $('<a href="javascript:void(0)" class="ZebraDialog_Close">&times;</a>').bind('click', function(e){
+
+                    e.preventDefault();
+                    plugin.close();
+
+
+                }).appendTo(undefined !== $title ? $title : plugin.message);
+
+                // if the close button was added to the title bar
+                if (undefined !== $title)
+
+                    // center it vertically
+                    $close.css({
+                        'right':    parseInt($title.css('paddingRight'), 10),
+                        'top':      (parseInt($title.css('height'), 10) + parseInt($title.css('paddingTop'), 10) + parseInt($title.css('paddingBottom'), 10) - $close.height()) / 2
+                    });
+
+            }
 
             // if the browser window is resized
             $(window).bind('resize.Zebra_Dialog', function() {
