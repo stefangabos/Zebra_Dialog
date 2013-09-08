@@ -24,7 +24,7 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.3.4 (last revision: August 18, 2013)
+ *  @version    1.3.5 (last revision: September 07, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -86,6 +86,9 @@
                                                         //
                                                         //  Callback functions attached to buttons get as argument the
                                                         //  entire dialog box jQuery object.
+                                                        //
+                                                        //  A callback function returning FALSE will prevent the dialog
+                                                        //  box from closing.
 
             center_buttons:              false,         //  When set to TRUE, the buttons will be centered instead of
                                                         //  right-aligned.
@@ -552,12 +555,18 @@
                     // handle the button's click event
                     button.bind('click', function() {
 
-                        // execute the callback function when button is clicked
-                        if (undefined !== value.callback) value.callback(plugin.dialog);
+                        // by default, clicking a button closes the dialog box
+                        var close = true;
 
-                        // remove the overlay and the dialog box from the DOM
-                        // also pass the button's label as argument
-                        plugin.close(undefined !== value.caption ? value.caption : value);
+                        // execute the callback function when button is clicked
+                        if (undefined !== value.callback) close = value.callback(plugin.dialog);
+
+                        // if dialog box is to be closed
+                        if (close)
+
+                            // remove the overlay and the dialog box from the DOM
+                            // also pass the button's label as argument
+                            plugin.close(undefined !== value.caption ? value.caption : value);
 
                     });
 
