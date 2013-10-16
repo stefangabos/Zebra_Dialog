@@ -534,8 +534,10 @@
                 // append it to the dialog box
                 }).appendTo(plugin.dialog);
 
+                // the buttons in reversed order
+                // (buttons need to be added in reverse order because they are floated to the right)
                 // iterate through the buttons that are to be attached to the dialog box
-                $.each(buttons, function(index, value) {
+                $.each(buttons.reverse(), function(index, value) {
 
                     // create button
                     var button = jQuery('<a>', {
@@ -964,9 +966,7 @@
 
                 }
 
-            // return the buttons in reversed order
-            // (buttons need to be added in reverse order because they are floated to the right)
-            return plugin.settings.buttons.reverse();
+            return plugin.settings.buttons;
 
         };
 
