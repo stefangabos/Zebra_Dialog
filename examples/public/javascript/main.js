@@ -69,9 +69,9 @@ $(document).ready(function() {
             'type':     'question',
             'title':    'Custom buttons',
             'buttons':  [
-                            {caption: 'Yes', callback: function() { alert('"Yes" was clicked')}},
-                            {caption: 'No', callback: function() { alert('"No" was clicked')}},
-                            {caption: 'Cancel', callback: function() { alert('"Cancel" was clicked')}}
+                            {caption: 'Yes', callback: function() { alert('"Yes" was clicked');return true;}},
+                            {caption: 'No', callback: function() { alert('"No" was clicked');return true;}},
+                            {caption: 'Cancel', callback: function() { alert('"Cancel" was clicked');return true;}}
                         ]
         });
     });
