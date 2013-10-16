@@ -24,7 +24,7 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.3.5 (last revision: September 07, 2013)
+ *  @version    1.3.6 (last revision: October 16, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -402,10 +402,13 @@
                 // and append the title to the dialog box
                 }).html(plugin.settings.title).appendTo(plugin.dialog);
 
+            // get the buttons that are to be added to the dialog box
+            var buttons = get_buttons();
+
             // we create an outer container to apply borders to
             var body_container = jQuery('<div>', {
 
-                'class':    'ZebraDialog_BodyOuter' + (!plugin.settings.title ? ' ZebraDialog_NoTitle' : '') + (!get_buttons() ? ' ZebraDialog_NoButtons' : '')
+                'class':    'ZebraDialog_BodyOuter' + (!plugin.settings.title ? ' ZebraDialog_NoTitle' : '') + (!buttons ? ' ZebraDialog_NoButtons' : '')
 
             }).appendTo(plugin.dialog);
 
@@ -520,11 +523,11 @@
             // add the message container to the dialog box
             plugin.message.appendTo(body_container);
 
-            // get the buttons that are to be added to the dialog box
-            var buttons = get_buttons();
-
             // if there are any buttons to be added to the dialog box
             if (buttons) {
+
+                // reverse the order of the buttons because they are floated to the right
+                buttons.reverse();
 
                 // create the button bar
                 var button_bar = jQuery('<div>', {
@@ -534,10 +537,8 @@
                 // append it to the dialog box
                 }).appendTo(plugin.dialog);
 
-                // the buttons in reversed order
-                // (buttons need to be added in reverse order because they are floated to the right)
                 // iterate through the buttons that are to be attached to the dialog box
-                $.each(buttons.reverse(), function(index, value) {
+                $.each(buttons, function(index, value) {
 
                     // create button
                     var button = jQuery('<a>', {
@@ -564,7 +565,7 @@
                         if (undefined !== value.callback) close = value.callback(plugin.dialog);
 
                         // if dialog box is to be closed
-                        if (close)
+                        if (close !== false)
 
                             // remove the overlay and the dialog box from the DOM
                             // also pass the button's label as argument
@@ -966,6 +967,7 @@
 
                 }
 
+            // return the buttons
             return plugin.settings.buttons;
 
         };
