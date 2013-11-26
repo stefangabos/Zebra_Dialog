@@ -12,7 +12,8 @@ div.theme a { color: #FFF }
 
 /* = CUSTOM STYLES FOR THE DIALOG BOX
 ----------------------------------------------------------------------------------------------------------------------*/
-.myclass .ZebraDialog_Title { background: #DEDEDE; border-bottom: 1px solid #222 }
+.myclass .ZebraDialog_Title { background: #330066 }
+body.flat .myclass .ZebraDialog_Title { background: #DEDEDE; border-bottom: 1px solid #222 }
 .myclass .ZebraDialog_Body { background-image: url('coffee_48.png') }
 
 /* = MISCELLANEOUS
