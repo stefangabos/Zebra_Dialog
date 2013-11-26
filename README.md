@@ -7,10 +7,12 @@
 Can also be used as a notification widget - when configured to show no buttons and to close automatically - for updates or errors, without distracting users from their browser experience by displaying obtrusive alerts.
 
 ![Screenshot](https://raw.github.com/stefangabos/Zebra_Dialog/master/examples/screenshot.png)
+&nbsp;&nbsp;
+![Screenshot](https://raw.github.com/stefangabos/Zebra_Dialog/master/examples/screenshot-flat.png)
 
 ##Features
 
- - great looks - out of the box
+ - great looks - out of the box, and 2 themes included
  - 5 types of dialog boxes available: *confirmation*, *information*, *warning*, *error* and *question*
  - content can also be added through AJAX calls, iFrames, or from inline elements (together with attached events)
  - easily customisable appearance by editing the stylesheet
@@ -39,10 +41,10 @@ Load the Zebra_Dialog plugin
 <script type="text/javascript" src="path/to/zebra_dialog.js"></script>
 ```
 
-Load the plugin’s stylesheet file
+Load one of the plugin’s themes
 
 ```html
-<link rel="stylesheet" href="path/to/zebra_dialog.css" type="text/css">
+<link rel="stylesheet" href="path/to/themes/default/zebra_dialog.css" type="text/css">
 ```
 
 Now, within the DOM-ready event do
