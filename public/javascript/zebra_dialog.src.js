@@ -9,7 +9,7 @@
  *
  *  Features:
  *
- *  -   great looks - out of the box
+ *  -   great looks - out of the box, with 2 themes included
  *  -   5 types of dialog boxes available: confirmation, information, warning, error and question
  *  -   content can also be added through AJAX calls, iFrames, or from inline elements (together with attached events)
  *  -   easily customizable appearance by changing the CSS file
@@ -24,7 +24,7 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.3.6 (last revision: October 16, 2013)
+ *  @version    1.3.7 (last revision: November 26, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
