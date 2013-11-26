@@ -44,7 +44,7 @@ $(document).ready(function() {
 
     $('#example2_5').bind('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong> is a small (4KB minified), compact (one JS file, no dependencies other than jQuery 1.5.2+)' +
+        $.Zebra_Dialog('<strong>Zebra_Dialog</strong> is a small (6KB minified), compact (one JS file, no dependencies other than jQuery 1.5.2+)' +
             ' and highly configurable dialog box plugin for jQuery meant to replace JavaScript\'s <em>alert</em> and <em>confirmation</em> dialog boxes.', {
             'type':     'confirmation',
             'title':    'Confirmation'
