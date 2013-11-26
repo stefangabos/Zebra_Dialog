@@ -7,9 +7,12 @@ body { }
 h3 { font-size: 31px }
 h3, p, pre { margin: 10px 0 }
 
+div.theme { padding: 20px; background: #123456; margin: 20px 0; color: #FFF }
+div.theme a { color: #FFF }
+
 /* = CUSTOM STYLES FOR THE DIALOG BOX
 ----------------------------------------------------------------------------------------------------------------------*/
-.myclass .ZebraDialog_Title { background: #330066 }
+.myclass .ZebraDialog_Title { background: #DEDEDE; border-bottom: 1px solid #222 }
 .myclass .ZebraDialog_Body { background-image: url('coffee_48.png') }
 
 /* = MISCELLANEOUS
