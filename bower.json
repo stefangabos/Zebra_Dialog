@@ -1,0 +1,23 @@
+{
+  "name": "Zebra_Dialog",
+  "description": "A small, compact and highly configurable dialog box plugin for jQuery meant to replace JavaScript's native &quot;alert&quot; and &quot;confirmation&quot; windows.",
+  "version": "1.3.8",
+  "license": "LGPL",
+  "main": "public/javascript/zebra_dialog.js",
+  "ignore": [
+    ".gitignore",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json",
+    "zebra-dialog.jquery.json",
+    "*.md"
+  ],
+  "keywords": [
+    "alert",
+    "dialog",
+    "modal",
+    "popup",
+    "ui",
+    "confirmation"
+  ]
+}
