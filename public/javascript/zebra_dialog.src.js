@@ -24,12 +24,14 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.3.7 (last revision: November 26, 2013)
+ *  @version    1.3.8 (last revision: December 20, 2013)
  *  @copyright  (c) 2011 - 2013 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
  */
 ;(function($) {
+
+    'use strict';
 
     $.Zebra_Dialog = function() {
 
@@ -418,7 +420,7 @@
             plugin.message = jQuery('<div>', {
 
                 // if a known dialog box type is specified, also show the appropriate icon
-                'class':    'ZebraDialog_Body' + (get_type() !== '' ? ' ZebraDialog_Icon ZebraDialog_' + get_type() : '')
+                'class':    'ZebraDialog_Body' + (get_type() !== false ? ' ZebraDialog_Icon ZebraDialog_' + get_type() : '')
 
             });
 
