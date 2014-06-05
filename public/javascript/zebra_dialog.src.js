@@ -335,7 +335,7 @@
             if (plugin.settings.modal) {
 
                 // create the overlay
-                plugin.overlay = jQuery('<div>', {
+                plugin.overlay = $('<div>', {
 
                     'class':    'ZebraDialogOverlay'
 
@@ -362,7 +362,7 @@
             }
 
             // create the dialog box
-            plugin.dialog = jQuery('<div>', {
+            plugin.dialog = $('<div>', {
 
                 'class':        'ZebraDialog' + (plugin.settings.custom_class ? ' ' + plugin.settings.custom_class : '')
 
@@ -396,7 +396,7 @@
             if (plugin.settings.title)
 
                 // create the title
-                $title = jQuery('<h3>', {
+                $title = $('<h3>', {
 
                     'class':    'ZebraDialog_Title'
 
@@ -408,7 +408,7 @@
             var buttons = get_buttons();
 
             // we create an outer container to apply borders to
-            var body_container = jQuery('<div>', {
+            var body_container = $('<div>', {
 
                 'class':    'ZebraDialog_BodyOuter' + (!plugin.settings.title ? ' ZebraDialog_NoTitle' : '') + (!buttons ? ' ZebraDialog_NoButtons' : '')
 
@@ -417,7 +417,7 @@
             // create the container of the actual message
             // we save it as a reference because we'll use it later in the "draw" method
             // if the "vcenter_short_message" property is TRUE
-            plugin.message = jQuery('<div>', {
+            plugin.message = $('<div>', {
 
                 // if a known dialog box type is specified, also show the appropriate icon
                 'class':    'ZebraDialog_Body' + (get_type() !== false ? ' ZebraDialog_Icon ZebraDialog_' + get_type() : '')
@@ -440,7 +440,7 @@
 
                 // create a secondary container for the message and add everything to the message container
                 // (we'll later align the container vertically)
-                jQuery('<div>').html(plugin.settings.message).appendTo(plugin.message);
+                $('<div>').html(plugin.settings.message).appendTo(plugin.message);
 
             // if short messages are not to be centered vertically
             else
@@ -468,7 +468,7 @@
                                 ajax_options = typeof plugin.settings.source[type] == 'string' ? {'url': plugin.settings.source[type]} : plugin.settings.source[type],
 
                                 // create the animated preloader and show it
-                                preloader = jQuery('<div>').attr('class', 'ZebraDialog_Preloader').appendTo(canvas);
+                                preloader = $('<div>').attr('class', 'ZebraDialog_Preloader').appendTo(canvas);
 
                             // handle the "success" event
                             ajax_options.success = function(result) {
@@ -504,7 +504,7 @@
                                 iframe_options = $.extend(default_options, typeof plugin.settings.source[type] == 'string' ? {'src': plugin.settings.source[type]} : plugin.settings.source[type]);
 
                             // create the iFrame and place it inside the dialog box
-                            canvas.append(jQuery('<iframe>').attr(iframe_options));
+                            canvas.append($('<iframe>').attr(iframe_options));
 
                             break;
 
@@ -532,7 +532,7 @@
                 buttons.reverse();
 
                 // create the button bar
-                var button_bar = jQuery('<div>', {
+                var button_bar = $('<div>', {
 
                     'class':    'ZebraDialog_Buttons'
 
@@ -543,7 +543,7 @@
                 $.each(buttons, function(index, value) {
 
                     // create button
-                    var button = jQuery('<a>', {
+                    var button = $('<a>', {
 
                         'href':     'javascript:void(0)',
                         'class':    'ZebraDialog_Button_' + index
