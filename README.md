@@ -28,11 +28,16 @@ Can also be used as a notification widget - when configured to show no buttons a
 
 ##How to use
 
-First, load the latest version of jQuery from a CDN and provide a fallback to a local source, like:
+Zebra_Dialog is also available as a [Bower](http://bower.io/) package. To install it use:
+```
+bower install zebra_dialog
+```
+
+Load the latest version of jQuery from a CDN and provide a fallback to a local source, like:
 
 ```html
-<script src="ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="path/to/jquery-1.10.2.js"><\/script>')</script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="path/to/jquery-1.12.0.js"></script>')</script>
 ```
 
 Load the Zebra_Dialog plugin
