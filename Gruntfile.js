@@ -26,7 +26,11 @@ module.exports = function(grunt) {
                 strict: true,
                 trailing: true,
                 loopfunc: true,
-                scripturl: true
+                scripturl: true,
+                indent: 4,
+                boss: true,
+                sub: true,
+                evil: true
             }
         },
 
@@ -45,6 +49,6 @@ module.exports = function(grunt) {
 
     // register tasks
 
-    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('default', ['jshint', 'uglify', 'watch']);
 
 };
