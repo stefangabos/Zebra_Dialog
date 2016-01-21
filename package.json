@@ -1,5 +1,5 @@
 {
-  "name": "Zebra_Dialog",
+  "name": "zebra_dialog",
   "description": "A small, compact and highly configurable dialog box plugin for jQuery meant to replace JavaScript's native &quot;alert&quot; and &quot;confirmation&quot; windows.",
   "author": {
     "name": "Stefan Gabos",
@@ -30,10 +30,10 @@
     "email": "contact@stefangabos.ro"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-cli": "~0.1.11",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-watch": "*"
   }
 }
