@@ -24,8 +24,8 @@
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.3.8 (last revision: December 20, 2013)
- *  @copyright  (c) 2011 - 2013 Stefan Gabos
+ *  @version    1.3.9 (last revision: January 21, 2016)
+ *  @copyright  (c) 2011 - 2016 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
  */
