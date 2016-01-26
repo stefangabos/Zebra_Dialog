@@ -28,9 +28,16 @@ Can also be used as a notification widget - when configured to show no buttons a
 
 ##How to use
 
-Zebra_Dialog is also available as a [Bower](http://bower.io/) package. To install it use:
+Zebra_Dialog is available as a [Bower package](http://bower.io/). To install it use:
+
 ```
 bower install zebra_dialog
+```
+
+Zebra_Dialog is also available as a [npm package](https://www.npmjs.com/package/zebra_dialog). To install it use:
+
+```
+npm install zebra_dialog
 ```
 
 Load the latest version of jQuery from a CDN and provide a fallback to a local source, like:
