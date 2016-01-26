@@ -1,6 +1,6 @@
 ##Zebra_Dialog
 
-####A small, compact, and highly configurable jQuery plugin for creating modal dialog boxes####
+####A small, compact, and highly configurable jQuery plugin for creating modal dialog boxes
 
 **Zebra_Dialog** is a small, compact, and highly configurable jQuery plugin for creating modal dialog boxes, meant to replace native Java Script “alert” and “confirmation” dialog boxes
 
