@@ -1,13 +1,13 @@
 {
   "name": "zebra_dialog",
-  "version": "1.3.10",
+  "version": "1.3.11",
   "main": "public/javascript/zebra_dialog.js",
   "homepage": "https://github.com/stefangabos/Zebra_Dialog",
   "author": {
     "name": "Stefan Gabos",
     "email": "contact@stefangabos.ro"
   },
-  "description": "A small, compact and highly configurable dialog box plugin for jQuery meant to replace JavaScript's native &quot;alert&quot; and &quot;confirmation&quot; windows.",
+  "description": "A small, compact and highly configurable dialog box plugin for jQuery meant to replace JavaScript's native alert and confirmation windows",
   "repository": {
     "type": "git",
     "url": "https://github.com/stefangabos/Zebra_Dialog.git"
