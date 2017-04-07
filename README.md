@@ -1,4 +1,4 @@
-## Zebra_Dialog
+# Zebra_Dialog
 
 #### A small, compact, and highly configurable jQuery plugin for creating modal dialog boxes
 
