@@ -21,6 +21,8 @@
   "license": "LGPL",
   "ignore": [
     "examples/README.md",
+    "examples/screenshot.png",
+    "examples/screenshot-flat.png",
     "src/*",
     ".gitattributes",
     ".gitignore",
