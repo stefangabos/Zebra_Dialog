@@ -92,6 +92,8 @@
     position: absolute;
     right: 6px;
     top: 0px;
+    margin-top: 6px;
+    margin-right: 6px;
     text-decoration: none;
     font-family: arial, sans-serif;
     font-weight: bold;
