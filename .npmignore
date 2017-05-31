@@ -1,6 +1,11 @@
-todo.txt
+examples/README.md
 node_modules/*
+src/*
 .gitattributes
+.gitignore
 .npmignore
-bower.json
 Gruntfile.js
+bower.json
+eslint.json
+package.json
+todo.txt
