@@ -111,12 +111,12 @@ module.exports = function(grunt) {
             all: {
                 files: [
                     { src: 'src/zebra_dialog.src.js', dest: 'dist/zebra_dialog.src.js' },
-                    { src: 'src/css/default/*.png', dest: 'dist/css/default/' },
-                    { src: 'src/css/default/*.gif', dest: 'dist/css/default/' },
-                    { src: 'src/css/default/*.txt', dest: 'dist/css/default/' },
-                    { src: 'src/css/flat/*.png', dest: 'dist/css/flat/' },
-                    { src: 'src/css/flat/*.gif', dest: 'dist/css/flat/' },
-                    { src: 'src/css/flat/*.txt', dest: 'dist/css/flat/' }
+                    { expand: true, flatten: true, src: 'src/css/default/*.png', dest: 'dist/css/default/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/default/*.gif', dest: 'dist/css/default/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/default/*.txt', dest: 'dist/css/default/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/flat/*.png', dest: 'dist/css/flat/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/flat/*.gif', dest: 'dist/css/flat/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/flat/*.txt', dest: 'dist/css/flat/', filter: 'isFile' }
                 ]
             }
         },
