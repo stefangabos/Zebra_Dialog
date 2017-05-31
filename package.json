@@ -1,21 +1,18 @@
 {
   "name": "zebra_dialog",
-  "version": "1.3.12",
-  "main": "public/javascript/zebra_dialog.js",
-  "homepage": "https://github.com/stefangabos/Zebra_Dialog",
+  "description": "A small, compact and highly configurable dialog box plugin for jQuery meant to replace JavaScript's native alert and confirmation windows",
   "author": {
     "name": "Stefan Gabos",
     "email": "contact@stefangabos.ro"
   },
-  "description": "A small, compact and highly configurable dialog box plugin for jQuery meant to replace JavaScript's native alert and confirmation windows",
+  "homepage": "https://github.com/stefangabos/Zebra_Dialog",
+  "main": "dist/zebra_dialog.min.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/stefangabos/Zebra_Dialog.git"
   },
-  "bugs": {
-    "url": "https://github.com/stefangabos/Zebra_Dialog/issues",
-    "email": "contact@stefangabos.ro"
-  },
+  "license": "LGPL-3.0",
+  "version": "1.3.12",
   "keywords": [
     "jquery-plugin",
     "ecosystem:jquery",
@@ -26,17 +23,21 @@
     "ui",
     "confirmation"
   ],
-  "licenses": [
-    {
-      "type": "LGPL",
-      "url": "https://www.gnu.org/licenses/lgpl-3.0.txt"
-    }
-  ],
+  "bugs": {
+    "url": "https://github.com/stefangabos/Zebra_Dialog/issues",
+    "email": "contact@stefangabos.ro"
+  },
   "devDependencies": {
     "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-copy": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",
-    "grunt-cli": "*",
-    "grunt-contrib-watch": "*"
+    "grunt-contrib-watch": "*",
+    "grunt-eslint": "*",
+    "grunt-newer": "*",
+    "grunt-notify": "*",
+    "grunt-sass": "*",
+    "time-grunt": "*"
   }
 }
