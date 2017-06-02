@@ -5,14 +5,16 @@
     <head>
 
         <meta charset="utf-8">
-
-        <title>Zebra_Dialog examples</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Zebra_Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript alert and confirmation dialog boxes.">
+        <title>Zebra_Dialog - A small, compact, and highly configurable jQuery plugin for creating modal dialog boxes</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCoreDefault.css" />
 
-        <link rel="stylesheet" href="../dist/css/default/zebra_dialog.min.css" type="text/css">
+        <link rel="stylesheet" href="https://rawgit.com/stefangabos/Zebra_Dialog/master/dist/css/flat/zebra_dialog.min.css" type="text/css">
         <link rel="stylesheet" href="examples.css" type="text/css">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
@@ -27,7 +29,9 @@
 
     </head>
 
-    <body>
+    <body class="flat">
+
+        <a href="https://github.com/stefangabos/Zebra_Dialog"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
 
         <div class="container">
 
@@ -39,7 +43,7 @@
                         <h1>Zebra_Dialog Demos</h1>
                     </div>
 
-                    <blockquote>Click <a href="flat.html">here</a> to see the "flat" theme</blockquote>
+                    <blockquote>Click <a href="index.html">here</a> to see the default theme</blockquote>
 
                     <p><strong>1.</strong> Default dialog box, no custom settings. Click <a href="javascript:void(0)" id="example1">here</a> to open.</p>
 
@@ -149,14 +153,15 @@
 
                     <hr>
 
-                    <p><strong>7.</strong> Customizing the appearance - make the title bar have a dark-blue background and show a custom icon!</p>
+                    <p><strong>7.</strong> Customizing the appearance - make the title bar have a light-gray background and show a custom icon!</p>
 
                     <p>The CSS is</p>
 
                     <pre class="brush:css">
                     /* Notice how we're targting the dialog box's title bar through the custom class */
                     .myclass .ZebraDialog_Title {
-                        background: #330066;
+                        background: #DEDEDE;
+                        border-bottom: 1px solid #222;
                     }
                     .myclass .ZebraDialog_Body {
                         background-image: url('coffee_48.png');
@@ -195,7 +200,7 @@
         </div>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="../dist/zebra_dialog.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/stefangabos/Zebra_Dialog/master/dist/zebra_dialog.min.js"></script>
         <script type="text/javascript" src="examples.js"></script>
 
     </body>
