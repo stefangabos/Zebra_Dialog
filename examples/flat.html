@@ -5,8 +5,10 @@
     <head>
 
         <meta charset="utf-8">
-
-        <title>Zebra_Dialog examples</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Zebra_Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript alert and confirmation dialog boxes.">
+        <title>Zebra_Dialog - A small, compact, and highly configurable jQuery plugin for creating modal dialog boxes</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -28,6 +30,8 @@
     </head>
 
     <body class="flat">
+
+        <a href="https://github.com/stefangabos/Zebra_Dialog"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
 
         <div class="container">
 
@@ -121,12 +125,21 @@
                         auto_close: 2000
                     });</pre>
 
-                    <hr>
-
-                    <p><strong>6.</strong> External content loaded via AJAX. Click <a href="javascript:void(0)" id="example6">here</a> to open.</p>
+                    <p><strong>6.</strong> Content loaded from an inline souce. Click <a href="javascript:void(0)" id="example6">here</a> to open.</p>
 
                     <pre class="brush:javascript">
-                    new $.Zebra_Dialog('&lt;strong&gt;Some dummy content:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;', {
+                    new $.Zebra_Dialog({
+                        source: {inline: $('#boxcontent').html()},
+                        width: 600,
+                        title: 'Inline content'
+                    });</pre>
+
+                    <hr>
+
+                    <p><strong>7.</strong> External content loaded via AJAX. Click <a href="javascript:void(0)" id="example7">here</a> to open.</p>
+
+                    <pre class="brush:javascript">
+                    new $.Zebra_Dialog({
                         source: {ajax: 'ajax.html'},
                         width: 600,
                         title: 'External content loaded via AJAX'
@@ -134,10 +147,10 @@
 
                     <hr>
 
-                    <p><strong>6.1</strong> External content loaded in an iFrame. Click <a href="javascript:void(0)" id="example61">here</a> to open.</p>
+                    <p><strong>7.1</strong> External content loaded in an iFrame. Click <a href="javascript:void(0)" id="example71">here</a> to open.</p>
 
                     <pre class="brush:javascript">
-                    new $.Zebra_Dialog('&lt;strong&gt;Content loaded via AJAX:&lt;/strong&gt;', {
+                    new $.Zebra_Dialog({
                         source: {iframe: {
                             src: 'http://en.m.wikipedia.org/wiki/Dialog_box',
                             height: 500
@@ -149,7 +162,7 @@
 
                     <hr>
 
-                    <p><strong>7.</strong> Customizing the appearance - make the title bar have a light-gray background and show a custom icon!</p>
+                    <p><strong>8.</strong> Customizing the appearance - make the title bar have a light-gray background and show a custom icon!</p>
 
                     <p>The CSS is</p>
 
@@ -164,7 +177,7 @@
                     }
                     </pre>
 
-                    <p>Click <a href="javascript:void(0)" id="example7">here</a> to open.</p>
+                    <p>Click <a href="javascript:void(0)" id="example8">here</a> to open.</p>
 
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog('Buy me a coffee if you like this plugin!', {
