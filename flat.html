@@ -125,12 +125,21 @@
                         auto_close: 2000
                     });</pre>
 
-                    <hr>
-
-                    <p><strong>6.</strong> External content loaded via AJAX. Click <a href="javascript:void(0)" id="example6">here</a> to open.</p>
+                    <p><strong>6.</strong> Content loaded from an inline souce. Click <a href="javascript:void(0)" id="example6">here</a> to open.</p>
 
                     <pre class="brush:javascript">
-                    new $.Zebra_Dialog('&lt;strong&gt;Some dummy content:&lt;/strong&gt;&lt;br&gt;&lt;br&gt;', {
+                    new $.Zebra_Dialog({
+                        source: {inline: $('#boxcontent').html()},
+                        width: 600,
+                        title: 'Inline content'
+                    });</pre>
+
+                    <hr>
+
+                    <p><strong>7.</strong> External content loaded via AJAX. Click <a href="javascript:void(0)" id="example7">here</a> to open.</p>
+
+                    <pre class="brush:javascript">
+                    new $.Zebra_Dialog({
                         source: {ajax: 'ajax.html'},
                         width: 600,
                         title: 'External content loaded via AJAX'
@@ -138,10 +147,10 @@
 
                     <hr>
 
-                    <p><strong>6.1</strong> External content loaded in an iFrame. Click <a href="javascript:void(0)" id="example61">here</a> to open.</p>
+                    <p><strong>7.1</strong> External content loaded in an iFrame. Click <a href="javascript:void(0)" id="example71">here</a> to open.</p>
 
                     <pre class="brush:javascript">
-                    new $.Zebra_Dialog('&lt;strong&gt;Content loaded via AJAX:&lt;/strong&gt;', {
+                    new $.Zebra_Dialog({
                         source: {iframe: {
                             src: 'http://en.m.wikipedia.org/wiki/Dialog_box',
                             height: 500
@@ -153,7 +162,7 @@
 
                     <hr>
 
-                    <p><strong>7.</strong> Customizing the appearance - make the title bar have a light-gray background and show a custom icon!</p>
+                    <p><strong>8.</strong> Customizing the appearance - make the title bar have a light-gray background and show a custom icon!</p>
 
                     <p>The CSS is</p>
 
@@ -168,7 +177,7 @@
                     }
                     </pre>
 
-                    <p>Click <a href="javascript:void(0)" id="example7">here</a> to open.</p>
+                    <p>Click <a href="javascript:void(0)" id="example8">here</a> to open.</p>
 
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog('Buy me a coffee if you like this plugin!', {
