@@ -405,8 +405,6 @@ var dialog = new $.Zebra_Dialog('This is some information');
 dialog.close();
 ```
 
-
-
 ## Demo
 
 See the [demos](http://stefangabos.github.io/Zebra_Dialog/)
