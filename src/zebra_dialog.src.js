@@ -19,9 +19,7 @@
  *  -   use callback functions to handle user's choice
  *  -   works in all major browsers (Firefox, Opera, Safari, Chrome, Internet Explorer 6+)
  *
- *  Visit {@link http://stefangabos.ro/jquery/zebra-dialog/} for more information.
- *
- *  For more resources visit {@link http://stefangabos.ro/}
+ *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
  *  @version    1.4.0 (last revision: June 04, 2017)
