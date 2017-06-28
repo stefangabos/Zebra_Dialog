@@ -5,6 +5,10 @@
 .ZebraDialog {
     width: 350px;
     z-index: 1001;
+    @media (max-width: 574px) {
+        width: 100%;
+    }
+    max-width: 100%;
 }
 
 .ZebraDialog,

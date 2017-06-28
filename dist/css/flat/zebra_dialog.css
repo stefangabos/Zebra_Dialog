@@ -10,6 +10,13 @@
     width: 450px;
     z-index: 1001;
     border: 1px solid #DEDEDE;
+    max-width: 100%;
+}
+
+@media (max-width: 574px) {
+    .ZebraDialog {
+        width: 100%;
+    }
 }
 
 .ZebraDialog,

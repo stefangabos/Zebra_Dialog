@@ -9,6 +9,13 @@
 .ZebraDialog {
     width: 350px;
     z-index: 1001;
+    max-width: 100%;
+}
+
+@media (max-width: 574px) {
+    .ZebraDialog {
+        width: 100%;
+    }
 }
 
 .ZebraDialog,
