@@ -22,7 +22,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.4.0 (last revision: June 04, 2017)
+ *  @version    1.4.0 (last revision: July 03, 2017)
  *  @copyright  (c) 2011 - 2017 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -393,6 +393,15 @@
                     plugin.dialog_top = values.middle;
 
                 }
+
+                // make sure top is not negative
+                if (plugin.dialog_top < 0) plugin.dialog_top = 0;
+
+                // if dialog height exceeds screen's height
+                if (dialog_height > viewport_height)
+
+                    // adjust the dialog box's height so that it fits
+                    plugin.message.css('height', viewport_height - ($('.ZebraDialog_Title', plugin.dialog) ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) - ($('.ZebraDialog_ButtonsOuter', plugin.dialog) ? $('.ZebraDialog_ButtonsOuter', plugin.dialog).outerHeight() : 0) - (parseFloat(plugin.message.css('paddingTop')) || 0) - (parseFloat(plugin.message.css('paddingBottom')) || 0) - (parseFloat(plugin.message.css('borderTopWidth')) || 0) - (parseFloat(plugin.message.css('borderBottomWidth')) || 0));
 
                 // if short messages are to be centered vertically
                 if (plugin.settings.vcenter_short_message) {
