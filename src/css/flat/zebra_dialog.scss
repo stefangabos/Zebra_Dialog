@@ -101,6 +101,7 @@
 ---------------------------------------------------------------------------------------------------------------------*/
 .ZebraDialog .ZebraDialog_Body {
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .ZebraDialog .ZebraDialog_Icon {

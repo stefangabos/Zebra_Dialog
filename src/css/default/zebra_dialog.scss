@@ -153,6 +153,7 @@
     border-bottom-width: 2px;
     border-bottom-style: groove;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .ZebraDialog .ZebraDialog_NoTitle .ZebraDialog_Body {
