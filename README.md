@@ -74,13 +74,13 @@ Load the Zebra_Dialog jQuery plugin:
 <script src="path/to/zebra_dialog.min.js"></script>
 ```
 
-Alternatively, you can load Zebra_Dialog from [JSDelivr CDN](https://www.jsdelivr.com/) like this:
+Alternatively, you can load Zebra_Dialog from [JSDelivr CDN](https://www.jsdelivr.com/package/npm/zebra_dialog) like this:
 ```html
 <!-- for the most recent version -->
-<script src="https://cdn.jsdelivr.net/gh/stefangabos/Zebra_Dialog/dist/zebra_dialog.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/zebra_dialog/dist/zebra_dialog.min.js"></script>
 
 <!-- for a specific version -->
-<script src="https://cdn.jsdelivr.net/gh/stefangabos/Zebra_Dialog@1.3.0/dist/zebra_dialog.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/zebra_dialog@1.4.0/dist/zebra_dialog.min.js"></script>
 
 <!-- replacing "min" with "src" will serve you the non-compressed version -->
 ```
@@ -95,10 +95,10 @@ Load the style sheet file from a local source
 
 ```html
 <!-- for the most recent version of the "flat" theme -->
-<link rel="stylesheet" href=="https://cdn.jsdelivr.net/gh/stefangabos/Zebra_Dialog/dist/css/flat/zebra_dialog.min.css">
+<link rel="stylesheet" href=="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/flat/zebra_dialog.min.css">
 
 <!-- for the most recent version of the "default" theme -->
-<link rel="stylesheet" href=="https://cdn.jsdelivr.net/gh/stefangabos/Zebra_Dialog/dist/css/flat/zebra_dialog.min.css">
+<link rel="stylesheet" href=="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/default/zebra_dialog.min.css">
 
 <!-- replacing "min" with "src" will serve you the non-compressed version -->
 ```
