@@ -95,10 +95,10 @@ Load the style sheet file from a local source
 
 ```html
 <!-- for the most recent version of the "flat" theme -->
-<link rel="stylesheet" href=="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/flat/zebra_dialog.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/flat/zebra_dialog.min.css">
 
 <!-- for the most recent version of the "default" theme -->
-<link rel="stylesheet" href=="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/default/zebra_dialog.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/default/zebra_dialog.min.css">
 
 <!-- replacing "min" with "src" will serve you the non-compressed version -->
 ```
