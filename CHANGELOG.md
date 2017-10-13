@@ -1,3 +1,8 @@
+## version 1.4.1 (October 13, 2017)
+
+- fixed bug where dialog box height could exceed viewport height; see [#8](https://github.com/stefangabos/Zebra_Dialog/issues/8)
+- fixed scrolling on iPhone; see [#9](https://github.com/stefangabos/Zebra_Dialog/issues/9)
+
 ## version 1.4.0 (June 04, 2017)
 
 - performance improvements and source code tweaks
