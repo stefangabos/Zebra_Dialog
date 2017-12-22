@@ -455,7 +455,10 @@
                 }
 
                 // move the focus to the first of the dialog box's buttons
-                plugin.dialog.find('a[class^=ZebraDialog_Button]:first').focus();
+                if (0 ===  $((null === document.activeElement) ? document : document.activeElement).parents('.ZebraDialog').length) {
+                    // move the focus to the first of the dialog box's buttons
+                    plugin.dialog.find('a[class^=ZebraDialog_Button]:first').focus();
+                }
 
                 // if the browser is Internet Explorer 6, call the "_emulate_fixed_position" method
                 // (if we do not apply a short delay, it sometimes does not work as expected)
