@@ -877,7 +877,7 @@
                     var button = $('<a>', {
 
                         'href':     'javascript:void(0)',
-                        'class':    'ZebraDialog_Button_' + index
+                        'class':    'ZebraDialog_Button_' + index  + (value.custom_class ? ' ' + value.custom_class : '')
 
                     });
 
