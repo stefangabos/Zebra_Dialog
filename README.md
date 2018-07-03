@@ -163,12 +163,14 @@ $(document).ready(function() {
             If set to <code>TRUE</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Yes', 'No']</code> for <em>question</em> type and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
             For custom buttons, use an array containing the captions of the buttons to display: <code>['My button 1', 'My button 2']</code>.<br><br>
             Set to <code>FALSE</code> if you want no buttons.<br><br>
-            You can also attach callback functions to individual buttons by providing an array of objects like:<br><br>
+            You can also add custom CSS classes and/or attach callback functions to individual buttons by providing an array of objects like:<br><br>
             <code>[{</code><br>
             <code>&nbsp;&nbsp;caption: 'My button 1',</code><br>
+            <code>&nbsp;&nbsp;custom_class: 'foo',</code><br>
             <code>&nbsp;&nbsp;callback: function() { // code }</code><br>
             <code>},{</code><br>
             <code>&nbsp;&nbsp;caption: 'My button 2',</code><br>
+            <code>&nbsp;&nbsp;custom_class: 'bar',</code><br>
             <code>&nbsp;&nbsp;callback: function() { // code }</code><br>
 			<code>}]</code><br><br>
             Callback functions get as argument the entire dialog box jQuery object.<br><br>

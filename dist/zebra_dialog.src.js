@@ -71,12 +71,21 @@
                                                             //  See the comments for the "onClose" event below for more
                                                             //  information.
                                                             //
-                                                            //  You can also attach callback functions to individual buttons
-                                                            //  by using objects in the form of:
+                                                            //  You can also add custom CSS classes and/or attach callback
+                                                            //  functions to individual buttons by using objects in the
+                                                            //  form of:
                                                             //
                                                             //  [
-                                                            //   {caption: 'My button 1', callback: function() { // code }},
-                                                            //   {caption: 'My button 2', callback: function() { // code }}
+                                                            //  {
+                                                            //      caption: 'My button 1',
+                                                            //      custom_class: 'foo',
+                                                            //      callback: function() { // code }
+                                                            //  },
+                                                            //  {
+                                                            //      caption: 'My button 2',
+                                                            //      custom_class: 'bar',
+                                                            //      callback: function() { // code }
+                                                            //  }
                                                             //  ]
                                                             //
                                                             //  The main difference is that a callback function attached this
@@ -877,13 +886,13 @@
                     var button = $('<a>', {
 
                         'href':     'javascript:void(0)',
-                        'class':    'ZebraDialog_Button_' + index
+                        'class':    'ZebraDialog_Button_' + index + (undefined !== value.custom_class && value.custom_class.toString().trim() !== '' ? ' ' + value.custom_class : '')
 
                     });
 
                     // if button is given as an object, with a caption and a callback function
                     // set the button's caption
-                    if ($.isPlainObject(value)) button.html(value.caption);
+                    if (undefined !== value.caption) button.html(value.caption);
 
                     // if button is given as a plain string, set the button's caption accordingly
                     else button.html(value);
