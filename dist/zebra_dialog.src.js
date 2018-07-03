@@ -22,8 +22,8 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.4.1 (last revision: October 13, 2017)
- *  @copyright  (c) 2011 - 2017 Stefan Gabos
+ *  @version    1.4.1 (last revision: July 03, 2018)
+ *  @copyright  (c) 2011 - 2018 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
  */
@@ -438,7 +438,9 @@
                         'visibility':   'visible',
                         'opacity':      0
 
-                    }).animate({'opacity': 1}, plugin.settings.animation_speed_show);
+                    // (notice that we use the opacity's value as string - this is required for working with IE8
+                    // see https://stackoverflow.com/questions/4987842/jquery-on-ie8-error-object-doesnt-support-this-property-or-method)
+                    }).animate({'opacity': '1'}, plugin.settings.animation_speed_show);
 
                 // if dialog box is to be animated into position
                 else {
@@ -1027,9 +1029,11 @@
             if (plugin.overlay)
 
                 // animate overlay's css properties
+                // (notice that we use the opacity's value as string - this is required for working with IE8
+                // see https://stackoverflow.com/questions/4987842/jquery-on-ie8-error-object-doesnt-support-this-property-or-method)
                 plugin.overlay.animate({
 
-                    opacity: 0  // fade out the overlay
+                    opacity: '0'    // fade out the overlay
 
                 },
 
@@ -1045,10 +1049,12 @@
                 });
 
             // animate dialog box's css properties
+            // (notice that we use the values for the animation's properties as strings; this is required for working with IE8
+            // see https://stackoverflow.com/questions/4987842/jquery-on-ie8-error-object-doesnt-support-this-property-or-method)
             plugin.dialog.animate({
 
-                top: 0,     // move the dialog box to the top
-                opacity: 0  // fade out the dialog box
+                top: '0',       // move the dialog box to the top
+                opacity: '0'    // fade out the dialog box
 
             },
 
