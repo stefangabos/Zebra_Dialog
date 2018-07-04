@@ -466,7 +466,11 @@
                 }
 
                 // move the focus to the first of the dialog box's buttons
-                plugin.dialog.find('a[class^=ZebraDialog_Button]:first').focus();
+                // only do it when we initialize the dialog and not also on resizing because otherwise, if there is an
+                // input in the dialog and the input receives focus on mobile, the virtual keyboard will show up and will
+                // trigger this method again which would remove the focus and, therefore, the virtual keyboard, making
+                // it impossible to give focus to the input element
+                if (undefined === timeout) plugin.dialog.find('a[class^=ZebraDialog_Button]:first').focus();
 
                 // if the browser is Internet Explorer 6, call the "_emulate_fixed_position" method
                 // (if we do not apply a short delay, it sometimes does not work as expected)
