@@ -1035,8 +1035,8 @@
         plugin.close = function(caption) {
 
             // remove all event handlers set by the plugin
-            $(document).unbind('.Zebra_Dialog');
-            $(window).unbind('.Zebra_Dialog');
+            $(document).off('.Zebra_Dialog');
+            $(window).off('.Zebra_Dialog');
 
             // if an overlay exists
             if (plugin.overlay)
