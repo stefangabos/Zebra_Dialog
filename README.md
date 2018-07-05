@@ -49,14 +49,20 @@ Zebra_Dialog has no dependencies other than jQuery 1.7.0+
 
 Zebra_Dialog is available as a [npm package](https://www.npmjs.com/package/zebra_dialog). To install it use:
 
-```
-npm install zebra_dialog
+```bash
+# the "--save" argument adds the plugin
+# as a dependency in packages.json
+
+npm install zebra_dialog --save
 ```
 
 Zebra_Dialog is also available as a [Bower package](http://bower.io/). To install it use:
 
-```
-bower install zebra_dialog
+```bash
+# the "--save" argument adds the plugin
+# as a dependency in bower.json
+
+bower install zebra_dialog --save
 ```
 
 ## How to use
