@@ -37,17 +37,11 @@ Can also be used as a notification widget (when configured to show no buttons an
 
 For the *flat* theme, the icons used are made by [Elegant Themes](http://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free)
 
-<table>
-<tbody>
-<tr>
-<td align="center">
-<p>Cross browser/device testing is done with</p>
+## Sponsors
+
+Cross browser/device testing is done with
 
 [![BrowserStack](https://github.com/stefangabos/Zebra_Dialog/raw/master/examples/browserstack.png)](https://www.browserstack.com/)
-</td>
-</tr>
-</tbody>
-</table>
 
 ## Requirements
 
