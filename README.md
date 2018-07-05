@@ -80,7 +80,7 @@ Load the Zebra_Dialog jQuery plugin:
 
 Alternatively, you can load Zebra_Dialog from [JSDelivr CDN](https://www.jsdelivr.com/package/npm/zebra_dialog) like this:
 ```html
-<!-- for the most recent version -->
+<!-- for the most recent version, not recommended in production -->
 <script src="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/zebra_dialog.min.js"></script>
 
 <!-- for a specific version -->
