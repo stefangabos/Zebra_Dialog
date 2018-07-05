@@ -37,9 +37,17 @@ Can also be used as a notification widget (when configured to show no buttons an
 
 For the *flat* theme, the icons used are made by [Elegant Themes](http://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free)
 
-Cross browser/device testing done with
+<table>
+<tbody>
+<tr>
+<td align="center">
+<p>Cross browser/device testing is done with</p>
 
 [![BrowserStack](https://github.com/stefangabos/Zebra_Dialog/raw/master/examples/browserstack.png)](https://www.browserstack.com/)
+</td>
+</tr>
+</tbody>
+</table>
 
 ## Requirements
 
@@ -50,18 +58,14 @@ Zebra_Dialog has no dependencies other than jQuery 1.7.0+
 Zebra_Dialog is available as a [npm package](https://www.npmjs.com/package/zebra_dialog). To install it use:
 
 ```bash
-# the "--save" argument adds the plugin
-# as a dependency in packages.json
-
+# the "--save" argument adds the plugin as a dependency in packages.json
 npm install zebra_dialog --save
 ```
 
 Zebra_Dialog is also available as a [Bower package](http://bower.io/). To install it use:
 
 ```bash
-# the "--save" argument adds the plugin
-# as a dependency in bower.json
-
+# the "--save" argument adds the plugin as a dependency in bower.json
 bower install zebra_dialog --save
 ```
 
