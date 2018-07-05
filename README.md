@@ -413,4 +413,4 @@ dialog.close();
 
 ## Demo
 
-See the [demos](http://stefangabos.github.io/Zebra_Dialog/)
+See the [demos](http://stefangabos.github.io/Zebra_Dialog/flat.html)
