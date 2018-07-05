@@ -1,3 +1,10 @@
+## version 1.5 (July 05, 2018)
+
+- fixed bug where inputs in dialog box could never receive focus on mobile devices - see [#14](https://github.com/stefangabos/Zebra_Dialog/issues/14), thanks [Clément](https://github.com/chou666)!
+- fixed [#18](https://github.com/stefangabos/Zebra_Dialog/issues/18) where the plugin was not working in IE8
+- custom classes can now be added to buttons; this fixes [#15](https://github.com/stefangabos/Zebra_Dialog/issues/15)
+- added version number as a public property - useful to find out the version number even if all you have is the minified source code; see [#13](https://github.com/stefangabos/Zebra_Dialog/issues/13)
+
 ## version 1.4.1 (October 13, 2017)
 
 - fixed bug where dialog box height could exceed viewport height; see [#8](https://github.com/stefangabos/Zebra_Dialog/issues/8)
