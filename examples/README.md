@@ -1,1 +1,1 @@
-:books: [Open the examples](https://stefangabos.github.io/Zebra_Dialog)
+:books: [Open the examples](https://stefangabos.github.io/Zebra_Dialog/flat.html)
