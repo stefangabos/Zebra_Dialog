@@ -1,10 +1,5 @@
 .syntaxhighlighter {
-    padding: 1em 0;
-}
-
-p a {
-    text-decoration: underline;
-    font-weight: bold;
+    padding: .5em 0;
 }
 
 .myclass .ZebraDialog_Title {
