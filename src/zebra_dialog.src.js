@@ -57,8 +57,8 @@
                 buttons:                    true,           //  Use this for localization and for adding custom buttons.
                                                             //
                                                             //  If set to TRUE, the default buttons will be used, depending
-                                                            //  on the type of the dialog box: ['Yes', 'No'] for "question"
-                                                            //  and "warning" types and ['Ok'] for the other dialog box types.
+                                                            //  on the type of the dialog box: ['Ok', 'Cancel'] for "warning"
+                                                            //  and "question" types and ['Ok'] for the other dialog box types.
                                                             //
                                                             //  For custom buttons, use an array containing the captions of
                                                             //  the buttons to display: ['My button 1', 'My button 2'].
@@ -268,9 +268,10 @@
                                                             //
                                                             //  If you don't want an icon, set the "type" property to FALSE.
                                                             //
-                                                            //  By default, all types except "question" have a single button
-                                                            //  with the caption "Ok"; type "question" has two buttons, with
-                                                            //  the captions "Ok" and "Cancel" respectively.
+                                                            //  By default, the "warning" and "question" types have two
+                                                            //  buttons with the captions "Ok" and "Cancel" respectively,
+                                                            //  while the other types have a single button with the caption
+                                                            //  "Ok".
                                                             //
                                                             //  Default is "information".
 
@@ -541,7 +542,7 @@
                         case 'warning':
 
                             // there are two buttons
-                            plugin.settings.buttons = ['Yes', 'No'];
+                            plugin.settings.buttons = ['Ok', 'Cancel'];
 
                             break;
 

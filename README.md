@@ -162,7 +162,7 @@ $(document).ready(function() {
         <td valign="top"></td>
         <td valign="top">
             Use this for localization and for adding custom buttons.<br><br>
-            If set to <code>TRUE</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Yes', 'No']</code> for <em>question</em> and <em>warning</em> types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
+            If set to <code>TRUE</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Ok', 'Cancel']</code> for <em>warning</em> and <em>question</em> and types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
             For custom buttons, use an array containing the captions of the buttons to display: <code>['My button 1', 'My button 2']</code>.<br><br>
             Set to <code>FALSE</code> if you want no buttons.<br><br>
             You can also add custom CSS classes and/or attach callback functions to individual buttons by providing an array of objects like:<br><br>
@@ -356,7 +356,7 @@ $(document).ready(function() {
                 <li>warning</li>
             </ul>
             If you don't want an icon, set the <code>type</code> property to <code>FALSE</code>.<br><br>
-            By default, all types except <code>question</code> have a single button with the caption <em>Ok</em>; type <code>question</code> has two buttons, with the captions <em>Ok</em> and <em>Cancel</em> respectively.
+            By default, the <code>warning</code> and <code>question</code> types have two buttons with the captions <em>Ok</em> and <em>Cancel</em> respectively, while the other types have a single button with the caption <em>Ok</em>.
         </td>
     </tr>
     <tr>
