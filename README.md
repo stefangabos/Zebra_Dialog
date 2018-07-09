@@ -4,7 +4,7 @@
 
 *A small, compact and highly configurable jQuery plugin for creating responsive modal dialog boxes*
 
-[![npm](https://img.shields.io/npm/v/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![Total](https://img.shields.io/npm/dt/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![Monthly](https://img.shields.io/npm/dm/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![](https://data.jsdelivr.com/v1/package/npm/zebra_dialog/badge)](https://www.jsdelivr.com/package/npm/zebra_dialog) [![License](https://img.shields.io/npm/l/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog)
+[![npm](https://img.shields.io/npm/v/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![Total](https://img.shields.io/npm/dt/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![Monthly](https://img.shields.io/npm/dm/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![](https://data.jsdelivr.com/v1/package/npm/zebra_dialog/badge)](https://www.jsdelivr.com/package/npm/zebra_dialog) [![License](https://img.shields.io/npm/l/zebra_dialog.svg)](https://github.com/stefangabos/Zebra_Dialog/blob/master/LICENSE.md)
 
 A modal window is a child window that requires users to interact with it before they can continue using the parent application. Modal windows are one of the most commonly used user interface elements and are used to command user awareness in order to communicate important information, or to alert of errors or warnings.
 
