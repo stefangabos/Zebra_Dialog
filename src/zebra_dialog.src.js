@@ -59,7 +59,7 @@
                                                             //
                                                             //  If set to TRUE, the default buttons will be used, depending
                                                             //  on the type of the dialog box: ['Yes', 'No'] for "question"
-                                                            //  type and ['Ok'] for the other dialog box types.
+                                                            //  and "warning" types and ['Ok'] for the other dialog box types.
                                                             //
                                                             //  For custom buttons, use an array containing the captions of
                                                             //  the buttons to display: ['My button 1', 'My button 2'].
@@ -539,6 +539,7 @@
 
                         // for "question" type
                         case 'question':
+                        case 'warning':
 
                             // there are two buttons
                             plugin.settings.buttons = ['Yes', 'No'];

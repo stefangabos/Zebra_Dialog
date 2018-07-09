@@ -162,7 +162,7 @@ $(document).ready(function() {
         <td valign="top"></td>
         <td valign="top">
             Use this for localization and for adding custom buttons.<br><br>
-            If set to <code>TRUE</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Yes', 'No']</code> for <em>question</em> type and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
+            If set to <code>TRUE</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Yes', 'No']</code> for <em>question</em> and <em>warning</em> types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
             For custom buttons, use an array containing the captions of the buttons to display: <code>['My button 1', 'My button 2']</code>.<br><br>
             Set to <code>FALSE</code> if you want no buttons.<br><br>
             You can also add custom CSS classes and/or attach callback functions to individual buttons by providing an array of objects like:<br><br>
