@@ -2,22 +2,21 @@
  *  Zebra_Dialog
  *
  *  A small, compact (one JS file, no dependencies other than jQuery 1.7.0+) and highly configurable dialog box plugin
- *  for jQuery meant to replace JavaScript's native "alert" and "confirmation" windows.
+ *  for jQuery, meant to replace JavaScript's native "alert" and "confirmation" dialogs.
  *
  *  Can also be used as a notification widget - when configured to show no buttons and to close automatically - for updates
  *  or errors, without distracting users from their browser experience by displaying obtrusive alerts.
  *
  *  Features:
  *
- *  -   great looks - out of the box, with 2 themes included
+ *  -   great looks out of the box, with 2 themes included
  *  -   5 types of dialog boxes available: confirmation, information, warning, error and question
  *  -   content can also be added through AJAX calls, iFrames, or from inline elements (together with attached events)
- *  -   easily customizable appearance by changing the CSS file
  *  -   create modal or non-modal dialog boxes
  *  -   easily add custom buttons
  *  -   position the dialog box wherever you want - not just in the middle of the screen
  *  -   use callback functions to handle user's choice
- *  -   works in all major browsers (Firefox, Opera, Safari, Chrome, Internet Explorer 6+)
+ *  -   works in pretty much any browser - Firefox, Chrome, Safari, Edge, Opera and Internet Explorer 6+
  *
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
