@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/stefangabos/zebrajs/master/docs/images/logo.png" alt="zebrajs" align="right">
 
-# Zebra_Dialog
+# Zebra Dialog &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Zebra_Dialog%20-%20a%20small,%20compact%20and%20highly%20configurable%20jQuery%20plugin%20for%20creating%20responsive%20modal%20dialog%20boxes&url=https://github.com/stefangabos/Zebra_Dialog&via=stefangabos&hashtags=jquery,dialog,notifications,alert,modal,javascript)
 
 *A small, compact and highly configurable jQuery plugin for creating responsive modal dialog boxes*
 
@@ -8,7 +8,7 @@
 
 A modal window is a child window that requires users to interact with it before they can continue using the parent application. Modal windows are one of the most commonly used user interface elements and are used to command user awareness in order to communicate important information, or to alert of errors or warnings.
 
-**Zebra_Dialog** is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+) , and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript *alert* and *confirmation* dialog boxes.
+**Zebra Dialog** is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+) , and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript *alert* and *confirmation* dialog boxes.
 
 Can also be used as a notification widget (when configured to show no buttons and to close automatically) for updates or errors, without distracting users from their browser experience by displaying obtrusive alerts.
 
@@ -27,36 +27,30 @@ Can also be used as a notification widget (when configured to show no buttons an
  - position the dialog box wherever you want - not just in the middle of the screen
  - callback functions can be used for further customisations
  - use callback functions to handle users' choice
- - works in all major browsers (Firefox, Opera, Safari, Chrome, Internet Explorer 6+)
+ - works in all major browsers (Chrome, Firefox, Safari, Edge, Opera, Internet Explorer 6+)
 
  For the default theme the icons used for *confirmation*, *information*, *error* and *question* dialog boxes are made by [DryIcon](http://dryicons.com/free-icons/preview/aesthetica/) while the *warning* icon is made by [Function Design & Development Studio](http://wefunction.com/2008/07/function-free-icon-set/).
 
 For the *flat* theme, the icons used are made by [Elegant Themes](http://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free)
 
-## Support the development of this project
+## Demo
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKMCMRZB493LY)
-
-## Sponsors
-
-Cross browser/device testing is done with
-
-[![BrowserStack](https://github.com/stefangabos/Zebra_Dialog/raw/master/examples/browserstack.png)](https://www.browserstack.com/)
+See the [demos](https://stefangabos.github.io/Zebra_Dialog/flat.html)
 
 ## Requirements
 
-Zebra_Dialog has no dependencies other than jQuery 1.7.0+
+Zebra Dialog has no dependencies other than jQuery 1.7.0+
 
 ## Installation
 
-Zebra_Dialog is available as a [npm package](https://www.npmjs.com/package/zebra_dialog). To install it use:
+Zebra Dialog is available as a [npm package](https://www.npmjs.com/package/zebra_dialog). To install it use:
 
 ```bash
 # the "--save" argument adds the plugin as a dependency in packages.json
 npm install zebra_dialog --save
 ```
 
-Zebra_Dialog is also available as a [Bower package](http://bower.io/). To install it use:
+Zebra Dialog is also available as a [Bower package](http://bower.io/). To install it use:
 
 ```bash
 # the "--save" argument adds the plugin as a dependency in bower.json
@@ -72,13 +66,13 @@ First, load jQuery from a CDN and provide a fallback to a local source like:
 <script>window.jQuery || document.write('<script src="path/to/jquery-3.3.1.js"><\/script>')</script>
 ```
 
-Load the Zebra_Dialog jQuery plugin:
+Load the Zebra Dialog jQuery plugin:
 
 ```html
 <script src="path/to/zebra_dialog.min.js"></script>
 ```
 
-Alternatively, you can load Zebra_Dialog from [JSDelivr CDN](https://www.jsdelivr.com/package/npm/zebra_dialog) like this:
+Alternatively, you can load Zebra Dialog from [JSDelivr CDN](https://www.jsdelivr.com/package/npm/zebra_dialog) like this:
 ```html
 <!-- for the most recent version, not recommended in production -->
 <script src="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/zebra_dialog.min.js"></script>
@@ -99,10 +93,14 @@ Load the style sheet file from a local source
 
 ```html
 <!-- for the most recent version of the "flat" theme -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/flat/zebra_dialog.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/flat/zebra_dialog.min.css">
 
 <!-- for the most recent version of the "default" theme -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/default/zebra_dialog.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/default/zebra_dialog.min.css">
 
 <!-- replacing "min" with "src" will serve you the non-compressed version -->
 ```
@@ -415,6 +413,12 @@ var dialog = new $.Zebra_Dialog('This is some information');
 dialog.close();
 ```
 
-## Demo
+## Support the development of this project
 
-See the [demos](https://stefangabos.github.io/Zebra_Dialog/flat.html)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKMCMRZB493LY)
+
+## Sponsors
+
+Cross browser/device testing is done with
+
+[![BrowserStack](https://github.com/stefangabos/Zebra_Dialog/raw/master/examples/browserstack.png)](https://www.browserstack.com/)
