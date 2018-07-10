@@ -12,9 +12,9 @@ A modal window is a child window that requires users to interact with it before 
 
 Can also be used as a notification widget (when configured to show no buttons and to close automatically) for updates or errors, without distracting users from their browser experience by displaying obtrusive alerts.
 
-![Screenshot](https://raw.github.com/stefangabos/Zebra_Dialog/master/examples/screenshot.png)
+[![Screenshot](https://raw.github.com/stefangabos/Zebra_Dialog/master/examples/screenshot.png)](https://stefangabos.github.io/Zebra_Dialog/index.html)
 &nbsp;&nbsp;
-![Screenshot](https://raw.github.com/stefangabos/Zebra_Dialog/master/examples/screenshot-flat.png)
+[![Screenshot](https://raw.github.com/stefangabos/Zebra_Dialog/master/examples/screenshot-flat.png)](https://stefangabos.github.io/Zebra_Dialog/flat.html)
 
 ## Features
 
