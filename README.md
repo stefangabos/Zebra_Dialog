@@ -27,7 +27,7 @@ Can also be used as a notification widget (when configured to show no buttons an
  - position the dialog box wherever you want - not just in the middle of the screen
  - callback functions can be used for further customisations
  - use callback functions to handle users' choice
- - works in all major browsers (Chrome, Firefox, Safari, Edge, Opera, Internet Explorer 6+)
+ - works in pretty much any browser (Chrome, Firefox, Safari, Edge, Opera, Internet Explorer 6+)
 
  For the default theme the icons used for *confirmation*, *information*, *error* and *question* dialog boxes are made by [DryIcon](http://dryicons.com/free-icons/preview/aesthetica/) while the *warning* icon is made by [Function Design & Development Studio](http://wefunction.com/2008/07/function-free-icon-set/).
 
