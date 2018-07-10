@@ -1,4 +1,10 @@
-## version 1.5 (July 05, 2018)
+## version 1.6.0 (July 10, 2018)
+
+- "warning" dialog boxes now have "Yes" and "No" buttons instead of just the "Ok" button
+- changed the labels for the buttons on "confirmation" dialog boxes from "Yes" and "No" to "Ok" and "Cancel"
+- revamped example pages
+
+## version 1.5.0 (July 05, 2018)
 
 - fixed bug where inputs in dialog box could never receive focus on mobile devices - see [#14](https://github.com/stefangabos/Zebra_Dialog/issues/14), thanks [Clément](https://github.com/chou666)!
 - fixed [#18](https://github.com/stefangabos/Zebra_Dialog/issues/18) where the plugin was not working in IE8
