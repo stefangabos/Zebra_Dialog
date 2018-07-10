@@ -2,133 +2,179 @@ $(document).ready(function() {
 
     $('#example1').on('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong>, a small, compact and highly configurable dialog box plugin for jQuery');
+        new $.Zebra_Dialog('<strong>Zebra_Dialog</strong>, a small, compact and highly configurable dialog box plugin for jQuery');
     });
 
     $('#example2_1').on('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong> has no dependencies other than <em>jQuery 1.5.2+</em> and works in all major' +
-            ' browsers like<br>- Firefox<br>- Opera<br>- Safari<br>- Chrome<br>- Internet Explorer 6+', {
-            'type':     'error',
-            'title':    'Error'
+        new $.Zebra_Dialog('Use error messages to let the user know that an action has not completed successfully and show the reason why that happened.', {
+            type: 'error',
+            title: 'Error'
         });
     });
 
     $('#example2_2').on('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong> is meant to replace JavaScript\'s <em>alert</em> and <em>confirmation</em>' +
-            ' dialog boxes. <br><br> Can also be used as a notification widget - when configured to show no buttons and to close' +
-            ' automatically - for updates or errors, without distracting users from their browser experience by displaying obtrusive alerts.', {
-            'type':     'warning',
-            'title':    'Warning'
+        new $.Zebra_Dialog('Show warning messages like this when you are about to perform a sensitive operation and you want to make sure that the user understands the implications.', {
+            type: 'warning',
+            title: 'Warning'
         });
     });
 
     $('#example2_3').on('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong> can generate 5 types of dialog boxes: confirmation, information, ' +
-            ' warning, error and question.<br><br>The appearance of the dialog boxes is easily customizable by changing the CSS file ', {
-            'type':     'question',
-            'title':    'Question'
+        new $.Zebra_Dialog('Show confirmation dialogs like this when you want the user\'s accept for non-critical actions.', {
+            type: 'question',
+            title: 'Question'
         });
     });
 
     $('#example2_4').on('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong> dialog boxes can be positioned anywhere on the screen - not just in the middle!' +
-            '<br><br>By default, dialog boxes can be closed by pressing the ESC key or by clicking anywhere on the overlay.', {
-            'type':     'information',
-            'title':    'Information'
+        new $.Zebra_Dialog('Use information boxes to show information or help messages that the user requested.', {
+            type: 'information',
+            title: 'Information'
         });
     });
 
     $('#example2_5').on('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong> is a small (6KB minified), compact (one JS file, no dependencies other than jQuery 1.5.2+)' +
-            ' and highly configurable dialog box plugin for jQuery meant to replace JavaScript\'s <em>alert</em> and <em>confirmation</em> dialog boxes.', {
-            'type':     'confirmation',
-            'title':    'Confirmation'
+        new $.Zebra_Dialog('Use confirmation messages to let the user know that an action has completed successfully.', {
+            type: 'confirmation',
+            title: 'Confirmation'
         });
     });
 
     $('#example3').on('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong>, a small, compact and highly configurable dialog box plugin for jQuery', {
-            'type':     'question',
-            'title':    'Custom buttons',
-            'buttons':  ['Yes', 'No', 'Help'],
-            'onClose':  function(caption) {
+        new $.Zebra_Dialog('We can set as many buttons as we want and we handle the user\'s choice though the callback function attached to the <strong>onClose</strong> event.<br><br>See the next example to handle user\'s choice in a different way.', {
+            type: 'question',
+            title: 'Custom buttons',
+            buttons: ['Yes', 'No', 'Help'],
+            onClose: function(caption) {
                 alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked');
             }
         });
     });
 
-    $('#example31').on('click', function(e) {
-        e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong>, a small, compact and highly configurable dialog box plugin for jQuery', {
-            'type':     'question',
-            'title':    'Custom buttons',
-            'buttons':  [
-                            {caption: 'Yes', callback: function() { alert('"Yes" was clicked')}},
-                            {caption: 'No', callback: function() { alert('"No" was clicked')}},
-                            {caption: 'Cancel', callback: function() { alert('"Cancel" was clicked')}}
-                        ]
-        });
-    });
-
     $('#example4').on('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog('<strong>Zebra_Dialog</strong>, a small, compact and highly configurable dialog box plugin for jQuery', {
-            'title':    'Custom positioning',
-            'position': ['right - 20', 'top + 20']
+        new $.Zebra_Dialog('We can set as many buttons as we want and we can handle the user\'s choice though the callback functions attached to the buttons.', {
+            type: 'question',
+            title: 'Custom buttons',
+            buttons: [
+                {caption: 'Yes', callback: function() { alert('"Yes" was clicked')}},
+                {caption: 'No', callback: function() { alert('"No" was clicked')}},
+                {caption: 'Cancel', callback: function() { alert('"Cancel" was clicked')}}
+            ]
         });
     });
 
-    $('#example5').on('click', function(e) {
+    $('#example5_1').on('click', function(e) {
         e.preventDefault();
-        new $.Zebra_Dialog('<strong>Zebra_Dialog</strong>, a small, compact and highly configurable dialog box plugin for jQuery', {
-            'buttons':  false,
-            'modal': false,
-            'position': ['right - 20', 'top + 20'],
-            'auto_close': 2000
+        new $.Zebra_Dialog('I am positioned in the <strong>top-left</strong> corner, 20&nbsp;pixels from the edges. Here\'s how it\'s done:<br><code>position: [\'left + 20\', \'top + 20\']</code>', {
+            title: 'Custom positioning',
+            width: 460,
+            position: ['left + 20', 'top + 20']
+        });
+    });
+
+    $('#example5_2').on('click', function(e) {
+        e.preventDefault();
+        new $.Zebra_Dialog('I am positioned in the <strong>top-right</strong> corner, 20&nbsp;pixels from the edges. Here\'s how it\'s done:<br><code>position: [\'right - 20\', \'top + 20\']</code>', {
+            title: 'Custom positioning',
+            width: 460,
+            position: ['right - 20', 'top + 20']
+        });
+    });
+
+    $('#example5_3').on('click', function(e) {
+        e.preventDefault();
+        new $.Zebra_Dialog('I am positioned in the <strong>bottom-right</strong> corner, 20&nbsp;pixels from the edges. Here\'s how it\'s done:<br><code>position: [\'right - 20\', \'bottom - 20\']</code>', {
+            title: 'Custom positioning',
+            width: 460,
+            position: ['right - 20', 'bottom - 20']
+        });
+    });
+
+    $('#example5_4').on('click', function(e) {
+        e.preventDefault();
+        new $.Zebra_Dialog('I am positioned in the <strong>bottom-left</strong> corner, 20&nbsp;pixels from the edges. Here\'s how it\'s done:<br><code>position: [\'left + 20\', \'bottom - 20\']</code>', {
+            title: 'Custom positioning',
+            width: 460,
+            position: ['left + 20', 'bottom - 20']
+        });
+    });
+
+    $('#example5_5').on('click', function(e) {
+        e.preventDefault();
+        new $.Zebra_Dialog('I am positioned in the <strong>center</strong> of the screen. Here\'s how it\'s done:<br><code>position: [\'center\', \'center\']</code>', {
+            title: 'Custom positioning',
+            width: 460,
+            position: ['center', 'center']
+        });
+    });
+
+    $('#example5_6').on('click', function(e) {
+        e.preventDefault();
+        new $.Zebra_Dialog('I am centered horizontally and 50&nbsp;pixels from the top edge. Here\'s how it\'s done:<br><code>position: [\'center\', \'top + 50\']</code>', {
+            title: 'Custom positioning',
+            width: 460,
+            position: ['center', 'top + 50']
         });
     });
 
     $('#example6').on('click', function(e) {
         e.preventDefault();
-        new $.Zebra_Dialog({
-            source: {inline: $('#boxcontent').html()},
-            width: 600,
-            title: 'Inline content'
+        new $.Zebra_Dialog('I am a notification widget. No buttons, no overlay, I am positioned in the top-right corner and I stay on screen for 2 seconds.', {
+            buttons: false,
+            modal: false,
+            position: ['right - 20', 'top + 20'],
+            auto_close: 2000
         });
     });
 
     $('#example7').on('click', function(e) {
         e.preventDefault();
-        $.Zebra_Dialog({
-            source: {'ajax': 'ajax.html'},
+        new $.Zebra_Dialog({
+            source: {
+                inline: $('#boxcontent').html()
+            },
             width: 600,
-            title:  'External content loaded via AJAX'
-        });
-    });
-
-    $('#example71').on('click', function(e) {
-        e.preventDefault();
-        $.Zebra_Dialog({
-            source: {'iframe': {
-                'src':  'http://en.m.wikipedia.org/wiki/Dialog_box',
-                'height': 500
-            }},
-            width: 800,
-            title:  'External content loaded in an iFrame'
+            title: 'Content loaded from an element on the page'
         });
     });
 
     $('#example8').on('click', function(e) {
         e.preventDefault();
+        new $.Zebra_Dialog({
+            source: {
+                ajax: 'ajax.html'
+            },
+            width: 600,
+            title: 'Content loaded via AJAX'
+        });
+    });
+
+    $('#example9').on('click', function(e) {
+        e.preventDefault();
+        new $.Zebra_Dialog({
+            source: {
+                iframe: {
+                    src: 'http://en.m.wikipedia.org/wiki/Dialog_box',
+                    height: 500
+                }
+            },
+            width: 800,
+            title:  'External content loaded in an iFrame'
+        });
+    });
+
+    $('#example10').on('click', function(e) {
+        e.preventDefault();
         new $.Zebra_Dialog('Buy me a coffee if you like this plugin!', {
-            'custom_class': 'myclass',
-            'title': 'Customizing the appearance'
+            custom_class: 'myclass',
+            title: 'Customizing the appearance'
         });
     });
 

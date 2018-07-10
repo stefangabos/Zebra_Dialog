@@ -1,10 +1,13 @@
-.syntaxhighlighter {
-    padding: 1em 0;
+body {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
 }
 
-p a {
-    text-decoration: underline;
-    font-weight: bold;
+.syntaxhighlighter {
+    padding: 1.5em 0;
+}
+
+.syntaxhighlighter .code {
+    font-size: 14px !important;
 }
 
 .myclass .ZebraDialog_Title {
@@ -20,3 +23,7 @@ body.flat .myclass .ZebraDialog_Title {
     background-image: url('coffee_48.png')
 }
 
+.top {
+    position: relative;
+    margin-left: 10px;
+}
