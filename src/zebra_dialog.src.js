@@ -431,11 +431,7 @@
                     if (message_height < container_height)
 
                         // center the message vertically
-                        message.css({
-
-                            'padding-top':   (container_height - message_height) / 2
-
-                        });
+                        message.css('padding-top', (container_height - message_height) / 2);
 
                 }
 
@@ -743,7 +739,7 @@
             if (!isNaN(tmp) && tmp === plugin.settings.width && tmp.toString() === plugin.settings.width.toString() && tmp > 0)
 
                 // set the dialog box's width
-                plugin.dialog.css({'width': plugin.settings.width});
+                plugin.dialog.css('width', plugin.settings.width);
 
             // if dialog box has a title
             if (plugin.settings.title)
