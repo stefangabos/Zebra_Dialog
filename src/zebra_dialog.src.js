@@ -158,7 +158,7 @@
                                                             //  (notice how everything is enclosed in quotes) where
                                                             //  "horizontal_position" can be "left", "right" or "center",
                                                             //  "vertical_position" can be "top", "bottom" or "middle", and
-                                                            //  "offset" represents an optional number of pixels to add/substract
+                                                            //  "offset" represents an optional number of pixels to add/subtract
                                                             //  from the respective horizontal or vertical position.
                                                             //
                                                             //  Positions are relative to the viewport (the area of the
@@ -694,10 +694,11 @@
                 // set some css properties of the overlay
                 }).css({
 
-                    'position': (plugin.isIE6 ? 'absolute' : 'fixed'),  //  for IE6 we emulate the "position:fixed" behaviour
+                    'position': (plugin.isIE6 ? 'absolute' : 'fixed'),  //  for IE6 we emulate the "position:fixed" behavior
                     'left':     0,                                      //  the overlay starts at the top-left corner of the
                     'top':      0,                                      //  browser window (later on we'll stretch it)
-                    'opacity':  plugin.settings.overlay_opacity         //  set the overlay's opacity
+                    'opacity':  plugin.settings.overlay_opacity + ''    //  set the overlay's opacity (also we need to specify it
+                                                                        //  as a string)
 
                 });
 
@@ -721,7 +722,7 @@
             // set some css properties of the dialog box
             }).css({
 
-                'position':     (plugin.isIE6 ? 'absolute' : 'fixed'),  //  for IE6 we emulate the "position:fixed" behaviour
+                'position':     (plugin.isIE6 ? 'absolute' : 'fixed'),  //  for IE6 we emulate the "position:fixed" behavior
                 'left':         0,                                      //  by default, place it in the top-left corner of the
                 'top':          0,                                      //  browser window (we'll position it later)
                 'visibility':   'hidden'                                //  the dialog box is hidden for now
