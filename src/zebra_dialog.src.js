@@ -426,13 +426,13 @@
                 if (plugin.settings.vcenter_short_message) {
 
                     // the secondary container - the one that contains the message
-                    message = plugin.message.find('div:first');
+                    message = plugin.body.find('div:first');
 
                     // the height of the secondary container
                     message_height = message.height();
 
                     // the main container's height
-                    container_height = plugin.message.height();
+                    container_height = plugin.body.height();
 
                     // if we need to center the message vertically
                     if (message_height < container_height)
@@ -676,8 +676,7 @@
          */
         plugin.init = function() {
 
-            var ajax_options, body_container, button_bar, buttons, canvas, $close, default_options, iframe_options,
-                preloader, $title, tmp, type;
+            var ajax_options, button_bar, buttons, canvas, default_options, iframe_options, preloader, $title, tmp, type;
 
             // the plugin's final properties are the merged default and user-provided options (if any)
             plugin.settings = $.extend({}, defaults, options);
@@ -720,7 +719,13 @@
             // create the dialog box
             plugin.dialog = $('<div>', {
 
-                'class':        'ZebraDialog' + (plugin.settings.custom_class ? ' ' + plugin.settings.custom_class : '')
+                'class':    'ZebraDialog' +
+
+                            // any custom classes
+                            (plugin.settings.custom_class ? ' ' + plugin.settings.custom_class : '') +
+
+                            // the type, if required
+                            (_get_type() !== false ? ' ZebraDialog_Icon ZebraDialog_' + _get_type() : '')
 
             // set some css properties of the dialog box
             }).css({
@@ -760,23 +765,19 @@
                 // and append the title to the dialog box
                 }).html(plugin.settings.title).appendTo(plugin.dialog);
 
+            // if dialog box doesn't have a title
+            else plugin.dialog.addClass('ZebraDialog_NoTitle');
+
             // get the buttons that are to be added to the dialog box
             buttons = _get_buttons();
-
-            // we create an outer container to apply borders to
-            body_container = $('<div>', {
-
-                'class':    'ZebraDialog_BodyOuter' + (!plugin.settings.title ? ' ZebraDialog_NoTitle' : '') + (!buttons ? ' ZebraDialog_NoButtons' : '')
-
-            }).appendTo(plugin.dialog);
 
             // create the container of the actual message
             // we save it as a reference because we'll use it later in the "draw" method
             // if the "vcenter_short_message" property is TRUE
-            plugin.message = $('<div>', {
+            plugin.body = $('<div>', {
 
                 // if a known dialog box type is specified, also show the appropriate icon
-                'class':    'ZebraDialog_Body' + (_get_type() !== false ? ' ZebraDialog_Icon ZebraDialog_' + _get_type() : '')
+                'class':    'ZebraDialog_Body'
 
             });
 
@@ -784,10 +785,10 @@
             if (plugin.settings.max_height > 0) {
 
                 // set it like this for browsers supporting the "max-height" attribute
-                plugin.message.css('max-height', plugin.settings.max_height);
+                plugin.body.css('max-height', plugin.settings.max_height);
 
                 // for IE6, go this way...
-                if (plugin.isIE6) plugin.message.attr('style', 'height: expression(this.scrollHeight > ' + plugin.settings.max_height + ' ? "' + plugin.settings.max_height + 'px" : "85px")');
+                if (plugin.isIE6) plugin.body.attr('style', 'height: expression(this.scrollHeight > ' + plugin.settings.max_height + ' ? "' + plugin.settings.max_height + 'px" : "85px")');
 
             }
 
@@ -796,19 +797,19 @@
 
                 // create a secondary container for the message and add everything to the message container
                 // (we'll later align the container vertically)
-                $('<div>').html(plugin.settings.message).appendTo(plugin.message);
+                $('<div>').html(plugin.settings.message).appendTo(plugin.body);
 
             // if short messages are not to be centered vertically
             else
 
                 // add the message to the message container
-                plugin.message.html(plugin.settings.message);
+                plugin.body.html(plugin.settings.message);
 
             // if dialog box content is to be fetched from an external source
             if (plugin.settings.source && typeof plugin.settings.source === 'object') {
 
                 // the object where the content will be injected into
-                canvas = (plugin.settings.vcenter_short_message ? $('div:first', plugin.message) : plugin.message);
+                canvas = (plugin.settings.vcenter_short_message ? $('div:first', plugin.body) : plugin.body);
 
                 // let's see what type of content we need
                 for (type in plugin.settings.source)
@@ -875,7 +876,7 @@
             }
 
             // add the message container to the dialog box
-            plugin.message.appendTo(body_container);
+            plugin.body.appendTo(plugin.dialog);
 
             // if there are any buttons to be added to the dialog box
             if (buttons) {
@@ -932,27 +933,28 @@
 
                 });
 
-                // wrap everything in another wrapper
-                // and center buttons if needed
-                button_bar.wrap($('<div>').addClass('ZebraDialog_ButtonsOuter' + (plugin.settings.center_buttons ? ' ZebraDialog_Buttons_Centered' : '')));
+                // center buttons if needed
+                if (plugin.settings.center_buttons) button_bar.addClass('ZebraDialog_Buttons_Centered');
 
-            }
+            // if the dialog box has no button
+            } else plugin.dialog.addClass('ZebraDialog_NoButtons')
 
             // insert the dialog box in the DOM
             plugin.dialog.appendTo('body');
 
             // if we need to show the little "x" for closing the dialog box, in the top-right corner
-            if (plugin.settings.show_close_button) {
+            if (plugin.settings.show_close_button)
 
                 // create the button now and append it to the dialog box's title, or to the dialog box's body if there's no title
-                $close = $('<a href="javascript:void(0)" class="ZebraDialog_Close">&times;</a>').on('click', function(e) {
+                $('<a href="javascript:void(0)" class="ZebraDialog_Close">&times;</a>').on('click', function(e) {
 
                     e.preventDefault();
                     plugin.close();
 
-                }).appendTo($title || plugin.message);
+                }).appendTo($title || plugin.body);
 
-            }
+            // if the dialog has no "x" button
+            else plugin.dialog.addClass('ZebraDialog_NoCloseButton');
 
             // if the browser window is resized
             $(window).on('resize.Zebra_Dialog', function() {
