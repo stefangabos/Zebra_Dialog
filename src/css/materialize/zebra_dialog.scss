@@ -1,0 +1,92 @@
+@import '../template';
+
+.ZebraDialogOverlay {
+    background: #666;
+    height: 100%;
+    z-index: 1000;
+    width: 100%;
+}
+
+.ZebraDialog,
+.ZebraDialog_Title,
+.ZebraDialog_Body,
+.ZebraDialog_Buttons a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.ZebraDialog_Preloader {
+    background: url('preloader.gif') no-repeat center center;
+    height: 32px;
+}
+
+.ZebraDialog {
+    background: #FFF;
+    box-shadow: 0 -2px 25px 0 rgba(0, 0, 0, 0.15), 0 13px 25px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    width: 450px;
+    _border: 1px solid #DEDEDE;
+}
+
+.ZebraDialog_Title {
+    border-bottom: 1px solid #F0F0F0;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.ZebraDialog_Body {
+    color: #44484A;
+    padding: 30px;
+}
+
+.ZebraDialog_Icon .ZebraDialog_Body {
+    background-repeat: no-repeat;
+    background-position: 30px 30px;
+    padding-left: 108px;
+    min-height: 48px;
+    /* min-height hack for IE6 */
+    height: auto !important;
+    height: 48px;
+}
+
+.ZebraDialog_Buttons {
+    padding: 0 0 10px 10px;
+
+    a {
+        background: transparent;
+        border-radius: 5px;
+        color: #37A0F5;
+        font-weight: bold;
+        margin-right: 10px !important;
+        min-width: 60px;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        _width: 60px;
+    }
+}
+
+.ZebraDialog_Buttons a:hover,
+.ZebraDialog_Buttons a:focus,
+a.ZebraDialog_Close:hover,
+a.ZebraDialog_Close:focus {
+    background: #f0f0f0;
+    color: #37A0F5;
+}
+
+a.ZebraDialog_Close {
+    border-radius: 15px;
+    color: #DDD;
+    padding: 1px 7px;
+    right: 10px;
+    margin-top: -13px;
+}
+
+.ZebraDialog_NoTitle .ZebraDialog_Close {
+    margin-top: 2px;
+    right: 2px;
+}
