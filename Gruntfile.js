@@ -38,8 +38,9 @@ module.exports = function(grunt) {
                     indentWidth: 4
                 },
                 files: {
-                    'dist/css/default/zebra_dialog.css': 'src/css/default/zebra_dialog.scss',
-                    'dist/css/flat/zebra_dialog.css': 'src/css/flat/zebra_dialog.scss'
+                    'dist/css/classic/zebra_dialog.css': 'src/css/classic/zebra_dialog.scss',
+                    'dist/css/flat/zebra_dialog.css': 'src/css/flat/zebra_dialog.scss',
+                    'dist/css/materialize/zebra_dialog.css': 'src/css/materialize/zebra_dialog.scss'
                 }
             },
             minified: {
@@ -48,8 +49,78 @@ module.exports = function(grunt) {
                     outputStyle: 'compressed'
                 },
                 files: {
-                    'dist/css/default/zebra_dialog.min.css': 'src/css/default/zebra_dialog.scss',
-                    'dist/css/flat/zebra_dialog.min.css': 'src/css/flat/zebra_dialog.scss'
+                    'dist/css/classic/zebra_dialog.min.css': 'src/css/classic/zebra_dialog.scss',
+                    'dist/css/flat/zebra_dialog.min.css': 'src/css/flat/zebra_dialog.scss',
+                    'dist/css/materialize/zebra_dialog.min.css': 'src/css/materialize/zebra_dialog.scss'
+                }
+            }
+        },
+
+        /***************************************************************************************************************
+         *  CSSMIN
+         *  https://github.com/gruntjs/grunt-contrib-cssmin
+         **************************************************************************************************************/
+        'cssmin': {
+            beutify: {
+                options: {
+                    compatibility: {
+                        properties: {
+                            ieBangHack: true,
+                            ieFilters: true,
+                            iePrefixHack: true,
+                            ieSuffixHack: true
+                        },
+                        selectors: {
+                            ie7Hack: true
+                        }
+                    },
+                    format: {
+                        breaks: {
+                            afterAtRule: true,
+                            afterBlockBegins: true,
+                            afterBlockEnds: true,
+                            afterComment: true,
+                            afterProperty: true,
+                            afterRuleBegins: true,
+                            afterRuleEnds: true,
+                            beforeBlockEnds: true,
+                            betweenSelectors: true
+                        },
+                        indentBy: 4,
+                        indentWith: 'space',
+                        spaces: {
+                            aroundSelectorRelation: true,
+                            beforeBlockBegins: true,
+                            beforeValue: true
+                        }
+                    },
+                    level: 2
+                },
+                files: {
+                    'dist/css/classic/zebra_dialog.css': 'dist/css/classic/zebra_dialog.css',
+                    'dist/css/flat/zebra_dialog.css': 'dist/css/flat/zebra_dialog.css',
+                    'dist/css/materialize/zebra_dialog.css': 'dist/css/materialize/zebra_dialog.css'
+                }
+            },
+            minify: {
+                options: {
+                    compatibility: {
+                        properties: {
+                            ieBangHack: true,
+                            ieFilters: true,
+                            iePrefixHack: true,
+                            ieSuffixHack: true
+                        },
+                        selectors: {
+                            ie7Hack: true
+                        }
+                    },
+                    level: 2
+                },
+                files: {
+                    'dist/css/classic/zebra_dialog.min.css': 'dist/css/classic/zebra_dialog.min.css',
+                    'dist/css/flat/zebra_dialog.min.css': 'dist/css/flat/zebra_dialog.min.css',
+                    'dist/css/materialize/zebra_dialog.min.css': 'dist/css/materialize/zebra_dialog.min.css'
                 }
             }
         },
@@ -119,12 +190,15 @@ module.exports = function(grunt) {
             all: {
                 files: [
                     { src: 'src/zebra_dialog.src.js', dest: 'dist/zebra_dialog.src.js' },
-                    { expand: true, flatten: true, src: 'src/css/default/*.png', dest: 'dist/css/default/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/default/*.gif', dest: 'dist/css/default/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/default/*.txt', dest: 'dist/css/default/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/classic/*.png', dest: 'dist/css/classic/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/classic/*.gif', dest: 'dist/css/classic/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/classic/*.txt', dest: 'dist/css/classic/', filter: 'isFile' },
                     { expand: true, flatten: true, src: 'src/css/flat/*.png', dest: 'dist/css/flat/', filter: 'isFile' },
                     { expand: true, flatten: true, src: 'src/css/flat/*.gif', dest: 'dist/css/flat/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/flat/*.txt', dest: 'dist/css/flat/', filter: 'isFile' }
+                    { expand: true, flatten: true, src: 'src/css/flat/*.txt', dest: 'dist/css/flat/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/materialize/*.png', dest: 'dist/css/materialize/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/materialize/*.gif', dest: 'dist/css/materialize/', filter: 'isFile' },
+                    { expand: true, flatten: true, src: 'src/css/materialize/*.txt', dest: 'dist/css/materialize/', filter: 'isFile' }
                 ]
             }
         },
@@ -142,8 +216,8 @@ module.exports = function(grunt) {
                 }
             },
             css: {
-                files: ['src/**/*.scss'],
-                tasks: ['newer:sass', 'notify:done'],
+                files: ['src/css/**/*.scss'],
+                tasks: ['sass', 'cssmin', 'copy', 'notify:done'],
                 options: {
                     livereload: true
                 }
@@ -154,6 +228,7 @@ module.exports = function(grunt) {
 
     // register plugins
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -162,6 +237,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-sass');
 
-    grunt.registerTask('default', ['sass', 'eslint', 'jshint', 'uglify', 'copy', 'watch']);
+    grunt.registerTask('default', ['sass', 'cssmin', 'eslint', 'jshint', 'uglify', 'copy', 'watch']);
 
 };
