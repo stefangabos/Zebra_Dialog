@@ -413,7 +413,14 @@
                 if (dialog_height > viewport_height)
 
                     // adjust the dialog box's height so that it fits
-                    plugin.message.css('height', viewport_height - ($('.ZebraDialog_Title', plugin.dialog) ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) - ($('.ZebraDialog_ButtonsOuter', plugin.dialog) ? $('.ZebraDialog_ButtonsOuter', plugin.dialog).outerHeight() : 0) - (parseFloat(plugin.message.css('paddingTop')) || 0) - (parseFloat(plugin.message.css('paddingBottom')) || 0) - (parseFloat(plugin.message.css('borderTopWidth')) || 0) - (parseFloat(plugin.message.css('borderBottomWidth')) || 0));
+                    plugin.body.css('height', viewport_height -
+                        ($('.ZebraDialog_Title', plugin.dialog) ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) -
+                        ($('.ZebraDialog_Buttons', plugin.dialog) ? $('.ZebraDialog_Buttons', plugin.dialog).outerHeight() : 0) -
+                        (parseFloat(plugin.body.css('paddingTop')) || 0) -
+                        (parseFloat(plugin.body.css('paddingBottom')) || 0) -
+                        (parseFloat(plugin.body.css('borderTopWidth')) || 0) -
+                        (parseFloat(plugin.body.css('borderBottomWidth')) || 0)
+                    );
 
                 // if short messages are to be centered vertically
                 if (plugin.settings.vcenter_short_message) {
