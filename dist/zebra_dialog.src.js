@@ -945,15 +945,6 @@
 
                 }).appendTo($title || plugin.message);
 
-                // if the close button was added to the title bar
-                if ($title)
-
-                    // center it vertically
-                    $close.css({
-                        'right':    parseInt($title.css('paddingRight'), 10),
-                        'top':      (parseInt($title.css('height'), 10) + parseInt($title.css('paddingTop'), 10) + parseInt($title.css('paddingBottom'), 10) - $close.height()) / 2
-                    });
-
             }
 
             // if the browser window is resized
