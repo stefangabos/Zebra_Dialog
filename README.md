@@ -18,7 +18,7 @@ Can also be used as a notification widget (when configured to show no buttons an
 
 ## Features
 
- - great looking dialog boxes, out of the box, with 2 themes included
+ - great looking dialog boxes, out of the box, with 3 beautiful themes included
  - 5 types of dialog boxes available: *confirmation*, *information*, *warning*, *error* and *question*
  - content can also be added through AJAX calls, iFrames or from inline elements (together with attached events)
  - easily customisable appearance by editing the CSS file
@@ -29,9 +29,11 @@ Can also be used as a notification widget (when configured to show no buttons an
  - use callback functions to handle users' choice
  - works in pretty much any browser (Chrome, Firefox, Safari, Edge, Opera, Internet Explorer 6+)
 
- For the default theme the icons used for *confirmation*, *information*, *error* and *question* dialog boxes are made by [DryIcon](http://dryicons.com/free-icons/preview/aesthetica/) while the *warning* icon is made by [Function Design & Development Studio](http://wefunction.com/2008/07/function-free-icon-set/).
+ For the [classic theme](https://stefangabos.github.io/Zebra_Dialog/index.html), the icons used for *confirmation*, *information*, *error* and *question* dialog boxes are made by [DryIcon](http://dryicons.com/free-icons/preview/aesthetica/) while the *warning* icon is made by [Function Design & Development Studio](http://wefunction.com/2008/07/function-free-icon-set/).
 
-For the *flat* theme, the icons used are made by [Elegant Themes](http://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free)
+For the [flat theme](https://stefangabos.github.io/Zebra_Dialog/flat.html), the icons used are made by [Elegant Themes](http://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free)
+
+For the [materialize theme](https://stefangabos.github.io/Zebra_Dialog/flat.html) theme, the icons used are taken from [Google's Material Design](https://material.io/tools/icons/?style=baseline) *"design language"*.
 
 ## Demo
 
