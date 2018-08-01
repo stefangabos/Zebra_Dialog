@@ -29,12 +29,24 @@ blockquote.bg-warning.Zebra_Pin {
     background: #330066;
 }
 
+body.materialize .myclass .ZebraDialog_Title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #FFF;
+    font-size: 19px;
+}
+
+.myclass .ZebraDialog_Body {
+    background-image: url('coffee_48.png');
+    font-size: 21px;
+}
+
 body.flat .myclass .ZebraDialog_Title {
     background: #DEDEDE;
     border-bottom: 1px solid #222;
 }
 
-.myclass .ZebraDialog_Body {
-    background-image: url('coffee_48.png')
+body.flat .myclass .ZebraDialog_Body {
+    background-position: 40px 50px;
 }
 

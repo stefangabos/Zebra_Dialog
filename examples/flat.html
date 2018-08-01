@@ -50,7 +50,7 @@
 
                 <div class="col-xs-12">
 
-                    <blockquote class="bg-warning"><small class="text-warning">See the examples with the dialog boxes using the <a href="materialize.html">materialize</a> or the <a href="index.html">classic</a> theme.</small></blockquote>
+                    <blockquote class="bg-warning"><small class="text-warning">See the examples with the dialog boxes using the <a href="flat.html">flat</a> or the <a href="materialize.html">materialize</a> theme.</small></blockquote>
 
                     <p>
                         Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+)
@@ -72,42 +72,26 @@
 
                     <div class="row">
                         <div class="col-sm-6">
-                            01. <a href="#basic-usage">Basic usage</a><br>
-                            02. <a href="#dialog-types">Dialog box types</a><br>
-                            03. <a href="#custom-buttons">Custom buttons and the <code>onClose</code> event</a><br>
-                            04. <a href="#custom-buttons-callback">Custom buttons with callback functions</a><br>
-                            05. <a href="#positioning">Positioning</a><br>
+                            01. <a href="#dialog-types">Dialog box types</a><br>
+                            02. <a href="#custom-buttons">Custom buttons and the <code>onClose</code> event</a><br>
+                            03. <a href="#custom-buttons-callback">Custom buttons with callback functions</a><br>
+                            04. <a href="#positioning">Positioning</a><br>
+                            05. <a href="#no-title">No title bar</a><br>
                         </div>
                         <div class="col-sm-6">
                             06. <a href="#notification-widget">Use as notification widget</a><br>
                             07. <a href="#content-from-element">Content loaded from an element on the page</a><br>
                             08. <a href="#content-from-ajax">Content loaded via AJAX</a><br>
                             09. <a href="#content-iframe">Content loaded in an iFrame</a><br>
+                            <a name="dialog-types"></a>
                             10. <a href="#customizing-appearance">Customizing the appearance</a><br>
                         </div>
                     </div>
 
-                    <!-- =========================================================================================== -->
-
-                    <br><h3><a name="basic-usage"></a><strong>1.</strong> Basic usage</h3>
-
-                    <pre class="brush:javascript">
-                    new $.Zebra_Dialog(
-                        '&lt;strong&gt;Zebra_Dialog&lt;/strong&gt;, a small, compact and highly configurable dialog box plugin for jQuery'
-                    );
-                    </pre>
-
-                    <div class="well">
-                        Click <a href="javascript:void(0)" id="example1">here</a> to open.
-                    </div>
-
-                    <div class="top">
-                        <a href="#top" class="small">⯅ To the top</a>
-                    </div>
 
                     <!-- =========================================================================================== -->
 
-                    <h3><a name="dialog-types"></a><strong>2.</strong> Dialog box types</h3>
+                    <br><h3><strong>1.</strong> Dialog box types</h3>
 
                     <pre class="brush:javascript">
                     // this example is for the "error" box only
@@ -131,13 +115,15 @@
                         <a href="javascript:void(0)" id="example2_5">confirmation</a>.
                     </div>
 
+                    <a name="custom-buttons"></a>
+
                     <div class="top">
                         <a href="#top" class="small">⯅ To the top</a>
                     </div>
 
                     <!-- =========================================================================================== -->
 
-                    <h3><a name="custom-buttons"></a><strong>3.</strong> Custom buttons and the <code>onClose</code> event</h3>
+                    <h3><strong>2.</strong> Custom buttons and the <code>onClose</code> event</h3>
 
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
@@ -169,13 +155,15 @@
                         Click <a href="javascript:void(0)" id="example3">here</a> to open.
                     </div>
 
+                    <a name="custom-buttons-callback"></a>
+
                     <div class="top">
                         <a href="#top" class="small">⯅ To the top</a>
                     </div>
 
                     <!-- =========================================================================================== -->
 
-                    <h3><a name="custom-buttons-callback"></a><strong>4.</strong> Custom buttons with callback functions</h3>
+                    <h3><strong>3.</strong> Custom buttons with callback functions</h3>
 
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
@@ -202,13 +190,15 @@
                         Click <a href="javascript:void(0)" id="example4">here</a> to open.
                     </div>
 
+                    <a name="positioning"></a>
+
                     <div class="top">
                         <a href="#top" class="small">⯅ To the top</a>
                     </div>
 
                     <!-- =========================================================================================== -->
 
-                    <h3><a name="positioning"></a><strong>5.</strong> Positioning</h3>
+                    <h3><strong>4.</strong> Positioning</h3>
 
                     <pre class="brush:javascript">
                     // this example is only for positioning the dialog box in the top-right corner
@@ -232,13 +222,35 @@
                         Open a dial box in the <a href="javascript:void(0)" id="example5_6">horizontally centered, 50 pixels from the top edge</a>
                     </div>
 
+                    <a name="no-title"></a>
+
                     <div class="top">
                         <a href="#top" class="small">⯅ To the top</a>
                     </div>
 
                     <!-- =========================================================================================== -->
 
-                    <h3><a name="notification-widget"></a><strong>6.</strong> Use as notification widget</h3>
+                    <h3><strong>5.</strong> No title bar</h3>
+
+                    <pre class="brush:javascript">
+                    new $.Zebra_Dialog(
+                        '&lt;strong&gt;Zebra_Dialog&lt;/strong&gt;, a small, compact and highly configurable dialog box plugin for jQuery'
+                    );
+                    </pre>
+
+                    <div class="well">
+                        Click <a href="javascript:void(0)" id="example1">here</a> to open.
+                    </div>
+
+                    <a name="notification-widget"></a>
+
+                    <div class="top">
+                        <a href="#top" class="small">⯅ To the top</a>
+                    </div>
+
+                    <!-- =========================================================================================== -->
+
+                    <h3><strong>6.</strong> Use as notification widget</h3>
 
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
@@ -256,13 +268,15 @@
                         Click <a href="javascript:void(0)" id="example6">here</a> to open.
                     </div>
 
+                    <a name="content-from-element"></a>
+
                     <div class="top">
                         <a href="#top" class="small">⯅ To the top</a>
                     </div>
 
                     <!-- =========================================================================================== -->
 
-                    <h3><a name="content-from-element"></a><strong>7.</strong> Content loaded from an element on the page</h3>
+                    <h3><strong>7.</strong> Content loaded from an element on the page</h3>
 
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog({
@@ -277,13 +291,15 @@
                         Click <a href="javascript:void(0)" id="example7">here</a> to open.
                     </div>
 
+                    <a name="content-from-ajax"></a>
+
                     <div class="top">
                         <a href="#top" class="small">⯅ To the top</a>
                     </div>
 
                     <!-- =========================================================================================== -->
 
-                    <h3><a name="content-from-ajax"></a><strong>8.</strong> Content loaded via AJAX</h3>
+                    <h3><strong>8.</strong> Content loaded via AJAX</h3>
 
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog({
@@ -298,13 +314,15 @@
                         Click <a href="javascript:void(0)" id="example8">here</a> to open.
                     </div>
 
+                    <a name="content-iframe"></a>
+
                     <div class="top">
                         <a href="#top" class="small">⯅ To the top</a>
                     </div>
 
                     <!-- =========================================================================================== -->
 
-                    <h3><a name="content-iframe"></a><strong>9.</strong> Content loaded in an iFrame</h3>
+                    <h3><strong>9.</strong> Content loaded in an iFrame</h3>
 
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog({
@@ -323,13 +341,15 @@
                         Click <a href="javascript:void(0)" id="example9">here</a> to open.
                     </div>
 
+                    <a name="customizing-appearance"></a>
+
                     <div class="top">
                         <a href="#top" class="small">⯅ To the top</a>
                     </div>
 
                     <!-- =========================================================================================== -->
 
-                    <h3><a name="customizing-appearance"></a><strong>10.</strong> Customizing the appearance</h3>
+                    <h3><strong>10.</strong> Customizing the appearance</h3>
 
                     <p>Let's make the title bar have a dark-blue background and show a custom icon</p>
 
@@ -338,19 +358,23 @@
                     <pre class="brush:css">
                     /* Notice how we're targeting the dialog box's title bar through the custom class */
                     .myclass .ZebraDialog_Title {
-                        background: #330066;
+                        background: #DEDEDE;
+                        border-bottom: 1px solid #222;
                     }
                     .myclass .ZebraDialog_Body {
                         background-image: url('coffee_48.png');
+                        background-position: 40px 50px;
+                        font-size: 21px;
                     }
                     </pre>
 
                     <p>The JavaScript</p>
 
                     <pre class="brush:javascript">
-                    new $.Zebra_Dialog('Buy me a coffee if you like this plugin!', {
+                    new $.Zebra_Dialog('I love coffee!', {
                         custom_class: 'myclass',
-                        title: 'Customizing the appearance'
+                        title: 'Customizing the appearance',
+                        width: 150
                     });</pre>
 
                     <div class="well">

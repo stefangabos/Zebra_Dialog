@@ -172,9 +172,10 @@ $(document).ready(function() {
 
     $('#example10').on('click', function(e) {
         e.preventDefault();
-        new $.Zebra_Dialog('Buy me a coffee if you like this plugin!', {
+        new $.Zebra_Dialog('I love coffee!', {
             custom_class: 'myclass',
-            title: 'Customizing the appearance'
+            title: 'Customizing the appearance',
+            width: 300
         });
     });
 
