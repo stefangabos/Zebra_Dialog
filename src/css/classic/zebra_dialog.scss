@@ -102,7 +102,8 @@
     color: #E7EDEF;
     right: 10px;
 
-    &:hover {
+    &:hover,
+    &:focus {
         color: #E7EDEF;
     }
 }

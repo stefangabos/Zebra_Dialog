@@ -75,7 +75,8 @@
     color: #888;
     right: 10px;
 
-    &:hover {
+    &:hover,
+    &:focus {
         color: #000;
     }
 }

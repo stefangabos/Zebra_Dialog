@@ -127,6 +127,7 @@ a.ZebraDialog_Close {
     color: #888;
     right: 10px
 }
+.ZebraDialog_Close:focus,
 .ZebraDialog_Close:hover {
     color: #000
 }
