@@ -3,16 +3,16 @@ body {
 }
 
 .top {
-    display: block;
     border-bottom: 1px solid #eee;
+    display: block;
     margin-bottom: 33px;
 }
 
 .top a {
     background: #FFF;
+    padding-right: 10px;
     position: relative;
     top: 8px;
-    padding-right: 10px;
 }
 
 .syntaxhighlighter {
