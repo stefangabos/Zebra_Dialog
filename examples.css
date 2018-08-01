@@ -1,17 +1,44 @@
 body {
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-family: Tahoma, Helvetica, Arial, sans-serif;
+}
+
+.top {
+    border-bottom: 1px solid #eee;
+    display: block;
+    margin-bottom: 33px;
+}
+
+.top a {
+    background: #FFF;
+    padding-right: 10px;
+    position: relative;
+    top: 8px;
 }
 
 .syntaxhighlighter {
-    padding: 1.5em 0;
+    padding: .5em 0;
 }
 
-.syntaxhighlighter .code {
-    font-size: 14px !important;
+blockquote.bg-warning.Zebra_Pin {
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 12px 6px -6px rgba(0, 0, 0, .1);
+    transition: box-shadow .25s linear;
 }
 
 .myclass .ZebraDialog_Title {
     background: #330066;
+}
+
+body.materialize .myclass .ZebraDialog_Title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #FFF;
+    font-size: 19px;
+}
+
+.myclass .ZebraDialog_Body {
+    background-image: url('coffee_48.png');
+    font-size: 21px;
 }
 
 body.flat .myclass .ZebraDialog_Title {
@@ -19,11 +46,7 @@ body.flat .myclass .ZebraDialog_Title {
     border-bottom: 1px solid #222;
 }
 
-.myclass .ZebraDialog_Body {
-    background-image: url('coffee_48.png')
+body.flat .myclass .ZebraDialog_Body {
+    background-position: 40px 50px;
 }
 
-.top {
-    position: relative;
-    margin-left: 10px;
-}

@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCoreDefault.css" />
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/flat/zebra_dialog.min.css" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/css/materialize/zebra_dialog.min.css" type="text/css">
         <link rel="stylesheet" href="examples.css" type="text/css">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
@@ -41,7 +41,7 @@
 
     </head>
 
-    <body class="flat">
+    <body class="materialize">
 
         <div class="jumbotron">
             <div class="container">
@@ -61,7 +61,7 @@
 
                 <div class="col-xs-12">
 
-                    <blockquote class="bg-warning"><small class="text-warning">See the examples with the dialog boxes using the <a href="materialize.html">materialize</a> or the <a href="index.html">classic</a> theme.</small></blockquote>
+                    <blockquote class="bg-warning"><small class="text-warning">See the examples with the dialog boxes using the <a href="flat.html">flat</a> or the <a href="index.html">classic</a> theme.</small></blockquote>
 
                     <p>
                         Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+)
@@ -111,6 +111,8 @@
                         'Use error messages to let the user know that an action has not completed successfully ' +
                         'and show the reason why that happened.',
                         {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
                             type: 'error',
                             title: 'Error'
                         }
@@ -142,6 +144,8 @@
                         'function attached to the <strong>onClose</strong> event.<br><br>See the next example to handle ' +
                         'user\'s choice in a different way.' +,
                         {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
                             type: 'question',
                             title: 'Custom buttons',
                             buttons: ['Yes', 'No', 'Help'],
@@ -181,6 +185,8 @@
                         'We can set as many buttons as we want and we can handle the user\'s choice though the callback ' +
                         'functions attached to the buttons.',
                         {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
                             type: 'question',
                             title: 'Custom buttons',
                             buttons: [
@@ -218,6 +224,8 @@
                         'I am positioned in the <strong>top-right</strong> corner, 20&nbsp;pixels from the margins. Here\'s ' +
                         'how it\'s done:<br><code>position: [\'right - 20\', \'top + 20\']</code>',
                         {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
                             title: 'Custom positioning',
                             width: 460,
                             position: ['right - 20', 'top + 20']
@@ -245,7 +253,11 @@
 
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
-                        '&lt;strong&gt;Zebra_Dialog&lt;/strong&gt;, a small, compact and highly configurable dialog box plugin for jQuery'
+                        '&lt;strong&gt;Zebra_Dialog&lt;/strong&gt;, a small, compact and highly configurable dialog box plugin for jQuery',
+                        {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
+                        }
                     );
                     </pre>
 
@@ -268,6 +280,8 @@
                         'I am a notification widget. No buttons, no overlay, I am positioned in the top-right corner and ' +
                         'I stay on screen for 2 seconds.',
                         {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
                             buttons: false,
                             modal: false,
                             position: ['right - 20', 'top + 20'],
@@ -290,13 +304,17 @@
                     <h3><strong>7.</strong> Content loaded from an element on the page</h3>
 
                     <pre class="brush:javascript">
-                    new $.Zebra_Dialog({
-                        source: {
-                            inline: $('#boxcontent').html()
-                        },
-                        width: 600,
-                        title: 'Content loaded from an element on the page'
-                    });</pre>
+                    new $.Zebra_Dialog(
+                        {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
+                            source: {
+                                inline: $('#boxcontent').html()
+                            },
+                            width: 600,
+                            title: 'Content loaded from an element on the page'
+                        }
+                    );</pre>
 
                     <div class="well">
                         Click <a href="javascript:void(0)" id="example7">here</a> to open.
@@ -313,13 +331,17 @@
                     <h3><strong>8.</strong> Content loaded via AJAX</h3>
 
                     <pre class="brush:javascript">
-                    new $.Zebra_Dialog({
-                        source: {
-                            ajax: 'ajax.html'
-                        },
-                        width: 600,
-                        title: 'Content loaded via AJAX'
-                    });</pre>
+                    new $.Zebra_Dialog(
+                        {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
+                            source: {
+                                ajax: 'ajax.html'
+                            },
+                            width: 600,
+                            title: 'Content loaded via AJAX'
+                        }
+                    );</pre>
 
                     <div class="well">
                         Click <a href="javascript:void(0)" id="example8">here</a> to open.
@@ -336,16 +358,20 @@
                     <h3><strong>9.</strong> Content loaded in an iFrame</h3>
 
                     <pre class="brush:javascript">
-                    new $.Zebra_Dialog({
-                        source: {
-                            iframe: {
-                                src: 'https://en.m.wikipedia.org/wiki/Dialog_box',
-                                height: 500
-                            }
-                        },
-                        width: 800,
-                        title: 'External content loaded in an iFrame'
-                    });
+                    new $.Zebra_Dialog(
+                        {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
+                            source: {
+                                iframe: {
+                                    src: 'https://en.m.wikipedia.org/wiki/Dialog_box',
+                                    height: 500
+                                }
+                            },
+                            width: 800,
+                            title: 'External content loaded in an iFrame'
+                        }
+                    );
                     </pre>
 
                     <div class="well">
@@ -369,12 +395,15 @@
                     <pre class="brush:css">
                     /* Notice how we're targeting the dialog box's title bar through the custom class */
                     .myclass .ZebraDialog_Title {
-                        background: #DEDEDE;
-                        border-bottom: 1px solid #222;
+                        background: #330066;
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 5px;
+                        color: #FFF;
+                        font-size: 19px;
                     }
+
                     .myclass .ZebraDialog_Body {
                         background-image: url('coffee_48.png');
-                        background-position: 40px 50px;
                         font-size: 21px;
                     }
                     </pre>
@@ -382,11 +411,15 @@
                     <p>The JavaScript</p>
 
                     <pre class="brush:javascript">
-                    new $.Zebra_Dialog('I love coffee!', {
-                        custom_class: 'myclass',
-                        title: 'Customizing the appearance',
-                        width: 150
-                    });</pre>
+                    new $.Zebra_Dialog('I love coffee!',
+                        {
+                            // for this theme we do not auto-focus the first button
+                            auto_focus_button: false,
+                            custom_class: 'myclass',
+                            title: 'Customizing the appearance',
+                            width: 150
+                        }
+                    );</pre>
 
                     <div class="well">
                         Click <a href="javascript:void(0)" id="example10">here</a> to open.
