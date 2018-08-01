@@ -55,14 +55,14 @@
                                                             //  Default is FALSE
 
                 auto_focus_button:          true,           //  The index (0-based) of the button (from left to right) to
-                                                            //  place the focus on, by default.
+                                                            //  place the focus on when a dialog box is first shown.
                                                             //
                                                             //  Set to FALSE to disable. When set to FALSE the focus will
                                                             //  be placed on the dialog box's content so that when the
                                                             //  users presses TAB, the focus will be set on the first
                                                             //  button.
                                                             //
-                                                            //  Setting it to TRUE is equivalent to setting it to 0.
+                                                            //  Setting this to TRUE is equivalent to setting it to 0.
                                                             //
                                                             //  Default is TRUE
 
