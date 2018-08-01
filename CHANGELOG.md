@@ -1,3 +1,11 @@
+## version 2.0.0 (August 01, 2018)
+
+- added a new "auto_focus_button" property for indicating the button to place the focus on when a dialog box is first shown
+- simplified dialogs' HTML markup and all the classes indicating various states/setups of the dialog box are now added to the main container
+- some of the alignments done previously from JavaScript are now done from CSS - but still working in IE6 :)
+- completely rewritten the CSS for the themes and we're now using [clean-css](https://github.com/jakubpawlowicz/clean-css#how-to-use-clean-css-api) to optimize CSS output, resulting in a reduction of 0.5KB for the flat theme and 1.8KB for the classic theme
+- added a new *materialize* theme, inspired by Google Material Design
+
 ## version 1.6.0 (July 10, 2018)
 
 - "warning" dialog boxes now have "Yes" and "No" buttons instead of just the "Ok" button
