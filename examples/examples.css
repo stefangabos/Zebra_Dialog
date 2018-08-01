@@ -1,13 +1,28 @@
 body {
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-family: Tahoma, Helvetica, Arial, sans-serif;
+}
+
+.top {
+    display: block;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 33px;
+}
+
+.top a {
+    background: #FFF;
+    position: relative;
+    top: 8px;
+    padding-right: 10px;
 }
 
 .syntaxhighlighter {
-    padding: 1.5em 0;
+    padding: .5em 0;
 }
 
-.syntaxhighlighter .code {
-    font-size: 14px !important;
+blockquote.bg-warning.Zebra_Pin {
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 12px 6px -6px rgba(0, 0, 0, .1);
+    transition: box-shadow .25s linear;
 }
 
 .myclass .ZebraDialog_Title {
@@ -23,7 +38,3 @@ body.flat .myclass .ZebraDialog_Title {
     background-image: url('coffee_48.png')
 }
 
-.top {
-    position: relative;
-    margin-left: 10px;
-}

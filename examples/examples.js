@@ -178,4 +178,8 @@ $(document).ready(function() {
         });
     });
 
+    setTimeout(function() {
+        $.Zebra_Pin($('blockquote.bg-warning'));
+    }, 500);
+
 });
