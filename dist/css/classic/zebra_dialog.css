@@ -99,6 +99,9 @@ a.ZebraDialog_Close {
     padding: 20px;
     border-bottom: 2px groove #fff
 }
+.ZebraDialog_NoTitle .ZebraDialog_Body {
+    border-bottom: none
+}
 .ZebraDialog_Icon .ZebraDialog_Body {
     background-repeat: no-repeat;
     background-position: 20px 20px;

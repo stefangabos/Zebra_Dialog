@@ -46,6 +46,10 @@
     border-bottom: 2px groove #FFF;
 }
 
+.ZebraDialog_NoTitle .ZebraDialog_Body {
+    border-bottom: none;
+}
+
 .ZebraDialog_Icon .ZebraDialog_Body {
     background-repeat: no-repeat;
     background-position: 20px 20px;
