@@ -153,20 +153,20 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>auto_close</code></td>
         <td valign="top"><em>mixed</em></td>
-        <td valign="top">FALSE</td>
+        <td valign="top">false</td>
         <td valign="top">
-            The number of milliseconds after which to automatically close the dialog box or <code>FALSE</code> to not automatically close the dialog box.
+            The number of milliseconds after which to automatically close the dialog box or <code>false</code> to not automatically close the dialog box.
         </td>
     </tr>
     <tr>
         <td valign="top"><code>auto_focus_button</code></td>
         <td valign="top"><em>mixed</em></td>
-        <td valign="top">TRUE</td>
+        <td valign="top">true</td>
         <td valign="top">
             The index (0-based) of the button (from left to right) to place the focus on when a dialog box is first shown.<br><br>
-            Set to <code>FALSE</code> to disable.<br><br>
-            <blockquote>When set to <code>FALSE</code> the focus will be placed on the dialog box's content so that when the users presses <code>TAB</code>, the focus will be set on the first button.</blockquote>
-            Setting this to <code>TRUE</code> is equivalent to setting it to <code>0</code>.<br><br>
+            Set to <code>false</code> to disable.<br><br>
+            <blockquote>When set to <code>false</code> the focus will be placed on the dialog box's content so that when the users presses <code>TAB</code>, the focus will be set on the first button.</blockquote>
+            Setting this to <code>true</code> is equivalent to setting it to <code>0</code>.<br><br>
             Default is TRUE
         </td>
     </tr>
@@ -176,9 +176,9 @@ $(document).ready(function() {
         <td valign="top"></td>
         <td valign="top">
             Use this for localization and for adding custom buttons.<br><br>
-            If set to <code>TRUE</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Ok', 'Cancel']</code> for <em>warning</em> and <em>question</em> and types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
+            If set to <code>true</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Ok', 'Cancel']</code> for <em>warning</em> and <em>question</em> and types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
             For custom buttons, use an array containing the captions of the buttons to display: <code>['My button 1', 'My button 2']</code>.<br><br>
-            Set to <code>FALSE</code> if you want no buttons.<br><br>
+            Set to <code>false</code> if you want no buttons.<br><br>
             You can also add custom CSS classes and/or attach callback functions to individual buttons by providing an array of objects like:<br><br>
             <code>[{</code><br>
             <code>&nbsp;&nbsp;caption: 'My button 1',</code><br>
@@ -196,15 +196,15 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>center_buttons</code></td>
         <td valign="top"><em>boolean</em></td>
-        <td valign="top">FALSE</td>
+        <td valign="top">false</td>
         <td valign="top">
-        Setting this property to <code>TRUE</code> will instruct the plugin to center any available buttons instead of floating them to the right
+        Setting this property to <code>true</code> will instruct the plugin to center any available buttons instead of floating them to the right
         </td>
     </tr>
     <tr>
         <td valign="top"><code>custom_class</code></td>
         <td valign="top"><em>mixed</em></td>
-        <td valign="top">FALSE</td>
+        <td valign="top">false</td>
         <td valign="top">
             An extra class to add to the dialog box's container, useful for further customizing dialog boxes<br><br>
             For example, setting this value to <code>mycustom</code> and in the CSS file having something like<br><br>
@@ -216,9 +216,9 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>keyboard</code></td>
         <td valign="top"><em>boolean</em></td>
-        <td valign="top">TRUE</td>
+        <td valign="top">true</td>
         <td valign="top">
-        When set to <code>TRUE</code>, pressing the <code>ESC</code> key will close the dialog box.
+        When set to <code>true</code>, pressing the <code>ESC</code> key will close the dialog box.
         </td>
     </tr>
     <tr>
@@ -241,15 +241,15 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>modal</code></td>
         <td valign="top"><em>boolean</em></td>
-        <td valign="top">TRUE</td>
+        <td valign="top">true</td>
         <td valign="top">
-            When set to <code>TRUE</code> there will be a semitransparent overlay behind the dialog box, preventing users from clicking the page's content.
+            When set to <code>true</code> there will be a semitransparent overlay behind the dialog box, preventing users from clicking the page's content.
         </td>
     </tr>
     <tr>
         <td valign="top"><code>overlay_close</code></td>
         <td valign="top"><em>boolean</em></td>
-        <td valign="top">TRUE</td>
+        <td valign="top">true</td>
         <td valign="top">
             Should the dialog box close when the overlay is clicked?
         </td>
@@ -301,9 +301,9 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>show_close_button</code></td>
         <td valign="top"><em>boolean</em></td>
-        <td valign="top">TRUE</td>
+        <td valign="top">true</td>
         <td valign="top">
-            When set to <code>TRUE</code>, a <em>close</em> button (the little "x") will be shown in the upper right corner of the dialog box.<br><br>
+            When set to <code>true</code>, a <em>close</em> button (the little "x") will be shown in the upper right corner of the dialog box.<br><br>
 			If the dialog box has a title bar then the <em>close</em> button will be shown in the title bar, vertically centered and respecting the right padding.<br><br>
             If the dialog box does not have a title bar then the <em>close</em> button will be shown in the upper right corner of the body of the dialog box, respecting the position related properties set in the stylesheet.
         </td>
@@ -311,7 +311,7 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>source</code></td>
         <td valign="top"><em>mixed</em></td>
-        <td valign="top">FALSE</td>
+        <td valign="top">false</td>
         <td valign="top">
             Add content via AJAX, iFrames or from inline elements (together with the already applied events).<br><br>
             This property can be any of the following:<br><br>
@@ -369,14 +369,14 @@ $(document).ready(function() {
                 <li>question</li>
                 <li>warning</li>
             </ul>
-            If you don't want an icon, set the <code>type</code> property to <code>FALSE</code>.<br><br>
+            If you don't want an icon, set the <code>type</code> property to <code>false</code>.<br><br>
             By default, the <code>warning</code> and <code>question</code> types have two buttons with the captions <em>Ok</em> and <em>Cancel</em> respectively, while the other types have a single button with the caption <em>Ok</em>.
         </td>
     </tr>
     <tr>
         <td valign="top"><code>vcenter_short_message</code></td>
         <td valign="top"><em>boolean</em></td>
-        <td valign="top">TRUE</td>
+        <td valign="top"f/td>
         <td valign="top">
             Should short messages be vertically centered?
         </td>
@@ -409,7 +409,7 @@ $(document).ready(function() {
         <td valign="top">
             Event fired when <em>after</em> the dialog box is closed.<br>
             For executing functions <em>before</em> the closing of the dialog box, see the <strong>buttons</strong> option.<br>
-            The callback function takes as argument the caption of the clicked button, or <code>FALSE</code> if the dialog box was closed by pressing the ESC key or by clicking on the overlay.
+            The callback function takes as argument the caption of the clicked button, or <code>false</code> if the dialog box was closed by pressing the ESC key or by clicking on the overlay.
         </td>
     </tr>
     </tbody>
