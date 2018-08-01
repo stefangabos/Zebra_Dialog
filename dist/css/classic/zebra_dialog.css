@@ -52,10 +52,6 @@ a.ZebraDialog_Close {
     text-decoration: none;
     top: 50%
 }
-.ZebraDialog_NoTitle .ZebraDialog_Close {
-    top: 0;
-    margin-top: 0
-}
 .ZebraDialogOverlay {
     background: #666;
     height: 100%;
@@ -152,4 +148,9 @@ a.ZebraDialog_Close {
 }
 .ZebraDialog_Close:hover {
     color: #e7edef
+}
+.ZebraDialog_NoTitle .ZebraDialog_Close {
+    top: 0;
+    margin-top: 0;
+    color: #666
 }
