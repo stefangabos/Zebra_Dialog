@@ -9,7 +9,7 @@
  *
  *  Features:
  *
- *  -   great looks out of the box, with 2 themes included
+ *  -   great looks out of the box, with 3 themes included
  *  -   5 types of dialog boxes available: confirmation, information, warning, error and question
  *  -   content can also be added through AJAX calls, iFrames, or from inline elements (together with attached events)
  *  -   create modal or non-modal dialog boxes
@@ -21,7 +21,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    1.6.0 (last revision: July 09, 2018)
+ *  @version    2.0.0 (last revision: August 01, 2018)
  *  @copyright  (c) 2011 - 2018 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -33,7 +33,7 @@
     $.Zebra_Dialog = function() {
 
         // so you can tell the version number even if all you have is the minified source
-        this.version = '1.6.0';
+        this.version = '2.0.0';
 
         // default options
         var defaults = {
@@ -53,6 +53,18 @@
                                                             //  dialog box.
                                                             //
                                                             //  Default is FALSE
+
+                auto_focus_button:          true,           //  The index (0-based) of the button (from left to right) to
+                                                            //  place the focus on, by default.
+                                                            //
+                                                            //  Set to FALSE to disable. When set to FALSE the focus will
+                                                            //  be placed on the dialog box's content so that when the
+                                                            //  users presses TAB, the focus will be set on the first
+                                                            //  button.
+                                                            //
+                                                            //  Setting it to TRUE is equivalent to setting it to 0.
+                                                            //
+                                                            //  Default is TRUE
 
                 buttons:                    true,           //  Use this for localization and for adding custom buttons.
                                                             //
@@ -471,12 +483,22 @@
 
                 }
 
-                // move the focus to the first of the dialog box's buttons
                 // only do it when we initialize the dialog and not also on resizing because otherwise, if there is an
                 // input in the dialog and the input receives focus on mobile, the virtual keyboard will show up and will
                 // trigger this method again which would remove the focus and, therefore, the virtual keyboard, making
                 // it impossible to give focus to the input element
-                if (undefined === timeout) plugin.dialog.find('a[class^=ZebraDialog_Button]:first').focus();
+                if (undefined === timeout)
+
+                    // if we have to set focus to one of the buttons
+                    if (plugin.settings.auto_focus_button !== false)
+
+                        // move the focus to the first of the dialog box's buttons
+                        plugin.dialog.find('a[class^=ZebraDialog_Button]').eq(plugin.settings.auto_focus_button === true ? 0 : plugin.settings.auto_focus_button).focus();
+
+                    // if we do not want to set focus to one of the buttons
+                    // do this kind of a trick to set the focus to the content
+                    // (so that pressing tab gets you to the first button)
+                    else plugin.body.attr('tabindex', 1).focus().removeAttr('tabindex');
 
                 // if the browser is Internet Explorer 6, call the "_emulate_fixed_position" method
                 // (if we do not apply a short delay, it sometimes does not work as expected)
