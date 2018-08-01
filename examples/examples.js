@@ -161,7 +161,7 @@ $(document).ready(function() {
         new $.Zebra_Dialog({
             source: {
                 iframe: {
-                    src: 'http://en.m.wikipedia.org/wiki/Dialog_box',
+                    src: 'https://en.m.wikipedia.org/wiki/Dialog_box',
                     height: 500
                 }
             },
