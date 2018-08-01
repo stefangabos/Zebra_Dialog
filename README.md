@@ -165,8 +165,8 @@ $(document).ready(function() {
         <td valign="top">
             The index (0-based) of the button (from left to right) to place the focus on when a dialog box is first shown.<br><br>
             Set to <code>FALSE</code> to disable.<br><br>
-            <blockquote>When set to <code>FALSE</code> the focus will be placed on the dialog box's content so that when the users presses <code>TAB</code>, the focus will be set on the first button.</blockquote><br>
-            Setting this to <code>TRUE</code> is equivalent to setting it to <code>0</code>.
+            <blockquote>When set to <code>FALSE</code> the focus will be placed on the dialog box's content so that when the users presses <code>TAB</code>, the focus will be set on the first button.</blockquote>
+            Setting this to <code>TRUE</code> is equivalent to setting it to <code>0</code>.<br><br>
             Default is TRUE
         </td>
     </tr>
