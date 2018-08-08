@@ -1,6 +1,8 @@
 examples/README.md
 examples/screenshot.png
 examples/screenshot-flat.png
+examples/screenshot-materialize.png
+examples/browserstack.png
 node_modules/*
 src/*
 .gitattributes
