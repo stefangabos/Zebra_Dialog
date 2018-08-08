@@ -1,6 +1,6 @@
 {
   "name": "zebra_dialog",
-  "description": "A small, compact and highly configurable dialog box plugin for jQuery meant to replace JavaScript's native alert and confirmation windows",
+  "description": "A small, compact, and highly configurable dialog box plugin for jQuery meant to replace JavaScript's native alert and confirmation windows",
   "author": {
     "name": "Stefan Gabos",
     "email": "contact@stefangabos.ro"
