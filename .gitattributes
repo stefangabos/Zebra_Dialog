@@ -5,6 +5,8 @@
 examples/README.md export-ignore
 examples/screenshot.png export-ignore
 examples/screenshot-flat.png export-ignore
+examples/screenshot-materialize.png export-ignore
+examples/browserstack.png export-ignore
 src/ export-ignore
 .gitattributes export-ignore
 .gitignore export-ignore
