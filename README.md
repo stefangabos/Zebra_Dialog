@@ -106,6 +106,7 @@ Load the style sheet file from a local source
 
 <!-- replacing "min" with "src" will serve you the non-compressed version -->
 ```
+
 Now, within the DOM-ready event do
 
 ```javascript
