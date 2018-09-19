@@ -33,7 +33,7 @@ Can also be used as a notification widget (when configured to show no buttons an
 
 For the [flat theme](https://stefangabos.github.io/Zebra_Dialog/flat.html), the icons used are made by [Elegant Themes](http://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free)
 
-For the [materialize theme](https://stefangabos.github.io/Zebra_Dialog/flat.html) theme, the icons used are taken from [Google's Material Design](https://material.io/tools/icons/?style=baseline) *"design language"*.
+For the [materialize theme](https://stefangabos.github.io/Zebra_Dialog/materialize.html) theme, the icons used are taken from [Google's Material Design](https://material.io/tools/icons/?style=baseline) *"design language"*.
 
 ## Demo
 
