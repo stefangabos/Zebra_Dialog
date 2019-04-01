@@ -903,9 +903,6 @@
             // if there are any buttons to be added to the dialog box
             if (buttons) {
 
-                // reverse the order of the buttons because they are floated to the right
-                buttons.reverse();
-
                 // create the button bar
                 button_bar = $('<div>', {
 
