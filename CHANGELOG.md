@@ -1,3 +1,7 @@
+## version 2.0.1 (TBA)
+
+- the overlay can now have a different parent than the `body` element, via the newly added `overlay_container` property
+
 ## version 2.0.0 (August 01, 2018)
 
 - added a new "auto_focus_button" property for indicating the button to place the focus on when a dialog box is first shown
