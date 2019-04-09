@@ -428,6 +428,19 @@ var dialog = new $.Zebra_Dialog('This is some information');
 dialog.close();
 ```
 
+### `update()`
+
+Use this method to adjust the dialog box's position after content is changed dynamically, at run-time.
+
+```javascript
+var dialog = new $.Zebra_Dialog('This is some information');
+
+// change the content in the dialog box
+$('.ZebraDialog_Body').html('New content');
+
+dialog.update();
+```
+
 ## Support the development of this project
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKMCMRZB493LY)
