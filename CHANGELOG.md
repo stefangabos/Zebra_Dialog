@@ -1,5 +1,6 @@
-## version 2.0.1 (TBA)
+## version 2.1.0 (TBA)
 
+- added a new `update` method for adjusting the dialog box's position when content is changed dynamically, at run-time
 - the overlay can now have a different parent than the `body` element, via the newly added `overlay_container` property
 
 ## version 2.0.0 (August 01, 2018)
