@@ -21,7 +21,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.0.1 (last revision: April 09, 2019)
+ *  @version    2.1.0 (last revision: April 09, 2019)
  *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -33,7 +33,7 @@
     $.Zebra_Dialog = function() {
 
         // so you can tell the version number even if all you have is the minified source
-        this.version = '2.0.1';
+        this.version = '2.1.0';
 
         // default options
         var defaults = {
@@ -1115,6 +1115,27 @@
                     plugin.settings.onClose(undefined !== caption ? caption : '');
 
             });
+
+        };
+
+        /**
+         *  Updates the dialog's position on the screen. Useful if you add content at run-time.
+         *
+         *  @return void
+         */
+        plugin.update = function() {
+
+            // clear a previously set timeout
+            // this will ensure that the next piece of code will not be executed on every step of the resize event
+            clearTimeout(timeout);
+
+            // set a small timeout before doing anything
+            timeout = setTimeout(function() {
+
+                // reposition the dialog box
+                _draw();
+
+            }, 100);
 
         };
 
