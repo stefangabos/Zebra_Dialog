@@ -21,8 +21,8 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.0.0 (last revision: August 01, 2018)
- *  @copyright  (c) 2011 - 2018 Stefan Gabos
+ *  @version    2.0.1 (last revision: April 09, 2019)
+ *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
  */
@@ -33,7 +33,7 @@
     $.Zebra_Dialog = function() {
 
         // so you can tell the version number even if all you have is the minified source
-        this.version = '2.0.0';
+        this.version = '2.0.1';
 
         // default options
         var defaults = {
@@ -157,6 +157,11 @@
                 overlay_close:              true,           //  Should the dialog box close when the overlay is clicked?
                                                             //
                                                             //  Default is TRUE
+
+                overlay_container:          'body',         //  A selector indicating the DOM element to server as the
+                                                            //  overlay's container.
+                                                            //
+                                                            //  Default is "body".
 
                 overlay_opacity:            '.9',           //  The opacity of the overlay (between 0 and 1)
                                                             //
@@ -734,7 +739,7 @@
                     plugin.overlay.on('click', function() { plugin.close(); });
 
                 // append the overlay to the DOM
-                plugin.overlay.appendTo('body');
+                plugin.overlay.appendTo(plugin.settings.overlay_container);
 
             }
 
