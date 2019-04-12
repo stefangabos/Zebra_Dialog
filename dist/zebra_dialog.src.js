@@ -703,7 +703,8 @@
          */
         plugin.init = function() {
 
-            var ajax_options, button_bar, buttons, canvas, default_options, iframe_options, preloader, $title, tmp, type;
+            var ajax_options, button_bar, buttons, canvas, default_options, iframe_options, preloader, $title, tmp, type,
+                $container, container_position, max_zindex = 0;
 
             // the plugin's final properties are the merged default and user-provided options (if any)
             plugin.settings = $.extend({}, defaults, options);
@@ -730,6 +731,25 @@
                                                                         //  as a string)
 
                 });
+
+                // if the overlay is appended to a different element other than the "body"
+                if (plugin.settings.overlay_container !== 'body') {
+
+                    // reference to the container element
+                    $container = plugin.settings.overlay_container;
+
+                    // get container's position
+                    container_position = $container.offset();
+
+                    // adjust the overlay's dimensions to match the ones of the parent
+                    plugin.overlay.css({
+                        left:   container_position.left,
+                        top:    container_position.top,
+                        width:  $container.outerWidth(),
+                        height: $container.outerHeight()
+                    });
+
+                }
 
                 // if dialog box can be closed by clicking the overlay
                 if (plugin.settings.overlay_close)
@@ -763,6 +783,20 @@
                 'visibility':   'hidden'                                //  the dialog box is hidden for now
 
             });
+
+            // iterate over any already existing dialogs on the page
+            $('.ZebraDialog').each(function() {
+
+                // get the dialog's zIndex
+                var zIndex = $(this).css('zIndex');
+
+                // if a zIndex is set and it is more than what we have, use that as reference from now on
+                if (zIndex && zIndex > max_zindex) max_zindex = zIndex;
+
+            });
+
+            // if another dialog already exists on the page, set the zIndex of this one higher
+            if (max_zindex > 0) plugin.dialog.css('zIndex', max_zindex + 1);
 
             // if a notification message
             if (!plugin.settings.buttons && plugin.settings.auto_close)
