@@ -10,7 +10,7 @@
  *  Features:
  *
  *  -   great looks out of the box, with 3 themes included
- *  -   5 types of dialog boxes available: confirmation, information, warning, error and question
+ *  -   6 types of dialog boxes available: confirmation, information, warning, error, question and prompt
  *  -   content can also be added through AJAX calls, iFrames, or from inline elements (together with attached events)
  *  -   create modal or non-modal dialog boxes
  *  -   easily add custom buttons
@@ -282,6 +282,7 @@
                                                             //  - information
                                                             //  - question
                                                             //  - warning
+                                                            //  - prompt
                                                             //
                                                             //  If you don't want an icon, set the "type" property to FALSE.
                                                             //
@@ -570,6 +571,7 @@
                         // for "question" type
                         case 'question':
                         case 'warning':
+                        case 'prompt':
 
                             // there are two buttons
                             plugin.settings.buttons = ['Ok', 'Cancel'];
@@ -590,7 +592,7 @@
             },
 
             /**
-             *  Returns the type of the dialog box, or FALSE if type is not one of the five known types.
+             *  Returns the type of the dialog box, or FALSE if type is not one of the six known types.
              *
              *  Values that may be returned by this method are:
              *  -   Confirmation
@@ -598,8 +600,9 @@
              *  -   Information
              *  -   Question
              *  -   Warning
+             *  -   Prompt
              *
-             *  @return boolean     Returns the type of the dialog box, or FALSE if type is not one of the five known types.
+             *  @return boolean     Returns the type of the dialog box, or FALSE if type is not one of the six known types.
              *
              *  @access private
              */
@@ -608,12 +611,13 @@
                 // see what is the type of the dialog box
                 switch (plugin.settings.type) {
 
-                    // if one of the five supported types
+                    // if one of the six supported types
                     case 'confirmation':
                     case 'error':
                     case 'information':
                     case 'question':
                     case 'warning':
+                    case 'prompt':
 
                         // return the dialog box's type, first letter capital
                         return plugin.settings.type.charAt(0).toUpperCase() + plugin.settings.type.slice(1).toLowerCase();
@@ -853,6 +857,10 @@
 
             }
 
+            if (plugin.settings.type === 'prompt') {
+                plugin.settings.message += '<div class="ZebraDialog_Prompt"><input type="text" name="prompt" value="" /></div>';
+            }
+
             // if short messages are to be centered vertically
             if (plugin.settings.vcenter_short_message)
 
@@ -978,11 +986,16 @@
                         if (undefined !== value.callback) close = value.callback(plugin.dialog);
 
                         // if dialog box is to be closed
-                        if (close !== false)
+                        if (close !== false) {
+
+                            var caption = (undefined !== value.caption) ? value.caption : value,
+                                prompt = (plugin.settings.type === 'prompt' && $('.ZebraDialog_Prompt input').length > 0) ? $('.ZebraDialog_Prompt input').val() : '';
 
                             // remove the overlay and the dialog box from the DOM
                             // also pass the button's label as argument
-                            plugin.close(undefined !== value.caption ? value.caption : value);
+                            plugin.close(caption, prompt);
+
+                        }
 
                     });
 
@@ -1091,7 +1104,7 @@
          *
          *  @return void
          */
-        plugin.close = function(caption) {
+        plugin.close = function(caption, prompt) {
 
             // remove all event handlers set by the plugin
             $(document).off('.Zebra_Dialog');
@@ -1143,7 +1156,7 @@
                 if (plugin.settings.onClose && typeof plugin.settings.onClose === 'function')
 
                     // execute the callback function
-                    plugin.settings.onClose(undefined !== caption ? caption : '');
+                    plugin.settings.onClose(undefined !== caption ? caption : '', undefined !== prompt ? prompt : '');
 
             });
 
