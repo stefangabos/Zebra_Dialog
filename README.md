@@ -19,7 +19,7 @@ Can also be used as a notification widget (when configured to show no buttons an
 ## Features
 
  - great looking dialog boxes, out of the box, with 3 beautiful themes included
- - 5 types of dialog boxes available: *confirmation*, *information*, *warning*, *error* and *question*
+ - 6 types of dialog boxes available: *confirmation*, *information*, *warning*, *error*, *question* and *prompt*
  - content can also be added through AJAX calls, iFrames or from inline elements (together with attached events)
  - easily customisable appearance by editing the CSS file
  - create modal or non-modal dialog boxes
@@ -177,7 +177,7 @@ $(document).ready(function() {
         <td valign="top"></td>
         <td valign="top">
             Use this for localization and for adding custom buttons.<br><br>
-            If set to <code>true</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Ok', 'Cancel']</code> for <em>warning</em> and <em>question</em> and types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
+            If set to <code>true</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Ok', 'Cancel']</code> for <em>warning</em>, <em>question</em> and <em>prompt</em> types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
             For custom buttons, use an array containing the captions of the buttons to display: <code>['My button 1', 'My button 2']</code>.<br><br>
             Set to <code>false</code> if you want no buttons.<br><br>
             You can also add custom CSS classes and/or attach callback functions to individual buttons by providing an array of objects like:<br><br>
