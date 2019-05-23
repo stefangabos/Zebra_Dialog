@@ -40,14 +40,25 @@ $(document).ready(function() {
         });
     });
 
+    $('#example1_6').on('click', function() {
+        new $.Zebra_Dialog('Use prompt dialog to ask the user for an input.', {
+            auto_focus_button: $('body.materialize').length ? false : true,
+            title: 'Prompt',
+            type: 'prompt',
+            onClose: function(caption, prompt) {
+                alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked' + (prompt != '' ? (' and the following input was entered: "' + prompt + '"') : ''));
+            }
+        });
+    });
+
     $('#example2').on('click', function() {
         new $.Zebra_Dialog('We can set as many buttons as we want and we handle the user\'s choice though the callback function attached to the <strong>onClose</strong> event.<br><br>See the next example to handle user\'s choice in a different way.', {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Custom buttons',
             type: 'question',
             buttons: ['Yes', 'No', 'Help'],
-            onClose: function(caption) {
-                alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked');
+            onClose: function(caption, prompt) {
+                alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked' + (prompt != '' ? (' and the following input was entered: "' + prompt + '"') : ''));
             }
         });
     });
