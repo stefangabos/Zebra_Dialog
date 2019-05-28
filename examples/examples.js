@@ -41,7 +41,7 @@ $(document).ready(function() {
     });
 
     $('#example1_6').on('click', function() {
-        new $.Zebra_Dialog('Use prompt dialog to ask the user for an input.', {
+        new $.Zebra_Dialog('Use prompt dialogs to ask for user input.', {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Prompt',
             type: 'prompt',
