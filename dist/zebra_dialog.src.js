@@ -2,7 +2,7 @@
  *  Zebra_Dialog
  *
  *  A small, compact (one JS file, no dependencies other than jQuery 1.7.0+) and highly configurable dialog box plugin
- *  for jQuery, meant to replace JavaScript's native "alert" and "confirmation" dialogs.
+ *  for jQuery, meant to replace JavaScript's native "alert", "confirmation" and "prompt" dialogs.
  *
  *  Can also be used as a notification widget - when configured to show no buttons and to close automatically - for updates
  *  or errors, without distracting users from their browser experience by displaying obtrusive alerts.
@@ -21,7 +21,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.1.0 (last revision: April 09, 2019)
+ *  @version    2.1.0 (last revision: May 29, 2019)
  *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -49,8 +49,8 @@
                                                             //  Default is 0
 
                 auto_close:                 false,          //  The number of milliseconds after which to automatically
-                                                            //  close the dialog box or FALSE to not automatically close the
-                                                            //  dialog box.
+                                                            //  close the dialog box or FALSE to not automatically close
+                                                            //  the dialog box.
                                                             //
                                                             //  Default is FALSE
 
@@ -69,21 +69,14 @@
                 buttons:                    true,           //  Use this for localization and for adding custom buttons.
                                                             //
                                                             //  If set to TRUE, the default buttons will be used, depending
-                                                            //  on the type of the dialog box: ['Ok', 'Cancel'] for "warning"
-                                                            //  and "question" types and ['Ok'] for the other dialog box types.
+                                                            //  on the type of the dialog box: ['Ok', 'Cancel'] for "prompt",
+                                                            //  "warning" and "question" types, and ['Ok'] for the other
+                                                            //  dialog box types.
                                                             //
-                                                            //  For custom buttons, use an array containing the captions of
-                                                            //  the buttons to display: ['My button 1', 'My button 2'].
+                                                            //  For custom buttons, use an array containing the captions
+                                                            //  of the buttons to display: ['My button 1', 'My button 2'].
                                                             //
                                                             //  Set to FALSE if you want no buttons.
-                                                            //
-                                                            //  Note that when the dialog box is closed as a result of clicking
-                                                            //  a button, the "onClose" event is triggered and the callback
-                                                            //  function (if any) receives as argument the caption of the
-                                                            //  clicked button.
-                                                            //
-                                                            //  See the comments for the "onClose" event below for more
-                                                            //  information.
                                                             //
                                                             //  You can also add custom CSS classes and/or attach callback
                                                             //  functions to individual buttons by using objects in the
@@ -102,13 +95,16 @@
                                                             //  }
                                                             //  ]
                                                             //
-                                                            //  The main difference is that a callback function attached this
-                                                            //  way is executed as soon as the button is clicked rather than
-                                                            //  *after* the dialog box is closed, as it is the case with the
-                                                            //  "onClose" event.
+                                                            //  The main difference is that a callback function attached
+                                                            //  this way is executed as soon as the button is clicked
+                                                            //  rather than *after* the dialog box is closed, as it is
+                                                            //  the case with the "onClose" event.
                                                             //
-                                                            //  Callback functions attached to buttons get as argument the
-                                                            //  entire dialog box jQuery object.
+                                                            //  Callback functions attached to buttons receive as first
+                                                            //  argument the entire dialog box as a jQuery object and, as
+                                                            //  second argument, the value entered in the input box when
+                                                            //  the dialog box's type is "prompt", or undefined for the
+                                                            //  other dialog types.
                                                             //
                                                             //  A callback function returning FALSE will prevent the dialog
                                                             //  box from closing.
@@ -130,8 +126,8 @@
                                                             //
                                                             //  Default is FALSE
 
-                keyboard:                   true,           //  When set to TRUE, pressing the ESC key will close the dialog
-                                                            //  box.
+                keyboard:                   true,           //  When set to TRUE, pressing the ESC key will close the
+                                                            //  dialog box.
                                                             //
                                                             //  Default is TRUE.
 
@@ -169,25 +165,26 @@
 
                 position:                   'center',       //  Position of the dialog box.
                                                             //
-                                                            //  Can be either "center" (which would center the dialog box) or
-                                                            //  an array with 2 elements, in the form of
+                                                            //  Can be either "center" (which would center the dialog box)
+                                                            //  or an array with 2 elements, in the form of
                                                             //  {'horizontal_position +/- offset', 'vertical_position +/- offset'}
                                                             //  (notice how everything is enclosed in quotes) where
                                                             //  "horizontal_position" can be "left", "right" or "center",
-                                                            //  "vertical_position" can be "top", "bottom" or "middle", and
-                                                            //  "offset" represents an optional number of pixels to add/subtract
-                                                            //  from the respective horizontal or vertical position.
+                                                            //  "vertical_position" can be "top", "bottom" or "middle",
+                                                            //  and "offset" represents an optional number of pixels to
+                                                            //  add/subtract from the respective horizontal or vertical
+                                                            //  position.
                                                             //
                                                             //  Positions are relative to the viewport (the area of the
                                                             //  browser that is visible to the user)!
                                                             //
                                                             //  Examples:
                                                             //
-                                                            //  ['left + 20', 'top + 20'] would position the dialog box in the
-                                                            //  top-left corner, shifted 20 pixels inside.
+                                                            //  ['left + 20', 'top + 20'] would position the dialog box
+                                                            //  in the top-left corner, shifted 20 pixels inside.
                                                             //
-                                                            //  ['right - 20', 'bottom - 20'] would position the dialog box
-                                                            //  in the bottom-right corner, shifted 20 pixels inside.
+                                                            //  ['right - 20', 'bottom - 20'] would position the dialog
+                                                            //  box in the bottom-right corner, shifted 20 pixels inside.
                                                             //
                                                             //  ['center', 'top + 20'] would position the dialog box in
                                                             //  center-top, shifted 20 pixels down.
@@ -199,8 +196,8 @@
                                                             //
                                                             //  Default is 100.
 
-                show_close_button:          true,           //  When set to TRUE, a "close" button (the little "x") will be
-                                                            //  shown in the upper right corner of the dialog box.
+                show_close_button:          true,           //  When set to TRUE, a "close" button (the little "x") will
+                                                            //  be shown in the upper right corner of the dialog box.
                                                             //
                                                             //  If the dialog box has a title bar then the "close" button
                                                             //  will be shown in the title bar, vertically centered and
@@ -218,12 +215,12 @@
                                                             //
                                                             //  This property can be any of the following:
                                                             //
-                                                            //  - 'ajax': object - where "object" can be an object with any
-                                                            //  of the properties you'd normally use to make an AJAX call in
-                                                            //  jQuery (see the description for the "settings" argument at
-                                                            //  http://api.jquery.com/jQuery.ajax/), or it can be a string
-                                                            //  representing a valid URL whose content to be fetched via
-                                                            //  AJAX and placed inside the dialog box.
+                                                            //  - 'ajax': object - where "object" can be an object with
+                                                            //  any of the properties you'd normally use to make an AJAX
+                                                            //  call in jQuery (see the description for the "settings"
+                                                            //  argument at http://api.jquery.com/jQuery.ajax/), or it
+                                                            //  can be a string representing a valid URL whose content to
+                                                            //  be fetched via AJAX and placed inside the dialog box.
                                                             //
                                                             //  Example:
                                                             //
@@ -286,8 +283,8 @@
                                                             //
                                                             //  If you don't want an icon, set the "type" property to FALSE.
                                                             //
-                                                            //  By default, the "warning" and "question" types have two
-                                                            //  buttons with the captions "Ok" and "Cancel" respectively,
+                                                            //  By default, the "warning", "question" and "prompt" types
+                                                            //  have two buttons with the captions "Ok" and "Cancel" respectively,
                                                             //  while the other types have a single button with the caption
                                                             //  "Ok".
                                                             //
@@ -312,11 +309,16 @@
                                                             //  For executing functions *before* the closing of the dialog
                                                             //  box, see the "buttons" attribute.
                                                             //
-                                                            //  The callback function (if any) receives as argument the
-                                                            //  caption of the clicked button or boolean FALSE if the dialog
-                                                            //  box is closed by pressing the ESC key or by clicking on the
-                                                            //  overlay.
-
+                                                            //  The callback function (if any) receives as first argument
+                                                            //  the caption of the clicked button, boolean FALSE if the
+                                                            //  dialog box is closed by pressing the ESC key, or by
+                                                            //  clicking the dialog box's "x" button or the overlay or,
+                                                            //  when the dialog box type is "prompt", by pressing the ENTER
+                                                            //  key while inside the input box. As second argument, the
+                                                            //  callback function receives the value entered in the input
+                                                            //  box when the dialog box's type is "prompt" and a button
+                                                            //  was clicked or ENTER key was pressed while inside the
+                                                            //  input box, or undefined for any other case.
             },
 
             // to avoid confusions, we use "plugin" to reference the current instance of the object
@@ -791,7 +793,7 @@
             // iterate over any already existing dialogs on the page
             $('.ZebraDialog').each(function() {
 
-                // get the dialog's zIndex
+                // get the dialog box's zIndex
                 var zIndex = $(this).css('zIndex');
 
                 // if a zIndex is set and it is more than what we have, use that as reference from now on
@@ -857,9 +859,11 @@
 
             }
 
-            if (plugin.settings.type === 'prompt') {
-                plugin.settings.message += '<div class="ZebraDialog_Prompt"><input type="text" name="prompt" value="" /></div>';
-            }
+            // if dialog type is "prompt"
+            if (plugin.settings.type === 'prompt')
+
+                // add input box
+                plugin.settings.message += '<input type="text" name="ZebraDialog_Prompt_Input" class="ZebraDialog_Prompt_Input">';
 
             // if short messages are to be centered vertically
             if (plugin.settings.vcenter_short_message)
@@ -873,6 +877,17 @@
 
                 // add the message to the message container
                 plugin.body.html(plugin.settings.message);
+
+            // if dialog type is "prompt"
+            if (plugin.settings.type === 'prompt')
+
+                // handle key presses on the input box
+                $('.ZebraDialog_Prompt_Input', plugin.body).on('keypress', function(e) {
+
+                    // if ENTER is pressed, close the dialog and return the input box's content
+                    if (e.keyCode === 13) plugin.close(false, this.value);
+
+                });
 
             // if dialog box content is to be fetched from an external source
             if (plugin.settings.source && typeof plugin.settings.source === 'object') {
@@ -979,23 +994,23 @@
                     // handle the button's click event
                     button.on('click', function() {
 
-                        // by default, clicking a button closes the dialog box
-                        var close = true;
+                        var
+                            // by default, clicking a button closes the dialog box
+                            close = true,
+
+                            // the value of the input box is sent only when the "Ok" button is clicked
+                            // we always scan the DOM for the input element for the case when the dialog box's content was altered at run-time
+                            input = plugin.settings.type === 'prompt' && $('.ZebraDialog_Prompt_Input', plugin.body).length ? $('.ZebraDialog_Prompt_Input', plugin.body).val() : undefined;
 
                         // execute the callback function when button is clicked
-                        if (undefined !== value.callback) close = value.callback(plugin.dialog);
+                        if (undefined !== value.callback) close = value.callback(plugin.dialog, input);
 
                         // if dialog box is to be closed
-                        if (close !== false) {
-
-                            var caption = (undefined !== value.caption) ? value.caption : value,
-                                prompt = (plugin.settings.type === 'prompt' && $('.ZebraDialog_Prompt input').length > 0) ? $('.ZebraDialog_Prompt input').val() : '';
+                        if (close !== false)
 
                             // remove the overlay and the dialog box from the DOM
-                            // also pass the button's label as argument
-                            plugin.close(caption, prompt);
-
-                        }
+                            // and pass the clicked button's label as argument
+                            plugin.close(undefined !== value.caption ? value.caption : value, input);
 
                     });
 
@@ -1094,6 +1109,12 @@
             // (no animation)
             _draw(false);
 
+            // if dialog type is "prompt"
+            if (plugin.settings.type === 'prompt')
+
+                // move focus to the input box
+                $('.ZebraDialog_Prompt_Input', plugin.body).focus();
+
             // return a reference to the object itself
             return plugin;
 
@@ -1104,7 +1125,7 @@
          *
          *  @return void
          */
-        plugin.close = function(caption, prompt) {
+        plugin.close = function(caption, input) {
 
             // remove all event handlers set by the plugin
             $(document).off('.Zebra_Dialog');
@@ -1156,14 +1177,14 @@
                 if (plugin.settings.onClose && typeof plugin.settings.onClose === 'function')
 
                     // execute the callback function
-                    plugin.settings.onClose(undefined !== caption ? caption : '', undefined !== prompt ? prompt : '');
+                    plugin.settings.onClose(undefined !== caption ? caption : '', input);
 
             });
 
         };
 
         /**
-         *  Updates the dialog's position on the screen. Useful if you add content at run-time.
+         *  Updates the dialog box's position on the screen. Useful if you add content at run-time.
          *
          *  @return void
          */
