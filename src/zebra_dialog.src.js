@@ -69,21 +69,14 @@
                 buttons:                    true,           //  Use this for localization and for adding custom buttons.
                                                             //
                                                             //  If set to TRUE, the default buttons will be used, depending
-                                                            //  on the type of the dialog box: ['Ok', 'Cancel'] for "warning"
-                                                            //  and "question" types and ['Ok'] for the other dialog box types.
+                                                            //  on the type of the dialog box: ['Ok', 'Cancel'] for "prompt",
+                                                            //  "warning" and "question" types, and ['Ok'] for the other
+                                                            //  dialog box types.
                                                             //
-                                                            //  For custom buttons, use an array containing the captions of
-                                                            //  the buttons to display: ['My button 1', 'My button 2'].
+                                                            //  For custom buttons, use an array containing the captions
+                                                            //  of the buttons to display: ['My button 1', 'My button 2'].
                                                             //
                                                             //  Set to FALSE if you want no buttons.
-                                                            //
-                                                            //  Note that when the dialog box is closed as a result of clicking
-                                                            //  a button, the "onClose" event is triggered and the callback
-                                                            //  function (if any) receives as argument the caption of the
-                                                            //  clicked button.
-                                                            //
-                                                            //  See the comments for the "onClose" event below for more
-                                                            //  information.
                                                             //
                                                             //  You can also add custom CSS classes and/or attach callback
                                                             //  functions to individual buttons by using objects in the
@@ -102,13 +95,16 @@
                                                             //  }
                                                             //  ]
                                                             //
-                                                            //  The main difference is that a callback function attached this
-                                                            //  way is executed as soon as the button is clicked rather than
-                                                            //  *after* the dialog box is closed, as it is the case with the
-                                                            //  "onClose" event.
+                                                            //  The main difference is that a callback function attached
+                                                            //  this way is executed as soon as the button is clicked
+                                                            //  rather than *after* the dialog box is closed, as it is
+                                                            //  the case with the "onClose" event.
                                                             //
-                                                            //  Callback functions attached to buttons get as argument the
-                                                            //  entire dialog box jQuery object.
+                                                            //  Callback functions attached to buttons receive as first
+                                                            //  argument the entire dialog box as a jQuery object and, as
+                                                            //  second argument, the value entered in the input box when
+                                                            //  the dialog box's type is "prompt", or undefined for the
+                                                            //  other dialog types.
                                                             //
                                                             //  A callback function returning FALSE will prevent the dialog
                                                             //  box from closing.
@@ -286,8 +282,8 @@
                                                             //
                                                             //  If you don't want an icon, set the "type" property to FALSE.
                                                             //
-                                                            //  By default, the "warning" and "question" types have two
-                                                            //  buttons with the captions "Ok" and "Cancel" respectively,
+                                                            //  By default, the "warning", "question" and "prompt" types
+                                                            //  have two buttons with the captions "Ok" and "Cancel" respectively,
                                                             //  while the other types have a single button with the caption
                                                             //  "Ok".
                                                             //
@@ -312,11 +308,13 @@
                                                             //  For executing functions *before* the closing of the dialog
                                                             //  box, see the "buttons" attribute.
                                                             //
-                                                            //  The callback function (if any) receives as argument the
-                                                            //  caption of the clicked button or boolean FALSE if the dialog
-                                                            //  box is closed by pressing the ESC key or by clicking on the
-                                                            //  overlay.
-
+                                                            //  The callback function (if any) receives as first argument
+                                                            //  the caption of the clicked button, or boolean FALSE if the
+                                                            //  dialog box is closed by pressing the ESC key or by clicking
+                                                            //  on the overlay. As second argument, the callback function
+                                                            //  receives the value entered in the input box when the dialog
+                                                            //  box's type is "prompt" and the first argument is NOT FALSE,
+                                                            //  or undefined value for any other case.
             },
 
             // to avoid confusions, we use "plugin" to reference the current instance of the object
