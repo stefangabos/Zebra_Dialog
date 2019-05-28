@@ -40,37 +40,13 @@ html {
     background-image: url(warning.png)
 }
 .ZebraDialog_Prompt .ZebraDialog_Body {
-    background-image: url(question.png)
+    background-image: url(prompt.png)
 }
-.ZebraDialog_Prompt {
-    margin: 10px 0 0
-}
-.ZebraDialog_Prompt input {
+.ZebraDialog_Prompt_Input {
+    width: 100%;
     -moz-box-sizing: border-box!important;
     -webkit-box-sizing: border-box!important;
-    box-sizing: border-box!important;
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    line-height: 1.5
-}
-.ZebraDialog_Buttons a {
-    display: inline-block;
-    white-space: nowrap;
-    zoom: 1;
-    *display: inline;
-    background: 0 0;
-    border-radius: 5px;
-    color: #37a0f5;
-    font-weight: 700;
-    margin-right: 10px!important;
-    min-width: 60px;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    _width: 60px
+    box-sizing: border-box!important
 }
 .ZebraDialog_Buttons_Centered .ZebraDialog_Buttons {
     text-align: center
@@ -82,12 +58,7 @@ a.ZebraDialog_Close {
     font-weight: 700;
     position: absolute;
     text-decoration: none;
-    top: 50%;
-    border-radius: 15px;
-    color: #ddd;
-    padding: 1px 7px;
-    right: 10px;
-    margin-top: -13px
+    top: 50%
 }
 .ZebraDialog_NoTitle .ZebraDialog_Close {
     top: 0;
@@ -140,9 +111,33 @@ a.ZebraDialog_Close {
     min-height: 48px;
     height: auto!important
 }
+.ZebraDialog_Prompt_Input {
+    padding: 8px;
+    margin: 10px 0 0;
+    border: 1px solid #ababab;
+    color: #44484a;
+    border-radius: 5px
+}
 .ZebraDialog_Buttons {
     text-align: right;
     padding: 0 0 10px 10px
+}
+.ZebraDialog_Buttons a {
+    display: inline-block;
+    white-space: nowrap;
+    zoom: 1;
+    *display: inline;
+    background: 0 0;
+    border-radius: 5px;
+    color: #37a0f5;
+    font-weight: 700;
+    margin-right: 10px!important;
+    min-width: 60px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    _width: 60px
 }
 .ZebraDialog_Buttons a:focus,
 .ZebraDialog_Buttons a:hover,
@@ -150,4 +145,11 @@ a.ZebraDialog_Close:focus,
 a.ZebraDialog_Close:hover {
     background: #f0f0f0;
     color: #37a0f5
+}
+a.ZebraDialog_Close {
+    border-radius: 15px;
+    color: #ddd;
+    padding: 1px 7px;
+    right: 10px;
+    margin-top: -13px
 }
