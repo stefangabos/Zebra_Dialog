@@ -859,9 +859,11 @@
 
             }
 
-            if (plugin.settings.type === 'prompt') {
-                plugin.settings.message += '<div class="ZebraDialog_Prompt"><input type="text" name="prompt" value="" /></div>';
-            }
+            // if dialog type is "prompt"
+            if (plugin.settings.type === 'prompt')
+
+                // add input box
+                plugin.settings.message += '<input type="text" name="ZebraDialog_Prompt_Input" class="ZebraDialog_Prompt_Input">';
 
             // if short messages are to be centered vertically
             if (plugin.settings.vcenter_short_message)
@@ -875,6 +877,17 @@
 
                 // add the message to the message container
                 plugin.body.html(plugin.settings.message);
+
+            // if dialog type is "prompt"
+            if (plugin.settings.type === 'prompt')
+
+                // handle key presses on the input box
+                $('.ZebraDialog_Prompt_Input', plugin.body).on('keypress', function(e) {
+
+                    // if ENTER is pressed, close the dialog and return the input box's content
+                    if (e.keyCode === 13) plugin.close(false, this.value);
+
+                });
 
             // if dialog box content is to be fetched from an external source
             if (plugin.settings.source && typeof plugin.settings.source === 'object') {
@@ -981,23 +994,23 @@
                     // handle the button's click event
                     button.on('click', function() {
 
-                        // by default, clicking a button closes the dialog box
-                        var close = true;
+                        var
+                            // by default, clicking a button closes the dialog box
+                            close = true,
+
+                            // the value of the input box is sent only when the "Ok" button is clicked
+                            // we always scan the DOM for the input element for the case when the dialog box's content was altered at run-time
+                            input = plugin.settings.type === 'prompt' && $('.ZebraDialog_Prompt_Input', plugin.body).length ? $('.ZebraDialog_Prompt_Input', plugin.body).val() : undefined;
 
                         // execute the callback function when button is clicked
-                        if (undefined !== value.callback) close = value.callback(plugin.dialog);
+                        if (undefined !== value.callback) close = value.callback(plugin.dialog, input);
 
                         // if dialog box is to be closed
-                        if (close !== false) {
-
-                            var caption = (undefined !== value.caption) ? value.caption : value,
-                                prompt = (plugin.settings.type === 'prompt' && $('.ZebraDialog_Prompt input').length > 0) ? $('.ZebraDialog_Prompt input').val() : '';
+                        if (close !== false)
 
                             // remove the overlay and the dialog box from the DOM
-                            // also pass the button's label as argument
-                            plugin.close(caption, prompt);
-
-                        }
+                            // and pass the clicked button's label as argument
+                            plugin.close(undefined !== value.caption ? value.caption : value, input);
 
                     });
 
@@ -1096,6 +1109,12 @@
             // (no animation)
             _draw(false);
 
+            // if dialog type is "prompt"
+            if (plugin.settings.type === 'prompt')
+
+                // move focus to the input box
+                $('.ZebraDialog_Prompt_Input', plugin.body).focus();
+
             // return a reference to the object itself
             return plugin;
 
@@ -1106,7 +1125,7 @@
          *
          *  @return void
          */
-        plugin.close = function(caption, prompt) {
+        plugin.close = function(caption, input) {
 
             // remove all event handlers set by the plugin
             $(document).off('.Zebra_Dialog');
@@ -1158,7 +1177,7 @@
                 if (plugin.settings.onClose && typeof plugin.settings.onClose === 'function')
 
                     // execute the callback function
-                    plugin.settings.onClose(undefined !== caption ? caption : '', undefined !== prompt ? prompt : '');
+                    plugin.settings.onClose(undefined !== caption ? caption : '', input);
 
             });
 
