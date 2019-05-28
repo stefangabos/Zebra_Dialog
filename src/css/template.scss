@@ -62,22 +62,14 @@ html, body {
 }
 
 .ZebraDialog_Prompt .ZebraDialog_Body {
-    background-image: url('question.png');
+    background-image: url('prompt.png');
 }
 
-.ZebraDialog_Prompt {
-    margin: 10px 0 0;
-
-    input {
-        -moz-box-sizing: border-box !important;
-        -webkit-box-sizing: border-box !important;
-        box-sizing: border-box !important;
-        width: 100%;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        line-height: 1.5;
-    }
+.ZebraDialog_Prompt_Input {
+    width: 100%;
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
 }
 
 .ZebraDialog_Buttons {
