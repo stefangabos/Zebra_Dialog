@@ -57,8 +57,8 @@ $(document).ready(function() {
             title: 'Custom buttons',
             type: 'question',
             buttons: ['Yes', 'No', 'Help'],
-            onClose: function(caption, prompt) {
-                alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked' + (prompt != '' ? (' and the following input was entered: "' + prompt + '"') : ''));
+            onClose: function(caption) {
+                alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked');
             }
         });
     });
