@@ -310,12 +310,15 @@
                                                             //  box, see the "buttons" attribute.
                                                             //
                                                             //  The callback function (if any) receives as first argument
-                                                            //  the caption of the clicked button, or boolean FALSE if the
-                                                            //  dialog box is closed by pressing the ESC key or by clicking
-                                                            //  on the overlay. As second argument, the callback function
-                                                            //  receives the value entered in the input box when the dialog
-                                                            //  box's type is "prompt" and the first argument is NOT FALSE,
-                                                            //  or undefined value for any other case.
+                                                            //  the caption of the clicked button, boolean FALSE if the
+                                                            //  dialog box is closed by pressing the ESC key, or by
+                                                            //  clicking the dialog box's "x" button or the overlay or,
+                                                            //  when the dialog box type is "prompt", by pressing the ENTER
+                                                            //  key while inside the input box. As second argument, the
+                                                            //  callback function receives the value entered in the input
+                                                            //  box when the dialog box's type is "prompt" and a button
+                                                            //  was clicked or ENTER key was pressed while inside the
+                                                            //  input box, or undefined for any other case.
             },
 
             // to avoid confusions, we use "plugin" to reference the current instance of the object
