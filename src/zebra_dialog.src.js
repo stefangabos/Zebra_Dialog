@@ -49,8 +49,8 @@
                                                             //  Default is 0
 
                 auto_close:                 false,          //  The number of milliseconds after which to automatically
-                                                            //  close the dialog box or FALSE to not automatically close the
-                                                            //  dialog box.
+                                                            //  close the dialog box or FALSE to not automatically close
+                                                            //  the dialog box.
                                                             //
                                                             //  Default is FALSE
 
@@ -126,8 +126,8 @@
                                                             //
                                                             //  Default is FALSE
 
-                keyboard:                   true,           //  When set to TRUE, pressing the ESC key will close the dialog
-                                                            //  box.
+                keyboard:                   true,           //  When set to TRUE, pressing the ESC key will close the
+                                                            //  dialog box.
                                                             //
                                                             //  Default is TRUE.
 
@@ -165,25 +165,26 @@
 
                 position:                   'center',       //  Position of the dialog box.
                                                             //
-                                                            //  Can be either "center" (which would center the dialog box) or
-                                                            //  an array with 2 elements, in the form of
+                                                            //  Can be either "center" (which would center the dialog box)
+                                                            //  or an array with 2 elements, in the form of
                                                             //  {'horizontal_position +/- offset', 'vertical_position +/- offset'}
                                                             //  (notice how everything is enclosed in quotes) where
                                                             //  "horizontal_position" can be "left", "right" or "center",
-                                                            //  "vertical_position" can be "top", "bottom" or "middle", and
-                                                            //  "offset" represents an optional number of pixels to add/subtract
-                                                            //  from the respective horizontal or vertical position.
+                                                            //  "vertical_position" can be "top", "bottom" or "middle",
+                                                            //  and "offset" represents an optional number of pixels to
+                                                            //  add/subtract from the respective horizontal or vertical
+                                                            //  position.
                                                             //
                                                             //  Positions are relative to the viewport (the area of the
                                                             //  browser that is visible to the user)!
                                                             //
                                                             //  Examples:
                                                             //
-                                                            //  ['left + 20', 'top + 20'] would position the dialog box in the
-                                                            //  top-left corner, shifted 20 pixels inside.
+                                                            //  ['left + 20', 'top + 20'] would position the dialog box
+                                                            //  in the top-left corner, shifted 20 pixels inside.
                                                             //
-                                                            //  ['right - 20', 'bottom - 20'] would position the dialog box
-                                                            //  in the bottom-right corner, shifted 20 pixels inside.
+                                                            //  ['right - 20', 'bottom - 20'] would position the dialog
+                                                            //  box in the bottom-right corner, shifted 20 pixels inside.
                                                             //
                                                             //  ['center', 'top + 20'] would position the dialog box in
                                                             //  center-top, shifted 20 pixels down.
@@ -195,8 +196,8 @@
                                                             //
                                                             //  Default is 100.
 
-                show_close_button:          true,           //  When set to TRUE, a "close" button (the little "x") will be
-                                                            //  shown in the upper right corner of the dialog box.
+                show_close_button:          true,           //  When set to TRUE, a "close" button (the little "x") will
+                                                            //  be shown in the upper right corner of the dialog box.
                                                             //
                                                             //  If the dialog box has a title bar then the "close" button
                                                             //  will be shown in the title bar, vertically centered and
@@ -214,12 +215,12 @@
                                                             //
                                                             //  This property can be any of the following:
                                                             //
-                                                            //  - 'ajax': object - where "object" can be an object with any
-                                                            //  of the properties you'd normally use to make an AJAX call in
-                                                            //  jQuery (see the description for the "settings" argument at
-                                                            //  http://api.jquery.com/jQuery.ajax/), or it can be a string
-                                                            //  representing a valid URL whose content to be fetched via
-                                                            //  AJAX and placed inside the dialog box.
+                                                            //  - 'ajax': object - where "object" can be an object with
+                                                            //  any of the properties you'd normally use to make an AJAX
+                                                            //  call in jQuery (see the description for the "settings"
+                                                            //  argument at http://api.jquery.com/jQuery.ajax/), or it
+                                                            //  can be a string representing a valid URL whose content to
+                                                            //  be fetched via AJAX and placed inside the dialog box.
                                                             //
                                                             //  Example:
                                                             //
