@@ -790,7 +790,7 @@
             // iterate over any already existing dialogs on the page
             $('.ZebraDialog').each(function() {
 
-                // get the dialog's zIndex
+                // get the dialog box's zIndex
                 var zIndex = $(this).css('zIndex');
 
                 // if a zIndex is set and it is more than what we have, use that as reference from now on
@@ -1162,7 +1162,7 @@
         };
 
         /**
-         *  Updates the dialog's position on the screen. Useful if you add content at run-time.
+         *  Updates the dialog box's position on the screen. Useful if you add content at run-time.
          *
          *  @return void
          */
