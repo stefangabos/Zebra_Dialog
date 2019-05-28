@@ -46,7 +46,7 @@ $(document).ready(function() {
             title: 'Prompt',
             type: 'prompt',
             onClose: function(caption, prompt) {
-                alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked' + (prompt != '' ? (' and the following input was entered: "' + prompt + '"') : ''));
+                alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked' + (' and the input\'s value was: "' + prompt + '"'));
             }
         });
     });
