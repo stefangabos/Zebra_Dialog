@@ -310,15 +310,24 @@
                                                             //  box, see the "buttons" attribute.
                                                             //
                                                             //  The callback function (if any) receives as first argument
-                                                            //  the caption of the clicked button, boolean FALSE if the
-                                                            //  dialog box is closed by pressing the ESC key, or by
-                                                            //  clicking the dialog box's "x" button or the overlay or,
-                                                            //  when the dialog box type is "prompt", by pressing the ENTER
-                                                            //  key while inside the input box. As second argument, the
-                                                            //  callback function receives the value entered in the input
-                                                            //  box when the dialog box's type is "prompt" and a button
-                                                            //  was clicked or ENTER key was pressed while inside the
-                                                            //  input box, or undefined for any other case.
+                                                            //  the caption of the clicked button or boolean FALSE if the
+                                                            //  dialog box is closed by pressing the ESC key, by clicking
+                                                            //  the dialog box's "x" button, or by clicking the overlay.
+                                                            //  The argument can also be boolean TRUE when the dialog box
+                                                            //  type is "prompt" and the ENTER key is pressed while inside
+                                                            //  the input box.
+                                                            //
+                                                            //  As second argument, the callback function receives the value
+                                                            //  entered in the input box when the dialog box's type is
+                                                            //  "prompt" and a button was clicked or the ENTER key was
+                                                            //  pressed while inside the input box, or undefined for any
+                                                            //  other case.
+                                                            //
+                                                            //  All this is important when expecting user input as you
+                                                            //  can say that you have user input *only* when the value
+                                                            //  of the first argument is boolean TRUE or the label of
+                                                            //  the button considered as confirmation (i.e. "Ok") and the
+                                                            //  value of the second argument is !== undefined.
             },
 
             // to avoid confusions, we use "plugin" to reference the current instance of the object
