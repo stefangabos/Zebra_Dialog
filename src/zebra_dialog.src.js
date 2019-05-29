@@ -885,7 +885,7 @@
                 $('.ZebraDialog_Prompt_Input', plugin.body).on('keypress', function(e) {
 
                     // if ENTER is pressed, close the dialog and return the input box's content
-                    if (e.keyCode === 13) plugin.close(false, this.value);
+                    if (e.keyCode === 13) plugin.close(true, this.value);
 
                 });
 
