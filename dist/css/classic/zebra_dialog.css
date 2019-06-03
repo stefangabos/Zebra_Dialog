@@ -112,7 +112,8 @@ a.ZebraDialog_Close {
     background-position: 20px 20px;
     padding-left: 88px;
     min-height: 48px;
-    height: auto!important
+    _height: auto!important;
+    height: 48px
 }
 .ZebraDialog_Prompt_Input {
     padding: 8px;
