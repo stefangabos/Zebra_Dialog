@@ -56,7 +56,7 @@ $(document).ready(function() {
         new $.Zebra_Dialog('Show warning messages like this when you are about to perform a sensitive operation and you want to make sure that the user understands the implications.', {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Warning',
-            type: 'warning',
+            type: 'warning'
         });
     });
 
