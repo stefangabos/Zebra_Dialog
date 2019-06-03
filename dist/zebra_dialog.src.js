@@ -98,20 +98,20 @@
                                                             //  }
                                                             //  ]
                                                             //
-                                                            //  For "prompt" dialog box types, use the "default_confirmation"
+                                                            //  For "prompt" dialog box types use the "default_confirmation"
                                                             //  property to tell the library which button's callback to
-                                                            //  trigger when the users presses ENTER while inside the input
-                                                            //  box. If not set, you'll *have* to handle user input via
-                                                            //  the "onClose" event or you will not be able to process
+                                                            //  trigger when the user presses ENTER while inside the input
+                                                            //  box. If not set, you will *have* to handle user input via
+                                                            //  the "onClose" event, or you will not be able to process
                                                             //  user input for this case.
                                                             //
                                                             //  Callback functions receive as first argument the entire
                                                             //  dialog box, as a jQuery object, and as second argument,
-                                                            //  the value entered in the input box when the dialog box's
+                                                            //  the value entered in the input box - when the dialog box
                                                             //  type is "prompt", or undefined for the other dialog types.
                                                             //
                                                             //  A callback function attached to a button is executed as
-                                                            //  soon  as the button is clicked rather than *after* the
+                                                            //  soon as the button is clicked rather than *after* the
                                                             //  dialog box is closed, as it is the case with the "onClose"
                                                             //  event.
                                                             //
@@ -327,16 +327,20 @@
                                                             //  the input box.
                                                             //
                                                             //  As second argument, the callback function receives the value
-                                                            //  entered in the input box when the dialog box's type is
+                                                            //  entered in the input box when the dialog box type is
                                                             //  "prompt" and a button was clicked or the ENTER key was
                                                             //  pressed while inside the input box, or undefined for any
                                                             //  other case.
                                                             //
                                                             //  All this is important when expecting user input as you
                                                             //  can say that you have user input *only* when the value
-                                                            //  of the first argument is boolean TRUE or the label of
-                                                            //  the button considered as confirmation (i.e. "Ok") and the
-                                                            //  value of the second argument is !== undefined.
+                                                            //  of the first argument is boolean TRUE or the value it's
+                                                            //  the same as the label of the button considered as confirmation
+                                                            //  (i.e. "Ok"), and the value of the second argument is
+                                                            //  !== undefined.
+                                                            //
+                                                            //  See the "buttons" property for another way of handling
+                                                            //  user input.
             },
 
             // to avoid confusions, we use "plugin" to reference the current instance of the object

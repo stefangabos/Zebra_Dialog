@@ -8,7 +8,7 @@
 
 A modal window is a child window that requires users to interact with it before they can continue using the parent application. Modal windows are one of the most commonly used user interface elements and are used to command user awareness in order to communicate important information, or to alert of errors or warnings.
 
-**Zebra Dialog** is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+) , and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript *alert* and *confirmation* dialog boxes.
+**Zebra Dialog** is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+) , and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript *alert*, *confirmation* and *prompt* dialog boxes.
 
 Can also be used as a notification widget (when configured to show no buttons and to close automatically) for updates or errors, without distracting users from their browser experience by displaying obtrusive alerts.
 
@@ -19,7 +19,7 @@ Can also be used as a notification widget (when configured to show no buttons an
 ## Features
 
  - great looking dialog boxes, out of the box, with 3 beautiful themes included
- - 6 types of dialog boxes available: *confirmation*, *information*, *warning*, *error*, *question* and *prompt*
+ - 6 types of dialog boxes available: *confirmation*, *error*, *information*, *prompt*, *question* and *warning*
  - content can also be added through AJAX calls, iFrames or from inline elements (together with attached events)
  - easily customisable appearance by editing the CSS file
  - create modal or non-modal dialog boxes
@@ -177,11 +177,11 @@ $(document).ready(function() {
         <td valign="top"></td>
         <td valign="top">
             Use this for localization and for adding custom buttons.<br><br>
-            If set to <code>true</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Ok', 'Cancel']</code> for <em>prompt</em>, <em>question</em> and <em>warning</em> types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
+            If set to <code>true</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Ok', 'Cancel']</code> for <code>prompt</code>, <code>question</code> and <code>warning</code> types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
             For custom buttons, use an array containing the captions of the buttons to display: <code>['My button 1', 'My button 2']</code>.<br><br>
             Set to <code>false</code> if you want no buttons.<br><br>
             You can also add custom CSS classes, set which button's callback to be triggered when the user presses ENTER while
-            inside the input box (for <em>prompt</em> dialog boxes), and/or attach callback functions to individual buttons by using
+            inside the input box (for <code>prompt</code> dialog boxes), and/or attach callback functions to individual buttons by using
             objects in the form of:<br><br>
             <code>[{</code><br>
             <code>&nbsp;&nbsp;caption: 'My button 1',</code><br>
@@ -193,12 +193,12 @@ $(document).ready(function() {
             <code>&nbsp;&nbsp;custom_class: 'bar',</code><br>
             <code>&nbsp;&nbsp;callback: function() { // code }</code><br>
 			<code>}]</code><br><br>
-            For <em>prompt</em> dialog box types, use the <code>default_confirmation</code> property to tell the library
-            which button's callback to trigger when the users presses <code>ENTER</code> while inside the input box. If
-            not set, you will <strong>have</strong> to handle user input via the <code>onClose</code> event or you will
+            For <code>prompt</code> dialog box types use the <code>default_confirmation</code> property to tell the library
+            which button's callback to trigger when the user presses <code>ENTER</code> while inside the input box. If
+            not set, you will <strong>have</strong> to handle user input via the <code>onClose</code> event, or you will
             not be able to process user input for this case.<br><br>
             Callback functions receive as first argument the entire dialog box, as a jQuery object, and as second argument,
-            the value entered in the input box when the dialog box's type is <em>prompt</em>,  or <code>undefined</code>
+            the value entered in the input box - when the dialog box's type is <code>prompt</code>, or <code>undefined</code>
             for the other dialog types.<br><br>
             A callback function attache to a button is executed as soon as the button is clicked rather than <strong>after
             </strong> the dialog box is closed, as it is the case with the <code>onClose</code> event.<br><br>
@@ -337,7 +337,7 @@ $(document).ready(function() {
 					<code>&nbsp;&nbsp;&nbsp;&nbsp;cache: false</code><br>
 					<code>&nbsp;&nbsp;}</code><br>
 					<code>}</code><br><br>
-                    <blockquote>Note that you cannot use the "success" property as it will always be overwritten by the library; use the "complete" property instead, if you have to</blockquote><br>
+                    <blockquote>Note that you cannot use the <code>success</code> property as it will always be overwritten by the library; use the <code>complete</code> property instead, if you have to</blockquote><br>
                 </li>
                 <li>
                     <code>iframe: object</code> - where <em>object</em> can be an <code>object</code> where property names are valid attributes of the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">iframe</a> tag, or it can be a <code>string</code> representing a valid URL to be loaded inside an iFrame and placed inside the dialog box.<br><br>
@@ -350,7 +350,7 @@ $(document).ready(function() {
 					<code>&nbsp;&nbsp;&nbsp;&nbsp;scrolling: 'no'</code><br>
 					<code>&nbsp;&nbsp;}</code><br>
 					<code>}</code><br><br>
-                    <blockquote>Note that you should always set the iFrame's width and height and adjust the dialog box's "width" property accordingly</blockquote><br>
+                    <blockquote>Note that you should always set the iFrame's width and height and adjust the dialog box's <code>width</code> property accordingly</blockquote><br>
                 </li>
                 <li>
                     <code>inline: selector</code> - where <em>element</em> is a jQuery element from the page; the element will be copied and placed inside the dialog box together with any attached events. If you just want the element's inner HTML, use <code>$('#element').html()</code><br><br>
@@ -419,9 +419,20 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>onClose</code></td>
         <td valign="top">
-            Event fired when <em>after</em> the dialog box is closed.<br>
-            For executing functions <em>before</em> the closing of the dialog box, see the <strong>buttons</strong> option.<br>
-            The callback function takes as argument the caption of the clicked button, or <code>false</code> if the dialog box was closed by pressing the ESC key or by clicking on the overlay.
+            Event fired when <em>after</em> the dialog box is closed.<br><br>
+            For executing functions <em>before</em> the closing of the dialog box, see the <strong>buttons</strong> option.<br><br>
+            The callback function receives as first argument the caption of the clicked button or boolean <code>FALSE</code>
+            if the dialog box is closed by pressing the <code>ESC</code> key, by clicking the dialog box's <code>x</code>
+            button, or by clicking the overlay. The argument can also be boolean <code>TRUE</code> when the dialog box
+            type is <code>prompt</code> and the <code>ENTER</code> key is pressed while inside the input box.<br><br>
+            As second argument, the callback function receives the value entered in the input box - when the dialog box
+            type is <code>prompt</code> and a button was clicked or the <code>ENTER</code> key was pressed while inside
+            the input box, or <code>undefined</code> for any other case.<br><br>
+            All this is important when expecting user input as you can say that you have user input <strong>only</strong>
+            when the value of the first argument is boolean <code>TRUE</code>or the value it's the same as the label of
+            the button considered as confirmation (i.e. "Ok"), and the value of the second argument is
+            <code>!==&nbsp;undefined</code>.<br><br>
+            See the <code>buttons</code> property for another way of handling user input.
         </td>
     </tr>
     </tbody>
