@@ -55,9 +55,7 @@
     background-position: 20px 20px;
     padding-left: 88px;
     min-height: 48px;
-    /* min-height hack for IE6 */
-    _height: auto !important;
-    height: 48px;
+    height: auto;
 }
 
 .ZebraDialog_Prompt_Input {
