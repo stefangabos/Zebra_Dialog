@@ -1,4 +1,4 @@
-## version 2.1.0 (TBA)
+## version 2.1.0 (June 03, 2019)
 
 - added [prompt](https://stefangabos.github.io/Zebra_Dialog/flat.html#handling-input) dialog box type; thanks to [Sebi Popa](https://github.com/sebipopa)!
 - added `height` property for setting custom heights to dialog boxes
