@@ -78,14 +78,17 @@
                                                             //
                                                             //  Set to FALSE if you want no buttons.
                                                             //
-                                                            //  You can also add custom CSS classes and/or attach callback
-                                                            //  functions to individual buttons by using objects in the
-                                                            //  form of:
+                                                            //  You can also add custom CSS classes, set which button to
+                                                            //  be considered as clicked when the user presses ENTER while
+                                                            //  inside the input box (for "prompt" dialog boxes), and/or
+                                                            //  attach callback functions to individual buttons by using
+                                                            //  objects in the form of:
                                                             //
                                                             //  [
                                                             //  {
                                                             //      caption: 'My button 1',
                                                             //      custom_class: 'foo',
+                                                            //      default_confirmation: true,
                                                             //      callback: function() { // code }
                                                             //  },
                                                             //  {
@@ -94,6 +97,14 @@
                                                             //      callback: function() { // code }
                                                             //  }
                                                             //  ]
+                                                            //
+                                                            //  For "prompt" dialog box types, use the "default_confirmation"
+                                                            //  property to tell the library which button's callback to
+                                                            //  trigger when the users presses ENTER while inside the input
+                                                            //  box. If not set, you'll *have* to handle user input via
+                                                            //  the "onClose" event or you will not be able to process
+                                                            //  user input if the user presses ENTER while inside the
+                                                            //  input box.
                                                             //
                                                             //  The main difference is that a callback function attached
                                                             //  this way is executed as soon as the button is clicked
