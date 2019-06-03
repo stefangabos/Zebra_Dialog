@@ -230,8 +230,8 @@ $(document).ready(function() {
         <td valign="top"><em>integer</em></td>
         <td valign="top">0</td>
         <td valign="top">
-        By default, the height of the dialog box is automatically set and it is also influenced by the <code>max_height</code>
-        property. Use this to set a fixed height, in pixels, for the dialog box.<br><br>
+        By default, the height of the dialog box is automatically adjust ot fit the content and it is also influenced by
+        the value of the <code>max_height</code> property. Use this to set a fixed height, in pixels, for the dialog box.
         </td>
     </tr>
     <tr>
@@ -273,6 +273,14 @@ $(document).ready(function() {
         <td valign="top">true</td>
         <td valign="top">
             Should the dialog box close when the overlay is clicked?
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><code>overlay_container</code></td>
+        <td valign="top"><em>string</em></td>
+        <td valign="top">body</td>
+        <td valign="top">
+            A selector indicating the DOM element to server as the overlay's container.
         </td>
     </tr>
     <tr>
