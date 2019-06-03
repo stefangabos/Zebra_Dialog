@@ -61,6 +61,17 @@ html, body {
     background-image: url('warning.png');
 }
 
+.ZebraDialog_Prompt .ZebraDialog_Body {
+    background-image: url('prompt.png');
+}
+
+.ZebraDialog_Prompt_Input {
+    width: 100%;
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+}
+
 .ZebraDialog_Buttons {
     text-align: right;
 
