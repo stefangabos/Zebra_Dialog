@@ -226,6 +226,15 @@ $(document).ready(function() {
         </td>
     </tr>
     <tr>
+        <td valign="top"><code>height</code></td>
+        <td valign="top"><em>integer</em></td>
+        <td valign="top">0</td>
+        <td valign="top">
+        By default, the height of the dialog box is automatically set and it is also influenced by the <code>max_height</code>
+        property. Use this to set a fixed height, in pixels, for the dialog box.<br><br>
+        </td>
+    </tr>
+    <tr>
         <td valign="top"><code>keyboard</code></td>
         <td valign="top"><em>boolean</em></td>
         <td valign="top">true</td>
