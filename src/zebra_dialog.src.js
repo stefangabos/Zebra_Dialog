@@ -350,6 +350,10 @@
             // we'll use this when resizing
             timeout,
 
+            // we'll use this for "prompt" dialog boxes to handle the
+            // event of the user pressing ENTER while inside the input box
+            default_confirmation_button = false,
+
             /**
              *  Draw the overlay and the dialog box
              *
@@ -902,7 +906,15 @@
                 $('.ZebraDialog_Prompt_Input', plugin.body).on('keypress', function(e) {
 
                     // if ENTER is pressed, close the dialog and return the input box's content
-                    if (e.keyCode === 13) plugin.close(true, this.value);
+                    if (e.keyCode === 13) {
+
+                        // if a default confirmation button exists, trigger its click event
+                        if (default_confirmation_button) default_confirmation_button.trigger('click');
+
+                        // otherwise close the dialog now
+                        else plugin.close(true, this.value);
+
+                    }
 
                 });
 
@@ -1036,6 +1048,14 @@
 
                     // append the button to the button bar
                     button.appendTo(button_bar);
+
+                    // if we have the "default_confirmation" property set for this button
+                    if (undefined !== value.default_confirmation && value.default_confirmation)
+
+                        // cache it for later
+                        // (it is used by the "prompt" dialog box type when the user presses ENTER while inside
+                        // the input box)
+                        default_confirmation_button = button;
 
                 });
 
