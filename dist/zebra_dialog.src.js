@@ -21,7 +21,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.1.0 (last revision: May 29, 2019)
+ *  @version    2.1.0 (last revision: June 03, 2019)
  *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -78,14 +78,17 @@
                                                             //
                                                             //  Set to FALSE if you want no buttons.
                                                             //
-                                                            //  You can also add custom CSS classes and/or attach callback
-                                                            //  functions to individual buttons by using objects in the
-                                                            //  form of:
+                                                            //  You can also add custom CSS classes, set which button to
+                                                            //  be considered as clicked when the user presses ENTER while
+                                                            //  inside the input box (for "prompt" dialog boxes), and/or
+                                                            //  attach callback functions to individual buttons by using
+                                                            //  objects in the form of:
                                                             //
                                                             //  [
                                                             //  {
                                                             //      caption: 'My button 1',
                                                             //      custom_class: 'foo',
+                                                            //      default_confirmation: true,
                                                             //      callback: function() { // code }
                                                             //  },
                                                             //  {
@@ -94,6 +97,14 @@
                                                             //      callback: function() { // code }
                                                             //  }
                                                             //  ]
+                                                            //
+                                                            //  For "prompt" dialog box types, use the "default_confirmation"
+                                                            //  property to tell the library which button's callback to
+                                                            //  trigger when the users presses ENTER while inside the input
+                                                            //  box. If not set, you'll *have* to handle user input via
+                                                            //  the "onClose" event or you will not be able to process
+                                                            //  user input if the user presses ENTER while inside the
+                                                            //  input box.
                                                             //
                                                             //  The main difference is that a callback function attached
                                                             //  this way is executed as soon as the button is clicked
@@ -338,6 +349,10 @@
 
             // we'll use this when resizing
             timeout,
+
+            // we'll use this for "prompt" dialog boxes to handle the
+            // event of the user pressing ENTER while inside the input box
+            default_confirmation_button = false,
 
             /**
              *  Draw the overlay and the dialog box
@@ -844,9 +859,6 @@
             // if dialog box doesn't have a title
             else plugin.dialog.addClass('ZebraDialog_NoTitle');
 
-            // get the buttons that are to be added to the dialog box
-            buttons = _get_buttons();
-
             // create the container of the actual message
             // we save it as a reference because we'll use it later in the "draw" method
             // if the "vcenter_short_message" property is TRUE
@@ -894,7 +906,15 @@
                 $('.ZebraDialog_Prompt_Input', plugin.body).on('keypress', function(e) {
 
                     // if ENTER is pressed, close the dialog and return the input box's content
-                    if (e.keyCode === 13) plugin.close(true, this.value);
+                    if (e.keyCode === 13) {
+
+                        // if a default confirmation button exists, trigger its click event
+                        if (default_confirmation_button) default_confirmation_button.trigger('click');
+
+                        // otherwise close the dialog now
+                        else plugin.close(true, this.value);
+
+                    }
 
                 });
 
@@ -971,6 +991,9 @@
             // add the message container to the dialog box
             plugin.body.appendTo(plugin.dialog);
 
+            // get the buttons that are to be added to the dialog box
+            buttons = _get_buttons();
+
             // if there are any buttons to be added to the dialog box
             if (buttons) {
 
@@ -1025,6 +1048,14 @@
 
                     // append the button to the button bar
                     button.appendTo(button_bar);
+
+                    // if we have the "default_confirmation" property set for this button
+                    if (undefined !== value.default_confirmation && value.default_confirmation)
+
+                        // cache it for later
+                        // (it is used by the "prompt" dialog box type when the user presses ENTER while inside
+                        // the input box)
+                        default_confirmation_button = button;
 
                 });
 
