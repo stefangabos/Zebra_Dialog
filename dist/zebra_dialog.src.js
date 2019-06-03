@@ -78,8 +78,8 @@
                                                             //
                                                             //  Set to FALSE if you want no buttons.
                                                             //
-                                                            //  You can also add custom CSS classes, set which button to
-                                                            //  be considered as clicked when the user presses ENTER while
+                                                            //  You can also add custom CSS classes, set which button's
+                                                            //  callback to be triggered when the user presses ENTER while
                                                             //  inside the input box (for "prompt" dialog boxes), and/or
                                                             //  attach callback functions to individual buttons by using
                                                             //  objects in the form of:
@@ -103,19 +103,17 @@
                                                             //  trigger when the users presses ENTER while inside the input
                                                             //  box. If not set, you'll *have* to handle user input via
                                                             //  the "onClose" event or you will not be able to process
-                                                            //  user input if the user presses ENTER while inside the
-                                                            //  input box.
+                                                            //  user input for this case.
                                                             //
-                                                            //  The main difference is that a callback function attached
-                                                            //  this way is executed as soon as the button is clicked
-                                                            //  rather than *after* the dialog box is closed, as it is
-                                                            //  the case with the "onClose" event.
+                                                            //  Callback functions receive as first argument the entire
+                                                            //  dialog box, as a jQuery object, and as second argument,
+                                                            //  the value entered in the input box when the dialog box's
+                                                            //  type is "prompt", or undefined for the other dialog types.
                                                             //
-                                                            //  Callback functions attached to buttons receive as first
-                                                            //  argument the entire dialog box as a jQuery object and, as
-                                                            //  second argument, the value entered in the input box when
-                                                            //  the dialog box's type is "prompt", or undefined for the
-                                                            //  other dialog types.
+                                                            //  A callback function attached to a buttin is executed as
+                                                            //  soon  as the button is clicked rather than *after* the
+                                                            //  dialog box is closed, as it is the case with the "onClose"
+                                                            //  event.
                                                             //
                                                             //  A callback function returning FALSE will prevent the dialog
                                                             //  box from closing.

@@ -177,20 +177,31 @@ $(document).ready(function() {
         <td valign="top"></td>
         <td valign="top">
             Use this for localization and for adding custom buttons.<br><br>
-            If set to <code>true</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Ok', 'Cancel']</code> for <em>warning</em>, <em>question</em> and <em>prompt</em> types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
+            If set to <code>true</code>, the default buttons will be used, depending on the type of the dialog box: <code>['Ok', 'Cancel']</code> for <em>prompt</em>, <em>question</em> and <em>warning</em> types, and <code>['Ok']</code> for the other types of dialog boxes.<br><br>
             For custom buttons, use an array containing the captions of the buttons to display: <code>['My button 1', 'My button 2']</code>.<br><br>
             Set to <code>false</code> if you want no buttons.<br><br>
-            You can also add custom CSS classes and/or attach callback functions to individual buttons by providing an array of objects like:<br><br>
+            You can also add custom CSS classes, set which button's callback to be triggered when the user presses ENTER while
+            inside the input box (for <em>prompt</em> dialog boxes), and/or attach callback functions to individual buttons by using
+            objects in the form of:<br><br>
             <code>[{</code><br>
             <code>&nbsp;&nbsp;caption: 'My button 1',</code><br>
             <code>&nbsp;&nbsp;custom_class: 'foo',</code><br>
+            <code>&nbsp;&nbsp;default_confirmation: true,</code><br>
             <code>&nbsp;&nbsp;callback: function() { // code }</code><br>
             <code>},{</code><br>
             <code>&nbsp;&nbsp;caption: 'My button 2',</code><br>
             <code>&nbsp;&nbsp;custom_class: 'bar',</code><br>
             <code>&nbsp;&nbsp;callback: function() { // code }</code><br>
 			<code>}]</code><br><br>
-            Callback functions get as argument the entire dialog box jQuery object.<br><br>
+            For <em>prompt</em> dialog box types, use the <code>default_confirmation</code> property to tell the library
+            which button's callback to trigger when the users presses <code>ENTER</code> while inside the input box. If
+            not set, you will <strong>have</strong> to handle user input via the <code>onClose</code> event or you will
+            not be able to process user input for this case.<br><br>
+            Callback functions receive as first argument the entire dialog box, as a jQuery object, and as second argument,
+            the value entered in the input box when the dialog box's type is <em>prompt</em>,  or <code>undefined</code>
+            for the other dialog types.<br><br>
+            A callback function attache to a button is executed as soon as the button is clicked rather than <strong>after
+            </strong> the dialog box is closed, as it is the case with the <code>onClose</code> event.<br><br>
             <blockquote>A callback function returning FALSE will prevent the dialog box from closing.</blockquote>
         </td>
     </tr>
