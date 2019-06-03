@@ -135,6 +135,14 @@
                                                             //
                                                             //  Default is FALSE
 
+                height:                     0,              //  By default, the height of the dialog box is automatically
+                                                            //  set and it is also influenced by the "max_height" property.
+                                                            //
+                                                            //  Use this to set a fixed height, in pixels, for the dialog
+                                                            //  box.
+                                                            //
+                                                            //  Default is "0" - height is automatically set.
+
                 keyboard:                   true,           //  When set to TRUE, pressing the ESC key will close the
                                                             //  dialog box.
                                                             //
@@ -870,6 +878,12 @@
                 'class':    'ZebraDialog_Body'
 
             });
+
+            // if we have a static height set
+            if (plugin.settings.height > 0)
+
+                // set it
+                plugin.body.css('height', plugin.settings.height);
 
             // if we have a max-height set
             if (plugin.settings.max_height > 0) {
