@@ -101,7 +101,6 @@ $(document).ready(function() {
             title: 'Prompt',
             type: 'prompt',
             buttons: [
-                'Cancel',
                 {
                     caption: 'Ok',
 
@@ -118,7 +117,8 @@ $(document).ready(function() {
                     callback: function($dialog, prompt) {
                         alert('Input value was: "' + prompt + '"');
                     }
-                }
+                },
+                'Cancel'
             ]
         });
     });
