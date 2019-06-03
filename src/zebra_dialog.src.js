@@ -855,9 +855,6 @@
             // if dialog box doesn't have a title
             else plugin.dialog.addClass('ZebraDialog_NoTitle');
 
-            // get the buttons that are to be added to the dialog box
-            buttons = _get_buttons();
-
             // create the container of the actual message
             // we save it as a reference because we'll use it later in the "draw" method
             // if the "vcenter_short_message" property is TRUE
@@ -981,6 +978,9 @@
 
             // add the message container to the dialog box
             plugin.body.appendTo(plugin.dialog);
+
+            // get the buttons that are to be added to the dialog box
+            buttons = _get_buttons();
 
             // if there are any buttons to be added to the dialog box
             if (buttons) {
