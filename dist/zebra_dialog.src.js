@@ -110,7 +110,7 @@
                                                             //  the value entered in the input box when the dialog box's
                                                             //  type is "prompt", or undefined for the other dialog types.
                                                             //
-                                                            //  A callback function attached to a buttin is executed as
+                                                            //  A callback function attached to a button is executed as
                                                             //  soon  as the button is clicked rather than *after* the
                                                             //  dialog box is closed, as it is the case with the "onClose"
                                                             //  event.
