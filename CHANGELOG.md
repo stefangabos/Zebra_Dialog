@@ -1,6 +1,8 @@
 ## version 2.1.0 (TBA)
 
-- added a new `update` method for adjusting the dialog box's position when content is changed dynamically, at run-time
+- added [prompt](https://stefangabos.github.io/Zebra_Dialog/flat.html#handling-input) dialog box type; thanks to [Sebi Popa](https://github.com/sebipopa)!
+- added `height` property for setting custom heights to dialog boxes
+- added `update` method for adjusting the dialog box's position when content is changed dynamically, at run-time
 - the overlay can now have a different parent than the `body` element, via the newly added `overlay_container` property
 
 ## version 2.0.0 (August 01, 2018)
