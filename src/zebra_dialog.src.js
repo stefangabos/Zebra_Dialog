@@ -21,7 +21,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.1.1 (last revision: June 03, 2019)
+ *  @version    2.1.1 (last revision: June 10, 2019)
  *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -182,8 +182,9 @@
 
                 position:                   'center',       //  Position of the dialog box.
                                                             //
-                                                            //  Can be either "center" (which would center the dialog box)
-                                                            //  or an array with 2 elements, in the form of
+                                                            //  Can be either "center" (which would center the dialog box
+                                                            //  both horizontally and vertically), or an array with 2
+                                                            //  elements, in the form of
                                                             //  {'horizontal_position +/- offset', 'vertical_position +/- offset'}
                                                             //  (notice how everything is enclosed in quotes) where
                                                             //  "horizontal_position" can be "left", "right" or "center",
@@ -206,12 +207,12 @@
                                                             //  ['center', 'top + 20'] would position the dialog box in
                                                             //  center-top, shifted 20 pixels down.
                                                             //
-                                                            //  Default is "center".
+                                                            //  Default is "center" (equivalent with  ['center', 'middle']).
 
                 reposition_speed:           500,            //  The duration (in milliseconds) of the animation used to
                                                             //  reposition the dialog box when the browser window is resized.
                                                             //
-                                                            //  Default is 100.
+                                                            //  Default is 500.
 
                 show_close_button:          true,           //  When set to TRUE, a "close" button (the little "x") will
                                                             //  be shown in the upper right corner of the dialog box.

@@ -294,10 +294,10 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>position</code></td>
         <td valign="top"><em>mixed</em></td>
-        <td valign="top">['center', 'middle']</td>
+        <td valign="top">'center'</td>
         <td valign="top">
             Position of the dialog box.<br><br>
-            Can be either <code>center</code> or an array with 2 elements, in the form of<br><br>
+            Can be either <code>center</code> (which would center the dialog box both horizontally and vertically), or an array with 2 elements, in the form of<br><br>
 			<code>// notice that everything is enclosed in quotes</code><br>
 			<code>['horizontal_position +/- offset',</code><br>
 			<code>'vertical_position +/- offset']</code><br><br>
@@ -322,7 +322,7 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>reposition_speed</code></td>
         <td valign="top"><em>integer</em></td>
-        <td valign="top">100</td>
+        <td valign="top">500</td>
         <td valign="top">
             The duration (in milliseconds) of the animation used to reposition the dialog box when the browser window is resized.
         </td>
