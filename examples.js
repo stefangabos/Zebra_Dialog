@@ -185,11 +185,11 @@ $(document).ready(function() {
     });
 
     $('#example5_5').on('click', function() {
-        new $.Zebra_Dialog('I am positioned in the <strong>center</strong> of the screen. Here\'s how it\'s done:<br><code>position: [\'center\', \'center\']</code>', {
+        new $.Zebra_Dialog('I am positioned in the <strong>center</strong> of the screen. Here\'s how it\'s done:<br><code>position: [\'center\', \'middle\']</code>', {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Custom positioning',
             width: 460,
-            position: ['center', 'center']
+            position: ['center', 'middle']
         });
     });
 
