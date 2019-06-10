@@ -11,8 +11,6 @@ $(document).ready(function() {
     $('#example1_2').on('click', function() {
         new $.Zebra_Dialog('Use error messages to let the user know that an action has not completed successfully and show the reason why that happened.', {
             auto_focus_button: $('body.materialize').length ? false : true,
-            height: 300,
-            max_height: 300,
             title: 'Error',
             type: 'error'
         });
