@@ -1181,24 +1181,30 @@
                 // move focus to the input box
                 $('.ZebraDialog_Prompt_Input', plugin.body).focus();
 
-                // if "setSelectionRange" function exists... (IE 9+)
-                if (plugin.settings.message.get(0).setSelectionRange) {
+                // if a default value is set
+                if (plugin.settings.default_value !== '')
 
-                    // double the message's length because Opera is inconsistent about whether a carriage return is
-                    // one character or two
-                    len = plugin.settings.message.val().length * 2;
+                    //  move cursor to the end of the default text
+                    //  https://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/
 
-                    // timeout seems to be required for Blink
-                    setTimeout(function() {
-                        plugin.settings.message.get(0).setSelectionRange(len, len);
-                    }, 1);
+                    // if "setSelectionRange" function exists... (IE 9+)
+                    if (plugin.settings.message.get(0).setSelectionRange) {
 
-                // if "setSelectionRange" function does not exist...
-                } else
+                        // double the message's length because Opera is inconsistent about whether a carriage return is
+                        // one character or two
+                        len = plugin.settings.default_value.length * 2;
 
-                    // as a fallback, replace the contents with itself
-                    // doesn't work in Chrome, but Chrome has "setSelectionRange"
-                    plugin.settings.message.val(plugin.settings.message.val());
+                        // timeout seems to be required for Blink
+                        setTimeout(function() {
+                            plugin.settings.message.get(0).setSelectionRange(len, len);
+                        }, 1);
+
+                    // if "setSelectionRange" function does not exist...
+                    } else
+
+                        // as a fallback, replace the contents with itself
+                        // doesn't work in Chrome, but Chrome has "setSelectionRange"
+                        plugin.settings.message.val(plugin.settings.default_value);
 
             }
 
