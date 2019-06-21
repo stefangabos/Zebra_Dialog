@@ -135,6 +135,11 @@
                                                             //
                                                             //  Default is FALSE
 
+                default_value:              '',             //  Default value to show in the input box when the dialog
+                                                            //  box type is "prompt".
+                                                            //
+                                                            //  Default is "" (an empty string)
+
                 height:                     0,              //  By default, the height of the dialog box is automatically
                                                             //  set and it is also influenced by the "max_height" property.
                                                             //
@@ -901,7 +906,7 @@
             if (plugin.settings.type === 'prompt')
 
                 // add input box
-                plugin.settings.message += '<input type="text" name="ZebraDialog_Prompt_Input" class="ZebraDialog_Prompt_Input">';
+                plugin.settings.message += '<input type="text" name="ZebraDialog_Prompt_Input" value="' + plugin.settings.default_value + '" class="ZebraDialog_Prompt_Input">';
 
             // if short messages are to be centered vertically
             if (plugin.settings.vcenter_short_message)

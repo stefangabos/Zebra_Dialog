@@ -135,6 +135,11 @@
                                                             //
                                                             //  Default is FALSE
 
+                default_value:              '',             //  Default value to show in the input box when the dialog
+                                                            //  box type is "prompt".
+                                                            //
+                                                            //  Default is "" (an empty string)
+
                 height:                     0,              //  By default, the height of the dialog box is automatically
                                                             //  set and it is also influenced by the "max_height" property.
                                                             //
