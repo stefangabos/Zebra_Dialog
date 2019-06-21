@@ -27,6 +27,7 @@ $(document).ready(function() {
     $('#example1_4').on('click', function() {
         new $.Zebra_Dialog('Use prompt dialogs to ask for user input.', {
             auto_focus_button: $('body.materialize').length ? false : true,
+            default_value: 'A default value can be set',
             title: 'Prompt',
             type: 'prompt',
             onClose: function(caption, prompt) {
@@ -66,6 +67,7 @@ $(document).ready(function() {
             'You should be able to get the input\'s value <strong>only</strong> when pressing ENTER while inside the input' +
             ' box, or when clicking the <em>Ok</em> button.', {
             auto_focus_button: $('body.materialize').length ? false : true,
+            default_value: 'A default value can be set',
             title: 'Prompt',
             type: 'prompt',
             onClose: function(caption, prompt) {
