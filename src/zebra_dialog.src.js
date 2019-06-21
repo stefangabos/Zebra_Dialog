@@ -749,8 +749,8 @@
          */
         plugin.init = function() {
 
-            var ajax_options, button_bar, buttons, canvas, default_options, iframe_options, preloader, $title, tmp, type,
-                $container, container_position, max_zindex = 0;
+            var ajax_options, button_bar, buttons, canvas, $container, container_position, default_options, iframe_options,
+                len, max_zindex = 0, preloader, $title, tmp, type;
 
             // the plugin's final properties are the merged default and user-provided options (if any)
             plugin.settings = $.extend({}, defaults, options);
@@ -920,6 +920,12 @@
 
                 // add the message to the message container
                 plugin.body.html(plugin.settings.message);
+
+            // if dialog type is "prompt"
+            if (plugin.settings.type === 'prompt')
+
+                // get a reference to the newly created input box
+                plugin.settings.message = $('.ZebraDialog_Prompt_Input', plugin.body);
 
             // if dialog type is "prompt"
             if (plugin.settings.type === 'prompt')
@@ -1170,10 +1176,31 @@
             _draw(false);
 
             // if dialog type is "prompt"
-            if (plugin.settings.type === 'prompt')
+            if (plugin.settings.type === 'prompt') {
 
                 // move focus to the input box
                 $('.ZebraDialog_Prompt_Input', plugin.body).focus();
+
+                // if "setSelectionRange" function exists... (IE 9+)
+                if (plugin.settings.message.get(0).setSelectionRange) {
+
+                    // double the message's length because Opera is inconsistent about whether a carriage return is
+                    // one character or two
+                    len = plugin.settings.message.val().length * 2;
+
+                    // timeout seems to be required for Blink
+                    setTimeout(function() {
+                        plugin.settings.message.get(0).setSelectionRange(len, len);
+                    }, 1);
+
+                // if "setSelectionRange" function does not exist...
+                } else
+
+                    // as a fallback, replace the contents with itself
+                    // doesn't work in Chrome, but Chrome has "setSelectionRange"
+                    plugin.settings.message.val(plugin.settings.message.val());
+
+            }
 
             // return a reference to the object itself
             return plugin;
