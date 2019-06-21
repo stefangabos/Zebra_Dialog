@@ -906,7 +906,7 @@
             if (plugin.settings.type === 'prompt')
 
                 // add input box
-                plugin.settings.message += '<input type="text" name="ZebraDialog_Prompt_Input" class="ZebraDialog_Prompt_Input">';
+                plugin.settings.message += '<input type="text" name="ZebraDialog_Prompt_Input" value="' + plugin.settings.default_value + '" class="ZebraDialog_Prompt_Input">';
 
             // if short messages are to be centered vertically
             if (plugin.settings.vcenter_short_message)
