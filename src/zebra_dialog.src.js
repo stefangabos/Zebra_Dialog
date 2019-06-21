@@ -923,15 +923,13 @@
                 $('.ZebraDialog_Prompt_Input', plugin.body).on('keypress', function(e) {
 
                     // if ENTER is pressed, close the dialog and return the input box's content
-                    if (e.keyCode === 13) {
+                    if (e.keyCode === 13)
 
                         // if a default confirmation button exists, trigger its click event
                         if (default_confirmation_button) default_confirmation_button.trigger('click');
 
                         // otherwise close the dialog now
                         else plugin.close(true, this.value);
-
-                    }
 
                 });
 
