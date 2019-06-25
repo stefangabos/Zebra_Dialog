@@ -141,10 +141,14 @@
                                                             //  Default is "" (an empty string)
 
                 height:                     0,              //  By default, the height of the dialog box is automatically
-                                                            //  set and it is also influenced by the "max_height" property.
+                                                            //  computed in order to fit the content (but not exceed
+                                                            //  viewport).
                                                             //
-                                                            //  Use this to set a fixed height, in pixels, for the dialog
-                                                            //  box.
+                                                            //  Can be specified as a numeric value (which will be interpreted
+                                                            //  as a value in pixels) or as a percentage (of the viewport).
+                                                            //
+                                                            //  If "max_height" is set to valid value greater than 0,
+                                                            //  then the "height" property will be ignored.
                                                             //
                                                             //  Default is "0" - height is automatically set.
 
@@ -153,13 +157,25 @@
                                                             //
                                                             //  Default is TRUE.
 
-                max_height:                 0,              //  The maximum height, in pixels, before the content in the
-                                                            //  dialog box is scrolled.
+                max_height:                 0,              //  The maximum height of the dialog box.
                                                             //
-                                                            //  If set to "0" the dialog box's height will automatically
-                                                            //  adjust to fit the entire content.
+                                                            //  Can be specified as a numeric value (which will be interpreted
+                                                            //  as a value in pixels) or as a percentage (of the viewport).
                                                             //
-                                                            //  Default is "0"
+                                                            //  If "max_height" is set to valid value greater than 0,
+                                                            //  then the "height" property will be ignored.
+                                                            //
+                                                            //  Default is "0" - the maximum height is the viewport's height.
+
+                max_width:                  0,              //  The maximum width of the dialog box.
+                                                            //
+                                                            //  Can be specified as a numeric value (which will be interpreted
+                                                            //  as a value in pixels) or as a percentage (of the viewport).
+                                                            //
+                                                            //  If "max_width" is set to valid value greater than 0,
+                                                            //  then the "width" property will be ignored.
+                                                            //
+                                                            //  Default is "0" - the maximum width is the viewport's width.
 
                 message:                    '',             //  The text (or HTML) to be displayed in the dialog box.
                                                             //
@@ -317,15 +333,17 @@
                                                             //
                                                             //  Default is TRUE
 
-                width:                      0,              //  By default, the width of the dialog box is set in the CSS
-                                                            //  file. Use this property to override the default width at
-                                                            //  runtime.
+                width:                      0,              //  By default, the width of the dialog box is automatically
+                                                            //  computed in order to fit the content (but not exceed
+                                                            //  viewport).
                                                             //
-                                                            //  Must be an integer, greater than 0. Anything else will instruct
-                                                            //  the script to use the default value, as set in the CSS file.
-                                                            //  Value should be no less than 200 for optimal output.
+                                                            //  Can be specified as a numeric value (which will be interpreted
+                                                            //  as a value in pixels) or as a percentage (of the viewport).
                                                             //
-                                                            //  Default is 0 - use the value from the CSS file.
+                                                            //  If "max_width" is set to valid value greater than 0,
+                                                            //  then the "width" property will be ignored.
+                                                            //
+                                                            //  Default is "0" - width is automatically set.
 
                 onClose:                null                //  Event fired when *after* the dialog box is closed.
                                                             //
@@ -853,45 +871,97 @@
                 // assign a unique id to each notification
                 plugin.dialog.attr('id', 'ZebraDialog_' + Math.floor(Math.random() * 9999999));
 
-            // see if width is valid
-            tmp = (plugin.settings.width + '').match(/^([0-9]+)(\%)?$/);
+            // see if max_width is valid
+            tmp = (plugin.settings.max_width + '').match(/^([0-9]+)(\%)?$/);
 
-            // if width is valid
+            // if max_width is valid
             if (tmp) {
 
-                // if width was specified as a percentage
+                // if max_width was specified as a percentage
                 if (undefined !== tmp[2])
 
                     // compute the value in pixels
                     tmp = parseInt(Math.max(document.documentElement.clientWidth, window.innerWidth || 0) * parseInt(tmp[1], 10) / 100, 10);
 
-                // if width was not specified as a percentage
+                // if max_width was not specified as a percentage
                 else tmp = parseInt(tmp[1], 10);
 
                 // if converted value is a valid number
-                // set the dialog box's width
-                if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('width', tmp);
+                // set the dialog box's max_width
+                if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('max-width', tmp);
 
             }
 
-            // see if height is valid
-            tmp = (plugin.settings.height + '').match(/^([0-9]+)(\%)?$/);
+            // if max_width was not specified or it is invalid
+            if (isNaN(tmp) || tmp === 0) {
 
-            // if height is valid
+                // see if width is valid
+                tmp = (plugin.settings.width + '').match(/^([0-9]+)(\%)?$/);
+
+                // if width is valid
+                if (tmp) {
+
+                    // if width was specified as a percentage
+                    if (undefined !== tmp[2])
+
+                        // compute the value in pixels
+                        tmp = parseInt(Math.max(document.documentElement.clientWidth, window.innerWidth || 0) * parseInt(tmp[1], 10) / 100, 10);
+
+                    // if width was not specified as a percentage
+                    else tmp = parseInt(tmp[1], 10);
+
+                    // if converted value is a valid number
+                    // set the dialog box's width
+                    if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('width', tmp);
+
+                }
+
+            }
+
+            // see if max_height is valid
+            tmp = (plugin.settings.max_height + '').match(/^([0-9]+)(\%)?$/);
+
+            // if max_height is valid
             if (tmp) {
 
-                // if height was specified as a percentage
+                // if max_height was specified as a percentage
                 if (undefined !== tmp[2])
 
                     // compute the value in pixels
                     tmp = parseInt(Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * parseInt(tmp[1], 10) / 100, 10);
 
-                // if height was not specified as a percentage
+                // if max_height was not specified as a percentage
                 else tmp = parseInt(tmp[1], 10);
 
                 // if converted value is a valid number
-                // set the dialog box's height
-                if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('height', tmp);
+                // set the dialog box's max_height
+                if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('max-height', tmp);
+
+            }
+
+            // if max_width was not specified or it is invalid
+            if (isNaN(tmp) || tmp === 0) {
+
+                // see if height is valid
+                tmp = (plugin.settings.height + '').match(/^([0-9]+)(\%)?$/);
+
+                // if height is valid
+                if (tmp) {
+
+                    // if height was specified as a percentage
+                    if (undefined !== tmp[2])
+
+                        // compute the value in pixels
+                        tmp = parseInt(Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * parseInt(tmp[1], 10) / 100, 10);
+
+                    // if height was not specified as a percentage
+                    else tmp = parseInt(tmp[1], 10);
+
+                    // if converted value is a valid number
+                    // set the dialog box's height
+                    if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('height', tmp);
+
+                }
 
             }
 
@@ -919,17 +989,6 @@
                 'class':    'ZebraDialog_Body'
 
             });
-
-            // if we have a max-height set
-            if (plugin.settings.max_height > 0) {
-
-                // set it like this for browsers supporting the "max-height" attribute
-                plugin.body.css('max-height', plugin.settings.max_height);
-
-                // for IE6, go this way...
-                if (plugin.isIE6) plugin.body.attr('style', 'height: expression(this.scrollHeight > ' + plugin.settings.max_height + ' ? "' + plugin.settings.max_height + 'px" : "85px")');
-
-            }
 
             // if dialog type is "prompt"
             if (plugin.settings.type === 'prompt')
