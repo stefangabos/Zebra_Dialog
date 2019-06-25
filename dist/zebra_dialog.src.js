@@ -157,6 +157,21 @@
                                                             //
                                                             //  Default is TRUE.
 
+                margin:                     0,              //  Margin of the dialog box relative to the viewport's limits
+                                                            //  (a single value, applied both horizontally and/or vertically)
+                                                            //
+                                                            //  This is applied *only* when, because of its content, the
+                                                            //  dialog box needs to be stretched 100% horizontally and/or
+                                                            //  vertically and "width" and "max_width" are not set (when
+                                                            //  stretched horizontally) and "height" and "max_height" are
+                                                            //  not set (when stretched vertically).
+                                                            //
+                                                            //  Can be specified as a numeric value (which will be interpreted
+                                                            //  as a value in pixels) or as a percentage (of the viewport).
+                                                            //
+                                                            //  Default is "0" - when stretched, the dialog box sticks to
+                                                            //  the viewport's limits.
+
                 max_height:                 0,              //  The maximum height of the dialog box.
                                                             //
                                                             //  Can be specified as a numeric value (which will be interpreted
@@ -419,7 +434,7 @@
 
                     },
 
-                    message, message_height, container_height;
+                    message, message_height, container_height, margin, horizontal_margin = 0, vertical_margin = 0;
 
                 // reset these values
                 plugin.dialog_left = undefined;
@@ -484,14 +499,45 @@
 
                 }
 
+
+                // see if margin is valid
+                margin = (plugin.settings.margin + '').match(/^([0-9]+)(\%)?$/);
+
+                // if margin is valid
+                if (margin) {
+
+                    // if margin was specified as a percentage
+                    if (undefined !== margin[2]) {
+
+                        // compute the value in pixels
+                        horizontal_margin = parseInt(viewport_width * parseInt(margin[1], 10) / 100, 10);
+                        vertical_margin = parseInt(viewport_height * parseInt(margin[1], 10) / 100, 10);
+
+                    // if margin was not specified as a percentage
+                    } else horizontal_margin = vertical_margin = parseInt(margin[1], 10);
+
+                    // if converted value is not a valid number
+                    if (isNaN(horizontal_margin)) horizontal_margin = vertical_margin = 0;
+
+                }
+
+                // if we have horizontal margin
+                if (horizontal_margin > 0)
+
+                    // apply horizontal margin
+                    plugin.dialog.css({
+                        marginLeft: horizontal_margin,
+                        marginRight: horizontal_margin
+                    });
+
                 // make sure top is not negative
-                if (plugin.dialog_top < 0) plugin.dialog_top = 0;
+                if (plugin.dialog_top < horizontal_margin) plugin.dialog_top = vertical_margin;
 
                 // if dialog height exceeds screen's height
-                if (dialog_height > viewport_height)
+                if (dialog_height + vertical_margin > viewport_height - (vertical_margin * 2))
 
                     // adjust the dialog box's height so that it fits
-                    plugin.body.css('height', viewport_height -
+                    plugin.body.css('height', viewport_height - (vertical_margin * 2) -
                         ($('.ZebraDialog_Title', plugin.dialog) ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) -
                         ($('.ZebraDialog_Buttons', plugin.dialog) ? $('.ZebraDialog_Buttons', plugin.dialog).outerHeight() : 0) -
                         (parseFloat(plugin.body.css('paddingTop')) || 0) -
