@@ -951,13 +951,10 @@
                 plugin.body.html(plugin.settings.message);
 
             // if dialog type is "prompt"
-            if (plugin.settings.type === 'prompt')
+            if (plugin.settings.type === 'prompt') {
 
                 // get a reference to the newly created input box
                 plugin.settings.message = $('.ZebraDialog_Prompt_Input', plugin.body);
-
-            // if dialog type is "prompt"
-            if (plugin.settings.type === 'prompt')
 
                 // handle key presses on the input box
                 $('.ZebraDialog_Prompt_Input', plugin.body).on('keypress', function(e) {
@@ -972,6 +969,8 @@
                         else plugin.close(true, this.value);
 
                 });
+
+            }
 
             // if dialog box content is to be fetched from an external source
             if (plugin.settings.source && typeof plugin.settings.source === 'object') {
