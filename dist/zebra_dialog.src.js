@@ -16,7 +16,7 @@
  *  -   easily add custom buttons
  *  -   position the dialog box wherever you want - not just in the middle of the screen
  *  -   use callback functions to handle user's choice
- *  -   works in pretty much any browser - Firefox, Chrome, Safari, Edge, Opera and Internet Explorer 6+
+ *  -   works in pretty much any browser - Firefox, Chrome, Safari, Edge, Opera and Internet Explorer 7+
  *
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
@@ -566,46 +566,6 @@
                     // (so that pressing tab gets you to the first button)
                     else plugin.body.attr('tabindex', 1).focus().removeAttr('tabindex');
 
-                // if the browser is Internet Explorer 6, call the "_emulate_fixed_position" method
-                // (if we do not apply a short delay, it sometimes does not work as expected)
-                if (plugin.isIE6) setTimeout(_emulate_fixed_position, 500);
-
-            },
-
-            /**
-             *  Emulates "position:fixed" for Internet Explorer 6.
-             *
-             *  @return void
-             *
-             *  @access private
-             */
-            _emulate_fixed_position = function() {
-
-                var
-
-                    // get how much the window is scrolled both horizontally and vertically
-                    scroll_top = $(window).scrollTop(),
-                    scroll_left = $(window).scrollLeft();
-
-                // if an overlay exists
-                if (plugin.settings.modal)
-
-                    // make sure the overlay is stays positioned at the top of the viewport
-                    plugin.overlay.css({
-
-                        'top':  scroll_top,
-                        'left': scroll_left
-
-                    });
-
-                // make sure the dialog box always stays in the correct position
-                plugin.dialog.css({
-
-                    'left': plugin.dialog_left + scroll_left,
-                    'top':  plugin.dialog_top + scroll_top
-
-                });
-
             },
 
             /**
@@ -773,10 +733,6 @@
             // the plugin's final properties are the merged default and user-provided options (if any)
             plugin.settings = $.extend({}, defaults, options);
 
-            // check if browser is Internet Explorer 6 and set a flag accordingly as we need to perform some extra tasks
-            // later on for Internet Explorer 6
-            plugin.isIE6 = (browser.name === 'explorer' && browser.version === 6) || false;
-
             // if dialog box should be modal
             if (plugin.settings.modal) {
 
@@ -791,7 +747,7 @@
                 // set some css properties of the overlay
                 }).css({
 
-                    'position': (plugin.isIE6 ? 'absolute' : 'fixed'),  //  for IE6 we emulate the "position:fixed" behavior
+                    'position': 'fixed',
                     'left':     0,                                      //  the overlay starts at the top-left corner of the
                     'top':      0,                                      //  browser window (later on we'll stretch it)
                     'opacity':  plugin.settings.overlay_opacity + ''    //  set the overlay's opacity (also we need to specify it
@@ -844,7 +800,7 @@
             // set some css properties of the dialog box
             }).css({
 
-                'position':     (plugin.isIE6 ? 'absolute' : 'fixed'),  //  for IE6 we emulate the "position:fixed" behavior
+                'position':     'fixed',
                 'left':         0,                                      //  by default, place it in the top-left corner of the
                 'top':          0,                                      //  browser window (we'll position it later)
                 'visibility':   'hidden'                                //  the dialog box is hidden for now
@@ -1224,18 +1180,6 @@
 
                     // let the event bubble up
                     return true;
-
-                });
-
-            // if browser is Internet Explorer 6 we attach an event to be fired whenever the window is scrolled
-            // that is because in IE6 we have to simulate "position:fixed"
-            if (plugin.isIE6)
-
-                // if window is scrolled
-                $(window).on('scroll.Zebra_Dialog', function() {
-
-                    // make sure the overlay and the dialog box always stay in the correct position
-                    _emulate_fixed_position();
 
                 });
 
