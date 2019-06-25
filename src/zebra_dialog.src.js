@@ -21,7 +21,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.1.2 (last revision: June 21, 2019)
+ *  @version    2.1.2 (last revision: June 25, 2019)
  *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -123,8 +123,8 @@
                                                             //
                                                             //  Default is FALSE
 
-                custom_class:                false,         //  An extra class to add to the dialog box's container. Useful
-                                                            //  for customizing a dialog box elements' styles at runtime.
+                custom_class:                false,         //  An extra class to add to the dialog box's container and to
+                                                            //  the overlay (when present).
                                                             //
                                                             //  For example, setting this value to "mycustom" and in the
                                                             //  CSS file having something like
@@ -765,7 +765,10 @@
                 // create the overlay
                 plugin.overlay = $('<div>', {
 
-                    'class':    'ZebraDialogOverlay'
+                    'class':    'ZebraDialogOverlay' +
+
+                    // any custom classes
+                    (plugin.settings.custom_class ? ' ' + plugin.settings.custom_class : '')
 
                 // set some css properties of the overlay
                 }).css({

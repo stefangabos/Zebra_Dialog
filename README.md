@@ -218,7 +218,7 @@ $(document).ready(function() {
         <td valign="top"><em>mixed</em></td>
         <td valign="top">false</td>
         <td valign="top">
-            An extra class to add to the dialog box's container, useful for further customizing dialog boxes<br><br>
+            An extra class to add to the dialog box's container and to the overlay (when present).<br><br>
             For example, setting this value to <code>mycustom</code> and in the CSS file having something like<br><br>
             <code>.mycustom .ZebraDialog_Title { background: red }</code><br><br>
             would set the dialog box title's background to red.<br><br>
