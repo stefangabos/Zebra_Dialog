@@ -853,15 +853,47 @@
                 // assign a unique id to each notification
                 plugin.dialog.attr('id', 'ZebraDialog_' + Math.floor(Math.random() * 9999999));
 
-            // check to see if the "width" property is given as an integer
-            // try to convert to a integer
-            tmp = parseInt(plugin.settings.width, 10);
+            // see if width is valid
+            tmp = (plugin.settings.width + '').match(/^([0-9]+)(\%)?$/);
 
-            // if converted value is a valid number
-            if (!isNaN(tmp) && tmp === plugin.settings.width && tmp.toString() === plugin.settings.width.toString() && tmp > 0)
+            // if width is valid
+            if (tmp) {
 
+                // if width was specified as a percentage
+                if (undefined !== tmp[2])
+
+                    // compute the value in pixels
+                    tmp = parseInt(Math.max(document.documentElement.clientWidth, window.innerWidth || 0) * parseInt(tmp[1], 10) / 100, 10);
+
+                // if width was not specified as a percentage
+                else tmp = parseInt(tmp[1], 10);
+
+                // if converted value is a valid number
                 // set the dialog box's width
-                plugin.dialog.css('width', plugin.settings.width);
+                if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('width', tmp);
+
+            }
+
+            // see if height is valid
+            tmp = (plugin.settings.height + '').match(/^([0-9]+)(\%)?$/);
+
+            // if height is valid
+            if (tmp) {
+
+                // if height was specified as a percentage
+                if (undefined !== tmp[2])
+
+                    // compute the value in pixels
+                    tmp = parseInt(Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * parseInt(tmp[1], 10) / 100, 10);
+
+                // if height was not specified as a percentage
+                else tmp = parseInt(tmp[1], 10);
+
+                // if converted value is a valid number
+                // set the dialog box's height
+                if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('height', tmp);
+
+            }
 
             // if dialog box has a title
             if (plugin.settings.title)
@@ -887,12 +919,6 @@
                 'class':    'ZebraDialog_Body'
 
             });
-
-            // if we have a static height set
-            if (plugin.settings.height > 0)
-
-                // set it
-                plugin.body.css('height', plugin.settings.height);
 
             // if we have a max-height set
             if (plugin.settings.max_height > 0) {
