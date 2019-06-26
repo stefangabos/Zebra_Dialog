@@ -1,3 +1,13 @@
+## version 3.0.0 (TBA, 2019)
+
+- added `margin` property to prevent the dialog box from touching the viewport's limits when stretched 100% horizontally and/or vertically
+- added `max_width` property which, together with the existing `max_height` property, can no be specified as percentage
+- added the `default_value` property to be used for `prompt` type dialog boxes
+- `width` and `height` properties can now be specified as percentages, too
+- `custom_class` is now also added to the overlay, not just to the dialog box
+- dropped IE6 support
+- minor tweaks to all the templates
+
 ## version 2.1.0 (June 03, 2019)
 
 - added [prompt](https://stefangabos.github.io/Zebra_Dialog/flat.html#handling-input) dialog box type; thanks to [Sebi Popa](https://github.com/sebipopa)!
