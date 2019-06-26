@@ -182,7 +182,7 @@
                                                             //
                                                             //  Default is "0" - the maximum height is the viewport's height.
 
-                max_width:                  0,              //  The maximum width of the dialog box.
+                max_width:                  450,            //  The maximum width of the dialog box.
                                                             //
                                                             //  Can be specified as a numeric value (which will be interpreted
                                                             //  as a value in pixels) or as a percentage (of the viewport).
