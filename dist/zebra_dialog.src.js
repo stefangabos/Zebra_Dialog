@@ -403,6 +403,9 @@
             // event of the user pressing ENTER while inside the input box
             default_confirmation_button = false,
 
+            // used when "height" or "max_height" are set
+            compute_body_height = false,
+
             /**
              *  Draw the overlay and the dialog box
              *
@@ -536,8 +539,23 @@
                 // if dialog height exceeds screen's height
                 if (dialog_height + vertical_margin > viewport_height - (vertical_margin * 2))
 
-                    // adjust the dialog box's height so that it fits
+                    // adjust the dialog box's body height so that it fits
                     plugin.body.css('height', viewport_height - (vertical_margin * 2) -
+                        ($('.ZebraDialog_Title', plugin.dialog) ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) -
+                        ($('.ZebraDialog_Buttons', plugin.dialog) ? $('.ZebraDialog_Buttons', plugin.dialog).outerHeight() : 0) -
+                        (parseFloat(plugin.body.css('marginTop')) || 0) -
+                        (parseFloat(plugin.body.css('marginBottom')) || 0) -
+                        (parseFloat(plugin.body.css('paddingTop')) || 0) -
+                        (parseFloat(plugin.body.css('paddingBottom')) || 0) -
+                        (parseFloat(plugin.body.css('borderTopWidth')) || 0) -
+                        (parseFloat(plugin.body.css('borderBottomWidth')) || 0)
+                    );
+
+                // if dialog has "height" or "max_height" set
+                // adjust the dialog box's body height
+                else
+
+                    plugin.body.css('height', plugin.dialog.height() -
                         ($('.ZebraDialog_Title', plugin.dialog) ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) -
                         ($('.ZebraDialog_Buttons', plugin.dialog) ? $('.ZebraDialog_Buttons', plugin.dialog).outerHeight() : 0) -
                         (parseFloat(plugin.body.css('marginTop')) || 0) -
@@ -875,95 +893,109 @@
                 // assign a unique id to each notification
                 plugin.dialog.attr('id', 'ZebraDialog_' + Math.floor(Math.random() * 9999999));
 
-            // see if max_width is valid
-            tmp = (plugin.settings.max_width + '').match(/^([0-9]+)(\%)?$/);
+            // see if "width" is valid
+            tmp = (plugin.settings.width + '').match(/^([0-9]+)(\%)?$/);
 
-            // if max_width is valid
+            // if "width" is valid
             if (tmp) {
 
-                // if max_width was specified as a percentage
+                // if "width" was specified as a percentage
                 if (undefined !== tmp[2])
 
                     // compute the value in pixels
                     tmp = parseInt(Math.max(document.documentElement.clientWidth, window.innerWidth || 0) * parseInt(tmp[1], 10) / 100, 10);
 
-                // if max_width was not specified as a percentage
+                // if "width" was not specified as a percentage
                 else tmp = parseInt(tmp[1], 10);
 
-                // if converted value is a valid number
-                // set the dialog box's max_width
-                if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('max-width', tmp);
+                // if converted value is a valid number, greater than 0
+                // set the dialog box's width
+                if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('width', tmp);
 
             }
 
-            // if max_width was not specified or it is invalid
+            // if "width" was not specified, was 0, or it was invalid
             if (isNaN(tmp) || tmp === 0) {
 
-                // see if width is valid
-                tmp = (plugin.settings.width + '').match(/^([0-9]+)(\%)?$/);
+                // see if "max_width" is valid
+                tmp = (plugin.settings.max_width + '').match(/^([0-9]+)(\%)?$/);
 
-                // if width is valid
+                // if "max_width" is valid
                 if (tmp) {
 
-                    // if width was specified as a percentage
+                    // if "max_width" was specified as a percentage
                     if (undefined !== tmp[2])
 
                         // compute the value in pixels
                         tmp = parseInt(Math.max(document.documentElement.clientWidth, window.innerWidth || 0) * parseInt(tmp[1], 10) / 100, 10);
 
-                    // if width was not specified as a percentage
+                    // if "max_width" was not specified as a percentage
                     else tmp = parseInt(tmp[1], 10);
 
-                    // if converted value is a valid number
-                    // set the dialog box's width
-                    if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('width', tmp);
+                    // if converted value is a valid number, greater than 0
+                    // set the dialog box's max_width
+                    if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('max-width', tmp);
 
                 }
 
             }
 
-            // see if max_height is valid
-            tmp = (plugin.settings.max_height + '').match(/^([0-9]+)(\%)?$/);
+            // see if "height" is valid
+            tmp = (plugin.settings.height + '').match(/^([0-9]+)(\%)?$/);
 
-            // if max_height is valid
+            // if "height" is valid
             if (tmp) {
 
-                // if max_height was specified as a percentage
+                // if "height" was specified as a percentage
                 if (undefined !== tmp[2])
 
                     // compute the value in pixels
                     tmp = parseInt(Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * parseInt(tmp[1], 10) / 100, 10);
 
-                // if max_height was not specified as a percentage
+                // if "height" was not specified as a percentage
                 else tmp = parseInt(tmp[1], 10);
 
-                // if converted value is a valid number
-                // set the dialog box's max_height
-                if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('max-height', tmp);
+                // if converted value is a valid number, greater than 0
+                if (!isNaN(tmp) && tmp > 0) {
+
+                    // set the dialog box's height
+                    plugin.dialog.css('height', tmp);
+
+                    // set flag
+                    compute_body_height = true;
+
+                }
 
             }
 
-            // if max_width was not specified or it is invalid
+            // if "max_height" was not specified, was 0, or it was invalid
             if (isNaN(tmp) || tmp === 0) {
 
-                // see if height is valid
-                tmp = (plugin.settings.height + '').match(/^([0-9]+)(\%)?$/);
+                // see if "max_height" is valid
+                tmp = (plugin.settings.max_height + '').match(/^([0-9]+)(\%)?$/);
 
-                // if height is valid
+                // if "max_height" is valid
                 if (tmp) {
 
-                    // if height was specified as a percentage
+                    // if "max_height" was specified as a percentage
                     if (undefined !== tmp[2])
 
                         // compute the value in pixels
                         tmp = parseInt(Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * parseInt(tmp[1], 10) / 100, 10);
 
-                    // if height was not specified as a percentage
+                    // if "max_height" was not specified as a percentage
                     else tmp = parseInt(tmp[1], 10);
 
-                    // if converted value is a valid number
-                    // set the dialog box's height
-                    if (!isNaN(tmp) && tmp > 0) plugin.dialog.css('height', tmp);
+                    // if converted value is a valid number, greater than 0
+                    if (!isNaN(tmp) && tmp > 0) {
+
+                        // set the dialog box's max_height
+                        plugin.dialog.css('max-height', tmp);
+
+                        // set flag
+                        compute_body_height = true;
+
+                    }
 
                 }
 
