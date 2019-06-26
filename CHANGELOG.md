@@ -86,7 +86,7 @@
 ## version 1.3.2 (May 26, 2013)
 
 - fixed a bug where if the "reposition_speed" property was &gt; 0 and the browser window was manually resized, the animations for repositioning the window would queue up and slow down the process to almost a complete halt;
-- changed the name of the "animaton_speed" property to "animation_speed_hide" and added a new "animation_speed_show" used to set the speed by which the dialog box will fade in when appearing;
+- changed the name of the "animation_speed" property to "animation_speed_hide" and added a new "animation_speed_show" used to set the speed by which the dialog box will fade in when appearing;
 
 ## version 1.3.1 (May 06, 2013)
 
