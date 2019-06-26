@@ -21,7 +21,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.1.2 (last revision: June 25, 2019)
+ *  @version    3.0.0 (last revision: June 26, 2019)
  *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -33,7 +33,7 @@
     $.Zebra_Dialog = function() {
 
         // so you can tell the version number even if all you have is the minified source
-        this.version = '2.1.2';
+        this.version = '3.0.0';
 
         // default options
         var defaults = {
@@ -501,7 +501,6 @@
                     plugin.dialog_top = values.middle;
 
                 }
-
 
                 // see if margin is valid
                 margin = (plugin.settings.margin + '').match(/^([0-9]+)(\%)?$/);
