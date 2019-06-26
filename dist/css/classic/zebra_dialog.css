@@ -42,12 +42,6 @@ html {
 .ZebraDialog_Prompt .ZebraDialog_Body {
     background-image: url(prompt.png)
 }
-.ZebraDialog_Prompt_Input {
-    width: 100%;
-    -moz-box-sizing: border-box!important;
-    -webkit-box-sizing: border-box!important;
-    box-sizing: border-box!important
-}
 .ZebraDialog_Buttons_Centered .ZebraDialog_Buttons {
     text-align: center
 }
@@ -84,8 +78,7 @@ a.ZebraDialog_Close {
     -moz-border-radius: 10px;
     border-radius: 10px;
     background: #e7edef;
-    border: 7px solid #13252f;
-    width: 450px
+    border: 7px solid #13252f
 }
 .ZebraDialog_Title {
     position: relative;
@@ -101,20 +94,23 @@ a.ZebraDialog_Close {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     color: #44484a;
-    padding: 20px;
-    border-bottom: 2px groove #fff
+    margin: 10px;
+    padding: 20px
 }
 .ZebraDialog_NoTitle .ZebraDialog_Body {
     border-bottom: none
 }
 .ZebraDialog_Icon .ZebraDialog_Body {
     background-repeat: no-repeat;
-    background-position: 20px 20px;
-    padding-left: 88px;
-    min-height: 48px;
-    height: auto
+    background-position: 25px 25px;
+    padding-left: 108px;
+    min-height: 48px
 }
 .ZebraDialog_Prompt_Input {
+    width: 100%;
+    -moz-box-sizing: border-box!important;
+    -webkit-box-sizing: border-box!important;
+    box-sizing: border-box!important;
     padding: 8px;
     margin: 10px 0 0;
     border: 1px solid #ababab;
@@ -123,6 +119,7 @@ a.ZebraDialog_Close {
 }
 .ZebraDialog_Buttons {
     text-align: right;
+    border-top: 2px groove #fff;
     padding: 10px 5px 10px 10px
 }
 .ZebraDialog_Buttons a {
@@ -141,7 +138,6 @@ a.ZebraDialog_Close {
     text-align: center;
     text-decoration: none;
     text-shadow: 1px 0 2px #222;
-    _width: 60px;
     background-color: #006dcc;
     *background-color: #04c;
     background-image: -moz-linear-gradient(top,#08c,#04c);
