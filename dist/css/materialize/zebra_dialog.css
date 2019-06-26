@@ -69,9 +69,9 @@ a.ZebraDialog_Close {
 .ZebraDialog_Body,
 .ZebraDialog_Buttons a,
 .ZebraDialog_Title {
-    font-family: Roboto,sans-serif;
-    font-size: 16px;
-    line-height: 24px
+    font-family: Helvetica,Tahoma,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.4
 }
 .ZebraDialog_Preloader {
     background: url(preloader.gif) center center no-repeat;
@@ -86,7 +86,7 @@ a.ZebraDialog_Close {
     position: relative;
     border-bottom: 1px solid #f0f0f0;
     color: #000;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 700;
     padding: 10px
 }
@@ -126,6 +126,7 @@ a.ZebraDialog_Close {
     background: 0 0;
     border-radius: 5px;
     color: #37a0f5;
+    font-size: 16px;
     font-weight: 700;
     margin-right: 10px!important;
     min-width: 60px;

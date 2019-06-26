@@ -11,8 +11,9 @@
 .ZebraDialog_Title,
 .ZebraDialog_Body,
 .ZebraDialog_Buttons a {
-    font-size: 16px;
-    line-height: 24px;
+    font-family: Helvetica, Tahoma, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
 }
 
 .ZebraDialog_Preloader {
@@ -29,7 +30,7 @@
 .ZebraDialog_Title {
     border-bottom: 1px solid #F0F0F0;
     color: #000;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     padding: 10px;
 }
@@ -62,6 +63,7 @@
         background: transparent;
         border-radius: 5px;
         color: #37A0F5;
+        font-size: 16px;
         font-weight: bold;
         margin-right: 10px !important;
         min-width: 60px;
