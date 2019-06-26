@@ -553,7 +553,7 @@
 
                 // if dialog has "height" or "max_height" set
                 // adjust the dialog box's body height
-                else
+                else if (compute_body_height)
 
                     plugin.body.css('height', plugin.dialog.height() -
                         ($('.ZebraDialog_Title', plugin.dialog) ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) -
