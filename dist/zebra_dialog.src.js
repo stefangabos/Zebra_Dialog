@@ -425,23 +425,45 @@
                     dialog_width = plugin.dialog.outerWidth(),
                     dialog_height = plugin.dialog.outerHeight(),
 
-                    // the numeric representations for some constants that may exist in the "position" property
-                    values = {
-
-                        'left':     0,
-                        'top':      0,
-                        'right':    viewport_width - dialog_width,
-                        'bottom':   viewport_height - dialog_height,
-                        'center':   (viewport_width - dialog_width) / 2,
-                        'middle':   (viewport_height - dialog_height) / 2
-
-                    },
-
-                    message, message_height, container_height, margin, horizontal_margin = 0, vertical_margin = 0;
+                    values, message, message_height, container_height, margin, horizontal_margin = 0, vertical_margin = 0;
 
                 // reset these values
                 plugin.dialog_left = undefined;
                 plugin.dialog_top = undefined;
+
+                // see if margin is valid
+                margin = (plugin.settings.margin + '').match(/^([0-9]+)(\%)?$/);
+
+                // if margin is valid
+                if (margin) {
+
+                    // if margin was specified as a percentage
+                    if (undefined !== margin[2]) {
+
+                        // compute the value in pixels
+                        horizontal_margin = parseInt(viewport_width * parseInt(margin[1], 10) / 100, 10);
+                        vertical_margin = parseInt(viewport_height * parseInt(margin[1], 10) / 100, 10);
+
+                    // if margin was not specified as a percentage
+                    } else horizontal_margin = vertical_margin = parseInt(margin[1], 10);
+
+                    // if converted value is not a valid number
+                    if (isNaN(horizontal_margin)) horizontal_margin = vertical_margin = 0;
+
+                }
+
+                // the numeric representations for some constants that may exist in the "position" property
+                // (with margins factored in)
+                values = {
+
+                    'left':     horizontal_margin,
+                    'top':      vertical_margin,
+                    'right':    viewport_width - horizontal_margin - dialog_width,
+                    'bottom':   viewport_height - vertical_margin - dialog_height,
+                    'center':   (viewport_width - dialog_width) / 2,
+                    'middle':   (viewport_height - dialog_height) / 2
+
+                };
 
                 // if
                 if (
@@ -501,36 +523,6 @@
                     plugin.dialog_top = values.middle;
 
                 }
-
-                // see if margin is valid
-                margin = (plugin.settings.margin + '').match(/^([0-9]+)(\%)?$/);
-
-                // if margin is valid
-                if (margin) {
-
-                    // if margin was specified as a percentage
-                    if (undefined !== margin[2]) {
-
-                        // compute the value in pixels
-                        horizontal_margin = parseInt(viewport_width * parseInt(margin[1], 10) / 100, 10);
-                        vertical_margin = parseInt(viewport_height * parseInt(margin[1], 10) / 100, 10);
-
-                    // if margin was not specified as a percentage
-                    } else horizontal_margin = vertical_margin = parseInt(margin[1], 10);
-
-                    // if converted value is not a valid number
-                    if (isNaN(horizontal_margin)) horizontal_margin = vertical_margin = 0;
-
-                }
-
-                // if we have horizontal margin
-                if (horizontal_margin > 0)
-
-                    // apply horizontal margin
-                    plugin.dialog.css({
-                        marginLeft: horizontal_margin,
-                        marginRight: horizontal_margin
-                    });
 
                 // make sure top is not negative
                 if (plugin.dialog_top < horizontal_margin) plugin.dialog_top = vertical_margin;
