@@ -422,8 +422,8 @@
                     viewport_height = $(window).height(),
 
                     // get dialog box's width and height
-                    dialog_width = plugin.dialog.width(),
-                    dialog_height = plugin.dialog.height(),
+                    dialog_width = plugin.dialog.outerWidth(),
+                    dialog_height = plugin.dialog.outerHeight(),
 
                     // the numeric representations for some constants that may exist in the "position" property
                     values = {
