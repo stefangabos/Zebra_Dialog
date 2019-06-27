@@ -340,7 +340,7 @@ $(document).ready(function() {
             </ul>
             <blockquote>Positions are relative to the viewport (the area of the browser that is visible to the user) and
             the value of the <code>margin</code> property is taken into account!</blockquote>
-            Examples:<br>
+            Examples:<br><br>
             <code>// position the dialog box in the top-left corner</code><br>
 			<code>// shifted 20 pixels inside</code><br>
 			<code>['left + 20', 'top + 20']</code><br><br>
