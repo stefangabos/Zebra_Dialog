@@ -70,7 +70,7 @@
                                                             //
                                                             //  If set to TRUE, the default buttons will be used, depending
                                                             //  on the type of the dialog box: ['Ok', 'Cancel'] for "prompt",
-                                                            //  "warning" and "question" types, and ['Ok'] for the other
+                                                            //  "question" and "warning" types, and ['Ok'] for the other
                                                             //  dialog box types.
                                                             //
                                                             //  For custom buttons, use an array containing the captions
@@ -148,7 +148,7 @@
                                                             //  as a value in pixels) or as a percentage (of the viewport).
                                                             //
                                                             //  If "max_height" is set to valid value greater than 0,
-                                                            //  then the "height" property will be ignored.
+                                                            //  then this property will be ignored!
                                                             //
                                                             //  Default is "0" - height is automatically set.
 
@@ -160,11 +160,10 @@
                 margin:                     0,              //  Margin of the dialog box relative to the viewport's limits
                                                             //  (a single value, applied both horizontally and/or vertically)
                                                             //
-                                                            //  This is applied *only* when, because of its content, the
-                                                            //  dialog box needs to be stretched 100% horizontally and/or
-                                                            //  vertically and "width" and "max_width" are not set (when
-                                                            //  stretched horizontally) and "height" and "max_height" are
-                                                            //  not set (when stretched vertically).
+                                                            //  This is used when the dialog box is stretched 100% horizontally
+                                                            //  and/or vertically and "width" and "max_width" are not set
+                                                            //  (when stretched horizontally) and "height" and "max_height"
+                                                            //  are not set (when stretched vertically).
                                                             //
                                                             //  Can be specified as a numeric value (which will be interpreted
                                                             //  as a value in pixels) or as a percentage (of the viewport).
@@ -190,7 +189,7 @@
                                                             //  If "max_width" is set to valid value greater than 0,
                                                             //  then the "width" property will be ignored.
                                                             //
-                                                            //  Default is "0" - the maximum width is the viewport's width.
+                                                            //  Default is 450.
 
                 message:                    '',             //  The text (or HTML) to be displayed in the dialog box.
                                                             //
@@ -230,7 +229,8 @@
                                                             //  position.
                                                             //
                                                             //  Positions are relative to the viewport (the area of the
-                                                            //  browser that is visible to the user)!
+                                                            //  browser that is visible to the user) and the value of the
+                                                            //  "margin" property is taken into account!
                                                             //
                                                             //  Examples:
                                                             //
@@ -337,7 +337,7 @@
                                                             //
                                                             //  If you don't want an icon, set the "type" property to FALSE.
                                                             //
-                                                            //  By default, the "warning", "question" and "prompt" types
+                                                            //  By default, the "question", "prompt" and "warning" types
                                                             //  have two buttons with the captions "Ok" and "Cancel" respectively,
                                                             //  while the other types have a single button with the caption
                                                             //  "Ok".

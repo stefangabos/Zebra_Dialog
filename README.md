@@ -226,12 +226,21 @@ $(document).ready(function() {
         </td>
     </tr>
     <tr>
-        <td valign="top"><code>height</code></td>
-        <td valign="top"><em>integer</em></td>
-        <td valign="top">0</td>
+        <td valign="top"><code>default_value</code></td>
+        <td valign="top"><em>string</em></td>
+        <td valign="top">""<br>(empty string)</td>
         <td valign="top">
-        By default, the height of the dialog box is automatically adjust ot fit the content and it is also influenced by
-        the value of the <code>max_height</code> property. Use this to set a fixed height, in pixels, for the dialog box.
+            Default value to show in the input box when the dialog box type is <code>prompt</code>.
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><code>height</code></td>
+        <td valign="top"><em>mixed</em></td>
+        <td valign="top">0<br>(automatically set)</td>
+        <td valign="top">
+        By default, the height of the dialog box is automatically computed to fit the content (but not exceed viewport).<br><br>
+        Can be specified as a numeric value (which will be interpreted as a value in pixels) or as a percentage (of the viewport).<br><br>
+        <blockquote>If <code>max_height</code> is set to valid value greater than <code>0</code>, then this property will be ignored!</blockquote>
         </td>
     </tr>
     <tr>
@@ -243,12 +252,33 @@ $(document).ready(function() {
         </td>
     </tr>
     <tr>
-        <td valign="top"><code>max_height</code></td>
-        <td valign="top"><em>integer</em></td>
+        <td valign="top"><code>margin</code></td>
+        <td valign="top"><em>mixed</em></td>
         <td valign="top">0</td>
         <td valign="top">
-            The maximum height, in pixels, before the content in the dialog box is scrolled.<br><br>
-            If set to <code>0</code> the dialog box's height will automatically adjust to fit the entire content.
+        Margin of the dialog box relative to the viewport's limits (a single value, applied both horizontally and/or vertically)<br><br>This is used when the dialog box is stretched 100% horizontally and/or vertically and <code>width</code> and <code>max_width</code> are not set (when stretched horizontally) and <code>height</code> and <code>max_height</code> are not set (when stretched vertically).<br><br>
+        This propery is also taken into account when using the <code>position</code> property.<br><br>
+        Can be specified as a numeric value (which will be interpreted as a value in pixels) or as a percentage (of the viewport).
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><code>max_height</code></td>
+        <td valign="top"><em>mixed</em></td>
+        <td valign="top">0</td>
+        <td valign="top">
+            The maximum height of the dialog box.<br><br>
+            Can be specified as a numeric value (which will be interpreted as a value in pixels) or as a percentage (of the viewport).<br><br>
+            <blockquote>If this property is set to valid value greater than <code>0</code>, then the <code>height</code> property will be ignored.</blockquote>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><code>max_width</code></td>
+        <td valign="top"><em>mixed</em></td>
+        <td valign="top">450</td>
+        <td valign="top">
+            The maximum width of the dialog box.<br><br>
+            Can be specified as a numeric value (which will be interpreted as a value in pixels) or as a percentage (of the viewport).<br><br>
+            <blockquote>If this property is set to valid value greater than <code>0</code>, then the <code>width</code> property will be ignored.</blockquote>
         </td>
     </tr>
     <tr>
@@ -256,7 +286,8 @@ $(document).ready(function() {
         <td valign="top"><em>string</em></td>
         <td valign="top"></td>
         <td valign="top">
-            The message in the dialog box - this is passed as argument when the plugin is called.
+            The text (or HTML) to be displayed in the dialog box.<br><br>
+            See the <code>source</code> property on how to add content via AJAX, iFrames or from inline elements.
         </td>
     </tr>
     <tr>
@@ -307,7 +338,9 @@ $(document).ready(function() {
                 <li><em>vertical_position</em> can be <code>top</code>, <code>bottom</code> or <code>middle</code></li>
                 <li><em>offset</em> is optional and represents the value of pixels to add/subtract from the respective horizontal or vertical position</li>
             </ul>
-            <blockquote>Positions are relative to the viewport</blockquote>
+            <blockquote>Positions are relative to the viewport (the area of the browser that is visible to the user) and
+            the value of the <code>margin</code> property is taken into account!</blockquote><br><br>
+            Examples:<br><br>
             <code>// position the dialog box in the top-left corner</code><br>
 			<code>// shifted 20 pixels inside</code><br>
 			<code>['left + 20', 'top + 20']</code><br><br>
@@ -397,6 +430,7 @@ $(document).ready(function() {
                 <li>information</li>
                 <li>question</li>
                 <li>warning</li>
+                <li>prompt</li>
             </ul>
             If you don't want an icon, set the <code>type</code> property to <code>false</code>.<br><br>
             By default, the <code>warning</code> and <code>question</code> types have two buttons with the captions <em>Ok</em> and <em>Cancel</em> respectively, while the other types have a single button with the caption <em>Ok</em>.
@@ -415,9 +449,9 @@ $(document).ready(function() {
         <td valign="top"><em>integer</em></td>
         <td valign="top">0<br>(uses the value defined in the theme)</td>
         <td valign="top">
-            Width of the dialog box<br><br>
-            By default, the width of the dialog box is set in the theme file. Use this property to override the default width at run-time.<br><br>
-            Must be an integer, greater than <code>0</code>. Anything else will instruct the script to use the default value, as set in the theme file. Value should be no less than <code>200</code> for optimal output.
+            By default, the width of the dialog box is automatically computed in order to fit the content (but not exceed viewport.<br><br>
+            Can be specified as a numeric value (which will be interpreted as a value in pixels) or as a percentage (of the viewport).<br><br>
+            <blockquote>If <code>max_width</code> is set to valid value greater than <code>0</code>, then this property will be ignored.</blockquote>
         </td>
     </tr>
     </tbody>
