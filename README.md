@@ -339,8 +339,8 @@ $(document).ready(function() {
                 <li><em>offset</em> is optional and represents the value of pixels to add/subtract from the respective horizontal or vertical position</li>
             </ul>
             <blockquote>Positions are relative to the viewport (the area of the browser that is visible to the user) and
-            the value of the <code>margin</code> property is taken into account!</blockquote><br><br>
-            Examples:<br><br>
+            the value of the <code>margin</code> property is taken into account!</blockquote>
+            Examples:<br>
             <code>// position the dialog box in the top-left corner</code><br>
 			<code>// shifted 20 pixels inside</code><br>
 			<code>['left + 20', 'top + 20']</code><br><br>
