@@ -258,6 +258,8 @@ $(document).ready(function() {
     $('#example10').on('click', function() {
         new $.Zebra_Dialog({
             auto_focus_button: $('body.materialize').length ? false : true,
+            type: false,
+            custom_class: 'ZebraDialog_iFrame',
             source: {
                 iframe: {
                     src: 'https://en.m.wikipedia.org/wiki/Dialog_box'

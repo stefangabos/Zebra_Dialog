@@ -50,3 +50,11 @@ body.flat .myclass .ZebraDialog_Body {
     background-position: 40px 28px;
 }
 
+.ZebraDialog_iFrame .ZebraDialog_Body {
+    padding: 0;
+}
+
+body.flat .ZebraDialog_iFrame .ZebraDialog_Body,
+body.materialize .ZebraDialog_iFrame .ZebraDialog_Body {
+    margin-bottom: 0;
+}
