@@ -1114,8 +1114,19 @@
                             // extend the default options with the ones provided by the user, if any
                             iframe_options = $.extend(default_options, typeof plugin.settings.source[type] === 'string' ? {'src': plugin.settings.source[type]} : plugin.settings.source[type]);
 
-                            // create the iFrame and place it inside the dialog box
-                            canvas.append($('<iframe>').attr(iframe_options));
+                            // create the iFrame
+                            plugin.iframe = $('<iframe>').attr(iframe_options).on('load', function() {
+
+                                // remove the spinner when the iFrame is done loading
+                                $('.ZebraDialog_Preloader', plugin.body).remove();
+
+                            });
+
+                            // add spinner while the iFrame loads
+                            plugin.body.append($('<div').addClass('ZebraDialog_Preloader ZebraDialog_iFrame'));
+
+                            // place iFrame inside the dialog box
+                            canvas.append(plugin.iframe);
 
                             break;
 
