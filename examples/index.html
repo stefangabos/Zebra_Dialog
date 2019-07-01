@@ -420,12 +420,14 @@
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog({
                         source: {
+                            // iFrame's width and height are automatically set
+                            // to fit the dialog box's width and height
                             iframe: {
-                                src: 'https://en.m.wikipedia.org/wiki/Dialog_box',
-                                height: 500
+                                src: 'https://en.m.wikipedia.org/wiki/Dialog_box'
                             }
                         },
                         width: 800,
+                        height: 800,
                         title: 'External content loaded in an iFrame'
                     });
                     </pre>
