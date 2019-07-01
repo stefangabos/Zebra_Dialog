@@ -77,6 +77,15 @@ a.ZebraDialog_Close {
     background: url(preloader.gif) center center no-repeat;
     height: 32px
 }
+.ZebraDialog_Preloader.ZebraDialog_iFrame {
+    left: 50%;
+    margin-left: -16px;
+    margin-top: -16px;
+    position: absolute;
+    top: 50%;
+    width: 32px;
+    z-index: 2
+}
 .ZebraDialog {
     background: #fff;
     border: 1px solid #dedede

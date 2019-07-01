@@ -55,6 +55,10 @@ a.ZebraDialog_Close {
     text-decoration: none;
     top: 50%
 }
+.ZebraDialog_NoTitle .ZebraDialog_Close {
+    top: 0;
+    margin-top: 0
+}
 .ZebraDialogOverlay {
     background: #666;
     height: 100%;
@@ -72,6 +76,15 @@ a.ZebraDialog_Close {
 .ZebraDialog_Preloader {
     background: url(preloader.gif) center center no-repeat;
     height: 32px
+}
+.ZebraDialog_Preloader.ZebraDialog_iFrame {
+    left: 50%;
+    margin-left: -16px;
+    margin-top: -16px;
+    position: absolute;
+    top: 50%;
+    width: 32px;
+    z-index: 2
 }
 .ZebraDialog {
     -webkit-border-radius: 10px;
@@ -163,7 +176,5 @@ a.ZebraDialog_Close {
     color: #e7edef
 }
 .ZebraDialog_NoTitle .ZebraDialog_Close {
-    top: 0;
-    margin-top: 0;
     color: #666
 }
