@@ -38,7 +38,7 @@
         // default options
         var defaults = {
 
-                animation_speed_hide:       250,            //  The speed, in milliseconds, by which the overlay and the
+                animation_speed_hide:       250,            //  The speed, in milliseconds, by which the backdrop and the
                                                             //  dialog box will be animated when closing.
                                                             //
                                                             //  Default is 250
@@ -124,7 +124,7 @@
                                                             //  Default is FALSE
 
                 custom_class:                false,         //  An extra class to add to the dialog box's container and to
-                                                            //  the overlay (when present).
+                                                            //  the backdrop (when present).
                                                             //
                                                             //  For example, setting this value to "mycustom" and in the
                                                             //  CSS file having something like
@@ -196,22 +196,22 @@
                                                             //  See the "source" property on how to add content via AJAX,
                                                             //  iFrames or from inline elements.
 
-                modal:                      true,           //  When set to TRUE there will be a semitransparent overlay
+                modal:                      true,           //  When set to TRUE there will be a semitransparent backdrop
                                                             //  behind the dialog box, preventing users from clicking
                                                             //  the page's content.
                                                             //
                                                             //  Default is TRUE
 
-                overlay_close:              true,           //  Should the dialog box close when the overlay is clicked?
+                backdrop_close:             true,           //  Should the dialog box close when the backdrop is clicked?
                                                             //
                                                             //  Default is TRUE
 
-                overlay_container:          'body',         //  A selector indicating the DOM element to server as the
-                                                            //  overlay's container.
+                backdrop_container:         'body',         //  A selector indicating the DOM element to server as the
+                                                            //  backdrop's container.
                                                             //
                                                             //  Default is "body".
 
-                overlay_opacity:            '.9',           //  The opacity of the overlay (between 0 and 1)
+                backdrop_opacity:           '.9',           //  The opacity of the backdrop (between 0 and 1)
                                                             //
                                                             //  Default is .9
 
@@ -364,7 +364,7 @@
                                                             //  The callback function (if any) receives as first argument
                                                             //  the caption of the clicked button or boolean FALSE if the
                                                             //  dialog box is closed by pressing the ESC key, by clicking
-                                                            //  the dialog box's "x" button, or by clicking the overlay.
+                                                            //  the dialog box's "x" button, or by clicking the backdrop.
                                                             //  The argument can also be boolean TRUE when the dialog box
                                                             //  type is "prompt" and the ENTER key is pressed while inside
                                                             //  the input box.
@@ -403,7 +403,7 @@
             compute_body_height = false,
 
             /**
-             *  Draw the overlay and the dialog box
+             *  Draw the backdrop and the dialog box
              *
              *  @return void
              *
@@ -795,36 +795,36 @@
             // if dialog box should be modal
             if (plugin.settings.modal) {
 
-                // create the overlay
-                plugin.overlay = $('<div>', {
+                // create the backdrop
+                plugin.backdrop = $('<div>', {
 
-                    'class':    'ZebraDialogOverlay' +
+                    'class':    'ZebraDialogBackdrop' +
 
                     // any custom classes
                     (plugin.settings.custom_class ? ' ' + plugin.settings.custom_class : '')
 
-                // set some css properties of the overlay
+                // set some css properties of the backdrop
                 }).css({
 
                     'position': 'fixed',
-                    'left':     0,                                      //  the overlay starts at the top-left corner of the
+                    'left':     0,                                      //  the backdrop starts at the top-left corner of the
                     'top':      0,                                      //  browser window (later on we'll stretch it)
-                    'opacity':  plugin.settings.overlay_opacity + ''    //  set the overlay's opacity (also we need to specify it
+                    'opacity':  plugin.settings.backdrop_opacity + ''   //  set the backdrop's opacity (also we need to specify it
                                                                         //  as a string)
 
                 });
 
-                // if the overlay is appended to a different element other than the "body"
-                if (plugin.settings.overlay_container !== 'body') {
+                // if the backdrop is appended to a different element other than the "body"
+                if (plugin.settings.backdrop_container !== 'body') {
 
                     // reference to the container element
-                    $container = plugin.settings.overlay_container;
+                    $container = plugin.settings.backdrop_container;
 
                     // get container's position
                     container_position = $container.offset();
 
-                    // adjust the overlay's dimensions to match the ones of the parent
-                    plugin.overlay.css({
+                    // adjust the backdrop's dimensions to match the ones of the parent
+                    plugin.backdrop.css({
                         left:   container_position.left,
                         top:    container_position.top,
                         width:  $container.outerWidth(),
@@ -833,15 +833,15 @@
 
                 }
 
-                // if dialog box can be closed by clicking the overlay
-                if (plugin.settings.overlay_close)
+                // if dialog box can be closed by clicking the backdrop
+                if (plugin.settings.backdrop_close)
 
-                    // when the overlay is clicked
-                    // remove the overlay and the dialog box from the DOM
-                    plugin.overlay.on('click', function() { plugin.close(); });
+                    // when the backdrop is clicked
+                    // remove the backdrop and the dialog box from the DOM
+                    plugin.backdrop.on('click', function() { plugin.close(); });
 
-                // append the overlay to the DOM
-                plugin.overlay.appendTo(plugin.settings.overlay_container);
+                // append the backdrop to the DOM
+                plugin.backdrop.appendTo(plugin.settings.backdrop_container);
 
             }
 
@@ -1194,7 +1194,7 @@
                         // if dialog box is to be closed
                         if (close !== false)
 
-                            // remove the overlay and the dialog box from the DOM
+                            // remove the backdrop and the dialog box from the DOM
                             // and pass the clicked button's label as argument
                             plugin.close(undefined !== value.caption ? value.caption : value, input);
 
@@ -1260,7 +1260,7 @@
                 $(document).on('keyup.Zebra_Dialog', function(e) {
 
                     // if pressed key is ESC
-                    // remove the overlay and the dialog box from the DOM
+                    // remove the backdrop and the dialog box from the DOM
                     if (e.which === 27) plugin.close();
 
                     // let the event bubble up
@@ -1287,7 +1287,7 @@
 
             }
 
-            // draw the overlay and the dialog box
+            // draw the backdrop and the dialog box
             // (no animation)
             _draw(false);
 
@@ -1340,15 +1340,15 @@
             $(document).off('.Zebra_Dialog');
             $(window).off('.Zebra_Dialog');
 
-            // if an overlay exists
-            if (plugin.overlay)
+            // if an backdrop exists
+            if (plugin.backdrop)
 
-                // animate overlay's css properties
+                // animate backdrop's css properties
                 // (notice that we use the opacity's value as string - this is required for working with IE8
                 // see https://stackoverflow.com/questions/4987842/jquery-on-ie8-error-object-doesnt-support-this-property-or-method)
-                plugin.overlay.animate({
+                plugin.backdrop.animate({
 
-                    opacity: '0'    // fade out the overlay
+                    opacity: '0'    // fade out the backdrop
 
                 },
 
@@ -1358,8 +1358,8 @@
                 // when the animation is complete
                 function() {
 
-                    // remove the overlay from the DOM
-                    plugin.overlay.remove();
+                    // remove the backdrop from the DOM
+                    plugin.backdrop.remove();
 
                 });
 

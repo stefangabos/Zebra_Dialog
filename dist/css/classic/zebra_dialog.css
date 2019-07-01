@@ -59,7 +59,7 @@ a.ZebraDialog_Close {
     top: 0;
     margin-top: 0
 }
-.ZebraDialogOverlay {
+.ZebraDialogBackdrop {
     background: #666;
     height: 100%;
     z-index: 1000;
