@@ -295,19 +295,15 @@
                                                             //  or it can be a string representing a valid URL to be loaded
                                                             //  inside an iFrame and placed inside the dialog box.
                                                             //
+                                                            //  iFrame's width & height are computed automatically!
+                                                            //
                                                             //  Example:
                                                             //
                                                             //  source: {'iframe': 'http://myurl.com/'}
                                                             //
                                                             //  source: {'iframe': {
-                                                            //      'src':          'http://myurl.com/',
-                                                            //      'width':        480,
-                                                            //      'height':       320,
-                                                            //      'scrolling':    'no'
+                                                            //      'src':          'http://myurl.com/'
                                                             //  }}
-                                                            //
-                                                            //  Note that you should always set the iFrame's width and height
-                                                            //  and adjust the dialog box's "width" property accordingly!
                                                             //
                                                             //  - 'inline': selector - where "element" is a jQuery element
                                                             //  from the page; the element will be copied and placed inside
@@ -556,6 +552,12 @@
                         (parseFloat(plugin.body.css('borderTopWidth')) || 0) -
                         (parseFloat(plugin.body.css('borderBottomWidth')) || 0)
                     );
+
+                // if content is in an iFrame
+                if (plugin.iframe)
+
+                    // set the height to fit in the dialog box
+                    plugin.iframe.css('height', plugin.body.height() - 5);
 
                 // if short messages are to be centered vertically
                 if (plugin.settings.vcenter_short_message) {
@@ -1101,9 +1103,9 @@
                         case 'iframe':
 
                             // these are the default options
+                            // we are setting the height in the "_draw" method
                             default_options = {
                                 'width':        '100%',
-                                'height':       '100%',
                                 'marginheight': '0',
                                 'marginwidth':  '0',
                                 'frameborder':  '0'
