@@ -1123,7 +1123,7 @@
                             });
 
                             // add spinner while the iFrame loads
-                            plugin.body.append($('<div').addClass('ZebraDialog_Preloader ZebraDialog_iFrame'));
+                            plugin.body.append($('<div>').addClass('ZebraDialog_Preloader ZebraDialog_iFrame'));
 
                             // place iFrame inside the dialog box
                             canvas.append(plugin.iframe);
