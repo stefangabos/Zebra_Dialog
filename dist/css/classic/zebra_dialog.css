@@ -73,11 +73,11 @@ a.ZebraDialog_Close {
     font-size: 14px;
     line-height: 1.4
 }
-.ZebraDialog_Preloader {
-    background: url(preloader.gif) center center no-repeat;
+.ZebraDialog_Spinner {
+    background: url(spinner.gif) center center no-repeat;
     height: 32px
 }
-.ZebraDialog_Preloader.ZebraDialog_iFrame {
+.ZebraDialog_Spinner.ZebraDialog_iFrame {
     left: 50%;
     margin-left: -16px;
     margin-top: -16px;

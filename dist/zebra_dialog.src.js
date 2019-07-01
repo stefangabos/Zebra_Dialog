@@ -787,7 +787,7 @@
         plugin.init = function() {
 
             var ajax_options, button_bar, buttons, canvas, $container, container_position, default_options, iframe_options,
-                len, max_zindex = 0, preloader, $title, tmp, type;
+                len, max_zindex = 0, spinner, $title, tmp, type;
 
             // the plugin's final properties are the merged default and user-provided options (if any)
             plugin.settings = $.extend({}, defaults, options);
@@ -1077,14 +1077,14 @@
                             // prepare the options for the AJAX call
                             ajax_options = typeof plugin.settings.source[type] === 'string' ? {'url': plugin.settings.source[type]} : plugin.settings.source[type];
 
-                            // create the animated preloader and show it
-                            preloader = $('<div>').attr('class', 'ZebraDialog_Preloader').appendTo(canvas);
+                            // create the animated spinner and show it
+                            spinner = $('<div>').attr('class', 'ZebraDialog_Spinner').appendTo(canvas);
 
                             // handle the "success" event
                             ajax_options.success = function(result) {
 
-                                // remove the preloader
-                                preloader.remove();
+                                // remove the spinner
+                                spinner.remove();
 
                                 // append new content
                                 canvas.append(result);
@@ -1118,12 +1118,12 @@
                             plugin.iframe = $('<iframe>').attr(iframe_options).on('load', function() {
 
                                 // remove the spinner when the iFrame is done loading
-                                $('.ZebraDialog_Preloader', plugin.body).remove();
+                                $('.ZebraDialog_Spinner', plugin.body).remove();
 
                             });
 
                             // add spinner while the iFrame loads
-                            plugin.body.append($('<div>').addClass('ZebraDialog_Preloader ZebraDialog_iFrame'));
+                            plugin.body.append($('<div>').addClass('ZebraDialog_Spinner ZebraDialog_iFrame'));
 
                             // place iFrame inside the dialog box
                             canvas.append(plugin.iframe);

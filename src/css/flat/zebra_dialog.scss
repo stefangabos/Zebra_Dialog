@@ -16,8 +16,8 @@
     line-height: 1.4;
 }
 
-.ZebraDialog_Preloader {
-    background: url('preloader.gif') no-repeat center center;
+.ZebraDialog_Spinner {
+    background: url('spinner.gif') no-repeat center center;
     height: 32px;
     &.ZebraDialog_iFrame {
         left: 50%;
