@@ -1091,6 +1091,7 @@
 
                                 // reposition the dialog box
                                 _draw(false);
+
                             };
 
                             // make the AJAX call
