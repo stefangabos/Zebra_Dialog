@@ -140,7 +140,7 @@ $(document).ready(function() {
         <td valign="top"><em>integer</em></td>
         <td valign="top">250</td>
         <td valign="top">
-            The speed, in milliseconds, by which the overlay and the dialog box will be animated when closing.
+            The speed, in milliseconds, by which the backdrop and the dialog box will be animated when closing.
         </td>
     </tr>
     <tr>
@@ -148,7 +148,7 @@ $(document).ready(function() {
         <td valign="top"><em>integer</em></td>
         <td valign="top">0</td>
         <td valign="top">
-            The speed, in milliseconds, by which the overlay and the dialog box will be animated when appearing.
+            The speed, in milliseconds, by which the backdrop and the dialog box will be animated when appearing.
         </td>
     </tr>
     <tr>
@@ -210,7 +210,7 @@ $(document).ready(function() {
         <td valign="top"><em>boolean</em></td>
         <td valign="top">false</td>
         <td valign="top">
-        Setting this property to <code>true</code> will instruct the plugin to center any available buttons instead of floating them to the right
+        Setting this property to <code>true</code> will instruct the plugin to center any available buttons instead of aligning them to the right
         </td>
     </tr>
     <tr>
@@ -218,7 +218,7 @@ $(document).ready(function() {
         <td valign="top"><em>mixed</em></td>
         <td valign="top">false</td>
         <td valign="top">
-            An extra class to add to the dialog box's container and to the overlay (when present).<br><br>
+            An extra class to add to the dialog box's container and to the backdrop (when present).<br><br>
             For example, setting this value to <code>mycustom</code> and in the CSS file having something like<br><br>
             <code>.mycustom .ZebraDialog_Title { background: red }</code><br><br>
             would set the dialog box title's background to red.<br><br>
@@ -295,31 +295,31 @@ $(document).ready(function() {
         <td valign="top"><em>boolean</em></td>
         <td valign="top">true</td>
         <td valign="top">
-            When set to <code>true</code> there will be a semitransparent overlay behind the dialog box, preventing users from clicking the page's content.
+            When set to <code>true</code> there will be a semitransparent backdrop behind the dialog box, preventing users from clicking the page's content.
         </td>
     </tr>
     <tr>
-        <td valign="top"><code>overlay_close</code></td>
+        <td valign="top"><code>backdrop_close</code></td>
         <td valign="top"><em>boolean</em></td>
         <td valign="top">true</td>
         <td valign="top">
-            Should the dialog box close when the overlay is clicked?
+            Should the dialog box close when the backdrop is clicked?
         </td>
     </tr>
     <tr>
-        <td valign="top"><code>overlay_container</code></td>
+        <td valign="top"><code>backdrop_container</code></td>
         <td valign="top"><em>string</em></td>
         <td valign="top">body</td>
         <td valign="top">
-            A selector indicating the DOM element to server as the overlay's container.
+            A selector indicating the DOM element to server as the backdrop's container.
         </td>
     </tr>
     <tr>
-        <td valign="top"><code>overlay_opacity</code></td>
+        <td valign="top"><code>backdrop_opacity</code></td>
         <td valign="top"><em>double</em></td>
         <td valign="top">.9</td>
         <td valign="top">
-            The opacity of the overlay (between <code>0</code> and <code>1</code>)
+            The opacity of the backdrop (between <code>0</code> and <code>1</code>)
         </td>
     </tr>
     <tr>
@@ -393,14 +393,12 @@ $(document).ready(function() {
                     <code>iframe: object</code> - where <em>object</em> can be an <code>object</code> where property names are valid attributes of the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">iframe</a> tag, or it can be a <code>string</code> representing a valid URL to be loaded inside an iFrame and placed inside the dialog box.<br><br>
 					<code>source: {iframe: 'http://myurl.com/'}</code><br><br>
 					<code>source: {</code><br>
+					<code>&nbsp;&nbsp;// iFrame's width and height are automatically set</code><br>
+                    <code>&nbsp;&nbsp;// to fit the dialog box's width and height</code><br>
 					<code>&nbsp;&nbsp;iframe: {</code><br>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;src: 'http://myurl.com/',</code><br>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;width: 480,</code><br>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;height: 320,</code><br>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;scrolling: 'no'</code><br>
+					<code>&nbsp;&nbsp;&nbsp;&nbsp;src: 'http://myurl.com/'</code><br>
 					<code>&nbsp;&nbsp;}</code><br>
 					<code>}</code><br><br>
-                    <blockquote>Note that you should always set the iFrame's width and height and adjust the dialog box's <code>width</code> property accordingly</blockquote><br>
                 </li>
                 <li>
                     <code>inline: selector</code> - where <em>element</em> is a jQuery element from the page; the element will be copied and placed inside the dialog box together with any attached events. If you just want the element's inner HTML, use <code>$('#element').html()</code><br><br>
@@ -474,7 +472,7 @@ $(document).ready(function() {
             For executing functions <em>before</em> the closing of the dialog box, see the <strong>buttons</strong> option.<br><br>
             The callback function receives as first argument the caption of the clicked button or boolean <code>FALSE</code>
             if the dialog box is closed by pressing the <code>ESC</code> key, by clicking the dialog box's <code>x</code>
-            button, or by clicking the overlay. The argument can also be boolean <code>TRUE</code> when the dialog box
+            button, or by clicking the backdrop. The argument can also be boolean <code>TRUE</code> when the dialog box
             type is <code>prompt</code> and the <code>ENTER</code> key is pressed while inside the input box.<br><br>
             As second argument, the callback function receives the value entered in the input box - when the dialog box
             type is <code>prompt</code> and a button was clicked or the <code>ENTER</code> key was pressed while inside
