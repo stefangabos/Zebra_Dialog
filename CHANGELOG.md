@@ -5,7 +5,9 @@
 - added the `default_value` property to be used for `prompt` type dialog boxes
 - `width` and `height` properties can now be specified as percentages, too
 - `custom_class` is now also added to the overlay, not just to the dialog box
+- when using iFrames, the width and height is now automatically computed to fit the dialog box; additionally, now a spinner is also shown while the iFrame content is loading
 - dropped IE6 support
+- fixed bug where the positioning of the dialog box was incorrect it had borders
 - minor tweaks to all the templates
 
 ## version 2.1.0 (June 03, 2019)
