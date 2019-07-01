@@ -21,7 +21,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    3.0.0 (last revision: June 26, 2019)
+ *  @version    3.0.0 (last revision: July 01, 2019)
  *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
