@@ -177,7 +177,7 @@ $(document).ready(function() {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Custom positioning',
             width: 460,
-            position: ['right + 100', 'top + 20']
+            position: ['right - 20', 'top + 20']
         });
     });
 
