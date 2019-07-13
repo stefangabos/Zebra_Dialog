@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript alert and confirmation dialog boxes.">
+        <meta name="description" content="Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript alert, confirmation and prompt dialog boxes.">
         <link rel="shortcut icon" href="favicon.ico">
         <title>Zebra Dialog - a small, compact, and highly configurable jQuery plugin for creating modal dialog boxes</title>
 
@@ -135,29 +135,29 @@
                         'button.&lt;br>&lt;br>You should be able to get the input\'s value &lt;strong>only&lt;/strong> ' +
                         'when pressing ENTER while inside the input box, or when clicking the &lt;em>Ok&lt;/em> button.',
                         {
+                            default_value: 'A default value can be set',
                             title: 'Prompt',
                             type: 'prompt',
                             onClose: function(caption, prompt) {
 
-                                // "prompt" will be undefined if the user closes the dialog box by clicking on the overlay,
-                                // by clicking on the "x" button, or by pressing the ESC key
+                                //  "prompt" will be undefined if the user closes the dialog box by clicking on the overlay, by clicking
+                                //  on the "x" button, or pressing the ESC key
                                 //
-                                // additionally, for all the cases above, "caption" will be FALSE.
+                                //  additionally, for all the cases above, "caption" will be FALSE.
                                 //
-                                // "prompt" will contain the input's value if the user presses ENTER while inside the input
-                                // box - case in which, because there's no button clicked, the value of "caption" will be
-                                // boolean TRUE
+                                // "prompt" will contain the input's value if the user presses ENTER while inside the input box - case in
+                                //  which, because there's no button clicked, the value of "caption" will be boolean TRUE
                                 //
-                                // "prompt" will also contain the input's value when clicking ANY of the buttons - case in
-                                // which we need to check if the appropriate button was clicked
+                                //  "prompt" will also contain the input's value when clicking ANY of the buttons - case in which we need
+                                //  to check if the appropriate button was clicked
                                 //
-                                // note that if you have custom buttons you'll have to replace "Ok" with the caption of whatever
-                                // button you are using as the confirmation button
+                                //  note that if you have custom buttons you'll have to replace "Ok" with the caption of whatever button
+                                //  you are using as the confirmation button
 
                                 if (undefined !== prompt && (caption === true || caption === 'Ok'))
-                                    alert('Input value was: "' + prompt + '"');
+                                    new $.Zebra_Dialog('Input value was:<br><br>"' + prompt + '"', {type: 'confirmation'});
                                 else
-                                    alert('Input cancelled');
+                                    new $.Zebra_Dialog('Input was cancelled', {type: 'error'});
                             }
                         }
                     );
@@ -184,17 +184,17 @@
                                     caption: 'Ok',
 
                                     //
-                                    // SETTING THIS IS VERY IMPORTANT!
+                                    //  SETTING THIS IS VERY IMPORTANT!
                                     //
-                                    // this tells the library which button's callback to trigger when the users presses
-                                    // ENTER while inside the input box.
+                                    //  this tells the library which button's callback to trigger when the users presses ENTER while
+                                    //  inside the input box.
                                     //
-                                    // if you do not set this, you will not be able to handle user input for this case
-                                    // you will have to use the "onClose" event - see previous example
+                                    //  if you do not set this, you will not be able to handle user input for this case; you will have
+                                    //  to use the "onClose" event - see previous example
                                     default_confirmation: true,
 
-                                    callback: function($this, prompt) {
-                                        alert('Input value was: "' + prompt + '"');
+                                    callback: function($dialog, prompt) {
+                                        new $.Zebra_Dialog('Input value was:<br><br>"' + prompt + '"', {type: 'confirmation'});
                                     }
                                 }
                             ]
@@ -232,7 +232,12 @@
                                 // notice that we use the button's label to determine which button was clicked
                                 // "caption" will be empty when the dialog box is closed by pressing ESC, by clicking the
                                 // dialog box's close button, or by clicking the overlay
-                                alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked');
+                                new $.Zebra_Dialog((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked', {
+                                    auto_close: 2000,
+                                    buttons: false,
+                                    modal: false,
+                                    position: ['center', 'center']
+                                });
 
                             }
                         }
@@ -266,9 +271,9 @@
                             type: 'question',
                             title: 'Custom buttons',
                             buttons: [
-                                {caption: 'Yes', callback: function() { alert('"Yes" was clicked'); }},
-                                {caption: 'No', callback: function() { alert('"No" was clicked'); }},
-                                {caption: 'Cancel', callback: function() { alert('"Cancel" was clicked'); }}
+                                {caption: 'Yes', callback: function() { new $.Zebra_Dialog('"Yes" was clicked', options); }},
+                                {caption: 'No', callback: function() { new $.Zebra_Dialog('"No" was clicked', options);}},
+                                {caption: 'Cancel', callback: function() { new $.Zebra_Dialog('"Cancel" was clicked', options); }}
                             ]
                         }
                     );</pre>
@@ -422,6 +427,8 @@
                         type: false,                            // no icon
                         custom_class: 'ZebraDialog_iFrame',     // a custom class to remove default paddings
                         source: {
+                            // iFrame's width and height are automatically set
+                            // to fit the dialog box's width and height
                             iframe: {
                                 src: 'https://en.m.wikipedia.org/wiki/Dialog_box'
                             }
