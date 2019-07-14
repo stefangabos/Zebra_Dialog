@@ -1,5 +1,6 @@
 ## version 3.0.0 (TBA, 2019)
 
+- page scrolling behind an open dialog box is now disabled by default
 - added `margin` property to prevent the dialog box from touching the viewport's limits when stretched 100% horizontally and/or vertically
 - added `max_width` property which, together with the existing `max_height` property, can no be specified as percentage
 - added the `default_value` property to be used for `prompt` type dialog boxes
