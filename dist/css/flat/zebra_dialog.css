@@ -1,6 +1,7 @@
-body,
-html {
-    _height: 100%
+.ZebraDialog_NoScroll {
+    position: fixed;
+    left: 0;
+    top: 0
 }
 .ZebraDialog * {
     -moz-box-sizing: content-box!important;
