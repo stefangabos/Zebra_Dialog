@@ -153,9 +153,9 @@ a.ZebraDialog_Close:hover {
 a.ZebraDialog_Close {
     border-radius: 15px;
     color: #ddd;
-    padding: 1px 7px;
+    padding: 1px 10px;
     right: 10px;
-    margin-top: -13px
+    margin-top: -15px
 }
 .ZebraDialog_NoTitle .ZebraDialog_Close {
     margin-top: 2px;
