@@ -140,6 +140,13 @@
                                                             //
                                                             //  Default is "" (an empty string)
 
+                disable_page_scrolling:     true,           //  Prevents scrolling of the page behind the dialog box, when
+                                                            //  the dialog box is open.
+                                                            //
+                                                            //  This has effect only when "modal" is set to TRUE.
+                                                            //
+                                                            //  Default is TRUE
+
                 height:                     0,              //  By default, the height of the dialog box is automatically
                                                             //  computed in order to fit the content (but not exceed
                                                             //  viewport).
@@ -625,6 +632,15 @@
                     // (so that pressing tab gets you to the first button)
                     else plugin.body.attr('tabindex', 1).focus().removeAttr('tabindex');
 
+                // if page scrolling needs to be disabled while the dialog is open, and dialog has a backdrop (is modal)
+                if (plugin.settings.disable_page_scrolling && plugin.settings.modal)
+
+                    // prevent body from scrolling
+                    $('body').css({
+                        right: _get_scrollbar_width(),
+                        top: -1 * $(window).scrollTop()
+                    }).addClass('ZebraDialog_NoScroll');
+
             },
 
             /**
@@ -667,6 +683,36 @@
 
                 // return the buttons
                 return plugin.settings.buttons;
+
+            },
+
+            /**
+             *  Returns the scrollbar's width.
+             *
+             *  Solution taken from https://stackoverflow.com/a/13382873/1542774
+             */
+            _get_scrollbar_width = function() {
+
+                var
+
+                    // create an invisible container
+                    outer = $('<div>').css({
+                        visibility: 'hidden',
+                        overflow: 'scroll',             // forces scrollbar
+                        msOverflowStyle: 'scrollbar'    // required for WinJS apps
+                    }).appendTo($('body')),
+
+                    // create inner element and place in container
+                    inner = $('<div>').appendTo(outer),
+
+                    // compute difference between container's full width and the child's width
+                    scroll_width = outer.outerWidth() - inner.outerWidth();
+
+                // remove elements from DOM
+                outer.remove();
+                inner.remove();
+
+                return scroll_width;
 
             },
 
@@ -1297,32 +1343,38 @@
          */
         plugin.close = function(caption, input) {
 
-            // remove all event handlers set by the plugin
+            // this is how much the page was scrolled when the dialog was opened
+            var vertical_scroll = Math.abs(parseInt($('body').css('top'), 10));
+
+            // remove global event handlers set by the plugin
             $(document).off('.ZebraDialog');
             $(window).off('.ZebraDialog');
 
             // if an backdrop exists
             if (plugin.backdrop)
 
-                // animate backdrop's css properties
-                // (notice that we use the opacity's value as string - this is required for working with IE8
-                // see https://stackoverflow.com/questions/4987842/jquery-on-ie8-error-object-doesnt-support-this-property-or-method)
-                plugin.backdrop.animate({
+                // remove event now in order to prevent issues with multiple fast clicks on the backdrop
+                plugin.backdrop.off('click')
 
-                    opacity: '0'    // fade out the backdrop
+                    // animate backdrop's css properties
+                    // (notice that we use the opacity's value as string - this is required for working with IE8
+                    // see https://stackoverflow.com/questions/4987842/jquery-on-ie8-error-object-doesnt-support-this-property-or-method)
+                    .animate({
 
-                },
+                        opacity: '0'    // fade out the backdrop
 
-                // animation speed
-                plugin.settings.animation_speed_hide,
+                    },
 
-                // when the animation is complete
-                function() {
+                    // animation speed
+                    plugin.settings.animation_speed_hide,
 
-                    // remove the backdrop from the DOM
-                    plugin.backdrop.remove();
+                    // when the animation is complete
+                    function() {
 
-                });
+                        // remove the backdrop from the DOM
+                        plugin.backdrop.remove();
+
+                    });
 
             // animate dialog box's css properties
             // (notice that we use the values for the animation's properties as strings; this is required for working with IE8
@@ -1350,6 +1402,20 @@
                     plugin.settings.onClose(undefined !== caption ? caption : '', input);
 
             });
+
+            // if page scrolling was disabled while the dialog was open, and dialog had a backdrop (is modal)
+            if (plugin.settings.disable_page_scrolling && plugin.settings.modal) {
+
+                // remove changes done to the page's <body>
+                $('body').removeClass('ZebraDialog_NoScroll').css({
+                    right: '',
+                    top: ''
+                });
+
+                // adjust the page's vertical scroll to its initial state
+                $(window).scrollTop(vertical_scroll);
+
+            }
 
         };
 
