@@ -2,13 +2,13 @@
 
 # Zebra Dialog &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Zebra_Dialog%20-%20a%20small,%20compact%20and%20highly%20configurable%20jQuery%20plugin%20for%20creating%20responsive%20modal%20dialog%20boxes&url=https://github.com/stefangabos/Zebra_Dialog&via=stefangabos&hashtags=jquery,dialog,notifications,alert,modal,javascript)
 
-*A small, compact and highly configurable jQuery plugin for creating responsive modal dialog boxes*
+*A small, compact, mobile-friendly and highly configurable jQuery plugin for creating responsive modal dialog boxes*
 
 [![npm](https://img.shields.io/npm/v/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![Total](https://img.shields.io/npm/dt/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![Monthly](https://img.shields.io/npm/dm/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![](https://data.jsdelivr.com/v1/package/npm/zebra_dialog/badge)](https://www.jsdelivr.com/package/npm/zebra_dialog) [![License](https://img.shields.io/npm/l/zebra_dialog.svg)](https://github.com/stefangabos/Zebra_Dialog/blob/master/LICENSE.md)
 
 A modal window is a child window that requires users to interact with it before they can continue using the parent application. Modal windows are one of the most commonly used user interface elements and are used to command user awareness in order to communicate important information, or to alert of errors or warnings.
 
-**Zebra Dialog** is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+) , and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript *alert*, *confirmation* and *prompt* dialog boxes.
+**Zebra Dialog** is a small (~10KB minified, 3KB gzipped), compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), mobile-friendly and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript *alert*, *confirm* and *prompt* dialog boxes.
 
 Can also be used as a notification widget (when configured to show no buttons and to close automatically) for updates or errors, without distracting users from their browser experience by displaying obtrusive alerts.
 
@@ -27,6 +27,7 @@ Can also be used as a notification widget (when configured to show no buttons an
  - position the dialog box wherever you want - not just in the middle of the screen
  - callback functions can be used for further customisations
  - use callback functions to handle users' choice
+-  works on mobile devices
  - works in pretty much any browser (Chrome, Firefox, Safari, Edge, Opera, Internet Explorer 6+)
 
  For the [classic theme](https://stefangabos.github.io/Zebra_Dialog/index.html), the icons used for *confirmation*, *information*, *error* and *question* dialog boxes are made by [DryIcon](http://dryicons.com/free-icons/preview/aesthetica/) while the *warning* icon is made by [Function Design & Development Studio](http://wefunction.com/2008/07/function-free-icon-set/).
@@ -234,6 +235,15 @@ $(document).ready(function() {
         </td>
     </tr>
     <tr>
+        <td valign="top"><code>disable_page_scrolling</code></td>
+        <td valign="top"><em>boolean</em></td>
+        <td valign="top">true</td>
+        <td valign="top">
+            Prevents scrolling of the page behind the dialog box, when the dialog box is open.<br><br>
+            <blockquote>This has effect only when the <code>modal</code> property is set to <code>true</code>.</blockquote>
+        </td>
+    </tr>
+    <tr>
         <td valign="top"><code>height</code></td>
         <td valign="top"><em>mixed</em></td>
         <td valign="top">0<br>(automatically set)</td>
@@ -426,9 +436,9 @@ $(document).ready(function() {
                 <li>confirmation</li>
                 <li>error</li>
                 <li>information</li>
+                <li>prompt</li>
                 <li>question</li>
                 <li>warning</li>
-                <li>prompt</li>
             </ul>
             If you don't want an icon, set the <code>type</code> property to <code>false</code>.<br><br>
             By default, the <code>warning</code> and <code>question</code> types have two buttons with the captions <em>Ok</em> and <em>Cancel</em> respectively, while the other types have a single button with the caption <em>Ok</em>.
