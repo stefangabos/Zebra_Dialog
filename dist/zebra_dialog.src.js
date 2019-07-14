@@ -144,7 +144,8 @@
                 disable_page_scrolling:     true,           //  Prevents scrolling of the page behind the dialog box, when
                                                             //  the dialog box is open.
                                                             //
-                                                            //  This has effect only when "modal" is set to TRUE.
+                                                            //  This has effect only when the "modal" property is set to
+                                                            //  TRUE.
                                                             //
                                                             //  Default is TRUE
 
