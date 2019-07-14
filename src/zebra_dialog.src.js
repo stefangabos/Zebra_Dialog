@@ -1198,7 +1198,7 @@
             else plugin.dialog.addClass('ZebraDialog_NoCloseButton');
 
             // if the browser window is resized
-            $(window).on('resize.Zebra_Dialog', function() {
+            $(window).on('resize.ZebraDialog', function() {
 
                 // clear a previously set timeout
                 // this will ensure that the next piece of code will not be executed on every step of the resize event
@@ -1218,7 +1218,7 @@
             if (plugin.settings.keyboard)
 
                 // if a key is pressed
-                $(document).on('keyup.Zebra_Dialog', function(e) {
+                $(document).on('keyup.ZebraDialog', function(e) {
 
                     // if pressed key is ESC
                     // remove the backdrop and the dialog box from the DOM
@@ -1298,8 +1298,8 @@
         plugin.close = function(caption, input) {
 
             // remove all event handlers set by the plugin
-            $(document).off('.Zebra_Dialog');
-            $(window).off('.Zebra_Dialog');
+            $(document).off('.ZebraDialog');
+            $(window).off('.ZebraDialog');
 
             // if an backdrop exists
             if (plugin.backdrop)
