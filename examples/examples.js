@@ -224,12 +224,12 @@ $(document).ready(function() {
     });
 
     $('#example7').on('click', function() {
-        new $.Zebra_Dialog('I am a notification widget. No buttons, no overlay, I am positioned in the top-right corner and I stay on screen for 2 seconds.', {
+        new $.Zebra_Dialog('I am a notification widget. No buttons, no overlay, I am positioned in the top-right corner and I stay on screen for 8 seconds. You can dismiss me earlier than that by clicking on me.', {
             auto_focus_button: $('body.materialize').length ? false : true,
             buttons: false,
             modal: false,
             position: ['right - 20', 'top + 20'],
-            auto_close: 2500
+            auto_close: 8000
         });
     });
 
