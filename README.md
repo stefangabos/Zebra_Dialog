@@ -317,14 +317,6 @@ $(document).ready(function() {
         </td>
     </tr>
     <tr>
-        <td valign="top"><code>backdrop_container</code></td>
-        <td valign="top"><em>string</em></td>
-        <td valign="top">body</td>
-        <td valign="top">
-            A selector indicating the DOM element to server as the backdrop's container.
-        </td>
-    </tr>
-    <tr>
         <td valign="top"><code>backdrop_opacity</code></td>
         <td valign="top"><em>double</em></td>
         <td valign="top">.9</td>
