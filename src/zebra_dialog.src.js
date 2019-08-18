@@ -22,7 +22,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    3.0.0 (last revision: July 14, 2019)
+ *  @version    3.0.0 (last revision: August 18, 2019)
  *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -215,11 +215,6 @@
                                                             //
                                                             //  Default is TRUE
 
-                backdrop_container:         'body',         //  A selector indicating the DOM element to server as the
-                                                            //  backdrop's container.
-                                                            //
-                                                            //  Default is "body".
-
                 backdrop_opacity:           '.9',           //  The opacity of the backdrop (between 0 and 1)
                                                             //
                                                             //  Default is .9
@@ -411,8 +406,12 @@
             // used when "height" or "max_height" are set
             compute_body_height = false,
 
+            // each dialog will have it's own internal unique identifier
+            // which we'll use for setting and removing event handlers on $(document) and $(window)
+            id,
+
             /**
-             *  Draw the backdrop and the dialog box
+             *  Draw the dialog box
              *
              *  @return void
              *
@@ -634,15 +633,6 @@
                     // (so that pressing tab gets you to the first button)
                     else plugin.body.attr('tabindex', 1).focus().removeAttr('tabindex');
 
-                // if page scrolling needs to be disabled while the dialog is open, and dialog has a backdrop (is modal)
-                if (plugin.settings.disable_page_scrolling && plugin.settings.modal)
-
-                    // prevent body from scrolling
-                    $('body').css({
-                        right: _get_scrollbar_width(),
-                        top: -1 * $(window).scrollTop()
-                    }).addClass('ZebraDialog_NoScroll');
-
             },
 
             /**
@@ -795,13 +785,24 @@
          */
         plugin.init = function() {
 
-            var ajax_options, button_bar, buttons, canvas, $container, container_position, default_options, iframe_options,
+            var ajax_options, button_bar, buttons, canvas, $container = $('body'), default_options, iframe_options,
                 len, max_zindex = 0, spinner, $title, tmp, type;
 
             // the plugin's final properties are the merged default and user-provided options (if any)
             plugin.settings = $.extend({}, defaults, options);
 
-            // if dialog box should be modal
+            // iterate over the already existing dialogs on the page
+            $('.ZebraDialog').each(function() {
+
+                // get the dialog box's zIndex
+                var zIndex = parseInt($(this).css('zIndex'), 10);
+
+                // if a zIndex is set and it is more than what we have, use that as reference from now on
+                if (zIndex && zIndex > max_zindex) max_zindex = zIndex;
+
+            });
+
+            // if dialog box is modal
             if (plugin.settings.modal) {
 
                 // create the backdrop
@@ -823,21 +824,37 @@
 
                 });
 
-                // if the backdrop is appended to a different element other than the "body"
-                if (plugin.settings.backdrop_container !== 'body') {
+                // if there are already open modals
+                if (max_zindex > 0) {
 
-                    // reference to the container element
-                    $container = plugin.settings.backdrop_container;
+                    // make the current modal dialog's backdrop have a higher zIndex value than that of the others
+                    plugin.backdrop.css('zIndex', max_zindex + 1);
 
-                    // get container's position
-                    container_position = $container.offset();
+                    // iterate over the other existing backdrops
+                    $('.ZebraDialogBackdrop').each(function() {
 
-                    // adjust the backdrop's dimensions to match the ones of the parent
-                    plugin.backdrop.css({
-                        left:   container_position.left,
-                        top:    container_position.top,
-                        width:  $container.outerWidth(),
-                        height: $container.outerHeight()
+                        var $this = $(this);
+
+                        // if we did not already do this before
+                        if (!$this.data('ZebraDialog_opacity'))
+
+                            $this
+
+                                // ...store current opacity
+                                .data('ZebraDialog_opacity', $this.css('opacity'))
+
+                                // and set opacity to 0
+                                .css('opacity', 0);
+
+                    });
+
+                    // iterate over the existing dialogs
+                    $('.ZebraDialog').each(function() {
+
+                        // set a flag used to "mute" the event handler for when the ESC key is pressed
+                        // (otherwise when pressing ESC all the dialog boxes would close not just the one on top)
+                        $(this).data('ZebraDialog_MuteESC', true);
+
                     });
 
                 }
@@ -850,7 +867,16 @@
                     plugin.backdrop.on('click', function() { plugin.close(); });
 
                 // append the backdrop to the DOM
-                plugin.backdrop.appendTo(plugin.settings.backdrop_container);
+                plugin.backdrop.appendTo($container);
+
+                // if page scrolling needs to be disabled while the dialog is open, and this has not already been taken care of by an already open modal
+                if (plugin.settings.disable_page_scrolling && !$container.hasClass('ZebraDialog_NoScroll'))
+
+                    // prevent body from scrolling
+                    $container.css({
+                        right: _get_scrollbar_width(),
+                        top: -1 * $(window).scrollTop()
+                    }).addClass('ZebraDialog_NoScroll');
 
             }
 
@@ -875,25 +901,11 @@
 
             });
 
-            // iterate over any already existing dialogs on the page
-            $('.ZebraDialog').each(function() {
-
-                // get the dialog box's zIndex
-                var zIndex = $(this).css('zIndex');
-
-                // if a zIndex is set and it is more than what we have, use that as reference from now on
-                if (zIndex && zIndex > max_zindex) max_zindex = zIndex;
-
-            });
-
-            // if another dialog already exists on the page, set the zIndex of this one higher
+            // if other dialogs already exist on the page, set the zIndex of this one higher
             if (max_zindex > 0) plugin.dialog.css('zIndex', max_zindex + 1);
 
-            // if a notification message
-            if (!plugin.settings.buttons && plugin.settings.auto_close)
-
-                // assign a unique id to each notification
-                plugin.dialog.attr('id', 'ZebraDialog_' + Math.floor(Math.random() * 9999999));
+            // assign an internal unique identifier
+            id = Math.floor(Math.random() * 9999999);
 
             // see if "width" is valid
             tmp = (plugin.settings.width + '').match(/^([0-9]+)(\%)?$/);
@@ -1229,7 +1241,7 @@
             } else plugin.dialog.addClass('ZebraDialog_NoButtons')
 
             // insert the dialog box in the DOM
-            plugin.dialog.appendTo('body');
+            plugin.dialog.appendTo($container);
 
             // if we need to show the little "x" for closing the dialog box, in the top-right corner
             if (plugin.settings.show_close_button)
@@ -1246,7 +1258,7 @@
             else plugin.dialog.addClass('ZebraDialog_NoCloseButton');
 
             // if the browser window is resized
-            $(window).on('resize.ZebraDialog', function() {
+            $(window).on('resize.ZebraDialog_' + id, function() {
 
                 // clear a previously set timeout
                 // this will ensure that the next piece of code will not be executed on every step of the resize event
@@ -1266,7 +1278,10 @@
             if (plugin.settings.keyboard)
 
                 // if a key is pressed
-                $(document).on('keyup.ZebraDialog', function(e) {
+                $(document).on('keyup.ZebraDialog_' + id, function(e) {
+
+                    // if this is not the modal that we are closing, ignore
+                    if (plugin.dialog.data('ZebraDialog_MuteESC')) return;
 
                     // if pressed key is ESC
                     // remove the backdrop and the dialog box from the DOM
@@ -1345,15 +1360,53 @@
          */
         plugin.close = function(caption, input) {
 
-            // this is how much the page was scrolled when the dialog was opened
-            var vertical_scroll = Math.abs(parseInt($('body').css('top'), 10));
+            var animation_speed = plugin.settings.animation_speed_hide,
+                backdrops = $('.ZebraDialogBackdrop'),
+                dialogs = $('.ZebraDialog'),
+                $body = $('body'),
+                backdrop,
+                backdrop_count = backdrops.length,
+                vertical_scroll;
 
             // remove global event handlers set by the plugin
-            $(document).off('.ZebraDialog');
-            $(window).off('.ZebraDialog');
+            $(document).off('.ZebraDialog_' + id);
+            $(window).off('.ZebraDialog_' + id);
 
-            // if an backdrop exists
-            if (plugin.backdrop)
+            // if we are closing a modal dialog and a backdrop exists
+            if (plugin.settings.modal && plugin.backdrop) {
+
+                // if there are multiple dialogs open and we are closing the top one
+                if (backdrop_count > 1 && $(backdrops[backdrop_count - 1]).is(plugin.backdrop)) {
+
+                    // get the backdrop beneath the one we are closing
+                    backdrop = $(backdrops[backdrop_count - 2]);
+
+                    // set its opacity back to what it was before
+                    backdrop.css('opacity', backdrop.data('ZebraDialog_opacity')).removeData('ZebraDialog_opacity');
+
+                    // we'll use no animation speed in this case
+                    animation_speed = 0;
+
+                    // un-mute handling of ESC key on the dialog that sits beneath the one we're about to hide
+                    $(dialogs[backdrop_count - 2]).removeData('ZebraDialog_MuteESC');
+
+                // if this is the last open modal dialog
+                // and page scrolling was disabled while modal dialogs are open
+                } else if (backdrop_count === 1 && $body.hasClass('ZebraDialog_NoScroll')) {
+
+                    // this is how much the page was scrolled when the dialog was opened
+                    vertical_scroll = Math.abs(parseInt($body.css('top'), 10));
+
+                    // remove changes done to the page's <body>
+                    $body.removeClass('ZebraDialog_NoScroll').css({
+                        right: '',
+                        top: ''
+                    });
+
+                    // adjust the page's vertical scroll to its initial state
+                    $(window).scrollTop(vertical_scroll);
+
+                }
 
                 // remove event now in order to prevent issues with multiple fast clicks on the backdrop
                 plugin.backdrop.off('click')
@@ -1368,7 +1421,7 @@
                     },
 
                     // animation speed
-                    plugin.settings.animation_speed_hide,
+                    animation_speed,
 
                     // when the animation is complete
                     function() {
@@ -1377,6 +1430,8 @@
                         plugin.backdrop.remove();
 
                     });
+
+            }
 
             // animate dialog box's css properties
             // (notice that we use the values for the animation's properties as strings; this is required for working with IE8
@@ -1404,20 +1459,6 @@
                     plugin.settings.onClose(undefined !== caption ? caption : '', input);
 
             });
-
-            // if page scrolling was disabled while the dialog was open, and dialog had a backdrop (is modal)
-            if (plugin.settings.disable_page_scrolling && plugin.settings.modal) {
-
-                // remove changes done to the page's <body>
-                $('body').removeClass('ZebraDialog_NoScroll').css({
-                    right: '',
-                    top: ''
-                });
-
-                // adjust the page's vertical scroll to its initial state
-                $(window).scrollTop(vertical_scroll);
-
-            }
 
         };
 
