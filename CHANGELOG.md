@@ -2,13 +2,16 @@
 
 - page scrolling behind an open dialog box is now disabled by default
 - added `margin` property to prevent the dialog box from touching the viewport's limits when stretched 100% horizontally and/or vertically
-- added `max_width` property which, together with the existing `max_height` property, can no be specified as percentage
+- added `max_width` property which, together with the existing `max_height` property, can now be specified as percentage
 - added the `default_value` property to be used for `prompt` type dialog boxes
 - `width` and `height` properties can now be specified as percentages, too
 - `custom_class` is now also added to the overlay, not just to the dialog box
+- the word `center` can also be used when specifying vertical position (alongside `middle`)
 - when using iFrames, the width and height is now automatically computed to fit the dialog box; additionally, now a spinner is also shown while the iFrame content is loading
+- the library now automatically does backdrop management when opening multiple modal dialog boxes
 - dropped IE6 support
 - fixed bug where the positioning of the dialog box was incorrect it had borders
+- removed the `backdrop_container` property
 - minor tweaks to all the templates
 
 ## version 2.1.0 (June 03, 2019)
