@@ -227,7 +227,7 @@
                                                             //  {'horizontal_position +/- offset', 'vertical_position +/- offset'}
                                                             //  (notice how everything is enclosed in quotes) where
                                                             //  "horizontal_position" can be "left", "right" or "center",
-                                                            //  "vertical_position" can be "top", "bottom" or "middle",
+                                                            //  "vertical_position" can be "top", "bottom" or "center",
                                                             //  and "offset" represents an optional number of pixels to
                                                             //  add/subtract from the respective horizontal or vertical
                                                             //  position.
@@ -247,7 +247,7 @@
                                                             //  ['center', 'top + 20'] would position the dialog box in
                                                             //  center-top, shifted 20 pixels down.
                                                             //
-                                                            //  Default is "center" (equivalent with  ['center', 'middle']).
+                                                            //  Default is "center" (equivalent with  ['center', 'center']).
 
                 reposition_speed:           500,            //  The duration (in milliseconds) of the animation used to
                                                             //  reposition the dialog box when the browser window is resized.
@@ -487,14 +487,17 @@
                     // second element is a string
                     typeof plugin.settings.position[1] === 'string' &&
 
-                    // second element contains only "top", "bottom", "middle", numbers, spaces, plus and minus signs
-                    plugin.settings.position[1].match(/^(top|bottom|middle)[\s0-9\+\-]*$/)
+                    // second element contains only "top", "bottom", "middle", "center", numbers, spaces, plus and minus signs
+                    plugin.settings.position[1].match(/^(top|bottom|middle|center)[\s0-9\+\-]*$/)
 
                 ) {
 
                     // make sure both entries are lowercase
                     plugin.settings.position[0] = plugin.settings.position[0].toLowerCase();
                     plugin.settings.position[1] = plugin.settings.position[1].toLowerCase();
+
+                    // allow for "center" to be used for vertical position also
+                    if (plugin.settings.position[1] === 'center') plugin.settings.position[1] = 'middle';
 
                     // iterate through the array of replacements
                     $.each(values, function(index, value) {
