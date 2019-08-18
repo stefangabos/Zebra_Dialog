@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    var notification_options = {
+        auto_close: 2000,
+        buttons: false,
+        position: ['center', 'center'],
+    }
+
     $('#example1_1').on('click', function() {
         new $.Zebra_Dialog('Use confirmation messages to let the user know that an action has completed successfully.', {
             auto_focus_button: $('body.materialize').length ? false : true,
@@ -40,9 +46,9 @@ $(document).ready(function() {
                 //  "prompt" will also contain the input's value when clicking ANY of the buttons - case in which, we need
                 //  to check if the appropriate button was clicked
                 if (undefined !== prompt && (caption === true || caption === 'Ok'))
-                    new $.Zebra_Dialog('Input value was:<br><br>"' + prompt + '"', {type: 'confirmation'});
+                    new $.Zebra_Dialog('Input value was:<br><br>"' + prompt + '"', $.extend({}, notification_options, { type: 'confirmation' }));
                 else
-                    new $.Zebra_Dialog('Input was cancelled', {type: 'error'});
+                    new $.Zebra_Dialog('Input was cancelled', $.extend({}, notification_options, { type: 'error' }));
             }
         });
     });
@@ -87,11 +93,10 @@ $(document).ready(function() {
                 //
                 //  note that if you have custom buttons you'll have to replace "Ok" with the caption of whatever button
                 //  you are using as the confirmation button
-
                 if (undefined !== prompt && (caption === true || caption === 'Ok'))
-                    new $.Zebra_Dialog('Input value was:<br><br>"' + prompt + '"', {type: 'confirmation'});
+                    new $.Zebra_Dialog('Input value was:<br><br>"' + prompt + '"', $.extend({}, notification_options, { type: 'confirmation' }));
                 else
-                    new $.Zebra_Dialog('Input was cancelled', {type: 'error'});
+                    new $.Zebra_Dialog('Input was cancelled', $.extend({}, notification_options, { type: 'error' }));
             }
         });
     });
@@ -119,7 +124,7 @@ $(document).ready(function() {
                     default_confirmation: true,
 
                     callback: function($dialog, prompt) {
-                        new $.Zebra_Dialog('Input value was:<br><br>"' + prompt + '"', {type: 'confirmation'});
+                        new $.Zebra_Dialog('Input value was:<br><br>"' + prompt + '"', $.extend({}, notification_options, { type: 'confirmation' }));
                     }
                 },
                 'Cancel'
@@ -134,31 +139,20 @@ $(document).ready(function() {
             type: 'question',
             buttons: ['Yes', 'No', 'Help'],
             onClose: function(caption) {
-                new $.Zebra_Dialog((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked', {
-                    auto_close: 2000,
-                    buttons: false,
-                    modal: false,
-                    position: ['center', 'center']
-                });
+                new $.Zebra_Dialog((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked', notification_options);
             }
         });
     });
 
     $('#example4').on('click', function() {
-        var options = {
-            auto_close: 2000,
-            buttons: false,
-            modal: false,
-            position: ['center', 'center']
-        }
         new $.Zebra_Dialog('We can set as many buttons as we want and we can handle the user\'s choice though the callback functions attached to the buttons.', {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Custom buttons',
             type: 'question',
             buttons: [
-                {caption: 'Yes', callback: function() { new $.Zebra_Dialog('"Yes" was clicked', options); }},
-                {caption: 'No', callback: function() { new $.Zebra_Dialog('"No" was clicked', options);}},
-                {caption: 'Cancel', callback: function() { new $.Zebra_Dialog('"Cancel" was clicked', options); }}
+                {caption: 'Yes', callback: function() { new $.Zebra_Dialog('"Yes" was clicked', notification_options); }},
+                {caption: 'No', callback: function() { new $.Zebra_Dialog('"No" was clicked', notification_options);}},
+                {caption: 'Cancel', callback: function() { new $.Zebra_Dialog('"Cancel" was clicked', notification_options); }}
             ]
         });
     });
