@@ -882,10 +882,13 @@
                 if (plugin.settings.disable_page_scrolling && !$container.hasClass('ZebraDialog_NoScroll'))
 
                     // prevent body from scrolling
-                    $container.css({
-                        right: _get_scrollbar_width(),
-                        top: -1 * $(window).scrollTop()
-                    }).addClass('ZebraDialog_NoScroll').data('ZebraDialog_vScroll', window.pageYOffset);    // save vertical scroll
+                    $container
+                        .data('ZebraDialog_vScroll', window.pageYOffset)
+                        .css({
+                            right: _get_scrollbar_width(),
+                            top: -1 * $(window).scrollTop()
+                        })
+                        .addClass('ZebraDialog_NoScroll');
 
             }
 
@@ -1408,11 +1411,12 @@
                     // remove changes done to the page's <body>
                     $body.removeClass('ZebraDialog_NoScroll').css({
                         right: '',
-                        top: ''
+                        top: '',
+                        height: ''
                     });
 
                     // adjust the page's vertical scroll to its initial state
-                    $body.scrollTop($body.data('ZebraDialog_vScroll'));
+                    $(window).scrollTop($body.data('ZebraDialog_vScroll'));
 
                 }
 
