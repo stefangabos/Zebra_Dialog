@@ -532,7 +532,7 @@
                 }
 
                 // make sure top is not negative
-                if (plugin.dialog_top < horizontal_margin) plugin.dialog_top = vertical_margin;
+                if (plugin.dialog_top < vertical_margin) plugin.dialog_top = vertical_margin;
 
                 // if dialog height exceeds screen's height
                 if (dialog_height + vertical_margin > viewport_height - (vertical_margin * 2))
