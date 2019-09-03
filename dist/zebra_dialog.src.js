@@ -879,7 +879,7 @@
                     $container.css({
                         right: _get_scrollbar_width(),
                         top: -1 * $(window).scrollTop()
-                    }).addClass('ZebraDialog_NoScroll');
+                    }).addClass('ZebraDialog_NoScroll').data('ZebraDialog_vScroll', window.pageYOffset);    // save vertical scroll
 
             }
 
@@ -1371,8 +1371,7 @@
                 dialogs = $('.ZebraDialog'),
                 $body = $('body'),
                 backdrop,
-                backdrop_count = backdrops.length,
-                vertical_scroll;
+                backdrop_count = backdrops.length;
 
             // remove global event handlers set by the plugin
             $(document).off('.ZebraDialog_' + id);
@@ -1400,9 +1399,6 @@
                 // and page scrolling was disabled while modal dialogs are open
                 } else if (backdrop_count === 1 && $body.hasClass('ZebraDialog_NoScroll')) {
 
-                    // this is how much the page was scrolled when the dialog was opened
-                    vertical_scroll = Math.abs(parseInt($body.css('top'), 10));
-
                     // remove changes done to the page's <body>
                     $body.removeClass('ZebraDialog_NoScroll').css({
                         right: '',
@@ -1410,7 +1406,7 @@
                     });
 
                     // adjust the page's vertical scroll to its initial state
-                    $(window).scrollTop(vertical_scroll);
+                    $body.scrollTop($body.data('ZebraDialog_vScroll'));
 
                 }
 
