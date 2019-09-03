@@ -33,6 +33,9 @@
 .ZebraDialog {
     background: #FFF;
     border: 1px solid #dedede;
+    &.ZebraDialog_NotModal {
+        box-shadow: 0 0 10px #CCC;
+    }
 }
 
 .ZebraDialog_Title {

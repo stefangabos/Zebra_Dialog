@@ -91,6 +91,9 @@ a.ZebraDialog_Close {
     background: #fff;
     border: 1px solid #dedede
 }
+.ZebraDialog.ZebraDialog_NotModal {
+    box-shadow: 0 0 10px #ccc
+}
 .ZebraDialog_Title {
     position: relative;
     border-bottom: 1px solid #f0f0f0;
