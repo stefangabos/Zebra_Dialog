@@ -173,6 +173,22 @@ $(document).ready(function() {
         </td>
     </tr>
     <tr>
+        <td valign="top"><code>backdrop_close</code></td>
+        <td valign="top"><em>boolean</em></td>
+        <td valign="top">true</td>
+        <td valign="top">
+            Should the dialog box close when the backdrop is clicked?
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><code>backdrop_opacity</code></td>
+        <td valign="top"><em>double</em></td>
+        <td valign="top">.9</td>
+        <td valign="top">
+            The opacity of the backdrop (between <code>0</code> and <code>1</code>)
+        </td>
+    </tr>
+    <tr>
         <td valign="top"><code>buttons</code></td>
         <td valign="top"><em>mixed</em></td>
         <td valign="top"></td>
@@ -306,22 +322,6 @@ $(document).ready(function() {
         <td valign="top">true</td>
         <td valign="top">
             When set to <code>true</code> there will be a semitransparent backdrop behind the dialog box, preventing users from clicking the page's content.
-        </td>
-    </tr>
-    <tr>
-        <td valign="top"><code>backdrop_close</code></td>
-        <td valign="top"><em>boolean</em></td>
-        <td valign="top">true</td>
-        <td valign="top">
-            Should the dialog box close when the backdrop is clicked?
-        </td>
-    </tr>
-    <tr>
-        <td valign="top"><code>backdrop_opacity</code></td>
-        <td valign="top"><em>double</em></td>
-        <td valign="top">.9</td>
-        <td valign="top">
-            The opacity of the backdrop (between <code>0</code> and <code>1</code>)
         </td>
     </tr>
     <tr>

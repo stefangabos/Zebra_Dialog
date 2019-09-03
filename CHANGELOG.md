@@ -7,7 +7,7 @@
 - `width` and `height` properties can now be specified as percentages, too
 - `custom_class` is now also added to the overlay, not just to the dialog box
 - the word `center` can also be used when specifying vertical position (alongside `middle`)
-- when using iFrames, the width and height is now automatically computed to fit the dialog box; additionally, now a spinner is also shown while the iFrame content is loading
+- when using iFrames, the width and height is now automatically computed to fit those of the dialog box; additionally, now a spinner is also shown while the iFrame content is loading
 - the library now automatically does backdrop management when opening multiple modal dialog boxes
 - dropped IE6 support
 - fixed bug where the positioning of the dialog box was incorrect it had borders
