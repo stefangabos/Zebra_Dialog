@@ -2,8 +2,8 @@ $(document).ready(function() {
 
     var notification_options = {
         auto_close: 2000,
-        buttons: false,
-        position: ['center', 'center'],
+        modal: false,
+        buttons: false
     }
 
     $('#example1_1').on('click', function() {
@@ -133,26 +133,44 @@ $(document).ready(function() {
     });
 
     $('#example3').on('click', function() {
-        new $.Zebra_Dialog('We can set as many buttons as we want and we handle the user\'s choice though the callback function attached to the <strong>onClose</strong> event.<br><br>See the next example to handle user\'s choice in a different way.', {
+        new $.Zebra_Dialog('We can set as many buttons as we want and we handle the user\'s choice though the callback function attached to the <strong>onClose</strong> event.<br><br>See the next example on how to handle user\'s choice in a different way.', {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Custom buttons',
             type: 'question',
             buttons: ['Yes', 'No', 'Help'],
             onClose: function(caption) {
-                new $.Zebra_Dialog((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked', notification_options);
+                new $.Zebra_Dialog((caption != '' ? '"' + caption + '"' : 'no') + ' button was clicked', notification_options);
             }
         });
     });
 
     $('#example4').on('click', function() {
-        new $.Zebra_Dialog('We can set as many buttons as we want and we can handle the user\'s choice though the callback functions attached to the buttons.', {
+        new $.Zebra_Dialog('We can set as many buttons as we want and we can handle the user\'s choice though the callback functions attached to the buttons.<br><br>See the previous example on how to handle user\'s choice in a different way.', {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Custom buttons',
             type: 'question',
             buttons: [
-                {caption: 'Yes', callback: function() { new $.Zebra_Dialog('"Yes" was clicked', notification_options); }},
-                {caption: 'No', callback: function() { new $.Zebra_Dialog('"No" was clicked', notification_options);}},
-                {caption: 'Cancel', callback: function() { new $.Zebra_Dialog('"Cancel" was clicked', notification_options); }}
+                {caption: 'Yes', callback: function() {
+                    new $.Zebra_Dialog('"Yes" button was clicked', {
+                        auto_close: 2000,
+                        modal: false,
+                        buttons: false
+                    });
+                }},
+                {caption: 'No', callback: function() {
+                    new $.Zebra_Dialog('"No" button was clicked', {
+                        auto_close: 2000,
+                        modal: false,
+                        buttons: false
+                    });
+                }},
+                {caption: 'Cancel', callback: function() {
+                    new $.Zebra_Dialog('"Cancel" button was clicked', {
+                        auto_close: 2000,
+                        modal: false,
+                        buttons: false
+                    });
+                }},
             ]
         });
     });
@@ -160,36 +178,36 @@ $(document).ready(function() {
     $('#example5_1').on('click', function() {
         new $.Zebra_Dialog('I am positioned in the <strong>top-left</strong> corner, 20&nbsp;pixels from the edges. Here\'s how it\'s done:<br><code>position: [\'left + 20\', \'top + 20\']</code><br><br><em><span class="label label-info">Tip:</span> You can click anywhere on the backdrop to quickly dismiss me</em>', {
             auto_focus_button: $('body.materialize').length ? false : true,
+            position: ['left + 20', 'top + 20'],
             title: 'Custom positioning',
-            width: 460,
-            position: ['left + 20', 'top + 20']
+            width: 460
         });
     });
 
     $('#example5_2').on('click', function() {
         new $.Zebra_Dialog('I am positioned in the <strong>top-right</strong> corner, 20&nbsp;pixels from the edges. Here\'s how it\'s done:<br><code>position: [\'right - 20\', \'top + 20\']</code><br><br><em><span class="label label-info">Tip:</span> You can click anywhere on the backdrop to quickly dismiss me</em>', {
             auto_focus_button: $('body.materialize').length ? false : true,
+            position: ['right - 20', 'top + 20'],
             title: 'Custom positioning',
-            width: 460,
-            position: ['right - 20', 'top + 20']
+            width: 460
         });
     });
 
     $('#example5_3').on('click', function() {
         new $.Zebra_Dialog('I am positioned in the <strong>bottom-right</strong> corner, 20&nbsp;pixels from the edges. Here\'s how it\'s done:<br><code>position: [\'right - 20\', \'bottom - 20\']</code><br><br><em><span class="label label-info">Tip:</span> You can click anywhere on the backdrop to quickly dismiss me</em>', {
             auto_focus_button: $('body.materialize').length ? false : true,
+            position: ['right - 20', 'bottom - 20'],
             title: 'Custom positioning',
-            width: 460,
-            position: ['right - 20', 'bottom - 20']
+            width: 460
         });
     });
 
     $('#example5_4').on('click', function() {
         new $.Zebra_Dialog('I am positioned in the <strong>bottom-left</strong> corner, 20&nbsp;pixels from the edges. Here\'s how it\'s done:<br><code>position: [\'left + 20\', \'bottom - 20\']</code><br><br><em><span class="label label-info">Tip:</span> You can click anywhere on the backdrop to quickly dismiss me</em>', {
             auto_focus_button: $('body.materialize').length ? false : true,
+            position: ['left + 20', 'bottom - 20'],
             title: 'Custom positioning',
-            width: 460,
-            position: ['left + 20', 'bottom - 20']
+            width: 460
         });
     });
 
@@ -197,17 +215,16 @@ $(document).ready(function() {
         new $.Zebra_Dialog('I am positioned in the <strong>center</strong> of the screen. Here\'s how it\'s done:<br><code>position: [\'center\', \'middle\']</code><br><br><em><span class="label label-info">Tip:</span> You can click anywhere on the backdrop to quickly dismiss me</em>', {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Custom positioning',
-            width: 460,
-            position: ['center', 'middle']
+            width: 460
         });
     });
 
     $('#example5_6').on('click', function() {
         new $.Zebra_Dialog('I am centered horizontally and 50&nbsp;pixels from the top edge. Here\'s how it\'s done:<br><code>position: [\'center\', \'top + 50\']</code><br><br><em><span class="label label-info">Tip:</span> You can click anywhere on the backdrop to quickly dismiss me</em>', {
             auto_focus_button: $('body.materialize').length ? false : true,
+            position: ['center', 'top + 50'],
             title: 'Custom positioning',
-            width: 460,
-            position: ['center', 'top + 50']
+            width: 460
         });
     });
 
@@ -219,11 +236,11 @@ $(document).ready(function() {
 
     $('#example7').on('click', function() {
         new $.Zebra_Dialog('I am a notification widget. No buttons, no overlay, I am positioned in the top-right corner and I stay on screen for 8 seconds. You can dismiss me earlier than that by clicking on me.', {
+            auto_close: 8000,
             auto_focus_button: $('body.materialize').length ? false : true,
             buttons: false,
             modal: false,
-            position: ['right - 20', 'top + 20'],
-            auto_close: 8000
+            position: ['right - 20', 'top + 20']
         });
     });
 
@@ -233,8 +250,8 @@ $(document).ready(function() {
             source: {
                 inline: $('#boxcontent').html()
             },
-            width: 600,
-            title: 'Content loaded from an element on the page'
+            title: 'Content loaded from an element on the page',
+            width: 600
         });
     });
 
@@ -244,24 +261,24 @@ $(document).ready(function() {
             source: {
                 ajax: 'ajax.html'
             },
-            width: 600,
-            title: 'Content loaded via AJAX'
+            title: 'Content loaded via AJAX',
+            width: 600
         });
     });
 
     $('#example10').on('click', function() {
         new $.Zebra_Dialog({
             auto_focus_button: $('body.materialize').length ? false : true,
-            type: false,
             custom_class: 'ZebraDialog_iFrame',
             source: {
                 iframe: {
                     src: 'https://en.m.wikipedia.org/wiki/Dialog_box'
                 }
             },
+            title:  'External content loaded in an iFrame',
+            type: false,
             width: 800,
-            height: 800,
-            title:  'External content loaded in an iFrame'
+            height: 800
         });
     });
 

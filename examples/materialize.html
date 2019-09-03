@@ -50,7 +50,7 @@
 
                 <div class="col-xs-12">
 
-                    <blockquote class="bg-warning"><small class="text-warning">See the examples with the dialog boxes using the <a href="flat.html">flat</a> or the <a href="materialize.html">materialize</a> theme.</small></blockquote>
+                    <blockquote class="bg-warning"><small class="text-warning">See the examples with the dialog boxes using the <a href="flat.html">flat</a> or the <a href="index.html">classic</a> theme.</small></blockquote>
 
                     <p>
                         Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+)
@@ -132,7 +132,7 @@
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
                         "Type something in the input box and then try closing this dialog box by clicking on the overlay, " +
-                        "by clicking on the "x" button, by pressing the ESC key, or by clicking on the &lt;em>Cancel&lt;/em> " +
+                        "by clicking on the \"x\" button, by pressing the ESC key, or by clicking on the &lt;em>Cancel&lt;/em> " +
                         "button.&lt;br>&lt;br>You should be able to get the input's value &lt;strong>only&lt;/strong> " +
                         "when pressing ENTER while inside the input box, or when clicking the &lt;em>Ok&lt;/em> button.",
                         {
@@ -156,9 +156,23 @@
                                 // you are using as the confirmation button
 
                                 if (undefined !== prompt && (caption === true || caption === "Ok"))
-                                    new $.Zebra_Dialog("Input value was:<br><br>\"" + prompt + "\"", {type: "confirmation"});
+
+                                    new $.Zebra_Dialog("Input value was:<br><br>\"" + prompt + "\"", {
+                                        auto_close: 2000,
+                                        buttons: false,
+                                        modal: false,
+                                        type: "confirmation"
+                                    });
+
                                 else
-                                    new $.Zebra_Dialog("Input was cancelled", {type: "error"});
+
+                                    new $.Zebra_Dialog("Input was cancelled", {
+                                        auto_close: 2000,
+                                        buttons: false,
+                                        modal: false,
+                                        type: "error"
+                                    });
+
                             }
                         }
                     );
@@ -173,7 +187,7 @@
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
                         "Type something in the input box and then try closing this dialog box by clicking on the overlay, " +
-                        "by clicking on the "x" button, by pressing the ESC key, or by clicking on the &lt;em>Cancel&lt;/em> " +
+                        "by clicking on the \"x\" button, by pressing the ESC key, or by clicking on the &lt;em>Cancel&lt;/em> " +
                         "button.&lt;br>&lt;br>You should be able to get the input's value &lt;strong>only&lt;/strong> " +
                         "when pressing ENTER while inside the input box, or when clicking the &lt;em>Ok&lt;/em> button.",
                         {
@@ -195,7 +209,12 @@
                                     default_confirmation: true,
 
                                     callback: function($dialog, prompt) {
-                                        new $.Zebra_Dialog("Input value was:<br><br>\"" + prompt + "\"", {type: "confirmation"});
+                                        new $.Zebra_Dialog("Input value was:<br><br>\"" + prompt + "\"", {
+                                            auto_close: 2000,
+                                            buttons: false,
+                                            modal: false,
+                                            type: "confirmation"
+                                        });
                                     }
                                 }
                             ]
@@ -222,8 +241,8 @@
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
                         "We can set as many buttons as we want and we can handle the user's choice though the callback " +
-                        "function attached to the <strong>onClose</strong> event.<br><br>See the next example to handle " +
-                        "user's choice in a different way.",
+                        "function attached to the <strong>onClose</strong> event.<br><br>See the next example on how to " +
+                        "handle user's choice in a different way.",
                         {
                             type: "question",
                             title: "Custom buttons",
@@ -233,11 +252,10 @@
                                 // notice that we use the button's label to determine which button was clicked
                                 // "caption" will be empty when the dialog box is closed by pressing ESC, by clicking the
                                 // dialog box's close button, or by clicking the overlay
-                                new $.Zebra_Dialog((caption != "" ? "\"" + caption + "\"" : "nothing") + " was clicked", {
+                                new $.Zebra_Dialog((caption != "" ? "\"" + caption + "\"" : "no") + " button was clicked", {
                                     auto_close: 2000,
                                     buttons: false,
-                                    modal: false,
-                                    position: ["center", "center"]
+                                    modal: false
                                 });
 
                             }
@@ -267,14 +285,33 @@
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
                         "We can set as many buttons as we want and we can handle the user's choice though the callback " +
-                        "functions attached to the buttons.",
+                        "functions attached to the buttons.<br><br>See the previous example on how to handle user's choice " +
+                        "in a different way.",
                         {
                             type: "question",
                             title: "Custom buttons",
                             buttons: [
-                                {caption: "Yes", callback: function() { new $.Zebra_Dialog("\"Yes\" was clicked", options); }},
-                                {caption: "No", callback: function() { new $.Zebra_Dialog("\"No\" was clicked", options);}},
-                                {caption: "Cancel", callback: function() { new $.Zebra_Dialog("\"Cancel\" was clicked", options); }}
+                                {caption: "Yes", callback: function() {
+                                    new $.Zebra_Dialog("\"Yes\" button was clicked", {
+                                        auto_close: 2000,
+                                        buttons: false,
+                                        modal: false
+                                    });
+                                }},
+                                {caption: "No", callback: function() {
+                                    new $.Zebra_Dialog("\"No\" button was clicked", {
+                                        auto_close: 2000,
+                                        buttons: false,
+                                        modal: false
+                                    });
+                                }},
+                                {caption: "Cancel", callback: function() {
+                                    new $.Zebra_Dialog("\"Cancel\" button was clicked", {
+                                        auto_close: 2000,
+                                        buttons: false,
+                                        modal: false
+                                    });
+                                }},
                             ]
                         }
                     );</pre>
@@ -306,9 +343,9 @@
                         "I am positioned in the <strong>top-right</strong> corner, 20&nbsp;pixels from the margins. Here's " +
                         "how it's done:<br><code>position: ['right - 20', 'top + 20']</code>",
                         {
+                            position: ["right - 20", "top + 20"],
                             title: "Custom positioning",
-                            width: 460,
-                            position: ["right - 20", "top + 20"]
+                            width: 460
                         }
                     );</pre>
 
@@ -356,10 +393,10 @@
                         "I am a notification widget. No buttons, no overlay, I am positioned in the top-right corner and " +
                         "I stay on screen for 8 seconds. You can dismiss me earlier than that by clicking on me.",
                         {
+                            auto_close: 8000,
                             buttons: false,
                             modal: false,
-                            position: ["right - 20", "top + 20"],
-                            auto_close: 8000
+                            position: ["right - 20", "top + 20"]
                         }
                     );</pre>
 
@@ -385,8 +422,8 @@
                         source: {
                             inline: $("#boxcontent").html()
                         },
-                        width: 600,
-                        title: "Content loaded from an element on the page"
+                        title: "Content loaded from an element on the page",
+                        width: 600
                     });</pre>
 
                     <div class="well">
@@ -411,8 +448,8 @@
                         source: {
                             ajax: "ajax.html"
                         },
-                        width: 600,
-                        title: "Content loaded via AJAX"
+                        title: "Content loaded via AJAX",
+                        width: 600
                     });</pre>
 
                     <div class="well">
@@ -482,7 +519,7 @@
                     new $.Zebra_Dialog("I love coffee!", {
                         custom_class: "myclass",
                         title: "Customizing the appearance",
-                        width: 150
+                        width: 600
                     });</pre>
 
                     <div class="well">
