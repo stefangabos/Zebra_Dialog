@@ -247,6 +247,10 @@
                                                             //  ['center', 'top + 20'] would position the dialog box in
                                                             //  center-top, shifted 20 pixels down.
                                                             //
+                                                            //  Note that when the width of the viewport is less than
+                                                            //  768 pixels, any arithmetics will be ignored (so, things
+                                                            //  like "left + 20" will be read as just "left")
+                                                            //
                                                             //  Default is "center" (equivalent with  ['center', 'center']).
 
                 reposition_speed:           500,            //  The duration (in milliseconds) of the animation used to

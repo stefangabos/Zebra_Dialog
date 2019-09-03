@@ -352,6 +352,7 @@ $(document).ready(function() {
             <code>// position the dialog box in center-top</code><br>
 			<code>// shifted 20 pixels down</code><br>
 			<code>['center', 'top + 20']</code><br><br>
+            <blockquote>Note that when the width of the viewport is less than 768 pixels, any arithmetics will be ignored (so, things like <code>left + 20</code> will be interpreted as just <code>left</code>)</blockquote>
         </td>
     </tr>
     <tr>
