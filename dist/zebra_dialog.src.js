@@ -429,6 +429,9 @@
                     dialog_width = plugin.dialog.outerWidth(),
                     dialog_height = plugin.dialog.outerHeight(),
 
+                    // consider a mobile device when viewport width is less than 768px
+                    is_xs = viewport_width < 768,
+
                     values, message, message_height, container_height, margin, horizontal_margin = 0, vertical_margin = 0;
 
                 // reset these values
@@ -502,16 +505,19 @@
                     // iterate through the array of replacements
                     $.each(values, function(index, value) {
 
-                        var i, tmp;
+                        var i, tmp, original_value;
 
                         // we need to check both the horizontal and vertical values
                         for (i = 0; i < 2; i++) {
 
+                            // if are on a small screen size, we ignore any arithmetics
+                            original_value = is_xs ? plugin.settings.position[i].replace(/[0-9\+\-\s]/g, '') : plugin.settings.position[i];
+
                             // replace if there is anything to be replaced
-                            tmp = plugin.settings.position[i].replace(index, value);
+                            tmp = original_value.replace(index, value);
 
                             // if anything could be replaced
-                            if (tmp !== plugin.settings.position[i])
+                            if (tmp !== original_value)
 
                                 // evaluate string as a mathematical expression and set the appropriate value
                                 if (i === 0) plugin.dialog_left = _eval(tmp); else plugin.dialog_top = _eval(tmp);
