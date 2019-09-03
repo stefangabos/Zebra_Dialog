@@ -84,8 +84,9 @@
                             08. <a href="#content-from-element">Content loaded from an element on the page</a><br>
                             09. <a href="#content-from-ajax">Content loaded via AJAX</a><br>
                             10. <a href="#content-iframe">Content loaded in an iFrame</a><br>
+                            11. <a href="#overlapping">Overlapping dialogs</a><br>
                             <a name="dialog-types"></a>
-                            11. <a href="#customizing-appearance">Customizing the appearance</a><br>
+                            12. <a href="#customizing-appearance">Customizing the appearance</a><br>
                         </div>
                     </div>
 
@@ -488,6 +489,32 @@
                         Click <a href="javascript:void(0)" id="example10">here</a> to open.
                     </div>
 
+                    <a name="overlapping"></a>
+
+                    <div class="top">
+                        <a href="#top" class="small">&#x25b2 To the top</a>
+                    </div>
+
+                    <!-- =========================================================================================== -->
+
+                    <h3><strong>11.</strong> Overlapping dialogs</h3>
+
+                    <pre class="brush:javascript">
+                    // unless explicitly specified, the height of the dialog box will
+                    // be automatically computed to fit the loaded content's height
+
+                    new $.Zebra_Dialog({
+                        source: {
+                            ajax: "ajax.html"
+                        },
+                        title: "Content loaded via AJAX",
+                        width: 600
+                    });</pre>
+
+                    <div class="well">
+                        Click <a href="javascript:void(0)" id="example11">here</a> to open.
+                    </div>
+
                     <a name="customizing-appearance"></a>
 
                     <div class="top">
@@ -496,7 +523,7 @@
 
                     <!-- =========================================================================================== -->
 
-                    <h3><strong>11.</strong> Customizing the appearance</h3>
+                    <h3><strong>12.</strong> Customizing the appearance</h3>
 
                     <p>Let's make the title bar have a dark-blue background and show a custom icon</p>
 
@@ -518,12 +545,11 @@
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog("I love coffee!", {
                         custom_class: "myclass",
-                        title: "Customizing the appearance",
-                        width: 600
+                        title: "Customizing the appearance"
                     });</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example11">here</a> to open.
+                        Click <a href="javascript:void(0)" id="example12">here</a> to open.
                     </div>
 
                     <div class="top">

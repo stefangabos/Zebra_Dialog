@@ -283,11 +283,60 @@ $(document).ready(function() {
     });
 
     $('#example11').on('click', function() {
+        new $.Zebra_Dialog('This is the first dialog box. Try opening another one.', {
+            auto_focus_button: $('body.materialize').length ? false : true,
+            buttons: [
+                'Close',
+                {
+                    caption: 'Open another dialog box',
+                    callback: function() {
+                        new $.Zebra_Dialog('This is the second dialog box. Notice that the backdrops are not overlapping. Pressing ESC or clicking on the backdrop will close this dialog box but not the first one.', {
+                            auto_focus_button: $('body.materialize').length ? false : true,
+                            buttons: [
+                                'Close',
+                                {
+                                    caption: 'Open yet another dialog box',
+                                    callback: function() {
+                                        new $.Zebra_Dialog('This is the third dialog box. Notice that the backdrops are not overlapping. Pressing ESC or clicking on the backdrop will close this dialog box but not the other ones.', {
+                                            auto_focus_button: $('body.materialize').length ? false : true,
+                                            buttons: [
+                                                'Close',
+                                                {
+                                                    caption: 'Open the last dialog box',
+                                                    callback: function() {
+                                                        new $.Zebra_Dialog('This is the fourth dialog box. Notice that the backdrops are not overlapping. Pressing ESC or clicking on the backdrop will close this dialog box but not the other ones.', {
+                                                            auto_focus_button: $('body.materialize').length ? false : true,
+                                                            position: ['left + 20', 'top + 20'],
+                                                            title: 'Fourth dialog box'
+                                                        });
+                                                        return false;
+
+                                                    }
+                                                }
+                                            ],
+                                            position: ['left + 20', 'bottom - 20'],
+                                            title: 'Third dialog box'
+                                        });
+                                        return false;
+                                    }
+                                }
+                            ],
+                            position: ['right - 20', 'top + 20'],
+                            title: 'Second dialog box'
+                        });
+                        return false;
+                    }
+                }
+            ],
+            title: 'First dialog box'
+        });
+    });
+
+    $('#example12').on('click', function() {
         new $.Zebra_Dialog('I love coffee!', {
             auto_focus_button: $('body.materialize').length ? false : true,
             custom_class: 'myclass',
-            title: 'Customizing the appearance',
-            width: 600
+            title: 'Customizing the appearance'
         });
     });
 
