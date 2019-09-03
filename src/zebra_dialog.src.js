@@ -22,7 +22,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    3.0.0 (last revision: August 18, 2019)
+ *  @version    3.0.0 (last revision: September 03, 2019)
  *  @copyright  (c) 2011 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -890,6 +890,9 @@
 
                             // any custom classes
                             (plugin.settings.custom_class ? ' ' + plugin.settings.custom_class : '') +
+
+                            // flag if dialog is not modal
+                            (!plugin.settings.modal ? ' ZebraDialog_NotModal' : '') +
 
                             // the type, if required
                             (_get_type() !== false ? ' ZebraDialog_Icon ZebraDialog_' + _get_type() : '')
