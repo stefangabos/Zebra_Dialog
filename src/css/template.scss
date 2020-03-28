@@ -84,10 +84,9 @@
         zoom: 1;
         *display: inline;
     }
-}
-
-.ZebraDialog_Buttons_Centered .ZebraDialog_Buttons {
-    text-align: center;
+    &.ZebraDialog_Buttons_Centered {
+        text-align: center;
+    }
 }
 
 a.ZebraDialog_Close {

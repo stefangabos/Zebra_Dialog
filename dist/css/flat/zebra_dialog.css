@@ -44,7 +44,7 @@
 .ZebraDialog_Prompt .ZebraDialog_Body {
     background-image: url(prompt.png)
 }
-.ZebraDialog_Buttons_Centered .ZebraDialog_Buttons {
+.ZebraDialog_Buttons.ZebraDialog_Buttons_Centered {
     text-align: center
 }
 a.ZebraDialog_Close {
