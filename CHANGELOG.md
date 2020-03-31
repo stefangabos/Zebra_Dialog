@@ -1,4 +1,8 @@
-## version 3.0.0 (TBA, 2019)
+## version 3.0.1 (March 31, 2020)
+
+- fixed [#32](https://github.com/stefangabos/Zebra_Dialog/issues/32) where the `center_buttons` property was not centering buttons; thanks [LukeSavefrogs](https://github.com/LukeSavefrogs)!
+
+## version 3.0.0 (September 03, 2019)
 
 - page scrolling behind an open dialog box is now disabled by default
 - added `margin` property to prevent the dialog box from touching the viewport's limits when stretched 100% horizontally and/or vertically
