@@ -81,7 +81,7 @@ Alternatively, you can load Zebra Dialog from [JSDelivr CDN](https://www.jsdeliv
 <script src="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/zebra_dialog.min.js"></script>
 
 <!-- for a specific version -->
-<script src="https://cdn.jsdelivr.net/npm/zebra_dialog@1.4.0/dist/zebra_dialog.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/zebra_dialog@3.0.1/dist/zebra_dialog.min.js"></script>
 
 <!-- replacing "min" with "src" will serve you the non-compressed version -->
 ```
