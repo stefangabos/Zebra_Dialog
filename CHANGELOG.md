@@ -1,3 +1,7 @@
+## version 3.0.2 (April 26, 2020)
+
+- minor release which only adds screenshots to the examples
+
 ## version 3.0.1 (March 31, 2020)
 
 - fixed [#32](https://github.com/stefangabos/Zebra_Dialog/issues/32) where the `center_buttons` property was not centering buttons; thanks [LukeSavefrogs](https://github.com/LukeSavefrogs)!
