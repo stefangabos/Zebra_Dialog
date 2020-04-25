@@ -22,7 +22,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    3.0.1 (last revision: March 31, 2020)
+ *  @version    3.0.2 (last revision: April 26, 2020)
  *  @copyright  (c) 2011 - 2020 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -34,7 +34,7 @@
     $.Zebra_Dialog = function() {
 
         // so you can tell the version number even if all you have is the minified source
-        this.version = '3.0.0';
+        this.version = '3.0.2';
 
         // default options
         var defaults = {
