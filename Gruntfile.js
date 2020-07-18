@@ -190,15 +190,29 @@ module.exports = function(grunt) {
             all: {
                 files: [
                     { src: 'src/zebra_dialog.src.js', dest: 'dist/zebra_dialog.src.js' },
-                    { expand: true, flatten: true, src: 'src/css/classic/*.png', dest: 'dist/css/classic/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/classic/*.gif', dest: 'dist/css/classic/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/classic/*.txt', dest: 'dist/css/classic/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/flat/*.png', dest: 'dist/css/flat/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/flat/*.gif', dest: 'dist/css/flat/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/flat/*.txt', dest: 'dist/css/flat/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/materialize/*.png', dest: 'dist/css/materialize/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/materialize/*.gif', dest: 'dist/css/materialize/', filter: 'isFile' },
-                    { expand: true, flatten: true, src: 'src/css/materialize/*.txt', dest: 'dist/css/materialize/', filter: 'isFile' }
+                    { expand: true, cwd: 'src/css/classic/', src: ['*.png', '*.scss', '*.txt', '*.gif'], dest: 'dist/css/classic/' },
+                    { expand: true, cwd: 'src/css/flat/', src: ['*.png', '*.scss', '*.txt', '*.gif'], dest: 'dist/css/flat/' },
+                    { expand: true, cwd: 'src/css/materialize/', src: ['*.png', '*.scss', '*.txt', '*.gif'], dest: 'dist/css/materialize/' }
+                ]
+            }
+        },
+
+        /***************************************************************************************************************
+         *  INCLUDES
+         *  https://github.com/vanetix/grunt-includes
+         **************************************************************************************************************/
+        'includes': {
+            all: {
+                options: {
+                    includeRegexp: /\@import \'(.*?)\'\;/,
+                    includePath: 'src/css/classic/',
+                    filenameSuffix: '.scss',
+                    silent: true
+                },
+                files: [
+                    { cwd: 'dist/css/classic', src: '*.scss', dest: 'dist/css/classic/zebra_dialog.scss' },
+                    { cwd: 'dist/css/flat', src: '*.scss', dest: 'dist/css/flat/zebra_dialog.scss' },
+                    { cwd: 'dist/css/materialize', src: '*.scss', dest: 'dist/css/materialize/zebra_dialog.scss' }
                 ]
             }
         },
@@ -233,10 +247,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-eslint');
+    grunt.loadNpmTasks('grunt-includes');
     grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-sass');
 
-    grunt.registerTask('default', ['sass', 'cssmin', 'eslint', 'jshint', 'uglify', 'copy', 'watch']);
+    grunt.registerTask('default', ['sass', 'cssmin', 'eslint', 'jshint', 'uglify', 'copy', 'includes', 'watch']);
 
 };
