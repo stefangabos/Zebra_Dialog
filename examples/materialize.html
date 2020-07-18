@@ -507,15 +507,74 @@
                     <h3><strong>11.</strong> Overlapping dialogs</h3>
 
                     <pre class="brush:javascript">
-                    // unless explicitly specified, the height of the dialog box will
-                    // be automatically computed to fit the loaded content's height
+                    new $.Zebra_Dialog('This is the first dialog box. Try opening another one.', {
+                        auto_focus_button: $('body.materialize').length ? false : true,
+                        buttons: [
+                            'Close',
+                            {
+                                caption: 'Open another dialog box',
+                                callback: function() {
 
-                    new $.Zebra_Dialog({
-                        source: {
-                            ajax: "ajax.html"
-                        },
-                        title: "Content loaded via AJAX",
-                        width: 600
+                                    // opens the second dialog box
+
+                                    new $.Zebra_Dialog('This is the second dialog box. Notice that the backdrops are not overlapping. ' +
+                                        'Pressing ESC or clicking on the backdrop will close this dialog box but not the first one.', {
+                                        auto_focus_button: $('body.materialize').length ? false : true,
+                                        buttons: [
+                                            'Close',
+                                            {
+                                                caption: 'Open yet another dialog box',
+                                                callback: function() {
+
+                                                    // opens the third dialog box
+
+                                                    new $.Zebra_Dialog('This is the third dialog box. Notice that the backdrops are not overlapping. ' +
+                                                        'Pressing ESC or clicking on the backdrop will close this dialog box but not the other ones.', {
+                                                        auto_focus_button: $('body.materialize').length ? false : true,
+                                                        buttons: [
+                                                            'Close',
+                                                            {
+                                                                caption: 'Open the last dialog box',
+                                                                callback: function() {
+
+
+                                                                    // opens the fourth dialog box
+
+                                                                    new $.Zebra_Dialog('This is the fourth dialog box. Notice that the backdrops are not ' +
+                                                                        'overlapping. Pressing ESC or clicking on the backdrop will close this dialog box ' +
+                                                                        'but not the other ones.', {
+                                                                        auto_focus_button: $('body.materialize').length ? false : true,
+                                                                        position: ['left + 20', 'top + 20'],
+                                                                        title: 'Fourth dialog box'
+                                                                    });
+
+                                                                    // we need to return false or the third dialog box will close
+                                                                    return false;
+
+                                                                }
+                                                            }
+                                                        ],
+                                                        position: ['left + 20', 'bottom - 20'],
+                                                        title: 'Third dialog box'
+                                                    });
+
+                                                    // we need to return false or the second dialog box will close
+                                                    return false;
+
+                                                }
+                                            }
+                                        ],
+                                        position: ['right - 20', 'top + 20'],
+                                        title: 'Second dialog box'
+                                    });
+
+                                    // we need to return false or the first dialog box will close
+                                    return false;
+
+                                }
+                            }
+                        ],
+                        title: 'First dialog box'
                     });</pre>
 
                     <div class="well">
