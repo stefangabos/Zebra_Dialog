@@ -187,9 +187,13 @@ module.exports = function(grunt) {
          *  https://github.com/gruntjs/grunt-contrib-copy
          **************************************************************************************************************/
         'copy': {
-            all: {
+            js: {
                 files: [
-                    { src: 'src/zebra_dialog.src.js', dest: 'dist/zebra_dialog.src.js' },
+                    { src: 'src/zebra_dialog.src.js', dest: 'dist/zebra_dialog.src.js' }
+                ]
+            },
+            css: {
+                files: [
                     { expand: true, cwd: 'src/css/classic/', src: ['*.png', '*.scss', '*.txt', '*.gif'], dest: 'dist/css/classic/' },
                     { expand: true, cwd: 'src/css/flat/', src: ['*.png', '*.scss', '*.txt', '*.gif'], dest: 'dist/css/flat/' },
                     { expand: true, cwd: 'src/css/materialize/', src: ['*.png', '*.scss', '*.txt', '*.gif'], dest: 'dist/css/materialize/' }
@@ -202,7 +206,7 @@ module.exports = function(grunt) {
          *  https://github.com/vanetix/grunt-includes
          **************************************************************************************************************/
         'includes': {
-            all: {
+            css: {
                 options: {
                     includeRegexp: /\@import \'(.*?)\'\;/,
                     includePath: 'src/css/classic/',
@@ -224,14 +228,14 @@ module.exports = function(grunt) {
         'watch': {
             js: {
                 files: ['src/zebra_dialog.src.js'],
-                tasks: ['newer:eslint', 'newer:jshint', 'newer:uglify', 'copy', 'notify:done'],
+                tasks: ['newer:eslint', 'newer:jshint', 'newer:uglify', 'copy:js', 'notify:done'],
                 options: {
                     livereload: true
                 }
             },
             css: {
                 files: ['src/css/**/*.scss'],
-                tasks: ['sass', 'cssmin', 'copy', 'includes', 'notify:done'],
+                tasks: ['sass', 'cssmin', 'copy:css', 'includes:css', 'notify:done'],
                 options: {
                     livereload: true
                 }
