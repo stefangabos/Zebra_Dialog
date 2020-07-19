@@ -1,4 +1,4 @@
-## version 3.0.3 (TBA)
+## version 3.0.3 (July 19, 2020)
 
 - SASS files are now available in the `dist` folder
 - fixed broken example for overlapping dialogs
