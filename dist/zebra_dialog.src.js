@@ -22,7 +22,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    3.0.3 (last revision: July 19, 2020)
+ *  @version    3.0.4 (last revision: August 17, 2020)
  *  @copyright  (c) 2011 - 2020 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -34,7 +34,7 @@
     $.Zebra_Dialog = function() {
 
         // so you can tell the version number even if all you have is the minified source
-        this.version = '3.0.3';
+        this.version = '3.0.4';
 
         // default options
         var defaults = {
@@ -882,8 +882,8 @@
                 // append the backdrop to the DOM
                 plugin.backdrop.appendTo($container);
 
-                // if page scrolling needs to be disabled while the dialog is open, and this has not already been taken care of by an already open modal
-                if (plugin.settings.disable_page_scrolling && !$container.hasClass('ZebraDialog_NoScroll'))
+                // if page scrolling needs to be disabled while the dialog is open, the page has vertical scrolling, and this has not already been taken care of by an already open modal
+                if (plugin.settings.disable_page_scrolling && window.innerWidth > document.body.clientWidth && !$container.hasClass('ZebraDialog_NoScroll'))
 
                     // prevent body from scrolling
                     $container
