@@ -1,3 +1,7 @@
+## version 3.0.4 (August 17, 2020)
+
+- fixed bug where the `disable_page_scrolling` property introduced in `3.0.0` had an undesired effect on pages where there was no scroll
+
 ## version 3.0.3 (July 19, 2020)
 
 - SASS files are now available in the `dist` folder
