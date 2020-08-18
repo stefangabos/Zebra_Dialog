@@ -348,7 +348,10 @@
                                                             //
                                                             //  Default is "information".
 
-                vcenter_short_message:      true,           //  Should short messages be vertically centered?
+                vcenter_short_message:      true,           //  Should messages shorter than the dialog's height be
+                                                            //  vertically centered?
+                                                            //
+                                                            //  This property is ignored when `source` is an iFrame
                                                             //
                                                             //  Default is TRUE
 

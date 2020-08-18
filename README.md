@@ -442,7 +442,8 @@ $(document).ready(function() {
         <td valign="top"><em>boolean</em></td>
         <td valign="top"f/td>
         <td valign="top">
-            Should short messages be vertically centered?
+            Should messages shorter than the dialog's height be vertically centered?<br><br>
+            <blockquote>This property is ignored when <code>source</code> is  <code>iframe</code></blockquote>
         </td>
     </tr>
     <tr>
