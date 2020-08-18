@@ -549,8 +549,8 @@
 
                     // adjust the dialog box's body height so that it fits
                     plugin.body.css('height', viewport_height - (vertical_margin * 2) -
-                        ($('.ZebraDialog_Title', plugin.dialog) ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) -
-                        ($('.ZebraDialog_Buttons', plugin.dialog) ? $('.ZebraDialog_Buttons', plugin.dialog).outerHeight() : 0) -
+                        ($('.ZebraDialog_Title', plugin.dialog).length ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) -
+                        ($('.ZebraDialog_Buttons', plugin.dialog).length ? $('.ZebraDialog_Buttons', plugin.dialog).outerHeight() : 0) -
                         (parseFloat(plugin.body.css('marginTop')) || 0) -
                         (parseFloat(plugin.body.css('marginBottom')) || 0) -
                         (parseFloat(plugin.body.css('paddingTop')) || 0) -
@@ -564,8 +564,8 @@
                 else if (compute_body_height)
 
                     plugin.body.css('height', plugin.dialog.height() -
-                        ($('.ZebraDialog_Title', plugin.dialog) ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) -
-                        ($('.ZebraDialog_Buttons', plugin.dialog) ? $('.ZebraDialog_Buttons', plugin.dialog).outerHeight() : 0) -
+                        ($('.ZebraDialog_Title', plugin.dialog).length ? $('.ZebraDialog_Title', plugin.dialog).outerHeight() : 0) -
+                        ($('.ZebraDialog_Buttons', plugin.dialog).length ? $('.ZebraDialog_Buttons', plugin.dialog).outerHeight() : 0) -
                         (parseFloat(plugin.body.css('marginTop')) || 0) -
                         (parseFloat(plugin.body.css('marginBottom')) || 0) -
                         (parseFloat(plugin.body.css('paddingTop')) || 0) -
