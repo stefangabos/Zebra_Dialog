@@ -577,8 +577,8 @@
                 // if content is in an iFrame
                 if (plugin.iframe)
 
-                    // set the height to fit in the dialog box
-                    plugin.iframe.css('height', plugin.body.height() - 5);
+                    // see "overflow: hidden" to the body element
+                    plugin.body.css('overflow', 'hidden');
 
                 // if short messages are to be centered vertically
                 if (plugin.settings.vcenter_short_message) {
@@ -1049,6 +1049,10 @@
             // if dialog box doesn't have a title
             else plugin.dialog.addClass('ZebraDialog_NoTitle');
 
+            // this property is always false for iFrames
+            // as iFrames strecth to 100% of the available height
+            if (undefined !== plugin.settings.source.iframe) plugin.settings.vcenter_short_message = false;
+
             // create the container of the actual message
             // we save it as a reference because we'll use it later in the "draw" method
             // if the "vcenter_short_message" property is TRUE
@@ -1146,6 +1150,7 @@
                             // we are setting the height in the "_draw" method
                             default_options = {
                                 'width':        '100%',
+                                'height':       '100%',
                                 'marginheight': '0',
                                 'marginwidth':  '0',
                                 'frameborder':  '0'
