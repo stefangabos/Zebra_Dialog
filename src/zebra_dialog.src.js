@@ -34,7 +34,7 @@
     $.Zebra_Dialog = function() {
 
         // so you can tell the version number even if all you have is the minified source
-        this.version = '3.0.4';
+        this.version = '3.0.5';
 
         // default options
         var defaults = {
