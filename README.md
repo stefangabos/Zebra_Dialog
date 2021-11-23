@@ -30,7 +30,7 @@ Can also be used as a notification widget (when configured to show no buttons an
 -  works on mobile devices
  - works in pretty much any browser (Chrome, Firefox, Safari, Edge, Opera, Internet Explorer 6+)
 
- For the [classic theme](https://stefangabos.github.io/Zebra_Dialog/index.html), the icons used for *confirmation*, *information*, *error* and *question* dialog boxes are made by [DryIcon](http://dryicons.com/free-icons/preview/aesthetica/) while the *warning* icon is made by [Function Design & Development Studio](http://wefunction.com/2008/07/function-free-icon-set/).
+ For the [classic theme](https://stefangabos.github.io/Zebra_Dialog/index.html), the icons used for *confirmation*, *information*, *error* and *question* dialog boxes are made by [DryIcon](http://dryicons.com/free-icons/preview/aesthetica/) while the *warning* icon is made by Function Design & Development Studio (website is not online anymore).
 
 For the [flat theme](https://stefangabos.github.io/Zebra_Dialog/flat.html), the icons used are made by [Elegant Themes](http://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free)
 
