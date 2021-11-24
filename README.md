@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/stefangabos/zebrajs/master/docs/images/logo.png" alt="zebrajs" align="right">
 
-# Zebra Dialog &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Zebra_Dialog%20-%20a%20small,%20compact%20and%20highly%20configurable%20jQuery%20plugin%20for%20creating%20responsive%20modal%20dialog%20boxes&url=https://github.com/stefangabos/Zebra_Dialog&via=stefangabos&hashtags=jquery,dialog,notifications,alert,modal,javascript)
+# Zebra Dialog &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A+small,+compact,+mobile-friendly+and+highly+configurable+jQuery+plugin+for+creating+responsive+modal+dialog+boxes&url=https://github.com/stefangabos/Zebra_Dialog&via=stefangabos&hashtags=jquery,dialog,notifications,alert,modal,javascript)
 
 *A small, compact, mobile-friendly and highly configurable jQuery plugin for creating responsive modal dialog boxes*
 
