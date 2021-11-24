@@ -1265,7 +1265,7 @@
                 if (plugin.settings.center_buttons) button_bar.addClass('ZebraDialog_Buttons_Centered');
 
             // if the dialog box has no button
-            } else plugin.dialog.addClass('ZebraDialog_NoButtons')
+            } else plugin.dialog.addClass('ZebraDialog_NoButtons');
 
             // insert the dialog box in the DOM
             plugin.dialog.appendTo($container);
