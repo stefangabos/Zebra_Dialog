@@ -29,11 +29,11 @@
   },
   "devDependencies": {
     "ansi-regex": ">=6.0.1",
-    "grunt": "^1.4.1",
+    "grunt": "^1.5.2",
     "grunt-cli": "^1.4.3",
     "grunt-contrib-copy": "*",
     "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-jshint": "^3.1.1",
+    "grunt-contrib-jshint": "^3.2.0",
     "grunt-contrib-uglify": "^3.4.0",
     "grunt-contrib-watch": "*",
     "grunt-eslint": "^24.0.0",
