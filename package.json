@@ -9,7 +9,7 @@
   "main": "dist/zebra_dialog.min.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stefangabos/Zebra_Dialog.git"
+    "url": "git+https://github.com/stefangabos/Zebra_Dialog.git"
   },
   "license": "LGPL-3.0",
   "version": "3.0.6",
