@@ -1,3 +1,11 @@
+## version 3.0.7 (May 12, 2024)
+
+- minor maintenance release
+
+## version 3.0.6 (April 22, 2024)
+
+- minor maintenance release
+
 ## version 3.0.5 (August 18, 2020)
 
 - fixed bugs when working with iFrames
