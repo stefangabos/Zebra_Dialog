@@ -199,7 +199,7 @@ module.exports = function(grunt) {
         'includes': {
             css: {
                 options: {
-                    includeRegexp: /\@import \'(.*?)\'\;/,
+                    includeRegexp: /^\/\/ include \'(.*?)\'/,
                     includePath: 'src/css/classic/',
                     filenameSuffix: '.scss',
                     silent: true
