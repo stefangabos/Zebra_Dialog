@@ -35,9 +35,9 @@ module.exports = function(grunt) {
                     indentWidth: 4
                 },
                 files: {
-                    'dist/css/classic/zebra_dialog.css': 'src/css/classic/zebra_dialog.scss',
-                    'dist/css/flat/zebra_dialog.css': 'src/css/flat/zebra_dialog.scss',
-                    'dist/css/materialize/zebra_dialog.css': 'src/css/materialize/zebra_dialog.scss'
+                    'dist/css/classic/zebra_dialog.css': 'dist/css/classic/zebra_dialog.scss',
+                    'dist/css/flat/zebra_dialog.css': 'dist/css/flat/zebra_dialog.scss',
+                    'dist/css/materialize/zebra_dialog.css': 'dist/css/materialize/zebra_dialog.scss'
                 }
             },
             minified: {
@@ -46,9 +46,9 @@ module.exports = function(grunt) {
                     outputStyle: 'compressed'
                 },
                 files: {
-                    'dist/css/classic/zebra_dialog.min.css': 'src/css/classic/zebra_dialog.scss',
-                    'dist/css/flat/zebra_dialog.min.css': 'src/css/flat/zebra_dialog.scss',
-                    'dist/css/materialize/zebra_dialog.min.css': 'src/css/materialize/zebra_dialog.scss'
+                    'dist/css/classic/zebra_dialog.min.css': 'dist/css/classic/zebra_dialog.scss',
+                    'dist/css/flat/zebra_dialog.min.css': 'dist/css/flat/zebra_dialog.scss',
+                    'dist/css/materialize/zebra_dialog.min.css': 'dist/css/materialize/zebra_dialog.scss'
                 }
             }
         },
@@ -185,9 +185,9 @@ module.exports = function(grunt) {
             },
             css: {
                 files: [
-                    { expand: true, cwd: 'src/css/classic/', src: ['*.png', '*.scss', '*.txt', '*.gif'], dest: 'dist/css/classic/' },
-                    { expand: true, cwd: 'src/css/flat/', src: ['*.png', '*.scss', '*.txt', '*.gif'], dest: 'dist/css/flat/' },
-                    { expand: true, cwd: 'src/css/materialize/', src: ['*.png', '*.scss', '*.txt', '*.gif'], dest: 'dist/css/materialize/' }
+                    { expand: true, cwd: 'src/css/classic/', src: ['*.png', '*.txt', '*.gif'], dest: 'dist/css/classic/' },
+                    { expand: true, cwd: 'src/css/flat/', src: ['*.png', '*.txt', '*.gif'], dest: 'dist/css/flat/' },
+                    { expand: true, cwd: 'src/css/materialize/', src: ['*.png', '*.txt', '*.gif'], dest: 'dist/css/materialize/' }
                 ]
             }
         },
@@ -205,9 +205,9 @@ module.exports = function(grunt) {
                     silent: true
                 },
                 files: [
-                    { cwd: 'dist/css/classic', src: '*.scss', dest: 'dist/css/classic/zebra_dialog.scss' },
-                    { cwd: 'dist/css/flat', src: '*.scss', dest: 'dist/css/flat/zebra_dialog.scss' },
-                    { cwd: 'dist/css/materialize', src: '*.scss', dest: 'dist/css/materialize/zebra_dialog.scss' }
+                    { cwd: 'src/css/classic', src: '*.scss', dest: 'dist/css/classic/zebra_dialog.scss' },
+                    { cwd: 'src/css/flat', src: '*.scss', dest: 'dist/css/flat/zebra_dialog.scss' },
+                    { cwd: 'src/css/materialize', src: '*.scss', dest: 'dist/css/materialize/zebra_dialog.scss' }
                 ]
             }
         },
@@ -247,6 +247,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-sass');
 
-    grunt.registerTask('default', ['sass', 'cssmin', 'eslint', 'jshint', 'uglify', 'copy', 'includes', 'watch']);
+    grunt.registerTask('default', ['includes', 'sass', 'cssmin', 'eslint', 'jshint', 'uglify', 'copy', 'watch']);
 
 };
