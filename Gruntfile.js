@@ -226,7 +226,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['src/css/**/*.scss'],
-                tasks: ['sass', 'cssmin', 'copy:css', 'includes:css', 'notify:done'],
+                tasks: ['includes:css', 'sass', 'cssmin', 'copy:css', 'notify:done'],
                 options: {
                     livereload: true
                 }
