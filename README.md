@@ -6,9 +6,9 @@
 
 [![npm](https://img.shields.io/npm/v/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![Total](https://img.shields.io/npm/dt/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![Monthly](https://img.shields.io/npm/dm/zebra_dialog.svg)](https://www.npmjs.com/package/zebra_dialog) [![](https://data.jsdelivr.com/v1/package/npm/zebra_dialog/badge)](https://www.jsdelivr.com/package/npm/zebra_dialog) [![License](https://img.shields.io/npm/l/zebra_dialog.svg)](https://github.com/stefangabos/Zebra_Dialog/blob/master/LICENSE.md)
 
-A modal window is a child window that requires users to interact with it before they can continue using the parent application. Modal windows are one of the most commonly used user interface elements and are used to command user awareness in order to communicate important information, or to alert of errors or warnings.
+A modal dialog box is a focused interface element that prompts users to take action before returning to the main application. These dialogs are commonly used to capture user attention, deliver important information, confirm actions, or highlight warnings and errors. By temporarily blocking interaction with the rest of the page, modal windows ensure that users address critical tasks or notifications before proceeding, making them a fundamental part of modern web applications.
 
-**Zebra Dialog** is a small (~10KB minified, 3KB gzipped), compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), mobile-friendly and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript *alert*, *confirm* and *prompt* dialog boxes.
+**Zebra Dialog** is a small (~12KB minified, 3KB gzipped), compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), mobile-friendly and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript *alert*, *confirm* and *prompt* dialog boxes.
 
 Can also be used as a notification widget (when configured to show no buttons and to close automatically) for updates or errors, without distracting users from their browser experience by displaying obtrusive alerts.
 
