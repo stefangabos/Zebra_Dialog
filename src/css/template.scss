@@ -39,6 +39,10 @@
     position: relative;
 }
 
+.ZebraDialog_Draggable {
+    cursor: grab;
+}
+
 .ZebraDialog_Body {
     overflow: auto;
     -webkit-overflow-scrolling: touch;

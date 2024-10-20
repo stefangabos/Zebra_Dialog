@@ -25,6 +25,7 @@ Can also be used as a notification widget (when configured to show no buttons an
  - create modal or non-modal dialog boxes
  - easily add custom buttons
  - position the dialog box wherever you want - not just in the middle of the screen
+ - dialog boxes are draggable
  - callback functions can be used for further customisations
  - use callback functions to handle users' choice
 -  works on mobile devices
@@ -259,6 +260,16 @@ $(document).ready(function() {
         <td valign="top">
             Prevents scrolling of the page behind the dialog box, when the dialog box is open.<br><br>
             <blockquote>This has effect only when the <code>modal</code> property is set to <code>true</code>.</blockquote>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><code>draggable</code></td>
+        <td valign="top"><em>mixed</em></td>
+        <td valign="top">true for dialog boxes that have a title</td>
+        <td valign="top">
+            Whether the dialog box should be draggable or not.<br><br>
+            Dialog boxes that have a title are draggable by default unless this property is set to <code>false</code>.<br><br>
+            For dialog boxes not having a title, set this property to <code>force</code> for making them draggable.
         </td>
     </tr>
     <tr>

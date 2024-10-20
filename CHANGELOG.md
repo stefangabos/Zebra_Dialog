@@ -1,3 +1,7 @@
+## version 3.1.0 (October 20, 2024)
+
+- dialog boxes are now draggable by default; see the newly added `draggable` property; see [#38](https://github.com/stefangabos/Zebra_Dialog/issues/38) and thanks [LukeSavefrogs](https://github.com/LukeSavefrogs) for suggesting this A LONG TIME AGO!
+
 ## version 3.0.7 (May 12, 2024)
 
 - minor maintenance release

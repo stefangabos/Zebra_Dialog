@@ -15,6 +15,7 @@
  *  -   create modal or non-modal dialog boxes
  *  -   easily add custom buttons
  *  -   position the dialog box wherever you want - not just in the middle of the screen
+ *  -   dialog boxes are draggable
  *  -   use callback functions to handle user's choice
  *  -   works on mobile devices
  *  -   works in pretty much any browser - Firefox, Chrome, Safari, Edge, Opera and Internet Explorer 7+
@@ -22,7 +23,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    3.0.7 (last revision: May 12, 2024)
+ *  @version    3.1.0 (last revision: October 20, 2024)
  *  @copyright  (c) 2011 - 2024 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -34,7 +35,7 @@
     $.Zebra_Dialog = function() {
 
         // so you can tell the version number even if all you have is the minified source
-        this.version = '3.0.7';
+        this.version = '3.1.0';
 
         // default options
         var defaults = {
@@ -148,6 +149,16 @@
                                                             //  TRUE.
                                                             //
                                                             //  Default is TRUE
+
+                draggable:                  true,           //  Whether the dialog box should be draggable or not.
+                                                            //
+                                                            //  Dialog boxes that have a title are draggable by default
+                                                            //  unless this property is set to `false`.
+                                                            //
+                                                            //  For dialog boxes not having a title, set this property
+                                                            //  to "force" for making them draggable.
+                                                            //
+                                                            //  Default is TRUE for dialog boxes that have a title.
 
                 height:                     0,              //  By default, the height of the dialog box is automatically
                                                             //  computed in order to fit the content (but not exceed
@@ -766,6 +777,112 @@
             },
 
             /**
+             *  Makes the dialog box draggable
+             *
+             *  @access private
+             */
+            _make_dialog_draggable = function() {
+
+                var start_x = 0, start_y = 0, offset_x = 0, offset_y = 0,
+                    $title = $('.ZebraDialog_Title', plugin.dialog),
+                    $body = plugin.dialog,
+                    trigger_element = plugin.settings.draggable === 'force' && $title.length === 0 ? $body : $title;
+
+                // if dialog box is not supposed to be draggable don't go further
+                if (!plugin.settings.draggable) return;
+
+                trigger_element.addClass('ZebraDialog_Draggable');
+
+                // make the title or the body of the dialog box draggable (depending on the conditions above)
+                trigger_element.on({
+
+                    mousedown: function(e) {
+
+                        // if dragging is not yet initialized
+                        if (!plugin.dialog.hasClass('ZebraDialog_Dragging')) {
+
+                            var $document = $(document),
+                                viewport_width = $(window).width(),
+                                viewport_height = $(window).height();
+
+                            e.preventDefault();
+
+                            // set a flag telling the script that the dialog is being dragged
+                            plugin.dialog.addClass('ZebraDialog_Dragging');
+
+                            // current mouse coordinates
+                            start_x = e.clientX;
+                            start_y = e.clientY;
+
+                            $document.on({
+
+                                // handle dragging
+                                'mousemove.ZebraDialog_Drag': function(e) {
+
+                                    var dialog = plugin.dialog.get(0),
+                                        dialog_left = dialog.offsetLeft,
+                                        dialog_top = dialog.offsetTop,
+                                        dialog_width = dialog.offsetWidth,
+                                        dialog_height = dialog.offsetHeight;
+
+                                    // get mouse coordinates delta
+                                    offset_x = start_x - e.clientX;
+                                    offset_y = start_y - e.clientY;
+
+                                    // this will be the starting coordinates
+                                    start_x = e.clientX;
+                                    start_y = e.clientY;
+
+                                    // prevent the dialog going out the left edge of the screen
+                                    if (dialog_left - offset_x < 0) {
+                                        dialog_left = 0;
+                                        offset_x = 0;
+                                    }
+
+                                    // prevent the dialog going out the top edge of the screen
+                                    if (dialog_top - offset_y < 0) {
+                                        dialog_top = 0;
+                                        offset_y = 0;
+                                    }
+
+                                    // prevent the dialog going out the right edge of the screen
+                                    if (dialog_left + dialog_width - offset_x > viewport_width) {
+                                        dialog_left = viewport_width - dialog_width;
+                                        offset_x = 0;
+                                    }
+
+                                    // prevent the dialog going out the bottom edge of the screen
+                                    if (dialog_top + dialog_height - offset_y > viewport_height) {
+                                        dialog_top = viewport_height - dialog_height;
+                                        offset_y = 0;
+                                    }
+
+                                    // adjust the dialog's position to the dragged coordinates
+                                    plugin.dialog.css({
+                                        left:   dialog_left - offset_x,
+                                        top:    dialog_top - offset_y
+                                    });
+
+                                },
+
+                                // stop dragging when the mouse button is released
+                                'mouseup.ZebraDialog_Drag': function() {
+                                    plugin.dialog.removeClass('ZebraDialog_Dragging');
+                                    $document.off('mousemove.ZebraDialog_Drag');
+                                    $document.off('mouseup.ZebraDialog_Drag');
+                                }
+
+                            });
+
+                        }
+
+                    }
+
+                });
+
+            },
+
+            /**
              *  Evaluates a string as a mathematical expression
              *
              *  Based on this answer https://stackoverflow.com/questions/2276021/evaluating-a-string-as-a-mathematical-expression-in-javascript/44282109#44282109
@@ -1283,6 +1400,9 @@
 
             // if the dialog has no "x" button
             else plugin.dialog.addClass('ZebraDialog_NoCloseButton');
+
+            // makes dialog draggable, if it's supposed to do so
+            _make_dialog_draggable();
 
             // if the browser window is resized
             $(window).on('resize.ZebraDialog_' + id, function() {

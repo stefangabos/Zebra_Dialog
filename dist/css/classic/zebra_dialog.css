@@ -26,6 +26,9 @@
         width: 100%
     }
 }
+.ZebraDialog_Draggable {
+    cursor: grab
+}
 .ZebraDialog_Confirmation .ZebraDialog_Body {
     background-image: url(confirmation.png)
 }
