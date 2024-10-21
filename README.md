@@ -492,7 +492,7 @@ $(document).ready(function() {
     <tr>
         <td valign="top"><code>onClose</code></td>
         <td valign="top">
-            Event fired when <em>after</em> the dialog box is closed.<br><br>
+            Event fired <em>after</em> the dialog box is closed.<br><br>
             For executing functions <em>before</em> the closing of the dialog box, see the <strong>buttons</strong> option.<br><br>
             The callback function receives as first argument the caption of the clicked button or boolean <code>FALSE</code>
             if the dialog box is closed by pressing the <code>ESC</code> key, by clicking the dialog box's <code>x</code>
