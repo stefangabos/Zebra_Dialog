@@ -215,7 +215,7 @@ $(document).ready(function() {
 			<code>}]</code><br><br>
             For <code>prompt</code> dialog box types use the <code>default_confirmation</code> property to tell the library
             which button's callback to trigger when the user presses <code>ENTER</code> while inside the input box. If
-            not set, you will <strong>have</strong> to handle user input via the <code>onClose</code> event, or you will
+            not set, you will <strong>have</strong> to handle user input via the <code>onBeforeClose</code> event, or you will
             not be able to process user input for this case.<br><br>
             Callback functions receive as first argument the entire dialog box, as a jQuery object, and as second argument,
             the value entered in the input box - when the dialog box's type is <code>prompt</code>, or <code>undefined</code>
@@ -490,10 +490,12 @@ $(document).ready(function() {
         </td>
     </tr>
     <tr>
-        <td valign="top"><code>onClose</code></td>
+        <td valign="top"><code>onBeforeClose</code></td>
         <td valign="top">
-            Event fired <em>after</em> the dialog box is closed.<br><br>
-            For executing functions <em>before</em> the closing of the dialog box, see the <strong>buttons</strong> option.<br><br>
+            Event fired <em>before</em> the dialog box is closed.<br><br>
+            <blockquote>The main difference when compared to the <code>onClose</code> event is that, with this event, by
+            returning <code>false</code> from the callback function you can prevent the closing of the dialog box - useful
+            for validating user input.</blockquote><br>
             The callback function receives as first argument the caption of the clicked button or boolean <code>FALSE</code>
             if the dialog box is closed by pressing the <code>ESC</code> key, by clicking the dialog box's <code>x</code>
             button, or by clicking the backdrop. The argument can also be boolean <code>TRUE</code> when the dialog box
@@ -506,6 +508,28 @@ $(document).ready(function() {
             the button considered as confirmation (i.e. "Ok"), and the value of the second argument is
             <code>!==&nbsp;undefined</code>.<br><br>
             See the <code>buttons</code> property for another way of handling user input.
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><code>onClose</code></td>
+        <td valign="top">
+            Event fired <em>after</em> the dialog box is closed.<br><br>
+            For executing functions <em>before</em> the closing of the dialog box, see the <strong>onBeforeClose</strong>
+            event or the <strong>buttons</strong> property.<br><br>
+            <blockquote>For properly validating user input you might want to use the <strong>onBeforeClose</strong> event
+            or the <strong>buttons</strong> property!</blockquote><br>
+            The callback function receives as first argument the caption of the clicked button or boolean <code>FALSE</code>
+            if the dialog box is closed by pressing the <code>ESC</code> key, by clicking the dialog box's <code>x</code>
+            button, or by clicking the backdrop. The argument can also be boolean <code>TRUE</code> when the dialog box
+            type is <code>prompt</code> and the <code>ENTER</code> key is pressed while inside the input box.<br><br>
+            As second argument, the callback function receives the value entered in the input box - when the dialog box
+            type is <code>prompt</code> and a button was clicked or the <code>ENTER</code> key was pressed while inside
+            the input box, or <code>undefined</code> for any other case.<br><br>
+            All this is important when expecting user input as you can say that you have user input <strong>only</strong>
+            when the value of the first argument is boolean <code>TRUE</code>or the value it's the same as the label of
+            the button considered as confirmation (i.e. "Ok"), and the value of the second argument is
+            <code>!==&nbsp;undefined</code>.<br><br>
+            See the <code>buttons</code> property or the <code>onBeforeClose</code> event for other ways of handling user input.
         </td>
     </tr>
     </tbody>

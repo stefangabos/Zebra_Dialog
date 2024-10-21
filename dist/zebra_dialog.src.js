@@ -386,7 +386,12 @@
                                                             //  The callback function (if any) receives as unique argument
                                                             //  the dialog box, as a jQuery object.
 
-                onClose:                null                //  Event fired when *after* the dialog box is closed.
+                onBeforeClose:          null,               //  Event fired when *before* the dialog box is closed.
+                                                            //
+                                                            //  The main difference when compared to the "onClose" event
+                                                            //  is that, with this event, by returning `false` from the
+                                                            //  callback function you can prevent the closing of the
+                                                            //  dialog box - useful for validating user input.
                                                             //
                                                             //  For executing functions *before* the closing of the dialog
                                                             //  box, see the "buttons" attribute.
@@ -414,6 +419,35 @@
                                                             //
                                                             //  See the "buttons" property for another way of handling
                                                             //  user input.
+
+                onClose:                null                //  Event fired when *after* the dialog box is closed.
+                                                            //
+                                                            //  For executing functions *before* the closing of the dialog
+                                                            //  box, see the "buttons" attribute.
+                                                            //
+                                                            //  The callback function (if any) receives as first argument
+                                                            //  the caption of the clicked button or boolean FALSE if the
+                                                            //  dialog box is closed by pressing the ESC key, by clicking
+                                                            //  the dialog box's "x" button, or by clicking the backdrop.
+                                                            //  The argument can also be boolean TRUE when the dialog box
+                                                            //  type is "prompt" and the ENTER key is pressed while inside
+                                                            //  the input box.
+                                                            //
+                                                            //  As second argument, the callback function receives the value
+                                                            //  entered in the input box when the dialog box type is
+                                                            //  "prompt" and a button was clicked or the ENTER key was
+                                                            //  pressed while inside the input box, or undefined for any
+                                                            //  other case.
+                                                            //
+                                                            //  All this is important when expecting user input as you
+                                                            //  can say that you have user input *only* when the value
+                                                            //  of the first argument is boolean TRUE or the value it's
+                                                            //  the same as the label of the button considered as confirmation
+                                                            //  (i.e. "Ok"), and the value of the second argument is
+                                                            //  !== undefined.
+                                                            //
+                                                            //  See the "buttons" property or the "onBeforeClose" event for
+                                                            //  other ways of handling user input.
             },
 
             // to avoid confusions, we use "plugin" to reference the current instance of the object
@@ -1525,8 +1559,19 @@
                 backdrops = $('.ZebraDialogBackdrop'),
                 dialogs = $('.ZebraDialog'),
                 $body = $('body'),
-                backdrop,
+                backdrop, result,
                 backdrop_count = backdrops.length;
+
+            // if a callback function exists for running *before* closing the dialog box
+            if (plugin.settings.onBeforeClose && typeof plugin.settings.onBeforeClose === 'function') {
+
+                // execute the callback function
+                result = plugin.settings.onBeforeClose(undefined !== caption ? caption : '', input);
+
+                // stop the closing of the dialog box if the return is falsy (but not "undefined")
+                if (undefined !== result && !result) return;
+
+            }
 
             // remove global event handlers set by the plugin
             $(document).off('.ZebraDialog_' + id);
