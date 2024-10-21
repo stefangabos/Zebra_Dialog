@@ -148,6 +148,8 @@
                 default_value:              '',             //  Default value to show in the input box when the dialog
                                                             //  box type is "prompt".
                                                             //
+                                                            //  See also the "placeholder" property.
+                                                            //
                                                             //  Default is "" (an empty string)
 
                 disable_page_scrolling:     true,           //  Prevents scrolling of the page behind the dialog box, when
@@ -230,8 +232,12 @@
                                                             //
                                                             //  Default is TRUE
 
+                placeholder:                '',             //  A placeholder value to be shown in the input box until
+                                                            //  the user starts typing, when the dialog box type is "prompt".
                                                             //
+                                                            //  See also the "default_value" property.
                                                             //
+                                                            //  Default is "" (an empty string)
 
                 position:                   'center',       //  Position of the dialog box.
                                                             //
@@ -266,6 +272,12 @@
                                                             //  like "left + 20" will be read as just "left")
                                                             //
                                                             //  Default is "center" (equivalent with  ['center', 'center']).
+
+                prompt_rows:                1,              //  If the dialog box type is "prompt", setting this property
+                                                            //  to a value higher than 1 will change the input box to a
+                                                            //  textarea input having the specified number of rows.
+                                                            //
+                                                            //  Default is "1"
 
                 reposition_speed:           500,            //  The duration (in milliseconds) of the animation used to
                                                             //  reposition the dialog box when the browser window is resized.
@@ -1234,8 +1246,9 @@
             // if dialog type is "prompt"
             if (plugin.settings.type === 'prompt')
 
-                // add input box
-                plugin.settings.message += '<input type="text" name="ZebraDialog_Prompt_Input" value="' + plugin.settings.default_value + '" class="ZebraDialog_Prompt_Input">';
+                // add input box/textarea depending on the value of the "prompt_rows" attribute
+                if (parseInt(plugin.settings.prompt_rows, 10) === 1) plugin.settings.message += '<input name="ZebraDialog_Prompt_Input" value="' + plugin.settings.default_value + '"' + (plugin.settings.placeholder.trim() !== '' ? ' placeholder="' + plugin.settings.placeholder + '"' : '') + ' class="ZebraDialog_Prompt_Input">';
+                else plugin.settings.message += '<textarea rows="' + (plugin.settings.prompt_rows || 1) + '" name="ZebraDialog_Prompt_Input"' + (plugin.settings.placeholder.trim() !== '' ? ' placeholder="' + plugin.settings.placeholder + '"' : '') + ' class="ZebraDialog_Prompt_Input">' + plugin.settings.default_value + '</textarea>';
 
             // if short messages are to be centered vertically
             if (plugin.settings.vcenter_short_message)
@@ -1260,7 +1273,7 @@
                 $('.ZebraDialog_Prompt_Input', plugin.body).on('keypress', function(e) {
 
                     // if ENTER is pressed, close the dialog and return the input box's content
-                    if (e.keyCode === 13)
+                    if (e.keyCode === 13 && !$(this).is('textarea'))
 
                         // if a default confirmation button exists, trigger its click event
                         if (default_confirmation_button) default_confirmation_button.trigger('click');

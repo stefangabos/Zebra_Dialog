@@ -201,7 +201,7 @@ $(document).ready(function() {
             For custom buttons, use an array containing the captions of the buttons to display: <code>['My button 1', 'My button 2']</code>.<br><br>
             Set to <code>false</code> if you want no buttons.<br><br>
             You can also add custom CSS classes, set which button's callback to be triggered when the user presses ENTER while
-            inside the input box (for <code>prompt</code> dialog boxes), and/or attach callback functions to individual buttons by using
+            inside the input box (for <code>prompt</code> dialog boxes and when <code>prompt_rows</code> is <code>1</code>), and/or attach callback functions to individual buttons by using
             objects in the form of:<br><br>
             <code>[{</code><br>
             <code>&nbsp;&nbsp;caption: 'My button 1',</code><br>
@@ -217,6 +217,7 @@ $(document).ready(function() {
             which button's callback to trigger when the user presses <code>ENTER</code> while inside the input box. If
             not set, you will <strong>have</strong> to handle user input via the <code>onBeforeClose</code> event, or you will
             not be able to process user input for this case.<br><br>
+            <blockquote>The above applies only if <code>prompt_rows</code> is <code>1</code> as otherwise the ENTER key inserts a line-break</blockquote><br>
             Callback functions receive as first argument the entire dialog box, as a jQuery object, and as second argument,
             the value entered in the input box - when the dialog box's type is <code>prompt</code>, or <code>undefined</code>
             for the other dialog types.<br><br>
@@ -250,7 +251,8 @@ $(document).ready(function() {
         <td valign="top"><em>string</em></td>
         <td valign="top">""<br>(empty string)</td>
         <td valign="top">
-            Default value to show in the input box when the dialog box type is <code>prompt</code>.
+            Default value to show in the input box when the dialog box type is <code>prompt</code>.<br><br>
+            See also the <code>placeholder</code> property.
         </td>
     </tr>
     <tr>
@@ -338,6 +340,15 @@ $(document).ready(function() {
         </td>
     </tr>
     <tr>
+        <td valign="top"><code>placeholder</code></td>
+        <td valign="top"><em>string</em></td>
+        <td valign="top">""<br>(empty string)</td>
+        <td valign="top">
+            When set to <code>true</code> there will be a semitransparent backdrop behind the dialog box, preventing users from clicking the page's content.<br><br>
+            See also <code>default_value</code> property.
+        </td>
+    </tr>
+    <tr>
         <td valign="top"><code>position</code></td>
         <td valign="top"><em>mixed</em></td>
         <td valign="top">'center'</td>
@@ -366,6 +377,15 @@ $(document).ready(function() {
 			<code>// shifted 20 pixels down</code><br>
 			<code>['center', 'top + 20']</code><br><br>
             <blockquote>Note that when the width of the viewport is less than 768 pixels, any arithmetics will be ignored (so, things like <code>left + 20</code> will be interpreted as just <code>left</code>)</blockquote>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><code>prompt_rows</code></td>
+        <td valign="top"><em>integer</em></td>
+        <td valign="top">1</td>
+        <td valign="top">
+            If the dialog box type is <code>prompt</code>, setting this property to a value higher than <code>1</code>
+            will change the input box to a textarea input having the specified number of rows.
         </td>
     </tr>
     <tr>
