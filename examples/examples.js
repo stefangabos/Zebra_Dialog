@@ -230,7 +230,8 @@ $(document).ready(function() {
 
     $('#example6').on('click', function() {
         new $.Zebra_Dialog('<strong>Zebra_Dialog</strong>, a small, compact and highly configurable dialog box plugin for jQuery', {
-            auto_focus_button: $('body.materialize').length ? false : true
+            auto_focus_button: $('body.materialize').length ? false : true,
+            draggable: 'force'
         });
     });
 
@@ -341,7 +342,7 @@ $(document).ready(function() {
     });
 
     setTimeout(function() {
-        $.Zebra_Pin($('blockquote.bg-warning'));
+        new $.Zebra_Pin($('blockquote.bg-warning'));
     }, 500);
 
 });
