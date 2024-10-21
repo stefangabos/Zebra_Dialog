@@ -68,6 +68,14 @@
                                                             //
                                                             //  Default is TRUE
 
+                backdrop_close:             true,           //  Should the dialog box close when the backdrop is clicked?
+                                                            //
+                                                            //  Default is TRUE
+
+                backdrop_opacity:           '.9',           //  The opacity of the backdrop (between 0 and 1)
+                                                            //
+                                                            //  Default is .9
+
                 buttons:                    true,           //  Use this for localization and for adding custom buttons.
                                                             //
                                                             //  If set to TRUE, the default buttons will be used, depending
@@ -222,13 +230,8 @@
                                                             //
                                                             //  Default is TRUE
 
-                backdrop_close:             true,           //  Should the dialog box close when the backdrop is clicked?
                                                             //
-                                                            //  Default is TRUE
-
-                backdrop_opacity:           '.9',           //  The opacity of the backdrop (between 0 and 1)
                                                             //
-                                                            //  Default is .9
 
                 position:                   'center',       //  Position of the dialog box.
                                                             //
