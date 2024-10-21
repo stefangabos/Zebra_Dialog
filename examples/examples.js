@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     var notification_options = {
-        auto_close: 2000,
+        auto_close: 1000,
         modal: false,
         buttons: false
     }
@@ -31,11 +31,13 @@ $(document).ready(function() {
     });
 
     $('#example1_4').on('click', function() {
-        new $.Zebra_Dialog('Use prompt dialogs to ask for user input.', {
+        new $.Zebra_Dialog('Use prompt dialogs to ask for user input.<br><br>In this example we are allowing more user input and therefore we are showing a <code>textarea</code> instead of an <code>input</code> box.<br><br>We did that by setting the <code>prompt_rows</code> property to <code>3</code>.<br><br>', {
             auto_focus_button: $('body.materialize').length ? false : true,
-            default_value: 'A default value can be set',
             title: 'Prompt',
             type: 'prompt',
+            default_value: 'A default value can be set',
+            placeholder: 'Type anything here',
+            prompt_rows: 3,
             onClose: function(caption, prompt) {
                 //  this is the correct way of checking input:
                 //  "prompt" will be undefined if the user closes the dialog box by clicking on the overlay, clicking on
@@ -109,6 +111,7 @@ $(document).ready(function() {
             auto_focus_button: $('body.materialize').length ? false : true,
             title: 'Prompt',
             type: 'prompt',
+            placeholder: 'Type anything here',
             buttons: [
                 {
                     caption: 'Ok',
@@ -130,6 +133,53 @@ $(document).ready(function() {
                 'Cancel'
             ]
         });
+    });
+
+    $('#example2_3').on('click', function() {
+        new $.Zebra_Dialog('The input\'s value will be considered valid <strong>only</strong> if it contains 6 digits.', {
+            auto_focus_button: $('body.materialize').length ? false : true,
+            title: 'Prompt',
+            type: 'prompt',
+            placeholder: 'Enter a 6 digit number',
+            onBeforeClose: function(caption, prompt) {
+
+                //  "prompt" will be undefined if the user closes the dialog box by clicking on the overlay, by clicking
+                //  on the "x" button, or pressing the ESC key
+                //
+                //  additionally, for all the cases above, "caption" will be FALSE.
+                //
+                // "prompt" will contain the input's value if the user presses ENTER while inside the input box - case in
+                //  which, because there's no button clicked, the value of "caption" will be boolean TRUE
+                //
+                //  "prompt" will also contain the input's value when clicking ANY of the buttons - case in which we need
+                //  to check if the appropriate button was clicked
+                //
+                //  note that if you have custom buttons you'll have to replace "Ok" with the caption of whatever button
+                //  you are using as the confirmation button
+
+                // if user tries to submit the value
+                if (undefined !== prompt && (caption === true || caption === 'Ok')) {
+
+                    // if the input is not valid
+                    if (prompt.match(/^[0-9]{6}$/) === null) {
+
+                        // show an error message and don't close the dialog box
+                        new $.Zebra_Dialog('You must enter 6 digits', $.extend({}, notification_options, { type: 'error' }));
+                        return false;
+
+                    }
+
+                    // if input was correct, close the dialog box and show the user's input
+                    new $.Zebra_Dialog('Input value was:<br><br>"' + prompt + '"', $.extend({}, notification_options, { type: 'confirmation' }));
+
+                } else
+
+                    new $.Zebra_Dialog('Input was cancelled', $.extend({}, notification_options, { type: 'information' }));
+
+            }
+
+        });
+
     });
 
     $('#example3').on('click', function() {

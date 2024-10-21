@@ -166,7 +166,7 @@
                                 if (undefined !== prompt && (caption === true || caption === "Ok"))
 
                                     new $.Zebra_Dialog("Input value was:<br><br>\"" + prompt + "\"", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false,
                                         type: "confirmation"
@@ -175,7 +175,7 @@
                                 else
 
                                     new $.Zebra_Dialog("Input was cancelled", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false,
                                         type: "error"
@@ -201,6 +201,7 @@
                         {
                             title: "Prompt",
                             type: "prompt",
+                            placeholder: "Type anything here",
                             buttons: [
                                 "Cancel",
                                 {
@@ -218,7 +219,7 @@
 
                                     callback: function($dialog, prompt) {
                                         new $.Zebra_Dialog("Input value was:<br><br>\"" + prompt + "\"", {
-                                            auto_close: 2000,
+                                            auto_close: 1000,
                                             buttons: false,
                                             modal: false,
                                             type: "confirmation"
@@ -234,6 +235,72 @@
 
                     <div class="well">
                         <a href="javascript:void(0)" id="example2_2" class="btn btn-primary btn-sm">Open dialog box</a>
+                    </div>
+
+                    <p>Handle user input validation via the <code>onBeforeClose</code> callback:</p>
+
+                    <pre class="brush:javascript">
+                    new $.Zebra_Dialog("The input's value will be considered valid <strong>only</strong> if it contains 6 digits.", {
+                        title: "Prompt",
+                        type: "prompt",
+                        placeholder: "Enter a 6 digit number",
+                        onBeforeClose: function(caption, prompt) {
+
+                            //  "prompt" will be undefined if the user closes the dialog box by clicking on the overlay, by clicking
+                            //  on the "x" button, or pressing the ESC key
+                            //
+                            //  additionally, for all the cases above, "caption" will be FALSE.
+                            //
+                            // "prompt" will contain the input's value if the user presses ENTER while inside the input box - case in
+                            //  which, because there's no button clicked, the value of "caption" will be boolean TRUE
+                            //
+                            //  "prompt" will also contain the input's value when clicking ANY of the buttons - case in which we need
+                            //  to check if the appropriate button was clicked
+                            //
+                            //  note that if you have custom buttons you'll have to replace "Ok" with the caption of whatever button
+                            //  you are using as the confirmation button
+
+                            // if user tries to submit the value
+                            if (undefined !== prompt && (caption === true || caption === "Ok")) {
+
+                                // if the input is not valid
+                                if (prompt.match(/^[0-9]{6}$/) === null) {
+
+                                    // show an error message and don't close the dialog box
+                                    new $.Zebra_Dialog("You must enter 6 digits", {
+                                        auto_close: 1000,
+                                        buttons: false,
+                                        modal: false,
+                                        type: "error"
+                                    });
+
+                                    return false;
+
+                                }
+
+                                // if input was correct, close the dialog box and show the user's input
+                                new $.Zebra_Dialog("Input value was:<br><br>" + prompt,
+                                    auto_close: 1000,
+                                    buttons: false,
+                                    modal: false,
+                                    type: "confirmation"
+                                );
+
+                            // if user cancels input by pressing ESC, clicking the "x", clicking the overlay, or the "Cancel" button
+                            } else new $.Zebra_Dialog("Input was cancelled",
+                                auto_close: 1000,
+                                buttons: false,
+                                modal: false,
+                                type: "information"
+                            );
+
+                        }
+
+                    });
+                    </pre>
+
+                    <div class="well">
+                        <a href="javascript:void(0)" id="example2_3" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="custom-buttons"></a>
@@ -261,7 +328,7 @@
                                 // "caption" will be empty when the dialog box is closed by pressing ESC, by clicking the
                                 // dialog box's close button, or by clicking the overlay
                                 new $.Zebra_Dialog((caption != "" ? "\"" + caption + "\"" : "no") + " button was clicked", {
-                                    auto_close: 2000,
+                                    auto_close: 1000,
                                     buttons: false,
                                     modal: false
                                 });
@@ -301,21 +368,21 @@
                             buttons: [
                                 {caption: "Yes", callback: function() {
                                     new $.Zebra_Dialog("\"Yes\" button was clicked", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false
                                     });
                                 }},
                                 {caption: "No", callback: function() {
                                     new $.Zebra_Dialog("\"No\" button was clicked", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false
                                     });
                                 }},
                                 {caption: "Cancel", callback: function() {
                                     new $.Zebra_Dialog("\"Cancel\" button was clicked", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false
                                     });
