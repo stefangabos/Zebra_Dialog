@@ -1,7 +1,11 @@
-## version 3.1.0 (October 20, 2024)
+## version 3.1.0 (October 21, 2024)
 
 - dialog boxes are now draggable by default; see the newly added `draggable` property; see [#38](https://github.com/stefangabos/Zebra_Dialog/issues/38) and thanks [LukeSavefrogs](https://github.com/LukeSavefrogs) for suggesting this A LONG TIME AGO!
-- added the `onOpen` event triggered after the dialog box is made visible; see [#39](https://github.com/stefangabos/Zebra_Dialog/issues/39); thanks [LukeSavefrogs](https://github.com/LukeSavefrogs) for suggesting this A LONG TIME AGO!
+- added the `onOpen` event which triggers **after** the dialog box is made visible; see [#39](https://github.com/stefangabos/Zebra_Dialog/issues/39); thanks [LukeSavefrogs](https://github.com/LukeSavefrogs) for suggesting this A LONG TIME AGO!
+- added the `onBeforeClose` event which triggers **before** the dialog is hidden; useful for validating input prompts and not closing the dialog box in case the input is not valid
+- added `placeholder` property to be used with `prompt` type dialog boxes
+- added `prompt_rows` which when set to a value greater than `1` will turn the `input` element in a `prompt` dialog box type to a `textarea`
+- fixed bug where page scrolling was not disabled when opening modal dialog boxes even though `disable_page_scrolling` was set to `true` by default
 
 ## version 3.0.7 (May 12, 2024)
 
