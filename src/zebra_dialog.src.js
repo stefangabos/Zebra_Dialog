@@ -1181,7 +1181,7 @@
             else plugin.dialog.addClass('ZebraDialog_NoTitle');
 
             // this property is always false for iFrames
-            // as iFrames strecth to 100% of the available height
+            // as iFrames stretch to 100% of the available height
             if (undefined !== plugin.settings.source.iframe) plugin.settings.vcenter_short_message = false;
 
             // create the container of the actual message
