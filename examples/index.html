@@ -7,9 +7,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript alert, confirmation and prompt dialog boxes.">
+        <meta name="description" content="Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), mobile-friendly and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript alert, confirmation and prompt dialog boxes.">
         <link rel="shortcut icon" href="favicon.ico">
-        <title>Zebra Dialog - a small, compact, and highly configurable jQuery plugin for creating modal dialog boxes</title>
+        <title>Zebra Dialog - a small, compact, mobile-friendly and highly configurable jQuery plugin for creating modal dialog boxes</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css">
@@ -35,7 +35,7 @@
         <div class="jumbotron">
             <div class="container">
                 <h1>Zebra Dialog</h1>
-                <p>a small, compact, and highly configurable jQuery plugin for creating modal dialog boxes</p>
+                <p>a small, compact, mobile-friendly and highly configurable jQuery plugin for creating modal dialog boxes</p>
                 <hr>
                 <p>
                     <a href="https://github.com/stefangabos/Zebra_Dialog/archive/master.zip" class="btn btn-primary btn-lg" role="button" style="text-decoration: none">Download</a>
@@ -56,7 +56,7 @@
                         <div class="col-md-6">
                             <p>
                                 Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+)
-                                and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace
+                                mobile-friendly and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace
                                 native JavaScript alert, confirmation and prompt dialogs.
                             </p>
 
@@ -117,12 +117,12 @@
 
                     <div class="well">
                         The six dialog box types are:
-                        <a href="javascript:void(0)" id="example1_1">confirmation</a>,
-                        <a href="javascript:void(0)" id="example1_2">error</a>,
-                        <a href="javascript:void(0)" id="example1_3">information</a>,
-                        <a href="javascript:void(0)" id="example1_4">prompt</a>,
-                        <a href="javascript:void(0)" id="example1_5">question</a> and
-                        <a href="javascript:void(0)" id="example1_6">warning</a>
+                        <a href="javascript:void(0)" id="example1_1" class="btn btn-primary btn-xs">confirmation</a>
+                        <a href="javascript:void(0)" id="example1_2" class="btn btn-primary btn-xs">error</a>
+                        <a href="javascript:void(0)" id="example1_3" class="btn btn-primary btn-xs">information</a>
+                        <a href="javascript:void(0)" id="example1_4" class="btn btn-primary btn-xs">prompt</a>
+                        <a href="javascript:void(0)" id="example1_5" class="btn btn-primary btn-xs">question</a>
+                        <a href="javascript:void(0)" id="example1_6" class="btn btn-primary btn-xs">warning</a>
                     </div>
 
                     <a name="handling-input"></a>
@@ -187,7 +187,7 @@
                     </pre>
 
                     <div class="well">
-                        Open <a href="javascript:void(0)" id="example2_1">dialog box</a>.
+                        <a href="javascript:void(0)" id="example2_1" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <p>Handle user input via button callback:</p>
@@ -233,7 +233,7 @@
                     </pre>
 
                     <div class="well">
-                        Open <a href="javascript:void(0)" id="example2_2">dialog box</a>.
+                        <a href="javascript:void(0)" id="example2_2" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="custom-buttons"></a>
@@ -277,7 +277,7 @@
                     </small></blockquote>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example3">here</a> to open.
+                        <a href="javascript:void(0)" id="example3" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="custom-buttons-callback"></a>
@@ -331,7 +331,7 @@
                     </small></blockquote>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example4">here</a> to open.
+                        <a href="javascript:void(0)" id="example4" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="positioning"></a>
@@ -376,14 +376,19 @@
 
                     <h3><strong>6.</strong> No title bar</h3>
 
+                    <p class="alert alert-info">Note that in this case the dialog box is not draggable by default - therefore,
+                    we set the <code>draggable</code> property to <code>force</code> to make it so!</p>
+
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
-                        "&lt;strong&gt;Zebra_Dialog&lt;/strong&gt;, a small, compact and highly configurable dialog box plugin for jQuery"
+                        "&lt;strong&gt;Zebra_Dialog&lt;/strong&gt;, a small, compact, mobile-friendly and highly configurable dialog box plugin for jQuery", {
+                            draggable: "force"
+                        }
                     );
                     </pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example6">here</a> to open.
+                        <a href="javascript:void(0)" id="example6" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="notification-widget"></a>
@@ -409,7 +414,7 @@
                     );</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example7">here</a> to open.
+                        <a href="javascript:void(0)" id="example7" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="content-from-element"></a>
@@ -425,6 +430,7 @@
                     <pre class="brush:javascript">
                     // unless explicitly specified, the height of the dialog box will
                     // be automatically computed to fit the loaded content's height
+                    // (use `margin` or `max_height` to handle content that takes up the viewport's height)
 
                     new $.Zebra_Dialog({
                         source: {
@@ -435,7 +441,7 @@
                     });</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example8">here</a> to open.
+                        <a href="javascript:void(0)" id="example8" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="content-from-ajax"></a>
@@ -451,6 +457,7 @@
                     <pre class="brush:javascript">
                     // unless explicitly specified, the height of the dialog box will
                     // be automatically computed to fit the loaded content's height
+                    // (use `margin` or `max_height` to handle content that takes up the viewport's height)
 
                     new $.Zebra_Dialog({
                         source: {
@@ -461,7 +468,7 @@
                     });</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example9">here</a> to open.
+                        <a href="javascript:void(0)" id="example9" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="content-iframe"></a>
@@ -493,7 +500,7 @@
                     </pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example10">here</a> to open.
+                        <a href="javascript:void(0)" id="example10" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="overlapping"></a>
@@ -578,7 +585,7 @@
                     });</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example11">here</a> to open.
+                        <a href="javascript:void(0)" id="example11" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="customizing-appearance"></a>
@@ -615,7 +622,7 @@
                     });</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example12">here</a> to open.
+                        <a href="javascript:void(0)" id="example12" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <div class="top">
