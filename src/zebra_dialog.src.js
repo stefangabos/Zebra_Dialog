@@ -1014,7 +1014,7 @@
                 plugin.backdrop.appendTo($container);
 
                 // if page scrolling needs to be disabled while the dialog is open, the page has vertical scrolling, and this has not already been taken care of by an already open modal
-                if (plugin.settings.disable_page_scrolling && window.innerWidth > document.body.clientWidth && !$container.hasClass('ZebraDialog_NoScroll'))
+                if (plugin.settings.disable_page_scrolling && window.innerHeight < document.body.clientHeight && !$container.hasClass('ZebraDialog_NoScroll'))
 
                     // prevent body from scrolling
                     $container
