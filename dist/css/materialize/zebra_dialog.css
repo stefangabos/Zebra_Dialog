@@ -120,6 +120,7 @@ a.ZebraDialog_Close {
     -moz-box-sizing: border-box!important;
     -webkit-box-sizing: border-box!important;
     box-sizing: border-box!important;
+    resize: none;
     padding: 8px;
     margin: 10px 0 0;
     border: 1px solid #ababab;
