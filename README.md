@@ -483,6 +483,13 @@ $(document).ready(function() {
     </thead>
     <tbody>
     <tr>
+        <td valign="top"><code>onOpen</code></td>
+        <td valign="top">
+            Event fired <em>after</em> the dialog box is opened.<br><br>
+            The callback function receives as unique argument the dialog box, as a jQuery element.
+        </td>
+    </tr>
+    <tr>
         <td valign="top"><code>onClose</code></td>
         <td valign="top">
             Event fired when <em>after</em> the dialog box is closed.<br><br>

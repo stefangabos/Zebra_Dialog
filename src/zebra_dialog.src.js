@@ -23,7 +23,7 @@
  *  Read more {@link https://github.com/stefangabos/Zebra_Dialog/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    3.1.0 (last revision: October 20, 2024)
+ *  @version    3.1.0 (last revision: October 21, 2024)
  *  @copyright  (c) 2011 - 2024 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Dialog
@@ -378,6 +378,11 @@
                                                             //
                                                             //  Default is "0" - width is automatically set.
 
+                onOpen:                 null,               //  Event fired when *after* the dialog box is opened.
+                                                            //
+                                                            //  The callback function (if any) receives as unique argument
+                                                            //  the dialog box, as a jQuery object.
+
                 onClose:                null                //  Event fired when *after* the dialog box is closed.
                                                             //
                                                             //  For executing functions *before* the closing of the dialog
@@ -642,6 +647,12 @@
                     }, plugin.settings.reposition_speed);
 
                 }
+
+                // if a callback function exists for when the dialog box is opened
+                if (plugin.settings.onOpen && typeof plugin.settings.onOpen === 'function')
+
+                    // execute the callback function
+                    plugin.settings.onOpen(plugin.dialog);
 
                 // only do it when we initialize the dialog and not also on resizing because otherwise, if there is an
                 // input in the dialog and the input receives focus on mobile, the virtual keyboard will show up and will
