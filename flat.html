@@ -18,9 +18,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript alert, confirmation and prompt dialog boxes.">
+        <meta name="description" content="Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+), mobile-friendly and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace native JavaScript alert, confirmation and prompt dialog boxes.">
         <link rel="shortcut icon" href="favicon.ico">
-        <title>Zebra Dialog - a small, compact, and highly configurable jQuery plugin for creating modal dialog boxes</title>
+        <title>Zebra Dialog - a small, compact, mobile-friendly and highly configurable jQuery plugin for creating modal dialog boxes</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css">
@@ -46,7 +46,7 @@
         <div class="jumbotron">
             <div class="container">
                 <h1>Zebra Dialog</h1>
-                <p>a small, compact, and highly configurable jQuery plugin for creating modal dialog boxes</p>
+                <p>a small, compact, mobile-friendly and highly configurable jQuery plugin for creating modal dialog boxes</p>
                 <hr>
                 <p>
                     <a href="https://github.com/stefangabos/Zebra_Dialog/archive/master.zip" class="btn btn-primary btn-lg" role="button" style="text-decoration: none">Download</a>
@@ -67,7 +67,7 @@
                         <div class="col-md-6">
                             <p>
                                 Zebra Dialog is a small, compact (one JavaScript file, no dependencies other than jQuery 1.7.0+)
-                                and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace
+                                mobile-friendly and highly configurable jQuery plugin for creating responsive modal dialog boxes, meant to replace
                                 native JavaScript alert, confirmation and prompt dialogs.
                             </p>
 
@@ -128,12 +128,12 @@
 
                     <div class="well">
                         The six dialog box types are:
-                        <a href="javascript:void(0)" id="example1_1">confirmation</a>,
-                        <a href="javascript:void(0)" id="example1_2">error</a>,
-                        <a href="javascript:void(0)" id="example1_3">information</a>,
-                        <a href="javascript:void(0)" id="example1_4">prompt</a>,
-                        <a href="javascript:void(0)" id="example1_5">question</a> and
-                        <a href="javascript:void(0)" id="example1_6">warning</a>
+                        <a href="javascript:void(0)" id="example1_1" class="btn btn-primary btn-xs">confirmation</a>
+                        <a href="javascript:void(0)" id="example1_2" class="btn btn-primary btn-xs">error</a>
+                        <a href="javascript:void(0)" id="example1_3" class="btn btn-primary btn-xs">information</a>
+                        <a href="javascript:void(0)" id="example1_4" class="btn btn-primary btn-xs">prompt</a>
+                        <a href="javascript:void(0)" id="example1_5" class="btn btn-primary btn-xs">question</a>
+                        <a href="javascript:void(0)" id="example1_6" class="btn btn-primary btn-xs">warning</a>
                     </div>
 
                     <a name="handling-input"></a>
@@ -177,7 +177,7 @@
                                 if (undefined !== prompt && (caption === true || caption === "Ok"))
 
                                     new $.Zebra_Dialog("Input value was:<br><br>\"" + prompt + "\"", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false,
                                         type: "confirmation"
@@ -186,7 +186,7 @@
                                 else
 
                                     new $.Zebra_Dialog("Input was cancelled", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false,
                                         type: "error"
@@ -198,7 +198,7 @@
                     </pre>
 
                     <div class="well">
-                        Open <a href="javascript:void(0)" id="example2_1">dialog box</a>.
+                        <a href="javascript:void(0)" id="example2_1" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <p>Handle user input via button callback:</p>
@@ -212,6 +212,7 @@
                         {
                             title: "Prompt",
                             type: "prompt",
+                            placeholder: "Type anything here",
                             buttons: [
                                 "Cancel",
                                 {
@@ -229,7 +230,7 @@
 
                                     callback: function($dialog, prompt) {
                                         new $.Zebra_Dialog("Input value was:<br><br>\"" + prompt + "\"", {
-                                            auto_close: 2000,
+                                            auto_close: 1000,
                                             buttons: false,
                                             modal: false,
                                             type: "confirmation"
@@ -244,7 +245,73 @@
                     </pre>
 
                     <div class="well">
-                        Open <a href="javascript:void(0)" id="example2_2">dialog box</a>.
+                        <a href="javascript:void(0)" id="example2_2" class="btn btn-primary btn-sm">Open dialog box</a>
+                    </div>
+
+                    <p>Handle user input validation via the <code>onBeforeClose</code> callback:</p>
+
+                    <pre class="brush:javascript">
+                    new $.Zebra_Dialog("The input's value will be considered valid <strong>only</strong> if it contains 6 digits.", {
+                        title: "Prompt",
+                        type: "prompt",
+                        placeholder: "Enter a 6 digit number",
+                        onBeforeClose: function(caption, prompt) {
+
+                            //  "prompt" will be undefined if the user closes the dialog box by clicking on the overlay, by clicking
+                            //  on the "x" button, or pressing the ESC key
+                            //
+                            //  additionally, for all the cases above, "caption" will be FALSE.
+                            //
+                            // "prompt" will contain the input's value if the user presses ENTER while inside the input box - case in
+                            //  which, because there's no button clicked, the value of "caption" will be boolean TRUE
+                            //
+                            //  "prompt" will also contain the input's value when clicking ANY of the buttons - case in which we need
+                            //  to check if the appropriate button was clicked
+                            //
+                            //  note that if you have custom buttons you'll have to replace "Ok" with the caption of whatever button
+                            //  you are using as the confirmation button
+
+                            // if user tries to submit the value
+                            if (undefined !== prompt && (caption === true || caption === "Ok")) {
+
+                                // if the input is not valid
+                                if (prompt.match(/^[0-9]{6}$/) === null) {
+
+                                    // show an error message and don't close the dialog box
+                                    new $.Zebra_Dialog("You must enter 6 digits", {
+                                        auto_close: 1000,
+                                        buttons: false,
+                                        modal: false,
+                                        type: "error"
+                                    });
+
+                                    return false;
+
+                                }
+
+                                // if input was correct, close the dialog box and show the user's input
+                                new $.Zebra_Dialog("Input value was:<br><br>" + prompt,
+                                    auto_close: 1000,
+                                    buttons: false,
+                                    modal: false,
+                                    type: "confirmation"
+                                );
+
+                            // if user cancels input by pressing ESC, clicking the "x", clicking the overlay, or the "Cancel" button
+                            } else new $.Zebra_Dialog("Input was cancelled",
+                                auto_close: 1000,
+                                buttons: false,
+                                modal: false,
+                                type: "information"
+                            );
+
+                        }
+
+                    });
+                    </pre>
+
+                    <div class="well">
+                        <a href="javascript:void(0)" id="example2_3" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="custom-buttons"></a>
@@ -272,7 +339,7 @@
                                 // "caption" will be empty when the dialog box is closed by pressing ESC, by clicking the
                                 // dialog box's close button, or by clicking the overlay
                                 new $.Zebra_Dialog((caption != "" ? "\"" + caption + "\"" : "no") + " button was clicked", {
-                                    auto_close: 2000,
+                                    auto_close: 1000,
                                     buttons: false,
                                     modal: false
                                 });
@@ -288,7 +355,7 @@
                     </small></blockquote>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example3">here</a> to open.
+                        <a href="javascript:void(0)" id="example3" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="custom-buttons-callback"></a>
@@ -312,21 +379,21 @@
                             buttons: [
                                 {caption: "Yes", callback: function() {
                                     new $.Zebra_Dialog("\"Yes\" button was clicked", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false
                                     });
                                 }},
                                 {caption: "No", callback: function() {
                                     new $.Zebra_Dialog("\"No\" button was clicked", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false
                                     });
                                 }},
                                 {caption: "Cancel", callback: function() {
                                     new $.Zebra_Dialog("\"Cancel\" button was clicked", {
-                                        auto_close: 2000,
+                                        auto_close: 1000,
                                         buttons: false,
                                         modal: false
                                     });
@@ -342,7 +409,7 @@
                     </small></blockquote>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example4">here</a> to open.
+                        <a href="javascript:void(0)" id="example4" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="positioning"></a>
@@ -387,14 +454,19 @@
 
                     <h3><strong>6.</strong> No title bar</h3>
 
+                    <p class="alert alert-info">Note that in this case the dialog box is not draggable by default - therefore,
+                    we set the <code>draggable</code> property to <code>force</code> to make it so!</p>
+
                     <pre class="brush:javascript">
                     new $.Zebra_Dialog(
-                        "&lt;strong&gt;Zebra_Dialog&lt;/strong&gt;, a small, compact and highly configurable dialog box plugin for jQuery"
+                        "&lt;strong&gt;Zebra_Dialog&lt;/strong&gt;, a small, compact, mobile-friendly and highly configurable dialog box plugin for jQuery", {
+                            draggable: "force"
+                        }
                     );
                     </pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example6">here</a> to open.
+                        <a href="javascript:void(0)" id="example6" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="notification-widget"></a>
@@ -420,7 +492,7 @@
                     );</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example7">here</a> to open.
+                        <a href="javascript:void(0)" id="example7" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="content-from-element"></a>
@@ -436,6 +508,7 @@
                     <pre class="brush:javascript">
                     // unless explicitly specified, the height of the dialog box will
                     // be automatically computed to fit the loaded content's height
+                    // (use `margin` or `max_height` to handle content that takes up the viewport's height)
 
                     new $.Zebra_Dialog({
                         source: {
@@ -446,7 +519,7 @@
                     });</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example8">here</a> to open.
+                        <a href="javascript:void(0)" id="example8" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="content-from-ajax"></a>
@@ -462,6 +535,7 @@
                     <pre class="brush:javascript">
                     // unless explicitly specified, the height of the dialog box will
                     // be automatically computed to fit the loaded content's height
+                    // (use `margin` or `max_height` to handle content that takes up the viewport's height)
 
                     new $.Zebra_Dialog({
                         source: {
@@ -472,7 +546,7 @@
                     });</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example9">here</a> to open.
+                        <a href="javascript:void(0)" id="example9" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="content-iframe"></a>
@@ -504,7 +578,7 @@
                     </pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example10">here</a> to open.
+                        <a href="javascript:void(0)" id="example10" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="overlapping"></a>
@@ -589,7 +663,7 @@
                     });</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example11">here</a> to open.
+                        <a href="javascript:void(0)" id="example11" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <a name="customizing-appearance"></a>
@@ -626,7 +700,7 @@
                     });</pre>
 
                     <div class="well">
-                        Click <a href="javascript:void(0)" id="example12">here</a> to open.
+                        <a href="javascript:void(0)" id="example12" class="btn btn-primary btn-sm">Open dialog box</a>
                     </div>
 
                     <div class="top">
@@ -662,9 +736,9 @@
             auctor. Quis sem pellentesque quis dui ligula vitae leo velit semper euismod.</p>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/zebra_pin@2.0.0/dist/zebra_pin.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/zebra_dialog@latest/dist/zebra_dialog.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/zebra_pin@latest/dist/zebra_pin.min.js"></script>
         <script src="examples.js"></script>
 
     </body>
