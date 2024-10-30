@@ -2,6 +2,7 @@ examples/README.md
 examples/browserstack.png
 node_modules/*
 src/*
+.git/*
 .github/*
 .gitattributes
 .gitignore
