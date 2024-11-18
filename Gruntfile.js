@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                 options: {
                     implementation: sass,
                     outputStyle: 'expanded',
-                    indentWidth: 4
+                    api: 'modern'
                 },
                 files: {
                     'dist/css/classic/zebra_dialog.css': 'dist/css/classic/zebra_dialog.scss',
@@ -43,7 +43,8 @@ module.exports = function(grunt) {
             minified: {
                 options: {
                     implementation: sass,
-                    outputStyle: 'compressed'
+                    outputStyle: 'compressed',
+                    api: 'modern'
                 },
                 files: {
                     'dist/css/classic/zebra_dialog.min.css': 'dist/css/classic/zebra_dialog.scss',
@@ -245,7 +246,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-includes');
     grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-notify');
-    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-sass-modern');
 
     grunt.registerTask('default', ['includes', 'sass', 'cssmin', 'eslint', 'jshint', 'uglify', 'copy', 'watch']);
 
