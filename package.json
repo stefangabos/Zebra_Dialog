@@ -28,7 +28,7 @@
     "email": "contact@stefangabos.ro"
   },
   "devDependencies": {
-    "grunt": "^1.5.3",
+    "grunt": "^1.6.1",
     "grunt-cli": "^1.5.0",
     "grunt-contrib-copy": "*",
     "grunt-contrib-cssmin": "^5.0.0",
@@ -39,8 +39,8 @@
     "grunt-includes": "*",
     "grunt-newer": "*",
     "grunt-notify": "*",
-    "grunt-sass": "^3.1.0",
-    "sass": "^1.80.6",
+    "grunt-sass-modern": "^3.3.0",
+    "sass": "^1.81.0",
     "time-grunt": "^2.0.0"
   }
 }
