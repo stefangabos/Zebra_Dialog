@@ -28,11 +28,13 @@ module.exports = function(grunt) {
          *  https://www.npmjs.org/package/grunt-sass
          **************************************************************************************************************/
         'sass': {
+            options: {
+                implementation: sass,
+                api: 'modern'
+            },
             expanded: {
                 options: {
-                    implementation: sass,
-                    outputStyle: 'expanded',
-                    api: 'modern'
+                    style: 'expanded',
                 },
                 files: {
                     'dist/css/classic/zebra_dialog.css': 'dist/css/classic/zebra_dialog.scss',
@@ -42,9 +44,7 @@ module.exports = function(grunt) {
             },
             minified: {
                 options: {
-                    implementation: sass,
-                    outputStyle: 'compressed',
-                    api: 'modern'
+                    style: 'compressed',
                 },
                 files: {
                     'dist/css/classic/zebra_dialog.min.css': 'dist/css/classic/zebra_dialog.scss',
