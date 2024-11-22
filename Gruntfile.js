@@ -59,19 +59,22 @@ module.exports = function(grunt) {
          *  https://github.com/gruntjs/grunt-contrib-cssmin
          **************************************************************************************************************/
         'cssmin': {
-            beutify: {
-                options: {
-                    compatibility: {
-                        properties: {
-                            ieBangHack: true,
-                            ieFilters: true,
-                            iePrefixHack: true,
-                            ieSuffixHack: true
-                        },
-                        selectors: {
-                            ie7Hack: true
-                        }
+            options: {
+                compatibility: {
+                    properties: {
+                        ieBangHack: true,
+                        ieFilters: true,
+                        iePrefixHack: true,
+                        ieSuffixHack: true
                     },
+                    selectors: {
+                        ie7Hack: true
+                    }
+                },
+                level: 2
+            },
+            beautify: {
+                options: {
                     format: {
                         breaks: {
                             afterAtRule: true,
@@ -92,7 +95,6 @@ module.exports = function(grunt) {
                             beforeValue: true
                         }
                     },
-                    level: 2
                 },
                 files: {
                     'dist/css/classic/zebra_dialog.css': 'dist/css/classic/zebra_dialog.css',
@@ -101,20 +103,6 @@ module.exports = function(grunt) {
                 }
             },
             minify: {
-                options: {
-                    compatibility: {
-                        properties: {
-                            ieBangHack: true,
-                            ieFilters: true,
-                            iePrefixHack: true,
-                            ieSuffixHack: true
-                        },
-                        selectors: {
-                            ie7Hack: true
-                        }
-                    },
-                    level: 2
-                },
                 files: {
                     'dist/css/classic/zebra_dialog.min.css': 'dist/css/classic/zebra_dialog.min.css',
                     'dist/css/flat/zebra_dialog.min.css': 'dist/css/flat/zebra_dialog.min.css',
