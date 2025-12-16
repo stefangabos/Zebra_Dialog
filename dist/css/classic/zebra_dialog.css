@@ -166,7 +166,7 @@ a.ZebraDialog_Close {
     background-image: linear-gradient(to bottom,#08c,#04c);
     background-repeat: repeat-x;
     border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FF0088CC", endColorstr="#FF0044CC", GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF0088CC', endColorstr='#FF0044CC', GradientType=0);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)
 }
 .ZebraDialog_Buttons a:hover {
