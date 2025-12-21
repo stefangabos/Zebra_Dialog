@@ -344,14 +344,14 @@ $(document).ready(function() {
         <td valign="top"><em>string</em></td>
         <td valign="top">""<br>(empty string)</td>
         <td valign="top">
-            When set to <code>true</code> there will be a semitransparent backdrop behind the dialog box, preventing users from clicking the page's content.<br><br>
+            A placeholder value to be shown in the input box until the user starts typing, when the dialog box type is <code>prompt</code>.<br><br>
             See also <code>default_value</code> property.
         </td>
     </tr>
     <tr>
         <td valign="top"><code>position</code></td>
         <td valign="top"><em>mixed</em></td>
-        <td valign="top">'center'</td>
+        <td valign="top"><code>center</code></td>
         <td valign="top">
             Position of the dialog box.<br><br>
             Can be either <code>center</code> (which would center the dialog box both horizontally and vertically), or an array with 2 elements, in the form of<br><br>
